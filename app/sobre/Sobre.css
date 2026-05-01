@@ -1,0 +1,302 @@
+/* ABOUT THEME: "THE HUMAN ALGORITHM" - ADAPTED TO LIGHT BRANDING */
+body.about-body {
+    /* Inherit default styles from style.css */
+    background-color: var(--bg-color);
+    color: var(--text-color);
+    overflow-x: hidden;
+}
+
+/* HEADER OVERRIDE */
+body.about-body .header {
+    background-color: transparent;
+}
+
+body.about-body .header.header-scrolled {
+    background-color: white;
+}
+
+body.about-body .header.header-scrolled .logo-text,
+body.about-body .header.header-scrolled .main-nav a {
+    color: #1a1a1a !important;
+}
+
+body.about-body .header.header-scrolled .mobile-nav-toggle .hamburger,
+body.about-body .header.header-scrolled .mobile-nav-toggle .hamburger::before,
+body.about-body .header.header-scrolled .mobile-nav-toggle .hamburger::after {
+    background-color: #1a1a1a !important;
+}
+
+body.about-body .header.header-scrolled .btn-nav {
+    border-color: #1a1a1a;
+    color: #1a1a1a !important;
+}
+
+body.about-body .header.header-scrolled .btn-nav:hover {
+    background-color: var(--color-primary-blue);
+    color: white !important;
+    border-color: var(--color-primary-blue);
+}
+
+
+/* CINEMATIC HERO - BRANDED */
+.poster-hero {
+    height: 100vh;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    position: relative;
+    background: var(--gradient-main);
+    color: white;
+    /* Force white text on gradient */
+}
+
+.poster-hero h1 {
+    font-family: 'Syne', sans-serif;
+    font-size: clamp(3rem, 10vw, 8rem);
+    text-align: center;
+    line-height: 0.9;
+    z-index: 2;
+    /* No mix-blend-mode for cleaner look on gradient */
+}
+
+.poster-hero h1 span {
+    display: block;
+    opacity: 0;
+    transform: translateY(50px);
+    animation: textRise 1.5s cubic-bezier(0.2, 1, 0.3, 1) forwards;
+}
+
+/* Outline effect for the last word to make it pop */
+.poster-hero h1 span.outline-text {
+    color: transparent;
+    -webkit-text-stroke: 2px white;
+    /* Restore opacity animation */
+}
+
+@keyframes textRise {
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+/* Floating particles/grain overlay */
+.noise-overlay {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 200 200' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='noiseFilter'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.65' numOctaves='3' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23noiseFilter)' opacity='0.05'/%3E%3C/svg%3E");
+    pointer-events: none;
+    z-index: 1;
+    mix-blend-mode: overlay;
+}
+
+/* MANIFESTO SCROLL */
+.manifesto-section {
+    padding: 10rem 0;
+    max-width: 900px;
+    margin: 0 auto;
+    position: relative;
+}
+
+.manifesto-text {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: 2.5rem;
+    line-height: 1.4;
+    color: #444;
+    /* Darker for light bg */
+}
+
+.highlight {
+    background: var(--gradient-main);
+    -webkit-background-clip: text;
+    background-clip: text;
+    -webkit-text-fill-color: transparent;
+    font-style: italic;
+    font-weight: 700;
+}
+
+/* HORIZONTAL TEAM/HISTORY (Simulated) */
+.timeline-wrapper {
+    overflow-x: auto;
+    white-space: nowrap;
+    padding: 4rem 0;
+    background: #f8f9fa;
+    /* Very light grey */
+    /* Hide scrollbar */
+    -ms-overflow-style: none;
+    /* IE and Edge */
+    scrollbar-width: none;
+    /* Firefox */
+}
+
+.timeline-wrapper::-webkit-scrollbar {
+    display: none;
+}
+
+.timeline-item {
+    display: inline-block;
+    width: 400px;
+    margin-right: 2rem;
+    vertical-align: top;
+    white-space: normal;
+    background: white;
+    border: 1px solid rgba(0, 0, 0, 0.05);
+    border-radius: 20px;
+    padding: 2.5rem;
+    transition: 0.3s;
+    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.05);
+}
+
+.timeline-item:first-child {
+    margin-left: 10vw;
+}
+
+.timeline-item:last-child {
+    margin-right: 10vw;
+}
+
+.timeline-item:hover {
+    transform: translateY(-10px);
+    box-shadow: 0 20px 40px rgba(0, 0, 0, 0.1);
+    border-color: var(--color-primary-blue);
+}
+
+.time-year {
+    font-family: 'Syne', sans-serif;
+    font-size: 4rem;
+    color: transparent;
+    -webkit-text-stroke: 1px var(--color-primary-blue);
+    margin-bottom: 1rem;
+    opacity: 0.3;
+}
+
+.timeline-item:hover .time-year {
+    opacity: 1;
+}
+
+.time-title {
+    font-size: 1.5rem;
+    color: var(--text-color);
+    margin-bottom: 0.5rem;
+    font-weight: 700;
+}
+
+/* DNA HOLOGRAM (Values) */
+.dna-values {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    padding: 8rem 0;
+    gap: 4rem;
+    background: white;
+}
+
+.value-orb {
+    width: 200px;
+    height: 200px;
+    border-radius: 50%;
+    border: 1px solid rgba(0, 0, 0, 0.05);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    position: relative;
+    transition: all 0.5s;
+    background: #fdfdfd;
+}
+
+.value-orb::before {
+    content: '';
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    border-radius: 50%;
+    border-top: 3px solid var(--color-primary-blue);
+    border-right: 3px solid var(--color-primary-red);
+    animation: spinOrb 3s linear infinite;
+    opacity: 0;
+    transition: 0.3s;
+}
+
+.value-orb:hover {
+    transform: scale(1.1);
+    background: white;
+    box-shadow: 0 10px 40px rgba(58, 0, 255, 0.1);
+}
+
+.value-orb:hover::before {
+    opacity: 1;
+}
+
+.value-text {
+    text-align: center;
+    font-family: 'Syne', sans-serif;
+    z-index: 2;
+}
+
+.value-title {
+    font-size: 1.2rem;
+    font-weight: 700;
+    color: var(--text-color);
+    display: block;
+}
+
+.value-sub {
+    font-size: 0.8rem;
+    color: var(--text-muted);
+    font-family: 'Sora', sans-serif;
+    margin-top: 5px;
+    opacity: 0;
+    transition: 0.3s;
+}
+
+.value-orb:hover .value-sub {
+    opacity: 1;
+    transform: translateY(5px);
+}
+
+@keyframes spinOrb {
+    0% {
+        transform: rotate(0deg);
+    }
+
+    100% {
+        transform: rotate(360deg);
+    }
+}
+
+/* FOUNDERS NOTE overlay */
+.founder-note {
+    background: white;
+    color: black;
+    padding: 4rem;
+    margin: 4rem auto;
+    max-width: 800px;
+    position: relative;
+    transform: rotate(-1deg);
+    border: 1px solid rgba(0, 0, 0, 0.05);
+    box-shadow: 0 20px 60px rgba(0, 0, 0, 0.05);
+}
+
+.founder-note::before {
+    content: '"';
+    position: absolute;
+    top: -2rem;
+    left: 2rem;
+    font-family: 'Syne';
+    font-size: 10rem;
+    color: var(--color-primary-blue);
+    opacity: 0.1;
+    line-height: 1;
+}
+
+.founder-sig {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: 2rem;
+    margin-top: 2rem;
+    text-align: right;
+    font-style: italic;
+    color: var(--color-primary-red);
+}

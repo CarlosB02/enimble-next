@@ -1,0 +1,238 @@
+#infinite-grid-menu-canvas {
+    cursor: grab;
+    width: 100%;
+    height: 100%;
+    overflow: hidden;
+    position: relative;
+    outline: none;
+}
+
+#infinite-grid-menu-canvas:active {
+    cursor: grabbing;
+}
+
+.action-button {
+    position: absolute;
+    left: 50%;
+    z-index: 10;
+    width: 60px;
+    height: 60px;
+    display: grid;
+    place-items: center;
+    background: var(--color-primary-blue, #5227ff);
+    border: none;
+    border-radius: 50%;
+    cursor: pointer;
+    border: 5px solid #fff;
+}
+
+.face-title {
+    user-select: none;
+    position: absolute;
+    font-weight: 900;
+    font-size: 2.5rem;
+    left: 10%;
+    top: 50%;
+    color: #000;
+    z-index: 5;
+    max-width: 6em;
+    line-height: 1.1;
+}
+
+.action-button-icon {
+    user-select: none;
+    position: relative;
+    color: #fff;
+    top: 2px;
+    font-size: 26px;
+}
+
+.face-title {
+    position: absolute;
+    top: 50%;
+    transform: translate(20%, -50%);
+}
+
+.face-title.active {
+    opacity: 1;
+    transform: translate(20%, -50%);
+    pointer-events: auto;
+    transition: 0.5s ease;
+}
+
+.face-title.inactive {
+    pointer-events: none;
+    opacity: 0;
+    transition: 0.1s ease;
+}
+
+.face-description {
+    user-select: none;
+    position: absolute;
+    max-width: 25ch;
+    top: 50%;
+    font-size: 1.2rem;
+    right: 14%;
+    transform: translate(0, -50%);
+    color: #000;
+    font-weight: 500;
+    z-index: 5;
+}
+
+.face-description.active {
+    opacity: 1;
+    transform: translate(-90%, -50%);
+    pointer-events: auto;
+    transition: 0.5s ease;
+}
+
+.face-description.inactive {
+    pointer-events: none;
+    transform: translate(-60%, -50%);
+    opacity: 0;
+    transition: 0.1s ease;
+}
+
+.action-button {
+    position: absolute;
+    left: 50%;
+}
+
+.action-button.active {
+    bottom: 3.8em;
+    transform: translateX(-50%) scale(1);
+    opacity: 1;
+    pointer-events: auto;
+    transition: 0.5s ease;
+}
+
+.action-button.inactive {
+    bottom: -80px;
+    transform: translateX(-50%) scale(0);
+    opacity: 0;
+    pointer-events: none;
+    transition: 0.1s ease;
+}
+
+@media (max-width: 1024px) {
+    .face-title {
+        font-size: 1.5rem;
+        left: 1em;
+    }
+
+    .face-description {
+        font-size: 1rem;
+    }
+}
+
+@media (max-width: 768px) {
+
+    .face-title {
+        font-size: 1.8rem;
+        top: 25%;
+        left: 50%;
+        transform: translate(-50%, -50%);
+        text-align: center;
+        width: 90%;
+        max-width: none;
+        opacity: 0.9;
+    }
+    
+    .face-title.active {
+        transform: translate(-50%, -50%);
+    }
+
+    .face-description {
+        top: 35%;
+        right: auto;
+        left: 50%;
+        transform: translate(-50%, -50%);
+        text-align: center;
+        width: 90%;
+        max-width: none;
+        opacity: 0.9;
+    }
+    
+    .face-description.active {
+        transform: translate(-50%, -50%);
+    }
+
+    .action-button {
+        width: 50px;
+        height: 50px;
+        border-width: 3px;
+    }
+    
+    .action-button.active {
+        bottom: 2em;
+    }
+
+    .action-button-icon {
+        font-size: 20px;
+        top: 1px;
+    }
+    
+    .iframe-modal-content {
+        width: 95%;
+        height: 80%;
+    }
+}
+
+.iframe-modal-overlay {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100vw;
+    height: 100vh;
+    background: rgba(0, 0, 0, 0.8);
+    z-index: 1000;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    backdrop-filter: blur(5px);
+}
+
+.iframe-modal-content {
+    width: 90%;
+    height: 90%;
+    background: #fff;
+    border-radius: 12px;
+    overflow: hidden;
+    position: relative;
+    box-shadow: 0 20px 50px rgba(0,0,0,0.5);
+    animation: modalPop 0.3s ease-out;
+}
+
+.iframe-modal-close {
+    position: absolute;
+    top: 15px;
+    right: 20px;
+    width: 40px;
+    height: 40px;
+    border-radius: 50%;
+    background: #000;
+    color: #fff;
+    border: none;
+    font-size: 24px;
+    cursor: pointer;
+    z-index: 10;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    transition: background 0.2s;
+}
+
+.iframe-modal-close:hover {
+    background: #e60000;
+}
+
+.iframe-modal-content iframe {
+    width: 100%;
+    height: 100%;
+    border: none;
+}
+
+@keyframes modalPop {
+    from { opacity: 0; transform: scale(0.95); }
+    to { opacity: 1; transform: scale(1); }
+}
