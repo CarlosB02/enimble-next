@@ -264,7 +264,7 @@ const HomePage = () => {
                 <div className="container">
                     <div className="pp-header reveal">
                         <span className="pp-chip">Trabalhos Selecionados</span>
-                        <h2 className="section-title">Resultados Que Falam Por Si</h2>
+                        <h2 className="section-subtitle">Resultados Que Falam Por Si</h2>
                         <p className="pp-sub">Uma amostra do que construímos para os nossos clientes.</p>
                     </div>
 
@@ -323,12 +323,22 @@ const HomePage = () => {
                     <div className="pp-trust reveal">
                         <span className="pp-trust-label">Marcas que confiam em nós</span>
                         <div className="pp-trust-logos">
-                            <img src="/assets/logos/logo-a.png" alt="Empresa A" className="trust-logo" />
-                            <img src="/assets/logos/logo-b.png" alt="Empresa B" className="trust-logo" />
-                            <img src="/assets/logos/logo-c.png" alt="Empresa C" className="trust-logo" />
-                            <img src="/assets/logos/logo-d.png" alt="Empresa D" className="trust-logo" />
-                            <img src="/assets/logos/logo-e.png" alt="Empresa E" className="trust-logo" />
-                            <img src="/assets/logos/logo-f.png" alt="Empresa F" className="trust-logo" />
+                            <div className="pp-trust-logos-slide">
+                                <img src="/assets/logos/logo-a.png" alt="Empresa A" className="trust-logo" />
+                                <img src="/assets/logos/logo-b.png" alt="Empresa B" className="trust-logo" />
+                                <img src="/assets/logos/logo-c.png" alt="Empresa C" className="trust-logo" />
+                                <img src="/assets/logos/logo-d.png" alt="Empresa D" className="trust-logo" />
+                                <img src="/assets/logos/logo-e.png" alt="Empresa E" className="trust-logo" />
+                                <img src="/assets/logos/logo-f.png" alt="Empresa F" className="trust-logo" />
+                            </div>
+                            <div className="pp-trust-logos-slide" aria-hidden="true">
+                                <img src="/assets/logos/logo-a.png" alt="Empresa A" className="trust-logo" />
+                                <img src="/assets/logos/logo-b.png" alt="Empresa B" className="trust-logo" />
+                                <img src="/assets/logos/logo-c.png" alt="Empresa C" className="trust-logo" />
+                                <img src="/assets/logos/logo-d.png" alt="Empresa D" className="trust-logo" />
+                                <img src="/assets/logos/logo-e.png" alt="Empresa E" className="trust-logo" />
+                                <img src="/assets/logos/logo-f.png" alt="Empresa F" className="trust-logo" />
+                            </div>
                         </div>
                     </div>
 

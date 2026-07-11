@@ -175,8 +175,11 @@
 
 .section-subtitle {
   color: black;
-  font-size: clamp(1.5rem, 5vw, 2.2rem);
+  font-size: clamp(1.8rem, 5vw, 2.5rem);
+  font-weight: 500;
+  line-height: 1.25;
   margin-bottom: 2rem;
+  letter-spacing: -0.5px;
 }
 
 .service-card {
@@ -201,11 +204,12 @@
 }
 
 .service-content h2 {
-  font-size: clamp(2rem, 5vw, 2.3rem);
-  line-height: 1;
-  font-weight: 600;
+  font-size: clamp(1.8rem, 4.5vw, 2.4rem);
+  line-height: 1.25;
+  font-weight: 500;
   margin-bottom: 1.5rem;
   color: black;
+  letter-spacing: -0.3px;
 }
 
 .service-content p {
@@ -365,11 +369,12 @@
 }
 
 .ideas-light-text h2 {
-  font-size: clamp(2rem, 3.5vw, 2.5rem);
-  font-weight: 700;
+  font-size: clamp(1.8rem, 4.5vw, 2.4rem);
+  font-weight: 500;
   color: #1a1a1a;
   margin-bottom: 1.2rem;
   line-height: 1.25;
+  letter-spacing: -0.3px;
 }
 
 .ideas-highlight {
@@ -649,11 +654,12 @@
 }
 
 .gp-simple-text h2 {
-  font-size: clamp(2rem, 3.5vw, 2.5rem);
-  font-weight: 700;
+  font-size: clamp(1.8rem, 4.5vw, 2.4rem);
+  font-weight: 500;
   color: #1a1a1a;
   margin-bottom: 1.2rem;
   line-height: 1.25;
+  letter-spacing: -0.3px;
 }
 
 .gp-highlight {
@@ -848,6 +854,18 @@
   flex-wrap: wrap;
 }
 
+.pp-trust-logos-slide {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 3rem;
+  flex-wrap: wrap;
+}
+
+.pp-trust-logos-slide[aria-hidden="true"] {
+  display: none;
+}
+
 .trust-logo {
   max-height: 48px;
   width: auto;
@@ -931,7 +949,6 @@
   }
 
   .section-subtitle {
-    font-size: clamp(1.2rem, 3vw, 1.5rem);
     margin-bottom: 1rem;
   }
 
@@ -1189,11 +1206,70 @@
 
 @media (max-width: 768px) {
     .pp-trust-logos {
-      gap: 1.5rem;
+      overflow: hidden;
+      display: flex !important;
+      flex-wrap: nowrap !important;
+      justify-content: flex-start !important;
+      gap: 0 !important;
+      width: 100vw;
+      margin-left: calc(-50vw + 50%); /* stretch full width on mobile screens */
+      position: relative;
+      padding: 0.8rem 0;
+    }
+
+    /* Elegant Y X edge gradients to fade logos in and out */
+    .pp-trust-logos::before,
+    .pp-trust-logos::after {
+      content: "";
+      position: absolute;
+      top: 0;
+      width: 50px;
+      height: 100%;
+      z-index: 2;
+      pointer-events: none;
+    }
+
+    .pp-trust-logos::before {
+      left: 0;
+      background: linear-gradient(to right, #fafafe 0%, transparent 100%);
+    }
+
+    .pp-trust-logos::after {
+      right: 0;
+      background: linear-gradient(to left, #fafafe 0%, transparent 100%);
+    }
+
+    .pp-trust-logos-slide {
+      display: inline-flex !important;
+      flex-direction: row !important;
+      flex-wrap: nowrap !important;
+      align-items: center;
+      gap: 3rem;
+      animation: infiniteScroll 25s linear infinite;
+      padding-right: 3rem;
+    }
+
+    .pp-trust-logos-slide[aria-hidden="true"] {
+      display: inline-flex !important;
+    }
+
+    .trust-logo {
+      max-height: 28px !important;
+      width: auto !important;
+      flex-shrink: 0 !important;
     }
 
     .pp-trust-logos span {
       font-size: 0.8rem;
+    }
+
+    @keyframes infiniteScroll {
+      from {
+        transform: translateX(0);
+      }
+      to {
+        transform: translateX(-100%);
+      }
     }
 
     /* Mobile Carousel Wrappers */

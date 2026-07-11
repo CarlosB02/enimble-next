@@ -15,6 +15,50 @@ const platforms = [
 
 const AdsPage = () => {
     useScrollReveal();
+    useScrollReveal();
+
+    // Mobile Carousel Active State Hooks
+    const [omniActiveIndex, setOmniActiveIndex] = useState(0);
+    const [creativesActiveIndex, setCreativesActiveIndex] = useState(0);
+    const [resultsActiveIndex, setResultsActiveIndex] = useState(0);
+
+    const omniGridRef = useRef(null);
+    const creativesGridRef = useRef(null);
+    const resultsGridRef = useRef(null);
+
+    const getActiveIndexFromScroll = (container, selector) => {
+        try {
+            const items = container.querySelectorAll(selector);
+            if (!items || !items.length) return 0;
+            const firstItem = items[0];
+            if (!firstItem) return 0;
+            const itemWidth = firstItem.offsetWidth || 285;
+            const gap = 20; // ~1.25rem gap
+            const scrollLeft = container.scrollLeft || 0;
+            const index = Math.round(scrollLeft / (itemWidth + gap));
+            return Math.max(0, Math.min(index, items.length - 1));
+        } catch (err) {
+            return 0;
+        }
+    };
+
+    const scrollToCard = (ref, selector, index, setIndex) => {
+        const container = ref.current;
+        if (!container) return;
+        const items = container.querySelectorAll(selector);
+        if (items[index]) {
+            items[index].scrollIntoView({
+                behavior: 'smooth',
+                block: 'nearest',
+                inline: 'center'
+            });
+            setIndex(index);
+        }
+    };
+
+    const handleOmniScroll = (e) => setOmniActiveIndex(getActiveIndexFromScroll(e.currentTarget, '.omni-card'));
+    const handleCreativesScroll = (e) => setCreativesActiveIndex(getActiveIndexFromScroll(e.currentTarget, '.creative-card'));
+    const handleResultsScroll = (e) => setResultsActiveIndex(getActiveIndexFromScroll(e.currentTarget, '.results-card'));
 
     // 1. Radar Hero States
     const [radarAlerts, setRadarAlerts] = useState([
@@ -204,7 +248,7 @@ const AdsPage = () => {
                         <p>Cobrimos todos os pontos de contacto onde os seus clientes passam tempo diariamente.</p>
                     </div>
 
-                    <div className="omni-grid">
+                    <div className="omni-grid" ref={omniGridRef} onScroll={handleOmniScroll}>
 
                         {/* Google Search Card */}
                         <div className="omni-card reveal">
@@ -272,6 +316,21 @@ const AdsPage = () => {
                         </div>
 
                     </div>
+                    {/* Carousel navigation dots for mobile view */}
+                    <div className="carousel-dots" style={{ marginTop: '2rem' }}>
+                        {Array.from({ length: 4 }).map((_, idx) => (
+                            <button
+                                key={idx}
+                                className={`carousel-dot ${omniActiveIndex === idx ? 'active' : ''}`}
+                                onClick={() => scrollToCard(omniGridRef, '.omni-card', idx, setOmniActiveIndex)}
+                                onTouchEnd={(e) => {
+                                    e.preventDefault();
+                                    scrollToCard(omniGridRef, '.omni-card', idx, setOmniActiveIndex);
+                                }}
+                                aria-label={`Ir para a fase ${idx + 1}`}
+                            />
+                        ))}
+                    </div>
                 </div>
             </section>
 
@@ -308,7 +367,7 @@ const AdsPage = () => {
                         <p>A diferença entre ser ignorado e ser clicado começa no criativo.</p>
                     </div>
 
-                    <div className="creatives-grid reveal">
+                    <div className="creatives-grid reveal" ref={creativesGridRef} onScroll={handleCreativesScroll}>
                         {/* Meta Feed */}
                         <div className="creative-card">
                             <div className="creative-img-container square">
@@ -363,6 +422,21 @@ const AdsPage = () => {
                             </div>
                         </div>
                     </div>
+                    {/* Carousel navigation dots for mobile view */}
+                    <div className="carousel-dots" style={{ marginTop: '2rem' }}>
+                        {Array.from({ length: 3 }).map((_, idx) => (
+                            <button
+                                key={idx}
+                                className={`carousel-dot ${creativesActiveIndex === idx ? 'active' : ''}`}
+                                onClick={() => scrollToCard(creativesGridRef, '.creative-card', idx, setCreativesActiveIndex)}
+                                onTouchEnd={(e) => {
+                                    e.preventDefault();
+                                    scrollToCard(creativesGridRef, '.creative-card', idx, setCreativesActiveIndex);
+                                }}
+                                aria-label={`Ir para o criativo ${idx + 1}`}
+                            />
+                        ))}
+                    </div>
                 </div>
             </section>
 
@@ -374,7 +448,7 @@ const AdsPage = () => {
                         <p>Uma estratégia completa para transformar investimento em crescimento.</p>
                     </div>
 
-                    <div className="results-grid">
+                    <div className="results-grid" ref={resultsGridRef} onScroll={handleResultsScroll}>
                         {/* Segmentação Estudada */}
                         <div className="results-card reveal">
                             <div className="results-icon-wrapper">
@@ -438,6 +512,21 @@ const AdsPage = () => {
                             <h3>Otimização contínua</h3>
                             <p>Analisamos, testamos e melhoramos constantemente.</p>
                         </div>
+                    </div>
+                    {/* Carousel navigation dots for mobile view */}
+                    <div className="carousel-dots" style={{ marginTop: '2rem' }}>
+                        {Array.from({ length: 4 }).map((_, idx) => (
+                            <button
+                                key={idx}
+                                className={`carousel-dot ${resultsActiveIndex === idx ? 'active' : ''}`}
+                                onClick={() => scrollToCard(resultsGridRef, '.results-card', idx, setResultsActiveIndex)}
+                                onTouchEnd={(e) => {
+                                    e.preventDefault();
+                                    scrollToCard(resultsGridRef, '.results-card', idx, setResultsActiveIndex);
+                                }}
+                                aria-label={`Ir para o resultado ${idx + 1}`}
+                            />
+                        ))}
                     </div>
                 </div>
             </section>

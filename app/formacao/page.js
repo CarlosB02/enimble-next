@@ -1,12 +1,52 @@
 'use client';
 
-import React, { useEffect } from 'react';
+import React, { useState, useEffect, useRef } from 'react';
 import Link from 'next/link';
 import useScrollReveal from '@/hooks/useScrollReveal';
 import './Formacao.css';
 
 const Formacao = () => {
     useScrollReveal();
+
+    // Mobile Carousel Active State Hooks
+    const [fundingActiveIndex, setFundingActiveIndex] = useState(0);
+    const [flowActiveIndex, setFlowActiveIndex] = useState(0);
+
+    const fundingRef = useRef(null);
+    const flowRef = useRef(null);
+
+    const getActiveIndexFromScroll = (container, selector) => {
+        try {
+            const items = container.querySelectorAll(selector);
+            if (!items || !items.length) return 0;
+            const firstItem = items[0];
+            if (!firstItem) return 0;
+            const itemWidth = firstItem.offsetWidth || 285;
+            const gap = 20; // ~1.25rem gap
+            const scrollLeft = container.scrollLeft || 0;
+            const index = Math.round(scrollLeft / (itemWidth + gap));
+            return Math.max(0, Math.min(index, items.length - 1));
+        } catch (err) {
+            return 0;
+        }
+    };
+
+    const scrollToCard = (ref, selector, index, setIndex) => {
+        const container = ref.current;
+        if (!container) return;
+        const items = container.querySelectorAll(selector);
+        if (items[index]) {
+            items[index].scrollIntoView({
+                behavior: 'smooth',
+                block: 'nearest',
+                inline: 'center'
+            });
+            setIndex(index);
+        }
+    };
+
+    const handleFundingScroll = (e) => setFundingActiveIndex(getActiveIndexFromScroll(e.currentTarget, '.edu-fh-card'));
+    const handleFlowScroll = (e) => setFlowActiveIndex(getActiveIndexFromScroll(e.currentTarget, '.edu-flow-step'));
 
     useEffect(() => {
         document.body.classList.add('edu-body');
@@ -214,7 +254,7 @@ const Formacao = () => {
                     </div>
 
                     {/* Highlights Cards */}
-                    <div className="edu-funding-highlights reveal delay-1">
+                    <div className="edu-funding-highlights reveal delay-1" ref={fundingRef} onScroll={handleFundingScroll}>
                         <div className="edu-fh-card">
                             <div className="edu-fh-icon">
                                 <img src="/servicos/formacao/fundo-compensacao-trabalho-financiamento-formacao.png" alt="Fundo de Compensação do Trabalho Financiamento Formação e-nimble" className="edu-funding-icon-img" />
@@ -245,6 +285,21 @@ const Formacao = () => {
                             </div>
                         </div>
                     </div>
+                    {/* Carousel navigation dots for mobile view */}
+                    <div className="carousel-dots" style={{ marginTop: '2rem' }}>
+                        {Array.from({ length: 3 }).map((_, idx) => (
+                            <button
+                                key={idx}
+                                className={`carousel-dot ${fundingActiveIndex === idx ? 'active' : ''}`}
+                                onClick={() => scrollToCard(fundingRef, '.edu-fh-card', idx, setFundingActiveIndex)}
+                                onTouchEnd={(e) => {
+                                    e.preventDefault();
+                                    scrollToCard(fundingRef, '.edu-fh-card', idx, setFundingActiveIndex);
+                                }}
+                                aria-label={`Ir para a fase ${idx + 1}`}
+                            />
+                        ))}
+                    </div>
 
                     {/* Step Visual Flow: Empresa -> Candidatura -> Formação -> Certificado */}
                     <div className="edu-funding-flow reveal delay-2">
@@ -252,7 +307,7 @@ const Formacao = () => {
                             <h3>Como funciona a <span className="gradient-word">Formação?</span></h3>
                         </div>
 
-                        <div className="edu-flow-steps">
+                        <div className="edu-flow-steps" ref={flowRef} onScroll={handleFlowScroll}>
                             <div className="edu-flow-step">
                                 <div className="edu-step-number">01</div>
                                 <div className="edu-step-icon">
@@ -317,6 +372,21 @@ const Formacao = () => {
                                     <p>Emissão oficial DGERT & Registo na plataforma SIGO</p>
                                 </div>
                             </div>
+                        </div>
+                        {/* Carousel navigation dots for mobile view */}
+                        <div className="carousel-dots" style={{ marginTop: '2rem' }}>
+                            {Array.from({ length: 4 }).map((_, idx) => (
+                                <button
+                                    key={idx}
+                                    className={`carousel-dot ${flowActiveIndex === idx ? 'active' : ''}`}
+                                    onClick={() => scrollToCard(flowRef, '.edu-flow-step', idx, setFlowActiveIndex)}
+                                    onTouchEnd={(e) => {
+                                        e.preventDefault();
+                                        scrollToCard(flowRef, '.edu-flow-step', idx, setFlowActiveIndex);
+                                    }}
+                                    aria-label={`Ir para a fase ${idx + 1}`}
+                                />
+                            ))}
                         </div>
                     </div>
                 </div>

@@ -1,6 +1,6 @@
 'use client';
 
-import React, { useEffect, useState } from 'react';
+import React, { useEffect, useState, useRef } from 'react';
 import Link from 'next/link';
 import useScrollReveal from '@/hooks/useScrollReveal';
 import './Branding.css';
@@ -10,6 +10,49 @@ const Branding = () => {
     const [cardTheme, setCardTheme] = useState('vibrant');
     const [titleFont, setTitleFont] = useState('sans');
     const [activeService, setActiveService] = useState(null);
+
+    // Mobile Carousel Active State Hooks
+    const [enviroActiveIndex, setEnviroActiveIndex] = useState(0);
+    const [emotionActiveIndex, setEmotionActiveIndex] = useState(0);
+    const [strategyActiveIndex, setStrategyActiveIndex] = useState(0);
+
+    const enviroRef = useRef(null);
+    const emotionRef = useRef(null);
+    const strategyRef = useRef(null);
+
+    const getActiveIndexFromScroll = (container, selector) => {
+        try {
+            const items = container.querySelectorAll(selector);
+            if (!items || !items.length) return 0;
+            const firstItem = items[0];
+            if (!firstItem) return 0;
+            const itemWidth = firstItem.offsetWidth || 285;
+            const gap = 20; // ~1.25rem gap
+            const scrollLeft = container.scrollLeft || 0;
+            const index = Math.round(scrollLeft / (itemWidth + gap));
+            return Math.max(0, Math.min(index, items.length - 1));
+        } catch (err) {
+            return 0;
+        }
+    };
+
+    const scrollToCard = (ref, selector, index, setIndex) => {
+        const container = ref.current;
+        if (!container) return;
+        const items = container.querySelectorAll(selector);
+        if (items[index]) {
+            items[index].scrollIntoView({
+                behavior: 'smooth',
+                block: 'nearest',
+                inline: 'center'
+            });
+            setIndex(index);
+        }
+    };
+
+    const handleEnviroScroll = (e) => setEnviroActiveIndex(getActiveIndexFromScroll(e.currentTarget, '.br-enviro-item'));
+    const handleEmotionScroll = (e) => setEmotionActiveIndex(getActiveIndexFromScroll(e.currentTarget, '.br-pillar-card'));
+    const handleStrategyScroll = (e) => setStrategyActiveIndex(getActiveIndexFromScroll(e.currentTarget, '.br-strat-card'));
 
     const toggleService = (index) => {
         setActiveService(activeService === index ? null : index);
@@ -124,7 +167,7 @@ const Branding = () => {
                         <h2>Uma <span className="gradient-word">Marca.</span> Todos os <span className="gradient-word">Ambientes.</span></h2>
                     </div>
 
-                    <div className="br-enviro-grid">
+                    <div className="br-enviro-grid" ref={enviroRef} onScroll={handleEnviroScroll}>
                         <div className="br-enviro-item reveal delay-1">
                             <div className="br-env-mockup digital">
                                 <div className="br-env-bar"><span></span><span></span><span></span></div>
@@ -170,6 +213,21 @@ const Branding = () => {
                             </div>
                             <span>Documentos</span>
                         </div>
+                    </div>
+                    {/* Carousel navigation dots for mobile view */}
+                    <div className="carousel-dots" style={{ marginTop: '2rem' }}>
+                        {Array.from({ length: 5 }).map((_, idx) => (
+                            <button
+                                key={idx}
+                                className={`carousel-dot ${enviroActiveIndex === idx ? 'active' : ''}`}
+                                onClick={() => scrollToCard(enviroRef, '.br-enviro-item', idx, setEnviroActiveIndex)}
+                                onTouchEnd={(e) => {
+                                    e.preventDefault();
+                                    scrollToCard(enviroRef, '.br-enviro-item', idx, setEnviroActiveIndex);
+                                }}
+                                aria-label={`Ir para o ambiente ${idx + 1}`}
+                            />
+                        ))}
                     </div>
                 </div>
             </section>
@@ -290,7 +348,7 @@ const Branding = () => {
                             </div>
                         </div>
 
-                        <div className="br-emotion-pillars">
+                        <div className="br-emotion-pillars" ref={emotionRef} onScroll={handleEmotionScroll}>
                             <div className="br-pillar-card">
                                 <span className="br-pillar-num">01</span>
                                 <h4>Confiança</h4>
@@ -312,6 +370,21 @@ const Branding = () => {
                                 <p>Identidade marcante que sobressai no ecossistema.</p>
                             </div>
                         </div>
+                        {/* Carousel navigation dots for mobile view */}
+                        <div className="carousel-dots" style={{ marginTop: '2rem' }}>
+                            {Array.from({ length: 4 }).map((_, idx) => (
+                                <button
+                                    key={idx}
+                                    className={`carousel-dot ${emotionActiveIndex === idx ? 'active' : ''}`}
+                                    onClick={() => scrollToCard(emotionRef, '.br-pillar-card', idx, setEmotionActiveIndex)}
+                                    onTouchEnd={(e) => {
+                                        e.preventDefault();
+                                        scrollToCard(emotionRef, '.br-pillar-card', idx, setEmotionActiveIndex);
+                                    }}
+                                    aria-label={`Ir para o pilar ${idx + 1}`}
+                                />
+                            ))}
+                        </div>
                     </div>
                 </div>
             </section>
@@ -323,7 +396,7 @@ const Branding = () => {
                         <h2>Arquitetura de <span className="gradient-word">Marca</span></h2>
                     </div>
 
-                    <div className="br-strategy-grid">
+                    <div className="br-strategy-grid" ref={strategyRef} onScroll={handleStrategyScroll}>
                         <div className="br-strat-card reveal delay-1">
                             <div className="br-sc-num">01</div>
                             <h4>Descoberta</h4>
@@ -344,6 +417,21 @@ const Branding = () => {
                             <h4>Entrega</h4>
                             <p>Recebe todos os ficheiros e um guia para aplicar a marca.</p>
                         </div>
+                    </div>
+                    {/* Carousel navigation dots for mobile view */}
+                    <div className="carousel-dots" style={{ marginTop: '2rem' }}>
+                        {Array.from({ length: 4 }).map((_, idx) => (
+                            <button
+                                key={idx}
+                                className={`carousel-dot ${strategyActiveIndex === idx ? 'active' : ''}`}
+                                onClick={() => scrollToCard(strategyRef, '.br-strat-card', idx, setStrategyActiveIndex)}
+                                onTouchEnd={(e) => {
+                                    e.preventDefault();
+                                    scrollToCard(strategyRef, '.br-strat-card', idx, setStrategyActiveIndex);
+                                }}
+                                aria-label={`Ir para o passo ${idx + 1}`}
+                            />
+                        ))}
                     </div>
                 </div>
             </section>

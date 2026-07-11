@@ -19,6 +19,71 @@ const WebsiteDesign = () => {
     const [isModalOpen, setIsModalOpen] = useState(false);
     const [modalSubject, setModalSubject] = useState("");
 
+    // Mobile Carousel Active State Hooks
+    const [servicesActiveIndex, setServicesActiveIndex] = useState(0);
+    const [painActiveIndex, setPainActiveIndex] = useState(0);
+    const [processActiveIndex, setProcessActiveIndex] = useState(0);
+    const [casesActiveIndex, setCasesActiveIndex] = useState(0);
+
+    // Refs for mobile scrollable grid elements
+    const servicesGridRef = useRef(null);
+    const painGridRef = useRef(null);
+    const processGridRef = useRef(null);
+    const casesGridRef = useRef(null);
+
+    // Generic helper to track mobile scroll active index
+    const getActiveIndexFromScroll = (container, selector) => {
+        try {
+            const items = container.querySelectorAll(selector);
+            if (!items || !items.length) return 0;
+            
+            const firstItem = items[0];
+            if (!firstItem) return 0;
+            
+            const itemWidth = firstItem.offsetWidth || 285;
+            const gap = 20; // 1.25rem gap
+            
+            const scrollLeft = container.scrollLeft || 0;
+            const index = Math.round(scrollLeft / (itemWidth + gap));
+            
+            return Math.max(0, Math.min(index, items.length - 1));
+        } catch (err) {
+            console.error('Error in getActiveIndexFromScroll:', err);
+            return 0;
+        }
+    };
+
+    // Generic helper to scroll to a specific card index
+    const scrollToCard = (ref, selector, index, setIndex) => {
+        const container = ref.current;
+        if (!container) return;
+        const items = container.querySelectorAll(selector);
+        if (items[index]) {
+            items[index].scrollIntoView({
+                behavior: 'smooth',
+                block: 'nearest',
+                inline: 'center'
+            });
+            setIndex(index);
+        }
+    };
+
+    const handleServicesScroll = (e) => {
+        setServicesActiveIndex(getActiveIndexFromScroll(e.currentTarget, '.wd-service-card'));
+    };
+
+    const handlePainScroll = (e) => {
+        setPainActiveIndex(getActiveIndexFromScroll(e.currentTarget, '.wd-checklist-item'));
+    };
+
+    const handleProcessScroll = (e) => {
+        setProcessActiveIndex(getActiveIndexFromScroll(e.currentTarget, '.wd-process-card'));
+    };
+
+    const handleCasesScroll = (e) => {
+        setCasesActiveIndex(getActiveIndexFromScroll(e.currentTarget, '.wd-case-card'));
+    };
+
     // Lock scroll when modal is open
     useEffect(() => {
         if (isModalOpen) {
@@ -228,80 +293,97 @@ const WebsiteDesign = () => {
                         <p>Cada projeto é guiado por estratégia e validado por dados reais.</p>
                     </div>
 
-                    <div className="wd-services-grid">
-                        {[
-                            {
-                                title: "Sites Institucionais",
-                                desc: "Construa autoridade, inspire confiança e destaque-se no seu setor.",
-                                tag: "Autoridade de Marca",
-                                preview: "https://panoramas.pt",
-                                icon: "/servicos/website-design/e-nimble-corporate-website-authority.png",
-                                linkText: "Quero Autoridade Online"
-                            },
-                            {
-                                title: "E-Commerce",
-                                desc: "Lojas online concebidas para vender mais, com uma experiência de compra sem fricção.",
-                                tag: "Máquinas de Vendas",
-                                preview: "https://inpe.pt",
-                                icon: "/servicos/website-design/e-nimble-ecommerce-conversion-store.png",
-                                linkText: "Quero Vender Online"
-                            },
-                            {
-                                title: "Landing Pages",
-                                desc: "Páginas focadas num único objetivo: transformar visitantes em clientes.",
-                                tag: "Geração de Leads",
-                                preview: "https://polly.photo",
-                                icon: "/servicos/website-design/e-nimble-lead-generation-landing-page.png",
-                                linkText: "Quero Gerar Leads"
-                            }
-                        ].map((service, idx) => (
-                            <div key={idx} className="wd-service-card">
-                                {/* Browser Mockup Window with Iframe */}
-                                <div className="wd-browser-mockup">
-                                    <div className="mockup-header">
-                                        <div className="header-dot"></div>
-                                        <div className="header-dot"></div>
-                                        <div className="header-dot"></div>
-                                        <div className="mockup-url">
-                                            {service.preview.replace('https://', '')}
+                    <div className="wd-services-grid-container">
+                        <div className="wd-services-grid" ref={servicesGridRef} onScroll={handleServicesScroll}>
+                            {[
+                                {
+                                    title: "Sites Institucionais",
+                                    desc: "Construa autoridade, inspire confiança e destaque-se no seu setor.",
+                                    tag: "Autoridade de Marca",
+                                    preview: "https://panoramas.pt",
+                                    icon: "/servicos/website-design/e-nimble-corporate-website-authority.png",
+                                    linkText: "Quero Autoridade Online"
+                                },
+                                {
+                                    title: "E-Commerce",
+                                    desc: "Lojas online concebidas para vender mais, com uma experiência de compra sem fricção.",
+                                    tag: "Máquinas de Vendas",
+                                    preview: "https://inpe.pt",
+                                    icon: "/servicos/website-design/e-nimble-ecommerce-conversion-store.png",
+                                    linkText: "Quero Vender Online"
+                                },
+                                {
+                                    title: "Landing Pages",
+                                    desc: "Páginas focadas num único objetivo: transformar visitantes em clientes.",
+                                    tag: "Geração de Leads",
+                                    preview: "https://polly.photo",
+                                    icon: "/servicos/website-design/e-nimble-lead-generation-landing-page.png",
+                                    linkText: "Quero Gerar Leads"
+                                }
+                            ].map((service, idx) => (
+                                <div key={idx} className="wd-service-card">
+                                    {/* Browser Mockup Window with Iframe */}
+                                    <div className="wd-browser-mockup">
+                                        <div className="mockup-header">
+                                            <div className="header-dot"></div>
+                                            <div className="header-dot"></div>
+                                            <div className="header-dot"></div>
+                                            <div className="mockup-url">
+                                                {service.preview.replace('https://', '')}
+                                            </div>
+                                        </div>
+                                        <div className="iframe-wrapper">
+                                            <iframe
+                                                src={service.preview}
+                                                className="iframe-preview"
+                                                title={service.title}
+                                                loading="lazy"
+                                            />
+                                            <div className="iframe-overlay"></div>
                                         </div>
                                     </div>
-                                    <div className="iframe-wrapper">
-                                        <iframe
-                                            src={service.preview}
-                                            className="iframe-preview"
-                                            title={service.title}
-                                            loading="lazy"
-                                        />
-                                        <div className="iframe-overlay"></div>
-                                    </div>
-                                </div>
 
-                                {/* Card Content */}
-                                <div className="wd-service-content">
-                                    <span className="wd-service-tag">{service.tag}</span>
-                                    <div className="wd-service-card-header">
-                                        <div className="wd-service-icon">
-                                            <img src={service.icon} alt={service.title} />
+                                    {/* Card Content */}
+                                    <div className="wd-service-content">
+                                        <span className="wd-service-tag">{service.tag}</span>
+                                        <div className="wd-service-card-header">
+                                            <div className="wd-service-icon">
+                                                <img src={service.icon} alt={service.title} />
+                                            </div>
+                                            <h3>{service.title}</h3>
                                         </div>
-                                        <h3>{service.title}</h3>
-                                    </div>
-                                    <p>{service.desc}</p>
+                                        <p>{service.desc}</p>
 
-                                    <div
-                                        className="wd-service-link"
-                                        onClick={() => {
-                                            setModalSubject("website");
-                                            setIsModalOpen(true);
-                                        }}
-                                        style={{ cursor: 'pointer' }}
-                                    >
-                                        {service.linkText || "VER CASOS DE ESTUDO"}
-                                        <span className="arrow">↗</span>
+                                        <div
+                                            className="wd-service-link"
+                                            onClick={() => {
+                                                setModalSubject("website");
+                                                setIsModalOpen(true);
+                                            }}
+                                            style={{ cursor: 'pointer' }}
+                                        >
+                                            {service.linkText || "VER CASOS DE ESTUDO"}
+                                            <span className="arrow">↗</span>
+                                        </div>
                                     </div>
                                 </div>
-                            </div>
-                        ))}
+                            ))}
+                        </div>
+                        {/* Carousel navigation dots for mobile view */}
+                        <div className="carousel-dots">
+                            {Array.from({ length: 3 }).map((_, idx) => (
+                                <button
+                                    key={idx}
+                                    className={`carousel-dot ${servicesActiveIndex === idx ? 'active' : ''}`}
+                                    onClick={() => scrollToCard(servicesGridRef, '.wd-service-card', idx, setServicesActiveIndex)}
+                                    onTouchEnd={(e) => {
+                                        e.preventDefault();
+                                        scrollToCard(servicesGridRef, '.wd-service-card', idx, setServicesActiveIndex);
+                                    }}
+                                    aria-label={`Ir para o serviço ${idx + 1}`}
+                                />
+                            ))}
+                        </div>
                     </div>
                 </div>
             </section>
@@ -313,45 +395,62 @@ const WebsiteDesign = () => {
                         <h2>O Seu Website está a<span className="gradient-word"> perder clientes se...</span></h2>
                     </div>
 
-                    <div className="wd-checklist-grid">
-                        <div className="wd-checklist-item">
-                            <div className="wd-checklist-icon">
-                                <img src="/servicos/website-design/slow-website-loading-impact.png" alt="Slow website loading impact - e-nimble" className="wd-checklist-img" />
+                    <div className="wd-checklist-container">
+                        <div className="wd-checklist-grid" ref={painGridRef} onScroll={handlePainScroll}>
+                            <div className="wd-checklist-item">
+                                <div className="wd-checklist-icon">
+                                    <img src="/servicos/website-design/slow-website-loading-impact.png" alt="Slow website loading impact - e-nimble" className="wd-checklist-img" />
+                                </div>
+                                <div className="wd-checklist-text">
+                                    <h3>Carrega lentamente</h3>
+                                    <p>O tempo é o seu ativo mais escasso.</p>
+                                </div>
                             </div>
-                            <div className="wd-checklist-text">
-                                <h3>Carrega lentamente</h3>
-                                <p>O tempo é o seu ativo mais escasso.</p>
+
+                            <div className="wd-checklist-item">
+                                <div className="wd-checklist-icon">
+                                    <img src="/servicos/website-design/website-clarity-strategy.png" alt="Website clarity and strategy - e-nimble" className="wd-checklist-img" />
+                                </div>
+                                <div className="wd-checklist-text">
+                                    <h3>Não é claro o que fazer</h3>
+                                    <p>Se não é óbvio, não funciona.</p>
+                                </div>
+                            </div>
+
+                            <div className="wd-checklist-item">
+                                <div className="wd-checklist-icon">
+                                    <img src="/servicos/website-design/e-nimble-premium-design-trust.png" alt="Design premium e profissional - e-nimble" className="wd-checklist-img" />
+                                </div>
+                                <div className="wd-checklist-text">
+                                    <h3>Parece pouco profissional</h3>
+                                    <p>As primeiras impressões vendem.</p>
+                                </div>
+                            </div>
+
+                            <div className="wd-checklist-item">
+                                <div className="wd-checklist-icon">
+                                    <img src="/servicos/website-design/website-lead-conversion-results.png" alt="Website lead conversion and results - e-nimble" className="wd-checklist-img" />
+                                </div>
+                                <div className="wd-checklist-text">
+                                    <h3>Não gera contactos</h3>
+                                    <p>Visitas sem ação não pagam contas.</p>
+                                </div>
                             </div>
                         </div>
-
-                        <div className="wd-checklist-item">
-                            <div className="wd-checklist-icon">
-                                <img src="/servicos/website-design/website-clarity-strategy.png" alt="Website clarity and strategy - e-nimble" className="wd-checklist-img" />
-                            </div>
-                            <div className="wd-checklist-text">
-                                <h3>Não é claro o que fazer</h3>
-                                <p>Se não é óbvio, não funciona.</p>
-                            </div>
-                        </div>
-
-                        <div className="wd-checklist-item">
-                            <div className="wd-checklist-icon">
-                                <img src="/servicos/website-design/e-nimble-premium-design-trust.png" alt="Design premium e profissional - e-nimble" className="wd-checklist-img" />
-                            </div>
-                            <div className="wd-checklist-text">
-                                <h3>Parece pouco profissional</h3>
-                                <p>As primeiras impressões vendem.</p>
-                            </div>
-                        </div>
-
-                        <div className="wd-checklist-item">
-                            <div className="wd-checklist-icon">
-                                <img src="/servicos/website-design/website-lead-conversion-results.png" alt="Website lead conversion and results - e-nimble" className="wd-checklist-img" />
-                            </div>
-                            <div className="wd-checklist-text">
-                                <h3>Não gera contactos</h3>
-                                <p>Visitas sem ação não pagam contas.</p>
-                            </div>
+                        {/* Carousel navigation dots for mobile view */}
+                        <div className="carousel-dots">
+                            {Array.from({ length: 4 }).map((_, idx) => (
+                                <button
+                                    key={idx}
+                                    className={`carousel-dot ${painActiveIndex === idx ? 'active' : ''}`}
+                                    onClick={() => scrollToCard(painGridRef, '.wd-checklist-item', idx, setPainActiveIndex)}
+                                    onTouchEnd={(e) => {
+                                        e.preventDefault();
+                                        scrollToCard(painGridRef, '.wd-checklist-item', idx, setPainActiveIndex);
+                                    }}
+                                    aria-label={`Ir para o ponto ${idx + 1}`}
+                                />
+                            ))}
                         </div>
                     </div>
 
@@ -382,25 +481,42 @@ const WebsiteDesign = () => {
                         <p>Os bons resultados são consequência de uma estratégia bem definida.</p>
                     </div>
 
-                    <div className="wd-process-grid">
-                        <div className="wd-process-card">
-                            <h3>01. Compreender</h3>
-                            <p>Analisamos o seu negócio e objetivos.</p>
-                        </div>
+                    <div className="wd-process-container">
+                        <div className="wd-process-grid" ref={processGridRef} onScroll={handleProcessScroll}>
+                            <div className="wd-process-card">
+                                <h3>01. Compreender</h3>
+                                <p>Analisamos o seu negócio e objetivos.</p>
+                            </div>
 
-                        <div className="wd-process-card">
-                            <h3>02. Design</h3>
-                            <p>Alinhamos experiência e estética.</p>
-                        </div>
+                            <div className="wd-process-card">
+                                <h3>02. Design</h3>
+                                <p>Alinhamos experiência e estética.</p>
+                            </div>
 
-                        <div className="wd-process-card">
-                            <h3>03. Performance</h3>
-                            <p>Velocidade, SEO e experiência.</p>
-                        </div>
+                            <div className="wd-process-card">
+                                <h3>03. Performance</h3>
+                                <p>Velocidade, SEO e experiência.</p>
+                            </div>
 
-                        <div className="wd-process-card">
-                            <h3>04. Otimização</h3>
-                            <p>Medimos e otimizamos com base em dados.</p>
+                            <div className="wd-process-card">
+                                <h3>04. Otimização</h3>
+                                <p>Medimos e otimizamos com base em dados.</p>
+                            </div>
+                        </div>
+                        {/* Carousel navigation dots for mobile view */}
+                        <div className="carousel-dots">
+                            {Array.from({ length: 4 }).map((_, idx) => (
+                                <button
+                                    key={idx}
+                                    className={`carousel-dot ${processActiveIndex === idx ? 'active' : ''}`}
+                                    onClick={() => scrollToCard(processGridRef, '.wd-process-card', idx, setProcessActiveIndex)}
+                                    onTouchEnd={(e) => {
+                                        e.preventDefault();
+                                        scrollToCard(processGridRef, '.wd-process-card', idx, setProcessActiveIndex);
+                                    }}
+                                    aria-label={`Ir para a etapa ${idx + 1}`}
+                                />
+                            ))}
                         </div>
                     </div>
                 </div>
@@ -415,66 +531,83 @@ const WebsiteDesign = () => {
                         <p>Uma seleção de websites que combinam estética impecável com engenharia de conversão.</p>
                     </div>
 
-                    <div className="wd-cases-grid">
-                        {[
-                            { name: "Inpe", type: "E-Commerce", industry: "Calçado", url: "https://inpe.pt" },
-                            { name: "Panoramas", type: "Institucional", industry: "Informação e Comunicação", url: "https://panoramas.pt", zoomed: true },
-                            { name: "Orion Technik", type: "Institucional", industry: "Aviação & Defesa", url: "https://orionaviation.eu" },
-                            { name: "Viriatus Brunch", type: "Institucional", industry: "Restauração", url: "https://viriatusbrunch.pt" },
-                            { name: "Polly", type: "Landing Page", industry: "Tecnologia", url: "https://polly.photo" },
-                            { isCTA: true },
-                        ].map((item, idx) => (
-                            item.isCTA ? (
-                                <div key={idx} className="wd-case-card wd-case-cta">
-                                    <div className="wd-case-cta-inner">
-                                        <div className="cta-content">
-                                            <div className="cta-icon">＋</div>
-                                            <h3>Ver Todos</h3>
-                                            <p>Explore o nosso portfólio completo de soluções digitais.</p>
-                                            <a href="/portfolio" className="wd-cta-link">
-                                                Ir para o Portfólio <span className="arrow">→</span>
-                                            </a>
-                                        </div>
-                                    </div>
-                                    {/* Spacer to match height of info section in other cards */}
-                                    <div className="wd-case-info-spacer"></div>
-                                </div>
-                            ) : (
-                                <div key={idx} className="wd-case-card">
-                                    {/* Browser Mockup Window with Iframe */}
-                                    <div className="wd-browser-mockup">
-                                        <div className="mockup-header">
-                                            <div className="header-dot"></div>
-                                            <div className="header-dot"></div>
-                                            <div className="header-dot"></div>
-                                            <div className="mockup-url">
-                                                {item.url.replace('https://', '')}
+                    <div className="wd-cases-container">
+                        <div className="wd-cases-grid" ref={casesGridRef} onScroll={handleCasesScroll}>
+                            {[
+                                { name: "Inpe", type: "E-Commerce", industry: "Calçado", url: "https://inpe.pt" },
+                                { name: "Panoramas", type: "Institucional", industry: "Informação e Comunicação", url: "https://panoramas.pt", zoomed: true },
+                                { name: "Orion Technik", type: "Institucional", industry: "Aviação & Defesa", url: "https://orionaviation.eu" },
+                                { name: "Viriatus Brunch", type: "Institucional", industry: "Restauração", url: "https://viriatusbrunch.pt" },
+                                { name: "Polly", type: "Landing Page", industry: "Tecnologia", url: "https://polly.photo" },
+                                { isCTA: true },
+                            ].map((item, idx) => (
+                                item.isCTA ? (
+                                    <div key={idx} className="wd-case-card wd-case-cta">
+                                        <div className="wd-case-cta-inner">
+                                            <div className="cta-content">
+                                                <div className="cta-icon">＋</div>
+                                                <h3>Ver Todos</h3>
+                                                <p>Explore o nosso portfólio completo de soluções digitais.</p>
+                                                <a href="/portfolio" className="wd-cta-link">
+                                                    Ir para o Portfólio <span className="arrow">→</span>
+                                                </a>
                                             </div>
                                         </div>
-                                        <div className="iframe-wrapper">
-                                            <iframe
-                                                src={item.url}
-                                                className={`iframe-preview ${item.zoomed ? 'iframe-zoomed' : ''}`}
-                                                title={item.name}
-                                                loading="lazy"
-                                            />
-                                            <div className="iframe-overlay"></div>
-                                        </div>
+                                        {/* Spacer to match height of info section in other cards */}
+                                        <div className="wd-case-info-spacer"></div>
                                     </div>
+                                ) : (
+                                    <div key={idx} className="wd-case-card">
+                                        {/* Browser Mockup Window with Iframe */}
+                                        <div className="wd-browser-mockup">
+                                            <div className="mockup-header">
+                                                <div className="header-dot"></div>
+                                                <div className="header-dot"></div>
+                                                <div className="header-dot"></div>
+                                                <div className="mockup-url">
+                                                    {item.url.replace('https://', '')}
+                                                </div>
+                                            </div>
+                                            <div className="iframe-wrapper">
+                                                <iframe
+                                                    src={item.url}
+                                                    className={`iframe-preview ${item.zoomed ? 'iframe-zoomed' : ''}`}
+                                                    title={item.name}
+                                                    loading="lazy"
+                                                />
+                                                <div className="iframe-overlay"></div>
+                                            </div>
+                                        </div>
 
-                                    {/* Case Info Below Card */}
-                                    <div className="wd-case-info">
-                                        <div className="info-left">
-                                            <h3>{item.name}</h3>
-                                            <p>{item.type}</p>
-                                        </div>
-                                        <div className="info-right">
-                                            <span className="industry-tag">{item.industry}</span>
+                                        {/* Case Info Below Card */}
+                                        <div className="wd-case-info">
+                                            <div className="info-left">
+                                                <h3>{item.name}</h3>
+                                                <p>{item.type}</p>
+                                            </div>
+                                            <div className="info-right">
+                                                <span className="industry-tag">{item.industry}</span>
+                                            </div>
                                         </div>
                                     </div>
-                                </div>
-                            )
-                        ))}
+                                )
+                            ))}
+                        </div>
+                        {/* Carousel navigation dots for mobile view */}
+                        <div className="carousel-dots">
+                            {Array.from({ length: 6 }).map((_, idx) => (
+                                <button
+                                    key={idx}
+                                    className={`carousel-dot ${casesActiveIndex === idx ? 'active' : ''}`}
+                                    onClick={() => scrollToCard(casesGridRef, '.wd-case-card', idx, setCasesActiveIndex)}
+                                    onTouchEnd={(e) => {
+                                        e.preventDefault();
+                                        scrollToCard(casesGridRef, '.wd-case-card', idx, setCasesActiveIndex);
+                                    }}
+                                    aria-label={`Ir para o caso ${idx + 1}`}
+                                />
+                            ))}
+                        </div>
                     </div>
                 </div>
             </section>

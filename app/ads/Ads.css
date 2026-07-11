@@ -2843,3 +2843,87 @@ body.ads-body .header.header-scrolled .main-nav a:hover {
     background-clip: text !important;
     display: inline-block !important;
 }
+
+/* ============================================
+   MOBILE CAROUSELS
+   ============================================ */
+@media (max-width: 900px) {
+    .omni-grid,
+    .creatives-grid,
+    .results-grid {
+        display: flex !important;
+        flex-direction: row !important;
+        flex-wrap: nowrap !important;
+        justify-content: flex-start !important;
+        overflow-x: auto !important;
+        overflow-y: hidden !important;
+        scroll-snap-type: x mandatory !important;
+        scrollbar-width: none !important;
+        -ms-overflow-style: none !important;
+        gap: 1.25rem !important;
+        padding: 0.5rem 1rem 1.5rem 1rem !important;
+        margin-left: -2rem !important;
+        margin-right: -2rem !important;
+    }
+
+    .omni-grid::-webkit-scrollbar,
+    .creatives-grid::-webkit-scrollbar,
+    .results-grid::-webkit-scrollbar {
+        display: none !important;
+    }
+
+    .omni-grid > .omni-card,
+    .creatives-grid > .creative-card,
+    .results-grid > .results-card {
+        flex: 0 0 85% !important;
+        scroll-snap-align: center !important;
+        margin-bottom: 0 !important;
+        white-space: normal !important;
+        word-wrap: break-word !important;
+        overflow-wrap: break-word !important;
+    }
+
+    .carousel-dots {
+        display: flex !important;
+        justify-content: center;
+        align-items: center;
+        gap: 8px;
+        margin-top: 1.5rem;
+        margin-bottom: 1rem;
+    }
+
+    .carousel-dot {
+        width: 8px;
+        height: 8px;
+        border-radius: 50%;
+        background: rgba(0, 0, 0, 0.15);
+        border: none;
+        padding: 0;
+        cursor: pointer;
+        transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+    }
+
+    .carousel-dot.active {
+        background: var(--ads-primary, #3a00ff);
+        width: 20px;
+        border-radius: 10px;
+    }
+
+    .cta-container-glass h2 {
+        font-size: 1.6rem !important;
+    }
+
+    .cta-container-glass h2 br {
+        display: none;
+    }
+
+    .cta-btn-premium {
+        padding: 0.8rem 1.5rem !important;
+        font-size: 0.9rem !important;
+        display: block;
+        width: 100%;
+        max-width: 280px;
+        margin: 0 auto;
+        text-align: center;
+    }
+}

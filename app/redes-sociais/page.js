@@ -45,6 +45,49 @@ const Counter = ({ end, duration = 2000, suffix = "" }) => {
 const RedesSociais = () => {
     useScrollReveal();
 
+    // Mobile Carousel Active State Hooks
+    const [bentoActiveIndex, setBentoActiveIndex] = React.useState(0);
+    const [driversActiveIndex, setDriversActiveIndex] = React.useState(0);
+    const [appearActiveIndex, setAppearActiveIndex] = React.useState(0);
+
+    const bentoGridRef = React.useRef(null);
+    const driversGridRef = React.useRef(null);
+    const appearGridRef = React.useRef(null);
+
+    const getActiveIndexFromScroll = (container, selector) => {
+        try {
+            const items = container.querySelectorAll(selector);
+            if (!items || !items.length) return 0;
+            const firstItem = items[0];
+            if (!firstItem) return 0;
+            const itemWidth = firstItem.offsetWidth || 285;
+            const gap = 20; // 1.25rem gap
+            const scrollLeft = container.scrollLeft || 0;
+            const index = Math.round(scrollLeft / (itemWidth + gap));
+            return Math.max(0, Math.min(index, items.length - 1));
+        } catch (err) {
+            return 0;
+        }
+    };
+
+    const scrollToCard = (ref, selector, index, setIndex) => {
+        const container = ref.current;
+        if (!container) return;
+        const items = container.querySelectorAll(selector);
+        if (items[index]) {
+            items[index].scrollIntoView({
+                behavior: 'smooth',
+                block: 'nearest',
+                inline: 'center'
+            });
+            setIndex(index);
+        }
+    };
+
+    const handleBentoScroll = (e) => setBentoActiveIndex(getActiveIndexFromScroll(e.currentTarget, '.bento-card'));
+    const handleDriversScroll = (e) => setDriversActiveIndex(getActiveIndexFromScroll(e.currentTarget, '.rs-driver-card'));
+    const handleAppearScroll = (e) => setAppearActiveIndex(getActiveIndexFromScroll(e.currentTarget, '.advantage-item'));
+
     return (
         <main>
             {/* Hero Section */}
@@ -126,7 +169,7 @@ const RedesSociais = () => {
                         <p className="rs-section-subtitle">Tudo o que precisa para dominar o digital.</p>
                     </div>
 
-                    <div className="bento-grid">
+                    <div className="bento-grid" ref={bentoGridRef} onScroll={handleBentoScroll}>
                         <div className="bento-card large reveal delay-1">
                             <div className="bento-icon">
                                 <img src="/servicos/redes-sociais/e-nimble-social-content-creation.png" alt="Criação de Conteúdo Social - e-nimble" className="rs-icon-img" />
@@ -172,6 +215,21 @@ const RedesSociais = () => {
                                 <div className="bento-cta">Gerir Comunidade <span className="arrow">→</span></div>
                             </div>
                         </div>
+                    </div>
+                    {/* Carousel navigation dots for mobile view */}
+                    <div className="carousel-dots">
+                        {Array.from({ length: 4 }).map((_, idx) => (
+                            <button
+                                key={idx}
+                                className={`carousel-dot ${bentoActiveIndex === idx ? 'active' : ''}`}
+                                onClick={() => scrollToCard(bentoGridRef, '.bento-card', idx, setBentoActiveIndex)}
+                                onTouchEnd={(e) => {
+                                    e.preventDefault();
+                                    scrollToCard(bentoGridRef, '.bento-card', idx, setBentoActiveIndex);
+                                }}
+                                aria-label={`Ir para o ponto ${idx + 1}`}
+                            />
+                        ))}
                     </div>
                 </div>
             </section>
@@ -264,7 +322,7 @@ const RedesSociais = () => {
                             </div>
                         </div>
 
-                        <div className="rs-appear-text reveal">
+                        <div className="rs-appear-text reveal" ref={appearGridRef} onScroll={handleAppearScroll}>
                             <div className="advantage-item">
                                 <div className="adv-num">01</div>
                                 <div className="adv-content">
@@ -288,6 +346,21 @@ const RedesSociais = () => {
                             </div>
                         </div>
                     </div>
+                    {/* Carousel navigation dots for mobile view */}
+                    <div className="carousel-dots" style={{ marginTop: '2rem' }}>
+                        {Array.from({ length: 3 }).map((_, idx) => (
+                            <button
+                                key={idx}
+                                className={`carousel-dot ${appearActiveIndex === idx ? 'active' : ''}`}
+                                onClick={() => scrollToCard(appearGridRef, '.advantage-item', idx, setAppearActiveIndex)}
+                                onTouchEnd={(e) => {
+                                    e.preventDefault();
+                                    scrollToCard(appearGridRef, '.advantage-item', idx, setAppearActiveIndex);
+                                }}
+                                aria-label={`Ir para a vantagem ${idx + 1}`}
+                            />
+                        ))}
+                    </div>
                 </div>
             </section>
 
@@ -298,7 +371,7 @@ const RedesSociais = () => {
                         <h2>O Que Faz <span className="gradient-word">Crescer</span> uma Marca?</h2>
                     </div>
 
-                    <div className="rs-drivers-grid">
+                    <div className="rs-drivers-grid" ref={driversGridRef} onScroll={handleDriversScroll}>
                         <div className="rs-driver-card reveal delay-1">
                             <div className="rs-driver-num">01</div>
                             <div className="rs-driver-emoji">
@@ -346,6 +419,21 @@ const RedesSociais = () => {
                                 <li>Com base em dados, evoluímos a estratégia.</li>
                             </ul>
                         </div>
+                    </div>
+                    {/* Carousel navigation dots for mobile view */}
+                    <div className="carousel-dots">
+                        {Array.from({ length: 4 }).map((_, idx) => (
+                            <button
+                                key={idx}
+                                className={`carousel-dot ${driversActiveIndex === idx ? 'active' : ''}`}
+                                onClick={() => scrollToCard(driversGridRef, '.rs-driver-card', idx, setDriversActiveIndex)}
+                                onTouchEnd={(e) => {
+                                    e.preventDefault();
+                                    scrollToCard(driversGridRef, '.rs-driver-card', idx, setDriversActiveIndex);
+                                }}
+                                aria-label={`Ir para a etapa ${idx + 1}`}
+                            />
+                        ))}
                     </div>
                 </div>
             </section>

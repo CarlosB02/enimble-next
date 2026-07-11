@@ -9,6 +9,49 @@ import AnimatedDashboard from '@/components/ui/AnimatedDashboard';
 const Ecommerce = () => {
     useScrollReveal();
 
+    // Mobile Carousel Active State Hooks
+    const [advActiveIndex, setAdvActiveIndex] = React.useState(0);
+    const [showcaseActiveIndex, setShowcaseActiveIndex] = React.useState(0);
+    const [journeyActiveIndex, setJourneyActiveIndex] = React.useState(0);
+
+    const advGridRef = React.useRef(null);
+    const showcaseGridRef = React.useRef(null);
+    const journeyFlowRef = React.useRef(null);
+
+    const getActiveIndexFromScroll = (container, selector) => {
+        try {
+            const items = container.querySelectorAll(selector);
+            if (!items || !items.length) return 0;
+            const firstItem = items[0];
+            if (!firstItem) return 0;
+            const itemWidth = firstItem.offsetWidth || 285;
+            const gap = 20; // 1.25rem gap
+            const scrollLeft = container.scrollLeft || 0;
+            const index = Math.round(scrollLeft / (itemWidth + gap));
+            return Math.max(0, Math.min(index, items.length - 1));
+        } catch (err) {
+            return 0;
+        }
+    };
+
+    const scrollToCard = (ref, selector, index, setIndex) => {
+        const container = ref.current;
+        if (!container) return;
+        const items = container.querySelectorAll(selector);
+        if (items[index]) {
+            items[index].scrollIntoView({
+                behavior: 'smooth',
+                block: 'nearest',
+                inline: 'center'
+            });
+            setIndex(index);
+        }
+    };
+
+    const handleAdvScroll = (e) => setAdvActiveIndex(getActiveIndexFromScroll(e.currentTarget, '.ec-adv-card'));
+    const handleShowcaseScroll = (e) => setShowcaseActiveIndex(getActiveIndexFromScroll(e.currentTarget, '.ec-showcase-item'));
+    const handleJourneyScroll = (e) => setJourneyActiveIndex(getActiveIndexFromScroll(e.currentTarget, '.ec-journey-step'));
+
     useEffect(() => {
         document.body.classList.add('shop-body');
         return () => document.body.classList.remove('shop-body');
@@ -173,7 +216,7 @@ const Ecommerce = () => {
                         <h2>Porque Vale a Pena <span className="gradient-word">Vender Online</span></h2>
                     </div>
 
-                    <div className="ec-adv-grid">
+                    <div className="ec-adv-grid" ref={advGridRef} onScroll={handleAdvScroll}>
                         <div className="ec-adv-card reveal delay-1">
                             <div className="ec-adv-icon">
                                 <img src="/servicos/ecommerce/e-nimble-service-global-reach.png" alt="Alcance global para e-commerce - e-nimble" />
@@ -222,6 +265,21 @@ const Ecommerce = () => {
                             </div>
                         </div>
                     </div>
+                    {/* Carousel navigation dots for mobile view */}
+                    <div className="carousel-dots">
+                        {Array.from({ length: 4 }).map((_, idx) => (
+                            <button
+                                key={idx}
+                                className={`carousel-dot ${advActiveIndex === idx ? 'active' : ''}`}
+                                onClick={() => scrollToCard(advGridRef, '.ec-adv-card', idx, setAdvActiveIndex)}
+                                onTouchEnd={(e) => {
+                                    e.preventDefault();
+                                    scrollToCard(advGridRef, '.ec-adv-card', idx, setAdvActiveIndex);
+                                }}
+                                aria-label={`Ir para a vantagem ${idx + 1}`}
+                            />
+                        ))}
+                    </div>
                 </div>
             </section>
 
@@ -233,7 +291,7 @@ const Ecommerce = () => {
                         <h2>Lojas Que <span className="gradient-word">Vendem</span></h2>
                     </div>
 
-                    <div className="ec-showcase-grid">
+                    <div className="ec-showcase-grid" ref={showcaseGridRef} onScroll={handleShowcaseScroll}>
                         <div className="ec-showcase-item reveal delay-1">
                             <div className="ec-showcase-icon">
                                 <img src="/servicos/ecommerce/agency-expertise-fashion-ecommerce.png" alt="E-commerce de moda e vestuário - e-nimble" />
@@ -308,6 +366,21 @@ const Ecommerce = () => {
                             </Link>
                         </div>
                     </div>
+                    {/* Carousel navigation dots for mobile view */}
+                    <div className="carousel-dots" style={{ marginTop: '2rem' }}>
+                        {Array.from({ length: 12 }).map((_, idx) => (
+                            <button
+                                key={idx}
+                                className={`carousel-dot ${showcaseActiveIndex === idx ? 'active' : ''}`}
+                                onClick={() => scrollToCard(showcaseGridRef, '.ec-showcase-item', idx, setShowcaseActiveIndex)}
+                                onTouchEnd={(e) => {
+                                    e.preventDefault();
+                                    scrollToCard(showcaseGridRef, '.ec-showcase-item', idx, setShowcaseActiveIndex);
+                                }}
+                                aria-label={`Ir para a solução ${idx + 1}`}
+                            />
+                        ))}
+                    </div>
                 </div>
             </section>
 
@@ -318,7 +391,7 @@ const Ecommerce = () => {
                         <h2>Da Descoberta à Entrega em 4 Cliques</h2>
                     </div>
 
-                    <div className="ec-journey-flow">
+                    <div className="ec-journey-flow" ref={journeyFlowRef} onScroll={handleJourneyScroll}>
                         <div className="ec-journey-step reveal delay-1">
                             <div className="ec-js-icon">
                                 <img src="/servicos/ecommerce/customer-journey-discovery-optimization.png" alt="Fase de descoberta e pesquisa - e-nimble" />
@@ -365,7 +438,21 @@ const Ecommerce = () => {
                             </div>
                         </div>
                     </div>
-
+                    {/* Carousel navigation dots for mobile view */}
+                    <div className="carousel-dots" style={{ marginTop: '2rem' }}>
+                        {Array.from({ length: 4 }).map((_, idx) => (
+                            <button
+                                key={idx}
+                                className={`carousel-dot ${journeyActiveIndex === idx ? 'active' : ''}`}
+                                onClick={() => scrollToCard(journeyFlowRef, '.ec-journey-step', idx, setJourneyActiveIndex)}
+                                onTouchEnd={(e) => {
+                                    e.preventDefault();
+                                    scrollToCard(journeyFlowRef, '.ec-journey-step', idx, setJourneyActiveIndex);
+                                }}
+                                aria-label={`Ir para o passo ${idx + 1}`}
+                            />
+                        ))}
+                    </div>
                     <div style={{ textAlign: 'center', marginTop: '3.5rem' }} className="reveal">
                         <Link href="/contactos" className="smart-btn" style={{ padding: '1rem 2.5rem', fontSize: '1.1rem' }}>
                             <span style={{ color: '#ffffff' }}>Quero uma Loja Assim</span>

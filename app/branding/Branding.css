@@ -1228,3 +1228,90 @@ body.brand-body .main-nav a {
     height: 40px;
     object-fit: contain;
 }
+
+/* ============================================
+   MOBILE CAROUSELS & FIXES
+   ============================================ */
+@media (max-width: 900px) {
+    .br-enviro-grid,
+    .br-emotion-pillars,
+    .br-strategy-grid {
+        display: flex !important;
+        flex-direction: row !important;
+        flex-wrap: nowrap !important;
+        justify-content: flex-start !important;
+        overflow-x: auto !important;
+        overflow-y: hidden !important;
+        scroll-snap-type: x mandatory !important;
+        scrollbar-width: none !important;
+        -ms-overflow-style: none !important;
+        gap: 1.25rem !important;
+        padding: 0.5rem 1rem 1.5rem 1rem !important;
+        margin-left: -2rem !important;
+        margin-right: -2rem !important;
+    }
+
+    .br-enviro-grid::-webkit-scrollbar,
+    .br-emotion-pillars::-webkit-scrollbar,
+    .br-strategy-grid::-webkit-scrollbar {
+        display: none !important;
+    }
+
+    .br-enviro-grid > .br-enviro-item,
+    .br-emotion-pillars > .br-pillar-card,
+    .br-strategy-grid > .br-strat-card {
+        flex: 0 0 85% !important;
+        scroll-snap-align: center !important;
+        margin-bottom: 0 !important;
+        white-space: normal !important;
+        word-wrap: break-word !important;
+        overflow-wrap: break-word !important;
+    }
+
+    .carousel-dots {
+        display: flex !important;
+        justify-content: center;
+        align-items: center;
+        gap: 8px;
+        margin-top: 1.5rem;
+        margin-bottom: 1rem;
+    }
+
+    .carousel-dot {
+        width: 8px;
+        height: 8px;
+        border-radius: 50%;
+        background: rgba(0, 0, 0, 0.15);
+        border: none;
+        padding: 0;
+        cursor: pointer;
+        transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+    }
+
+    .carousel-dot.active {
+        background: var(--brand-accent, #3A00FF);
+        width: 20px;
+        border-radius: 10px;
+    }
+
+    .btn-brand {
+        padding: 0.8rem 1.5rem !important;
+        font-size: 1rem !important;
+        display: block;
+        width: 100%;
+        max-width: 280px;
+        margin: 0 auto;
+        text-align: center;
+    }
+
+    /* Accordion fixes */
+    .service-name {
+        font-size: 1.3rem !important;
+    }
+    .service-num {
+        font-size: 1.8rem !important;
+    }
+    .service-row {
+        gap: 1rem !important;
+    }
+}

@@ -1002,6 +1002,14 @@ details[open] .arrow-icon {
         gap: 1rem;
     }
 
+    .module-num {
+        font-size: 2rem;
+    }
+
+    .module-title {
+        font-size: 1.2rem;
+    }
+
     .module-content {
         padding-left: 0;
     }
@@ -1072,4 +1080,81 @@ details[open] .arrow-icon {
     -webkit-text-fill-color: transparent !important;
     background-clip: text !important;
     display: inline-block !important;
+}
+
+/* ============================================
+   MOBILE CAROUSELS & FIXES
+   ============================================ */
+@media (max-width: 900px) {
+    .edu-funding-highlights,
+    .edu-flow-steps {
+        display: flex !important;
+        flex-direction: row !important;
+        flex-wrap: nowrap !important;
+        justify-content: flex-start !important;
+        overflow-x: auto !important;
+        overflow-y: hidden !important;
+        scroll-snap-type: x mandatory !important;
+        scrollbar-width: none !important;
+        -ms-overflow-style: none !important;
+        gap: 1.25rem !important;
+        padding: 0.5rem 1rem 1.5rem 1rem !important;
+        margin-left: -2rem !important;
+        margin-right: -2rem !important;
+    }
+
+    .edu-funding-highlights::-webkit-scrollbar,
+    .edu-flow-steps::-webkit-scrollbar {
+        display: none !important;
+    }
+
+    .edu-funding-highlights > .edu-fh-card,
+    .edu-flow-steps > .edu-flow-step {
+        flex: 0 0 85% !important;
+        scroll-snap-align: center !important;
+        margin-bottom: 0 !important;
+        white-space: normal !important;
+        word-wrap: break-word !important;
+        overflow-wrap: break-word !important;
+    }
+
+    .edu-flow-arrow {
+        display: none !important;
+    }
+
+    .carousel-dots {
+        display: flex !important;
+        justify-content: center;
+        align-items: center;
+        gap: 8px;
+        margin-top: 1.5rem;
+        margin-bottom: 1rem;
+    }
+
+    .carousel-dot {
+        width: 8px;
+        height: 8px;
+        border-radius: 50%;
+        background: rgba(0, 0, 0, 0.15);
+        border: none;
+        padding: 0;
+        cursor: pointer;
+        transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+    }
+
+    .carousel-dot.active {
+        background: var(--edu-accent, #1a1a1a);
+        width: 20px;
+        border-radius: 10px;
+    }
+
+    .enroll-btn {
+        padding: 1rem 2rem !important;
+        font-size: 1.1rem !important;
+        display: block;
+        width: 100%;
+        max-width: 280px;
+        margin: 0 auto;
+        text-align: center;
+    }
 }

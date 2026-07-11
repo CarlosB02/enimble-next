@@ -1444,12 +1444,107 @@
 /* ============================================
    RESPONSIVE
    ============================================ */
+/* ============================================
+   RESPONSIVE & MOBILE CAROUSELS
+   ============================================ */
 @media (max-width: 900px) {
-    .wd-pain-grid {
-        grid-template-columns: 1fr;
-        gap: 0;
+    /* Main Carousel Grid overrides for Mobile Swipe */
+    .wd-services-grid,
+    .wd-checklist-grid,
+    .wd-process-grid,
+    .wd-cases-grid {
+        display: flex !important;
+        flex-direction: row !important;
+        flex-wrap: nowrap !important;
+        overflow-x: auto !important;
+        overflow-y: hidden !important;
+        scroll-snap-type: x mandatory !important;
+        scrollbar-width: none !important; /* Firefox */
+        -ms-overflow-style: none !important; /* IE */
+        gap: 1.25rem !important;
+        padding: 0.5rem 1rem 1.5rem 1rem !important;
+        margin-left: -2rem !important;
+        margin-right: -2rem !important;
     }
 
+    .wd-services-grid::-webkit-scrollbar,
+    .wd-checklist-grid::-webkit-scrollbar,
+    .wd-process-grid::-webkit-scrollbar,
+    .wd-cases-grid::-webkit-scrollbar {
+        display: none !important; /* Chrome / Safari */
+    }
+
+    /* Snap aligned carousel items, centered correctly on mobile screens */
+    .wd-services-grid > *,
+    .wd-checklist-grid > *,
+    .wd-process-grid > *,
+    .wd-cases-grid > * {
+        flex: 0 0 85% !important;
+        scroll-snap-align: center !important;
+        margin-bottom: 0 !important;
+    }
+
+    /* Card items visual adjustment in mobile swipe mode */
+    .wd-service-card {
+        padding: 1.2rem !important;
+    }
+
+    .wd-checklist-item {
+        flex-direction: row !important;
+        align-items: center !important;
+        text-align: left !important;
+        padding: 1rem 1.2rem !important;
+        gap: 1rem !important;
+    }
+
+    .wd-checklist-icon {
+        width: 48px !important;
+        height: 48px !important;
+    }
+
+    .wd-checklist-img {
+        width: 32px !important;
+        height: 32px !important;
+    }
+
+    .wd-case-card {
+        height: auto !important;
+    }
+
+    .wd-case-cta-inner {
+        aspect-ratio: 16/10;
+        width: 100%;
+        box-sizing: border-box;
+    }
+
+    /* Carousel navigation dots style overrides */
+    .carousel-dots {
+        display: flex !important;
+        justify-content: center;
+        align-items: center;
+        gap: 0.5rem;
+        margin-top: 1.5rem;
+        margin-bottom: 1rem;
+    }
+
+    .carousel-dot {
+        width: 8px;
+        height: 8px;
+        border-radius: 50%;
+        background: rgba(0, 0, 0, 0.15);
+        border: none;
+        padding: 0;
+        cursor: pointer;
+        transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+    }
+
+    .carousel-dot.active {
+        background: var(--color-primary-blue, #3a00ff);
+        width: 20px;
+        border-radius: 10px;
+    }
+
+    /* Standard responsive alignments */
     .wd-divider-col {
         flex-direction: row;
         min-height: auto;
@@ -1465,16 +1560,25 @@
     }
 
     .wd-stat-bar {
-        grid-template-columns: 1fr;
-        gap: 1.5rem;
+        display: flex;
+        flex-direction: row;
+        justify-content: space-between;
+        gap: 0.5rem;
     }
 
-    .wd-services-grid {
-        grid-template-columns: 1fr;
+    .wd-stat-item {
+        flex: 1;
+        padding: 0 0.25rem;
     }
 
-    .wd-cases-grid {
-        grid-template-columns: 1fr;
+    .wd-stat-number {
+        font-size: 1.6rem;
+        margin-bottom: 0.2rem;
+    }
+
+    .wd-stat-label {
+        font-size: 0.7rem;
+        line-height: 1.3;
     }
 
     .wd-metrics-bar {
