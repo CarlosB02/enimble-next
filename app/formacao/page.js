@@ -26,14 +26,15 @@ const Formacao = () => {
     return (
         <main>
             {/* HERO */}
-            <section className="container edu-hero reveal">
-                <span className="hero-label">Corporate Academy</span>
-                <h1 className="edu-title">Knowledge<br />is Profit.</h1>
-                <p className="edu-intro">"Não é sobre teoria. É sobre equipar a sua força de trabalho com as ferramentas
-                    digitais que o mercado exige hoje."</p>
-                <div className="cert-badge">
-                    <img src="/servicos/formacao/e-nimble-training-certification-star.png" alt="Certificação DGERT e-nimble" className="edu-cert-img" />
-                    <span style={{ fontWeight: 700, fontSize: '0.9rem' }}>DGERT<br />CERTIFIED</span>
+            <section className="edu-hero reveal">
+                <div className="container edu-hero-container">
+                    <h1 className="edu-title">Conhecimento<br />é <span className="highlight-word">Lucro.</span></h1>
+                    <p className="edu-intro">"Não é sobre teoria. É sobre equipar a sua força de trabalho com as ferramentas
+                        digitais que o mercado exige hoje."</p>
+                    <div className="cert-badge">
+                        <img src="/servicos/formacao/e-nimble-training-certification-star.png" alt="Certificação DGERT e-nimble" className="edu-cert-img" />
+                        <span style={{ fontWeight: 700, fontSize: '0.9rem' }}>DGERT<br />CERTIFIED</span>
+                    </div>
                 </div>
             </section>
 
@@ -41,25 +42,20 @@ const Formacao = () => {
             <section className="container curriculum-section">
                 <aside className="sticky-col reveal fade-in">
                     <h2 className="edu-section-title">O Programa</h2>
-                    <p className="edu-section-subtitle">A nossa abordagem é 80% prática. As suas equipas trazem os
-                        problemas reais da empresa, e saem com soluções implementadas.</p>
+                    <p className="edu-section-subtitle">A nossa abordagem é focada na prática. Formação orientada aos desafios reais da sua empresa.</p>
 
                     <div className="course-meta">
                         <div className="meta-item">
                             <h4>Duração</h4>
-                            <p>8 - 40 Horas</p>
+                            <p>40 Horas</p>
                         </div>
                         <div className="meta-item">
                             <h4>Formato</h4>
                             <p>Presencial / Híbrido</p>
                         </div>
                         <div className="meta-item">
-                            <h4>Nível</h4>
-                            <p>Iniciante ao Pro</p>
-                        </div>
-                        <div className="meta-item">
                             <h4>Certificado</h4>
-                            <p>Sim (SIGO)</p>
+                            <p>DGERT</p>
                         </div>
                     </div>
 
@@ -72,7 +68,7 @@ const Formacao = () => {
                             padding: '1rem 2rem',
                             display: 'inline-block',
                             borderRadius: 0
-                        }}>Download Brochura PDF</Link>
+                        }}>Consultar Oferta Formativa</Link>
                 </aside>
 
                 <div className="module-list">
@@ -80,16 +76,15 @@ const Formacao = () => {
                         <summary>
                             <div className="module-head">
                                 <span className="module-num">01</span>
-                                <span className="module-title">Social Intelligence</span>
+                                <span className="module-title">Marketing Digital Estratégico</span>
                             </div>
                             <span className="arrow-icon">+</span>
                         </summary>
                         <div className="module-content">
-                            <p>Como transformar colaboradores em embaixadores da marca. Gestão de Linkedin pessoal e
-                                corporativo, criação de conteúdo B2B e gestão de crises online.</p>
+                            <p>Aprenda a definir objetivos, posicionamento, público-alvo e um plano de marketing capaz de gerar resultados consistentes.</p>
                             <div className="module-tags">
-                                <span className="tag">Linkedin</span>
-                                <span className="tag">Personal Branding</span>
+                                <span className="tag">Estratégia</span>
+                                <span className="tag">Posicionamento</span>
                             </div>
                         </div>
                     </details>
@@ -98,16 +93,15 @@ const Formacao = () => {
                         <summary>
                             <div className="module-head">
                                 <span className="module-num">02</span>
-                                <span className="module-title">Ads & Performance</span>
+                                <span className="module-title">Redes Sociais</span>
                             </div>
                             <span className="arrow-icon">+</span>
                         </summary>
                         <div className="module-content">
-                            <p>Workshop intensivo de Meta Ads Manager e Google Ads. Estratégia de funil, otimização de
-                                budget e leitura de relatórios de dados.</p>
+                            <p>Desenvolva uma estratégia de conteúdos para Instagram, Facebook e LinkedIn, criando uma presença consistente que gera alcance, interação e autoridade.</p>
                             <div className="module-tags">
-                                <span className="tag">ROI</span>
-                                <span className="tag">Analytics</span>
+                                <span className="tag">Conteúdo</span>
+                                <span className="tag">Gestão de Comunidade</span>
                             </div>
                         </div>
                     </details>
@@ -116,16 +110,16 @@ const Formacao = () => {
                         <summary>
                             <div className="module-head">
                                 <span className="module-num">03</span>
-                                <span className="module-title">E-commerce Mastery</span>
+                                <span className="module-title">Publicidade Digital</span>
                             </div>
                             <span className="arrow-icon">+</span>
                         </summary>
                         <div className="module-content">
-                            <p>Logística digital, automação de emails, recuperação de carrinho e gestão de clientes
-                                (CRM). Essencial para equipas de vendas online.</p>
+                            <p>Domine Meta Ads e Google Ads para criar campanhas orientadas para leads, vendas e retorno sobre o investimento.</p>
                             <div className="module-tags">
-                                <span className="tag">Shopify</span>
-                                <span className="tag">Automations</span>
+                                <span className="tag">Meta Ads</span>
+                                <span className="tag">Google Ads</span>
+                                <span className="tag">Otimização de Campanhas</span>
                             </div>
                         </div>
                     </details>
@@ -134,15 +128,14 @@ const Formacao = () => {
                         <summary>
                             <div className="module-head">
                                 <span className="module-num">04</span>
-                                <span className="module-title">AI for Business</span>
+                                <span className="module-title">Inteligência Artificial para Marketing</span>
                             </div>
                             <span className="arrow-icon">+</span>
                         </summary>
                         <div className="module-content">
-                            <p>Como usar ferramentas como ChatGPT, Midjourney e automações para aumentar a produtividade
-                                da equipa em 10x.</p>
+                            <p>Descubra como utilizar ferramentas de IA para acelerar a criação de conteúdo, automatizar tarefas e aumentar a produtividade da equipa.</p>
                             <div className="module-tags">
-                                <span className="tag">Prompt Engineering</span>
+                                <span className="tag">Automação</span>
                                 <span className="tag">Produtividade</span>
                             </div>
                         </div>
@@ -150,160 +143,180 @@ const Formacao = () => {
                 </div>
             </section>
 
-            {/* ===== STRATEGIC VALUE OF TRAINING ===== */}
+            {/* ===== WHY INVEST IN TRAINING ===== */}
             <section className="edu-value-section">
                 <div className="container">
                     <div className="edu-value-content reveal">
                         <div className="edu-value-text">
-                            <span className="edu-chip">Valor Estratégico</span>
-                            <h2>Investir em pessoas é investir<br /><span className="gradient-word">no crescimento da empresa.</span></h2>
-                            <p>Equipas com competências atualizadas tomam melhores decisões, executam mais rápido e geram mais valor.</p>
-                        </div>
-                        <div className="edu-value-visual">
-                                <div className="edu-growth-visual">
-                                    <div className="edu-gv-item reveal delay-1">
-                                        <div className="edu-gv-icon">
-                                            <img src="/servicos/formacao/e-nimble-training-growth-step-1.png" alt="Fase 1 Crescimento Formação - e-nimble" className="edu-growth-img" />
-                                        </div>
-                                        <div className="edu-gv-line"></div>
+                            <span className="edu-chip">Vantagens & Incentivos</span>
+                            <h2>Porquê escolher a nossa <span className="gradient-word">formação?</span></h2>
+                            <p className="edu-value-lead">
+                                Formação gratuita e certificada para a sua empresa. Programas práticos e certificados, com possibilidade de financiamento até 100%, através de entidades formadoras parceiras.
+                            </p>
+
+                            <div className="edu-features">
+                                <div className="edu-feature-item">
+                                    <div className="edu-feature-icon">
+                                        <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.5" strokeLinecap="round" strokeLinejoin="round">
+                                            <path d="M22 11.08V12a10 10 10 1 1-5.93-9.14" />
+                                            <polyline points="22 4 12 14.01 9 11.01" />
+                                        </svg>
                                     </div>
-                                    <div className="edu-gv-item reveal delay-2">
-                                        <div className="edu-gv-icon">
-                                            <img src="/servicos/formacao/e-nimble-training-growth-step-2.png" alt="Fase 2 Crescimento Formação - e-nimble" className="edu-growth-img" />
-                                        </div>
-                                        <div className="edu-gv-line"></div>
-                                    </div>
-                                    <div className="edu-gv-item reveal delay-3">
-                                        <div className="edu-gv-icon">
-                                            <img src="/servicos/formacao/e-nimble-training-growth-step-3.png" alt="Fase 3 Crescimento Formação - e-nimble" className="edu-growth-img" />
-                                        </div>
-                                        <div className="edu-gv-line"></div>
-                                    </div>
-                                    <div className="edu-gv-item edu-gv-final reveal delay-4">
-                                        <div className="edu-gv-icon">
-                                            <img src="/servicos/formacao/e-nimble-training-growth-final.png" alt="Sucesso Final Formação - e-nimble" className="edu-growth-img" />
-                                        </div>
+                                    <div>
+                                        <strong>Entidades certificadas DGERT & SIGO</strong>
+                                        <p>Emissão de certificados oficiais com validade nacional</p>
                                     </div>
                                 </div>
-                            <div className="edu-gv-labels">
-                                <span>Aprender</span>
-                                <span>Praticar</span>
-                                <span>Aplicar</span>
-                                <span>Dominar</span>
+
+                                <div className="edu-feature-item">
+                                    <div className="edu-feature-icon">
+                                        <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.5" strokeLinecap="round" strokeLinejoin="round">
+                                            <line x1="12" y1="1" x2="12" y2="23" />
+                                            <path d="M17 5H9.5a3.5 3.5 0 0 0 0 7h5a3.5 3.5 0 0 1 0 7H6" />
+                                        </svg>
+                                    </div>
+                                    <div>
+                                        <strong>Financiamento a 100%</strong>
+                                        <p>Apoiamos a candidatura aos incentivos disponíveis.</p>
+                                    </div>
+                                </div>
+
+                                <div className="edu-feature-item">
+                                    <div className="edu-feature-icon">
+                                        <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.5" strokeLinecap="round" strokeLinejoin="round">
+                                            <polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2" />
+                                        </svg>
+                                    </div>
+                                    <div>
+                                        <strong>Programas à Medida do Negócio</strong>
+                                        <p>Conteúdos adaptados aos objetivos e desafios da sua empresa.</p>
+                                    </div>
+                                </div>
                             </div>
+                        </div>
+
+                        <div className="edu-value-visual">
+                            <img src="/servicos/formacao/team-new.png" alt="Equipa e-nimble em formação prática corporativa" className="edu-value-team-img" />
                         </div>
                     </div>
                 </div>
             </section>
 
-            {/* ===== TEAM IMPACT & TRANSFORMATION ===== */}
-            <section className="edu-impact-section">
+            {/* ===== FINANCIAMENTO SECTION ===== */}
+            <section className="edu-funding-section">
                 <div className="container">
-                    <div className="edu-impact-header reveal">
-                        <span className="edu-chip">Impacto nas Equipas</span>
-                        <h2>Transformação Que Se Sente no <span className="gradient-word">Dia-a-Dia</span></h2>
+                    <div className="edu-funding-header reveal">
+                        <span className="edu-chip">Financiamento & Apoios</span>
+                        <h2>Como funciona o <span className="gradient-word">Financiamento?</span></h2>
+                        <p className="edu-funding-lead">
+                            Tratamos de todo o processo de enquadramento e candidatura para que a sua empresa beneficie dos apoios à formação com cobertura até 100%.
+                        </p>
                     </div>
 
-                    <div className="edu-impact-grid">
-                        <div className="edu-impact-card reveal delay-1">
-                            <div className="edu-ic-bar">
-                                <div className="edu-ic-fill" style={{ '--icf': '90%' }}></div>
+                    {/* Highlights Cards */}
+                    <div className="edu-funding-highlights reveal delay-1">
+                        <div className="edu-fh-card">
+                            <div className="edu-fh-icon">
+                                <img src="/servicos/formacao/fundo-compensacao-trabalho-financiamento-formacao.png" alt="Fundo de Compensação do Trabalho Financiamento Formação e-nimble" className="edu-funding-icon-img" />
                             </div>
-                            <h3>Capacidades Técnicas</h3>
-                            <p>Equipas que dominam as ferramentas certas executam com mais velocidade e menos erros.</p>
-                            <div className="edu-ic-stat">
-                                <strong>+90%</strong>
-                                <span>confiança operacional</span>
-                            </div>
-                        </div>
-
-                        <div className="edu-impact-card reveal delay-2">
-                            <div className="edu-ic-bar">
-                                <div className="edu-ic-fill" style={{ '--icf': '78%' }}></div>
-                            </div>
-                            <h3>Pensamento Estratégico</h3>
-                            <p>Colaboradores que entendem o "porquê" tomam decisões mais alinhadas com os objetivos.</p>
-                            <div className="edu-ic-stat">
-                                <strong>+78%</strong>
-                                <span>decisões autónomas</span>
+                            <div>
+                                <h4>Fundo de Compensação</h4>
+                                <p>Mobilização de fundos de compensação do trabalho acumulados.</p>
                             </div>
                         </div>
 
-                        <div className="edu-impact-card reveal delay-3">
-                            <div className="edu-ic-bar">
-                                <div className="edu-ic-fill" style={{ '--icf': '85%' }}></div>
+                        <div className="edu-fh-card highlight-card">
+                            <div className="edu-fh-icon">
+                                <img src="/servicos/formacao/cheque-formacao-apoio-financeiro.png" alt="Cheque-Formação Apoio Financeiro e-nimble" className="edu-funding-icon-img" />
                             </div>
-                            <h3>Ferramentas Digitais</h3>
-                            <p>Fluência em plataformas, dashboards e processos que antes dependiam de terceiros.</p>
-                            <div className="edu-ic-stat">
-                                <strong>10x</strong>
-                                <span>mais produtividade</span>
+                            <div>
+                                <h4>Cheque-Formação</h4>
+                                <p>Acesso a apoios financeiros diretos atribuídos para a qualificação dos trabalhadores.</p>
                             </div>
                         </div>
 
-                        <div className="edu-impact-card reveal delay-4">
-                            <div className="edu-ic-bar">
-                                <div className="edu-ic-fill" style={{ '--icf': '95%' }}></div>
+                        <div className="edu-fh-card">
+                            <div className="edu-fh-icon">
+                                <img src="/servicos/formacao/financiamento-formacao-100-percento.png" alt="Financiamento de Formação até 100 por cento e-nimble" className="edu-funding-icon-img" />
                             </div>
-                            <h3>Confiança e Autonomia</h3>
-                            <p>Menos dependência externa. Mais capacidade de execução interna com qualidade.</p>
-                            <div className="edu-ic-stat">
-                                <strong>-40%</strong>
-                                <span>outsourcing necessário</span>
+                            <div>
+                                <h4>Até 100% Financiado</h4>
+                                <p>Tratamos da candidatura para maximizar o financiamento disponível.</p>
                             </div>
                         </div>
                     </div>
-                </div>
-            </section>
 
-            {/* ===== CREDIBILITY & PROFESSIONALISM ===== */}
-            <section className="edu-cred-section">
-                <div className="container">
-                    <div className="edu-cred-header reveal">
-                        <span className="edu-chip">Formação Certificada</span>
-                        <h2>Estrutura Profissional. Resultados Reais.</h2>
-                    </div>
+                    {/* Step Visual Flow: Empresa -> Candidatura -> Formação -> Certificado */}
+                    <div className="edu-funding-flow reveal delay-2">
+                        <div className="edu-flow-title">
+                            <h3>Como funciona a <span className="gradient-word">Formação?</span></h3>
+                        </div>
 
-                    <div className="edu-cred-grid">
-                        <div className="edu-cred-block reveal delay-1">
-                            <div className="edu-cb-icon">
-                                <img src="/servicos/formacao/e-nimble-training-structured-program.png" alt="Programa Estruturado Formação - e-nimble" className="edu-cred-img" />
+                        <div className="edu-flow-steps">
+                            <div className="edu-flow-step">
+                                <div className="edu-step-number">01</div>
+                                <div className="edu-step-icon">
+                                    <img src="/servicos/formacao/diagnostico-necessidades-formacao.png" alt="Diagnóstico de Necessidades de Formação e-nimble" className="edu-flow-step-img" />
+                                </div>
+                                <div className="edu-step-content">
+                                    <h4>Diagnóstico</h4>
+                                    <p>Identificamos e definimos os objetivos da formação</p>
+                                </div>
                             </div>
-                            <h4>Programa Estruturado</h4>
-                            <p>Conteúdos desenhados por profissionais com experiência real de mercado. Nada de teoria genérica.</p>
-                        </div>
-                        <div className="edu-cred-block reveal delay-2">
-                            <div className="edu-cb-icon">
-                                <img src="/servicos/formacao/e-nimble-training-practical-application.png" alt="Aplicação Prática Formação - e-nimble" className="edu-cred-img" />
-                            </div>
-                            <h4>Aplicação Prática</h4>
-                            <p>80% dos exercícios usam os próprios projetos e desafios do formando. Resultados imediatos.</p>
-                        </div>
-                        <div className="edu-cred-block reveal delay-3">
-                            <div className="edu-cb-icon">
-                                <img src="/servicos/formacao/e-nimble-training-progress-metrics.png" alt="Métricas de Progresso Formação - e-nimble" className="edu-cred-img" />
-                            </div>
-                            <h4>Métricas de Progresso</h4>
-                            <p>Avaliação contínua com relatório final de competências adquiridas e recomendações.</p>
-                        </div>
-                    </div>
 
-                    <div className="edu-cred-trust reveal">
-                        <div className="edu-ct-item">
-                            <div className="edu-ct-num">DGERT</div>
-                            <span>Entidade Certificada</span>
-                        </div>
-                        <div className="edu-ct-item">
-                            <div className="edu-ct-num">SIGO</div>
-                            <span>Certificados Emitidos</span>
-                        </div>
-                        <div className="edu-ct-item">
-                            <div className="edu-ct-num">100%</div>
-                            <span>Dedutível em IRC</span>
-                        </div>
-                        <div className="edu-ct-item">
-                            <div className="edu-ct-num">500+</div>
-                            <span>Formandos</span>
+                            <div className="edu-flow-arrow">
+                                <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
+                                    <line x1="5" y1="12" x2="19" y2="12"></line>
+                                    <polyline points="12 5 19 12 12 19"></polyline>
+                                </svg>
+                            </div>
+
+                            <div className="edu-flow-step">
+                                <div className="edu-step-number">02</div>
+                                <div className="edu-step-icon">
+                                    <img src="/servicos/formacao/planeamento-plano-formacao-empresa.png" alt="Planeamento e Plano de Formação para Empresas e-nimble" className="edu-flow-step-img" />
+                                </div>
+                                <div className="edu-step-content">
+                                    <h4>Planeamento</h4>
+                                    <p>Desenhamos um plano à realidade da sua empresa</p>
+                                </div>
+                            </div>
+
+                            <div className="edu-flow-arrow">
+                                <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
+                                    <line x1="5" y1="12" x2="19" y2="12"></line>
+                                    <polyline points="12 5 19 12 12 19"></polyline>
+                                </svg>
+                            </div>
+
+                            <div className="edu-flow-step">
+                                <div className="edu-step-number">03</div>
+                                <div className="edu-step-icon">
+                                    <img src="/servicos/formacao/formacao-pratica-presencial-hibrida.png" alt="Formação Prática Presencial ou Híbrida e-nimble" className="edu-flow-step-img" />
+                                </div>
+                                <div className="edu-step-content">
+                                    <h4>Formação</h4>
+                                    <p>Formação prática, presencial ou híbrida</p>
+                                </div>
+                            </div>
+
+                            <div className="edu-flow-arrow">
+                                <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
+                                    <line x1="5" y1="12" x2="19" y2="12"></line>
+                                    <polyline points="12 5 19 12 12 19"></polyline>
+                                </svg>
+                            </div>
+
+                            <div className="edu-flow-step highlight-step">
+                                <div className="edu-step-number">04</div>
+                                <div className="edu-step-icon">
+                                    <img src="/servicos/formacao/certificacao-dgert-formacao-sigo.png" alt="Certificação oficial DGERT e Registo na plataforma SIGO e-nimble" className="edu-flow-step-img" />
+                                </div>
+                                <div className="edu-step-content">
+                                    <h4>Certificação</h4>
+                                    <p>Emissão oficial DGERT & Registo na plataforma SIGO</p>
+                                </div>
+                            </div>
                         </div>
                     </div>
                 </div>
@@ -311,11 +324,10 @@ const Formacao = () => {
 
             {/* ===== CLOSING CTA ===== */}
             <section className="edu-closing-section">
-                <div className="marquee-edu">LEARN • GROW • LEAD • LEARN • GROW • LEAD</div>
                 <div className="container quote-box reveal">
                     <p className="big-quote">"O único ativo que não desvaloriza na sua empresa é a competência das suas pessoas."</p>
-                    <Link href="/contactos" className="enroll-btn">Agendar Formação</Link>
-                    <p style={{ marginTop: '1rem', color: '#666', fontSize: '0.9rem' }}>Formação 100% dedutível em sede de IRC.</p>
+                    <Link href="/contactos" className="enroll-btn">Agendar Diagnóstico</Link>
+                    <p style={{ marginTop: '1rem', color: '#666', fontSize: '0.9rem' }}>Tratamos do processo de candidatura aos apoios disponíveis.</p>
                 </div>
             </section>
         </main>

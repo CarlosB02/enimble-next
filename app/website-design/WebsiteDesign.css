@@ -647,6 +647,12 @@
     pointer-events: none;
 }
 
+.iframe-preview.iframe-zoomed {
+    width: 300%;
+    height: 300%;
+    transform: scale(0.3333);
+}
+
 .iframe-overlay {
     position: absolute;
     inset: 0;
@@ -793,8 +799,9 @@
 }
 
 .wd-process-card {
+    position: relative;
     background: #ffffff;
-    border: 1px solid rgba(0, 0, 0, 0.05);
+    border: 1px solid transparent;
     border-radius: 20px;
     padding: 1.5rem;
     text-align: center;
@@ -802,10 +809,32 @@
     box-shadow: 0 4px 15px rgba(0, 0, 0, 0.02);
 }
 
+.wd-process-card::before {
+    content: '';
+    position: absolute;
+    inset: -1px;
+    /* slightly outer placement to cover borders perfectly */
+    border-radius: 20px;
+    padding: 2px;
+    /* thicker border */
+    background: var(--gradient-main);
+    -webkit-mask: linear-gradient(#fff 0 0) content-box, linear-gradient(#fff 0 0);
+    mask: linear-gradient(#fff 0 0) content-box, linear-gradient(#fff 0 0);
+    -webkit-mask-composite: xor;
+    mask-composite: exclude;
+    pointer-events: none;
+    opacity: 0.6;
+    /* more visible by default */
+    transition: opacity 0.4s ease;
+}
+
 .wd-process-card:hover {
     transform: translateY(-8px);
-    box-shadow: 0 15px 35px rgba(0, 0, 0, 0.06);
-    border-color: rgba(58, 0, 255, 0.15);
+    box-shadow: 0 15px 35px rgba(58, 0, 255, 0.12), 0 5px 15px rgba(191, 0, 64, 0.06);
+}
+
+.wd-process-card:hover::before {
+    opacity: 1;
 }
 
 .wd-process-card h3 {
@@ -837,383 +866,249 @@
 
 
 
-/* --- SECTION 5.5: TRANSFORMATION STORYTELLING --- */
-.wd-transformation-section {
+/* --- SECTION 5.5: 3D COMPUTER ZOOM CTA --- */
+.wd-zoom-section {
     position: relative;
-    height: 400vh;
-    /* 4 scroll steps */
-    background: #050505;
+    height: 280vh;
+    background-color: #050505;
     color: white;
 }
 
-.wd-trans-sticky {
+.wd-zoom-sticky {
     position: sticky;
     top: 0;
     height: 100vh;
-    display: flex;
-    align-items: center;
-    justify-content: center;
+    width: 100%;
     overflow: hidden;
-}
-
-.wd-trans-container {
-    display: flex;
-    align-items: center;
-    width: 100%;
-    max-width: 1300px;
-    gap: 4rem;
-    padding: 0 2rem;
-}
-
-/* Narrative Side */
-.wd-trans-narrative {
-    flex: 1;
-    position: relative;
-    z-index: 10;
-}
-
-.wd-trans-texts {
-    position: relative;
-    height: 200px;
-    /* enough for tallest text */
-    margin-top: 2rem;
-}
-
-.trans-text-step {
-    position: absolute;
-    top: 0;
-    left: 0;
-    width: 100%;
-    opacity: 0;
-    transform: translateY(20px);
-    transition: all 0.6s cubic-bezier(0.2, 0.8, 0.2, 1);
-    pointer-events: none;
-}
-
-.trans-text-step.active {
-    opacity: 1;
-    transform: translateY(0);
-    pointer-events: auto;
-}
-
-.trans-text-step h2 {
-    font-family: var(--font-headings);
-    font-size: clamp(1.6rem, 3.5vw, 2.2rem);
-    font-weight: 700;
-    margin-bottom: 1rem;
-    line-height: 1.1;
-    background: var(--gradient-main);
-    -webkit-background-clip: text;
-    -webkit-text-fill-color: transparent;
-    background-clip: text;
-}
-
-.trans-text-step p {
-    color: #aaa;
-    font-size: 1.1rem;
-    line-height: 1.6;
-}
-
-/* Visual Side (Mockup) */
-.wd-trans-visual {
-    flex: 1;
     display: flex;
     justify-content: center;
+    align-items: center;
     perspective: 1000px;
 }
 
-.wd-mockup-window {
+.wd-zoom-bg-glow {
+    position: absolute;
+    inset: 0;
+    background: radial-gradient(circle at 50% 50%, rgba(58, 0, 255, 0.18) 0%, rgba(191, 0, 64, 0.08) 45%, transparent 70%);
+    pointer-events: none;
+    transition: opacity 0.2s ease-out;
+}
+
+.wd-computer-rig {
+    position: relative;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    transform-style: preserve-3d;
+    backface-visibility: hidden;
+    -webkit-font-smoothing: antialiased;
+}
+
+.wd-monitor-chassis {
+    position: relative;
+    width: 640px;
+    height: 380px;
+    background: #0d0d14;
+    border-radius: 20px;
+    padding: 12px;
+    box-shadow:
+        0 30px 90px rgba(0, 0, 0, 0.85),
+        0 0 50px rgba(58, 0, 255, 0.25),
+        inset 0 0 2px rgba(255, 255, 255, 0.2);
+    border: 1px solid rgba(255, 255, 255, 0.12);
+    display: flex;
+    flex-direction: column;
+    transform-style: preserve-3d;
+}
+
+.wd-monitor-bezel {
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    height: 24px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    z-index: 10;
+    transition: opacity 0.1s linear;
+}
+
+.wd-camera-dot {
+    width: 6px;
+    height: 6px;
+    border-radius: 50%;
+    background: #2a2a35;
+    box-shadow: inset 0 0 2px #000;
+}
+
+.wd-monitor-screen {
+    position: relative;
     width: 100%;
-    max-width: 500px;
-    background: #f0f0f0;
+    height: 100%;
+    background: #12121a;
     border-radius: 12px;
     overflow: hidden;
-    box-shadow: 0 20px 40px rgba(0, 0, 0, 0.6);
-    transform-origin: center right;
-    transition: all 0.8s cubic-bezier(0.2, 0.8, 0.2, 1);
-    border: 1px solid rgba(255, 255, 255, 0.1);
-}
-
-.mockup-browser-bar {
-    background: #e0e0e0;
-    padding: 10px 15px;
     display: flex;
+    justify-content: center;
     align-items: center;
-    gap: 15px;
-    transition: background 0.8s;
+    border: 1px solid rgba(255, 255, 255, 0.08);
+    box-shadow: inset 0 0 40px rgba(0, 0, 0, 0.4);
 }
 
-.mockup-browser-bar .dots {
-    display: flex;
-    gap: 6px;
+.wd-screen-grid-bg {
+    position: absolute;
+    inset: 0;
+    background-image:
+        linear-gradient(rgba(255, 255, 255, 0.03) 1px, transparent 1px),
+        linear-gradient(90deg, rgba(255, 255, 255, 0.03) 1px, transparent 1px);
+    background-size: 40px 40px;
+    pointer-events: none;
 }
 
-.mockup-browser-bar .dots span {
-    width: 10px;
-    height: 10px;
-    border-radius: 50%;
-    background: #bbb;
-}
-
-.mockup-browser-bar .url-bar {
-    flex: 1;
-    background: white;
-    border-radius: 4px;
-    font-size: 0.6rem;
-    color: #999;
-    padding: 4px 10px;
+.wd-screen-cta-container {
+    position: relative;
+    z-index: 2;
     text-align: center;
-}
-
-.mockup-body {
-    padding: 20px;
-    background: white;
-    height: 380px;
-    transition: background 0.8s;
-    display: flex;
-    flex-direction: column;
-}
-
-/* Mockup Elements - Default Bad State (Step 0) */
-.mockup-header {
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-    margin-bottom: 30px;
-    transition: all 0.5s;
-}
-
-.mockup-logo {
-    font-weight: 800;
-    color: #333;
-    font-size: 0.9rem;
-}
-
-.mockup-nav {
-    display: flex;
-    gap: 10px;
-    font-size: 0.6rem;
-    color: #666;
-    align-items: center;
-    transition: gap 0.5s;
-}
-
-.mockup-cta {
-    background: #ccc;
-    color: white;
-    padding: 4px 10px;
-    border-radius: 4px;
-    font-weight: bold;
-    transition: all 0.6s;
-    opacity: 0.5;
-}
-
-.mockup-hero {
-    display: flex;
-    flex-direction: column;
-    align-items: flex-start;
-    transition: all 0.8s;
-}
-
-.mockup-title {
+    padding: 1.2rem 1rem;
+    max-width: 540px;
     width: 100%;
-    transition: all 0.5s;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    transform-origin: center center;
 }
 
-.mockup-title .line {
+.wd-zoom-title {
+    font-family: var(--font-headings);
+    font-size: clamp(1.2rem, 2.2vw, 1.95rem);
+    font-weight: 700;
+    line-height: 1.2;
+    color: #ffffff;
+    margin-bottom: 0.6rem;
+}
+
+.wd-zoom-subtitle {
+    color: #a0a0b0;
+    font-size: clamp(0.8rem, 1.1vw, 1rem);
+    line-height: 1.5;
+    margin-bottom: 1.4rem;
+    max-width: 440px;
+}
+
+.wd-zoom-action {
+    display: flex;
+    justify-content: center;
+}
+
+.wd-zoom-btn {
+    cursor: pointer;
+    padding: 1rem 3rem !important;
+    background: rgba(0, 0, 0, 0.4) !important;
+    border: 1px solid #ffffff !important;
+    color: #ffffff !important;
+}
+
+.wd-monitor-stand {
+    position: absolute;
+    top: 100%;
+    left: 50%;
+    transform: translateX(-50%);
+    width: 110px;
+    height: 35px;
+    background: linear-gradient(180deg, #1a1a24 0%, #0d0d12 100%);
+    border-left: 1px solid rgba(255, 255, 255, 0.05);
+    border-right: 1px solid rgba(255, 255, 255, 0.05);
+    transition: opacity 0.1s linear, transform 0.1s linear;
+}
+
+.wd-monitor-base {
+    position: absolute;
+    top: calc(100% + 35px);
+    left: 50%;
+    transform: translateX(-50%);
+    width: 200px;
     height: 12px;
-    background: #ccc;
-    margin-bottom: 8px;
-    border-radius: 2px;
-    transition: all 0.5s;
+    background: #15151e;
+    border-radius: 6px 6px 0 0;
+    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.7);
+    border-top: 1px solid rgba(255, 255, 255, 0.12);
+    transition: opacity 0.1s linear, transform 0.1s linear;
 }
 
-.mockup-title .l-1 {
-    width: 90%;
+.wd-desk-keyboard {
+    position: absolute;
+    top: calc(100% + 52px);
+    left: 50%;
+    width: 330px;
+    height: 85px;
+    background: #121218;
+    border-radius: 12px;
+    padding: 8px;
+    border: 1px solid rgba(255, 255, 255, 0.08);
+    box-shadow:
+        0 15px 35px rgba(0, 0, 0, 0.75),
+        0 0 25px rgba(58, 0, 255, 0.15);
+    transform: translateX(-50%) rotateX(55deg);
+    transition: opacity 0.1s linear, transform 0.1s linear;
 }
 
-.mockup-title .l-2 {
-    width: 80%;
-}
-
-.mockup-title .l-3.short {
-    width: 50%;
-}
-
-.mockup-desc {
-    margin-top: 15px;
-    margin-bottom: 20px;
+.keyboard-keys {
     width: 100%;
-}
-
-.mockup-desc .desc-line {
-    height: 6px;
-    background: #eee;
-    margin-bottom: 6px;
-    border-radius: 2px;
-    width: 100%;
-    transition: all 0.5s;
-}
-
-.mockup-main-cta {
-    background: #bbb;
-    color: white;
-    font-size: 0.7rem;
-    padding: 8px 15px;
-    font-weight: bold;
-    border-radius: 4px;
-    transition: all 0.6s cubic-bezier(0.34, 1.56, 0.64, 1);
-    opacity: 0.7;
-}
-
-.mockup-trust {
-    font-size: 0.6rem;
-    color: #ffb400;
-    font-weight: bold;
-    margin-bottom: 15px;
-    opacity: 0;
-    transform: translateY(10px);
-    transition: all 0.5s;
-}
-
-.mockup-features {
-    display: flex;
-    gap: 10px;
-    margin-top: auto;
-    transition: all 0.8s;
-}
-
-.feat-box {
-    flex: 1;
-    height: 60px;
-    background: #f5f5f5;
+    height: 100%;
+    background-image: radial-gradient(rgba(255, 255, 255, 0.25) 20%, transparent 20%);
+    background-size: 12px 12px;
     border-radius: 6px;
-    transition: all 0.5s;
+    opacity: 0.6;
 }
 
-/* === STEP 1: Action Obvious === */
-.step-1 .mockup-cta,
-.step-2 .mockup-cta,
-.step-3 .mockup-cta {
-    background: linear-gradient(135deg, #3A00FF 0%, #FF0055 100%);
-    opacity: 1;
-    transform: scale(1.1);
-    box-shadow: 0 4px 10px rgba(58, 0, 255, 0.3);
-}
-
-.step-1 .mockup-main-cta,
-.step-2 .mockup-main-cta,
-.step-3 .mockup-main-cta {
-    background: linear-gradient(135deg, #3A00FF 0%, #FF0055 100%);
-    opacity: 1;
-    padding: 12px 24px;
-    border-radius: 30px;
-    box-shadow: 0 8px 20px rgba(58, 0, 255, 0.4);
-    transform: scale(1.1) translateY(-5px);
-}
-
-.step-1 .mockup-title .line,
-.step-2 .mockup-title .line,
-.step-3 .mockup-title .line {
-    background: #555;
-}
-
-/* === STEP 2: Organization === */
-.step-2 .mockup-hero,
-.step-3 .mockup-hero {
+.wd-zoom-hint {
+    position: absolute;
+    bottom: 2rem;
+    left: 50%;
+    transform: translateX(-50%);
+    display: flex;
+    flex-direction: column;
     align-items: center;
-    text-align: center;
-    margin-top: 10px;
+    gap: 0.5rem;
+    color: #888;
+    font-size: 0.85rem;
+    letter-spacing: 1px;
+    text-transform: uppercase;
+    pointer-events: none;
+    transition: opacity 0.2s ease-out;
 }
 
-.step-2 .mockup-title .line,
-.step-3 .mockup-title .line {
-    background: #222;
-    margin: 0 auto 10px;
+.scroll-arrow {
+    font-size: 1.2rem;
+    animation: bounceDown 1.5s infinite;
 }
 
-.step-2 .mockup-title .l-1,
-.step-3 .mockup-title .l-1 {
-    width: 70%;
-}
+@keyframes bounceDown {
 
-.step-2 .mockup-title .l-2,
-.step-3 .mockup-title .l-2 {
-    width: 85%;
-}
-
-.step-2 .mockup-title .l-3,
-.step-3 .mockup-title .l-3 {
-    width: 60%;
-}
-
-.step-2 .mockup-desc .desc-line,
-.step-3 .mockup-desc .desc-line {
-    margin: 0 auto 8px;
-    width: 60%;
-    background: #ccc;
-}
-
-.step-2 .mockup-features,
-.step-3 .mockup-features {
-    gap: 20px;
-}
-
-.step-2 .feat-box,
-.step-3 .feat-box {
-    background: white;
-    border: 1px solid #eee;
-    box-shadow: 0 5px 15px rgba(0, 0, 0, 0.05);
-}
-
-/* === STEP 3: Polish & Trust === */
-.step-3 .mockup-body {
-    background: #fafafa;
-}
-
-.step-3 .mockup-trust {
-    opacity: 1;
-    transform: translateY(0);
-}
-
-.step-3.wd-mockup-window {
-    transform: scale(1.05) rotateY(-5deg);
-    box-shadow: -20px 30px 60px rgba(0, 0, 0, 0.5);
-    border-color: rgba(58, 0, 255, 0.3);
-}
-
-@media (max-width: 992px) {
-    .wd-trans-container {
-        flex-direction: column;
-        justify-content: center;
-        gap: 2rem;
+    0%,
+    100% {
+        transform: translateY(0);
     }
 
-    .wd-trans-texts {
-        height: 180px;
-    }
-
-    .wd-mockup-window {
-        max-width: 400px;
+    50% {
+        transform: translateY(6px);
     }
 }
 
-@media (max-width: 600px) {
-    .wd-trans-sticky {
-        align-items: flex-start;
-        padding-top: 5rem;
+@media (max-width: 768px) {
+    .wd-monitor-chassis {
+        width: 90vw;
+        height: 56vw;
+        max-width: 500px;
+        max-height: 320px;
     }
 
-    .wd-mockup-window {
+    .wd-desk-keyboard {
+        width: 75vw;
         max-width: 320px;
-    }
-
-    .mockup-body {
-        height: 320px;
-    }
-
-    .wd-trans-texts {
-        height: 220px;
+        height: 75px;
     }
 }
 
@@ -1449,7 +1344,8 @@
 }
 
 .wd-case-info-spacer {
-    height: 2.8rem; /* Match the approximate height of info section */
+    height: 2.8rem;
+    /* Match the approximate height of info section */
 }
 
 .wd-case-cta:hover .wd-case-cta-inner {

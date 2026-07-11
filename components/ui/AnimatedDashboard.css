@@ -114,7 +114,7 @@
 }
 .dash-stat-card {
     background: #f8fafc;
-    padding: 15px;
+    padding: 12px 8px;
     border-radius: 8px;
     text-align: center;
     transition: transform 0.2s;
@@ -128,11 +128,18 @@
     color: #718096;
     margin-bottom: 5px;
 }
+.dash-stat-value-container {
+    display: flex;
+    align-items: baseline;
+    justify-content: center;
+    gap: 4px;
+    flex-wrap: nowrap;
+    white-space: nowrap;
+}
 .dash-stat-value {
-    font-size: 1.1rem;
+    font-size: 1rem;
     color: #2d3748;
     font-weight: 700;
-    margin-bottom: 5px;
 }
 .dash-stat-indicator {
     font-size: 0.8rem;

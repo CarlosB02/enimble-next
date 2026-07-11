@@ -336,18 +336,18 @@ class App {
   }
   createMedias(items, bend = 1, textColor, borderRadius, font) {
     const defaultItems = [
-      { image: `https://picsum.photos/seed/1/800/600?grayscale`, text: 'Post 1' },
-      { image: `https://picsum.photos/seed/2/800/600?grayscale`, text: 'Post 2' },
-      { image: `https://picsum.photos/seed/3/800/600?grayscale`, text: 'Post 3' },
-      { image: `https://picsum.photos/seed/4/800/600?grayscale`, text: 'Post 4' },
-      { image: `https://picsum.photos/seed/5/800/600?grayscale`, text: 'Post 5' },
-      { image: `https://picsum.photos/seed/16/800/600?grayscale`, text: 'Post 6' },
-      { image: `https://picsum.photos/seed/17/800/600?grayscale`, text: 'Post 7' },
-      { image: `https://picsum.photos/seed/8/800/600?grayscale`, text: 'Post 8' },
-      { image: `https://picsum.photos/seed/9/800/600?grayscale`, text: 'Post 9' },
-      { image: `https://picsum.photos/seed/10/800/600?grayscale`, text: 'Post 10' },
-      { image: `https://picsum.photos/seed/21/800/600?grayscale`, text: 'Post 11' },
-      { image: `https://picsum.photos/seed/12/800/600?grayscale`, text: 'Post 12' }
+      { image: `/servicos/redes-sociais/criativos/meta.png`, text: 'Post 1' },
+      { image: `/servicos/redes-sociais/criativos/twitter.png`, text: 'Post 2' },
+      { image: `/servicos/redes-sociais/criativos/3.jpg`, text: 'Post 3' },
+      { image: `/servicos/redes-sociais/criativos/4.jpg`, text: 'Post 4' },
+      { image: `/servicos/redes-sociais/criativos/5.jpg`, text: 'Post 5' },
+      { image: `/servicos/redes-sociais/criativos/6.jpg`, text: 'Post 6' },
+      { image: `/servicos/redes-sociais/criativos/7.jpg`, text: 'Post 7' },
+      { image: `/servicos/redes-sociais/criativos/8.jpg`, text: 'Post 8' },
+      { image: `/servicos/redes-sociais/criativos/9.jpg`, text: 'Post 9' },
+      { image: `/servicos/redes-sociais/criativos/10.jpg`, text: 'Post 10' },
+      { image: `/servicos/redes-sociais/criativos/11.jpg`, text: 'Post 11' },
+      { image: `/servicos/redes-sociais/criativos/12.jpg`, text: 'Post 12' }
     ];
     const galleryItems = items && items.length ? items : defaultItems;
     this.mediasImages = galleryItems.concat(galleryItems);

@@ -14,6 +14,15 @@
   --transition: all 0.3s ease;
 }
 
+.gradient-word,
+.gradient-text {
+  background: var(--gradient-main, linear-gradient(254deg, #3A00FF 0%, #BF0040 100%));
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+  display: inline-block;
+}
+
 * {
   margin: 0;
   padding: 0;
@@ -765,6 +774,39 @@ h4,
   transform: translateY(0);
 }
 
+/* Safety net: if JS never adds .active, auto-reveal after 3s */
+@keyframes revealFallback {
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+.reveal {
+  animation: revealFallback 0.8s ease forwards;
+  animation-delay: 0.5s;
+}
+
+.reveal.active {
+  animation: none;
+}
+
+/* Respect reduced motion preferences */
+@media (prefers-reduced-motion: reduce) {
+  .reveal {
+    opacity: 1;
+    transform: none;
+    transition: none;
+    animation: none;
+  }
+
+  .fade-in {
+    opacity: 1;
+    transform: none;
+    animation: none;
+  }
+}
+
 @keyframes fadeIn {
   to {
     opacity: 1;
@@ -793,5 +835,121 @@ h4,
 @media (max-width: 768px) {
   .section-title-large {
     font-size: 1.8rem;
+  }
+}
+
+/* Light Hero Header Styles (e.g., Redes Sociais page) */
+.header.header-light-hero:not(.header-scrolled) .logo-text {
+  color: var(--text-color);
+}
+
+.header.header-light-hero:not(.header-scrolled) .main-nav a:not(.btn-nav) {
+  color: rgba(26, 26, 26, 0.8);
+}
+
+.header.header-light-hero:not(.header-scrolled) .main-nav a:not(.btn-nav):hover {
+  color: var(--text-color);
+}
+
+.header.header-light-hero:not(.header-scrolled) .main-nav>ul>li>a:not(.btn-nav)::after {
+  background-color: var(--text-color);
+}
+
+.header.header-light-hero:not(.header-scrolled) .btn-nav {
+  border-color: rgba(26, 26, 26, 0.3);
+  background: rgba(26, 26, 26, 0.05);
+  color: var(--text-color);
+}
+
+.header.header-light-hero:not(.header-scrolled) .btn-nav:hover {
+  background: var(--text-color);
+  color: white !important;
+  border-color: var(--text-color);
+}
+
+.header.header-light-hero:not(.header-scrolled) .hamburger,
+.header.header-light-hero:not(.header-scrolled) .hamburger::before,
+.header.header-light-hero:not(.header-scrolled) .hamburger::after {
+  background: var(--text-color);
+  box-shadow: none;
+}
+
+/* Ensure hamburger is always visible when mobile menu is open */
+.nav-open .hamburger::before,
+.nav-open .hamburger::after {
+  background: var(--text-color) !important;
+}
+
+/* Services Grid Mobile Carousel */
+@media (max-width: 768px) {
+  .services-grid-container {
+    margin-left: -2rem;
+    margin-right: -2rem;
+    width: calc(100% + 4rem);
+    overflow: hidden;
+    padding: 0;
+  }
+
+  .services-grid {
+    display: flex;
+    flex-wrap: nowrap;
+    overflow-x: auto;
+    scroll-snap-type: x mandatory;
+    scroll-behavior: smooth;
+    -webkit-overflow-scrolling: touch;
+    gap: 1.25rem;
+    padding: 1.5rem 2rem;
+    scrollbar-width: none;
+    margin: 0;
+  }
+
+  .services-grid::-webkit-scrollbar {
+    display: none;
+  }
+
+  .service-item {
+    flex: 0 0 285px;
+    max-width: 80vw;
+    scroll-snap-align: start;
+    margin: 0;
+    height: auto;
+    transform: none !important;
+    transition: box-shadow 0.3s ease;
+  }
+
+  .service-item:hover {
+    transform: none !important;
+    box-shadow: 0 15px 35px rgba(0, 0, 0, 0.05);
+  }
+
+  .carousel-dots {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 0.5rem;
+    margin-top: 1.5rem;
+  }
+
+  .carousel-dot {
+    width: 8px;
+    height: 8px;
+    border-radius: 50%;
+    background: rgba(0, 0, 0, 0.15);
+    border: none;
+    padding: 0;
+    cursor: pointer;
+    transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+  }
+
+  .carousel-dot.active {
+    background: var(--color-primary-blue, #3a00ff);
+    width: 20px;
+    border-radius: 10px;
+  }
+}
+
+@media (min-width: 769px) {
+  .carousel-dots {
+    display: none;
   }
 }

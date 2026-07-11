@@ -4,7 +4,7 @@ import React, { useEffect, useRef, useState } from 'react';
 import Link from 'next/link';
 import { gsap } from 'gsap';
 import { ScrollTrigger } from 'gsap/ScrollTrigger';
-import ContactForm from '@/components/forms/ContactForm';
+import ContactModal from '@/components/forms/ContactModal';
 import './WebsiteDesign.css';
 
 if (typeof window !== 'undefined') {
@@ -14,29 +14,41 @@ if (typeof window !== 'undefined') {
 const WebsiteDesign = () => {
     const canvasRef = useRef(null);
     const heroRef = useRef(null);
-    const transRef = useRef(null);
-    const [transStep, setTransStep] = useState(0);
+    const zoomRef = useRef(null);
+    const [zoomProgress, setZoomProgress] = useState(0);
+    const [isModalOpen, setIsModalOpen] = useState(false);
+    const [modalSubject, setModalSubject] = useState("");
 
-    // Transformation Scroll Effect
+    // Lock scroll when modal is open
+    useEffect(() => {
+        if (isModalOpen) {
+            document.body.style.overflow = 'hidden';
+        } else {
+            document.body.style.overflow = 'unset';
+        }
+        return () => {
+            document.body.style.overflow = 'unset';
+        };
+    }, [isModalOpen]);
+
+    // 3D Computer Zoom Scroll Effect
     useEffect(() => {
         const handleScroll = () => {
-            if (!transRef.current) return;
-            const rect = transRef.current.getBoundingClientRect();
+            if (!zoomRef.current) return;
+            const rect = zoomRef.current.getBoundingClientRect();
             const { top, height } = rect;
             const windowHeight = window.innerHeight;
 
             const scrollDistance = -top;
             const totalScrollable = height - windowHeight;
 
-            if (scrollDistance < 0) {
-                setTransStep(0);
-            } else if (scrollDistance > totalScrollable) {
-                setTransStep(3);
+            if (scrollDistance <= 0) {
+                setZoomProgress(0);
+            } else if (scrollDistance >= totalScrollable) {
+                setZoomProgress(1);
             } else {
                 let progress = scrollDistance / totalScrollable;
-                progress = Math.max(0, Math.min(1, progress));
-                const step = Math.min(3, Math.floor(progress * 4));
-                setTransStep(step);
+                setZoomProgress(Math.max(0, Math.min(1, progress)));
             }
         };
 
@@ -118,26 +130,34 @@ const WebsiteDesign = () => {
 
     // Magnetic Button Effect
     useEffect(() => {
-        const btn = document.querySelector('.magnetic-btn');
-        if (!btn) return;
+        const btns = document.querySelectorAll('.magnetic-btn');
+        if (!btns.length) return;
 
-        const handleMouseMove = (e) => {
-            const rect = btn.getBoundingClientRect();
-            const x = e.clientX - rect.left - rect.width / 2;
-            const y = e.clientY - rect.top - rect.height / 2;
-            btn.style.transform = `translate(${x * 0.3}px, ${y * 0.3}px)`;
-        };
+        const cleanups = [];
 
-        const handleMouseLeave = () => {
-            btn.style.transform = 'translate(0, 0)';
-        };
+        btns.forEach((btn) => {
+            const handleMouseMove = (e) => {
+                const rect = btn.getBoundingClientRect();
+                const x = e.clientX - rect.left - rect.width / 2;
+                const y = e.clientY - rect.top - rect.height / 2;
+                btn.style.transform = `translate(${x * 0.3}px, ${y * 0.3}px)`;
+            };
 
-        btn.addEventListener('mousemove', handleMouseMove);
-        btn.addEventListener('mouseleave', handleMouseLeave);
+            const handleMouseLeave = () => {
+                btn.style.transform = 'translate(0, 0)';
+            };
+
+            btn.addEventListener('mousemove', handleMouseMove);
+            btn.addEventListener('mouseleave', handleMouseLeave);
+
+            cleanups.push(() => {
+                btn.removeEventListener('mousemove', handleMouseMove);
+                btn.removeEventListener('mouseleave', handleMouseLeave);
+            });
+        });
 
         return () => {
-            btn.removeEventListener('mousemove', handleMouseMove);
-            btn.removeEventListener('mouseleave', handleMouseLeave);
+            cleanups.forEach((cleanup) => cleanup());
         };
     }, []);
 
@@ -212,24 +232,27 @@ const WebsiteDesign = () => {
                         {[
                             {
                                 title: "Sites Institucionais",
-                                desc: "Estabeleça autoridade absoluta no seu setor. Uma sede digital que impõe respeito e constrói confiança imediata com os seus clientes.",
+                                desc: "Construa autoridade, inspire confiança e destaque-se no seu setor.",
                                 tag: "Autoridade de Marca",
                                 preview: "https://panoramas.pt",
-                                icon: "/servicos/website-design/e-nimble-corporate-website-authority.png"
+                                icon: "/servicos/website-design/e-nimble-corporate-website-authority.png",
+                                linkText: "Quero Autoridade Online"
                             },
                             {
                                 title: "E-Commerce",
-                                desc: "Lojas digitais de alta performance projetadas para a conversão. Removemos a fricção do processo de compra para fidelizar visitantes.",
+                                desc: "Lojas online concebidas para vender mais, com uma experiência de compra sem fricção.",
                                 tag: "Máquinas de Vendas",
-                                preview: "https://viriatusbrunch.pt",
-                                icon: "/servicos/website-design/e-nimble-ecommerce-conversion-store.png"
+                                preview: "https://inpe.pt",
+                                icon: "/servicos/website-design/e-nimble-ecommerce-conversion-store.png",
+                                linkText: "Quero Vender Online"
                             },
                             {
                                 title: "Landing Pages",
-                                desc: "Experiências de página única hiperfocadas e desenhadas com um objetivo: captar leads e impulsionar a ação. Perfeitas para campanhas.",
+                                desc: "Páginas focadas num único objetivo: transformar visitantes em clientes.",
                                 tag: "Geração de Leads",
                                 preview: "https://polly.photo",
-                                icon: "/servicos/website-design/e-nimble-lead-generation-landing-page.png"
+                                icon: "/servicos/website-design/e-nimble-lead-generation-landing-page.png",
+                                linkText: "Quero Gerar Leads"
                             }
                         ].map((service, idx) => (
                             <div key={idx} className="wd-service-card">
@@ -265,8 +288,15 @@ const WebsiteDesign = () => {
                                     </div>
                                     <p>{service.desc}</p>
 
-                                    <div className="wd-service-link">
-                                        VER CASOS DE ESTUDO
+                                    <div
+                                        className="wd-service-link"
+                                        onClick={() => {
+                                            setModalSubject("website");
+                                            setIsModalOpen(true);
+                                        }}
+                                        style={{ cursor: 'pointer' }}
+                                    >
+                                        {service.linkText || "VER CASOS DE ESTUDO"}
                                         <span className="arrow">↗</span>
                                     </div>
                                 </div>
@@ -328,7 +358,7 @@ const WebsiteDesign = () => {
                     {/* Stats */}
                     <div className="wd-stat-bar">
                         <div className="wd-stat-item">
-                            <div className="wd-stat-number">73%</div>
+                            <div className="wd-stat-number">75%</div>
                             <div className="wd-stat-label">dos utilizadores julgam a credibilidade pelo design</div>
                         </div>
                         <div className="wd-stat-item">
@@ -348,35 +378,34 @@ const WebsiteDesign = () => {
             <section className="wd-process-section">
                 <div className="container">
                     <div className="wd-process-header">
-                        <span className="section-label">A Nossa Metodologia</span>
-                        <h2>Design Orientado ao <span className="gradient-word">Crescimento</span></h2>
-                        <p>Cada projeto é guiado por estratégia e validado por dados reais.</p>
+                        <h2>Estratégia Orientada ao <span className="gradient-word">Crescimento</span></h2>
+                        <p>Os bons resultados são consequência de uma estratégia bem definida.</p>
                     </div>
 
                     <div className="wd-process-grid">
                         <div className="wd-process-card">
-                            <h3>01. Discovery</h3>
-                            <p>Mergulhamos no seu negócio e clientes.</p>
+                            <h3>01. Compreender</h3>
+                            <p>Analisamos o seu negócio e objetivos.</p>
                         </div>
 
                         <div className="wd-process-card">
-                            <h3>02. Wireframing</h3>
-                            <p>Desenhamos a arquitetura de conversão.</p>
+                            <h3>02. Design</h3>
+                            <p>Alinhamos experiência e estética.</p>
                         </div>
 
                         <div className="wd-process-card">
-                            <h3>03. Engenharia</h3>
-                            <p>Construímos com tecnologia de ponta.</p>
+                            <h3>03. Performance</h3>
+                            <p>Velocidade, SEO e experiência.</p>
                         </div>
 
                         <div className="wd-process-card">
                             <h3>04. Otimização</h3>
-                            <p>Medimos e iteramos com base em dados.</p>
+                            <p>Medimos e otimizamos com base em dados.</p>
                         </div>
                     </div>
                 </div>
             </section>
-            
+
             {/* ===== SECTION 5: CASE STUDIES ===== */}
             <section className="wd-cases-section">
                 <div className="container">
@@ -388,11 +417,11 @@ const WebsiteDesign = () => {
 
                     <div className="wd-cases-grid">
                         {[
-                            { name: "Atlas Beverages", type: "E-Commerce", industry: "F&B", url: "https://viriatusbrunch.pt" },
-                            { name: "Forma Studio", type: "Institucional", industry: "Architecture", url: "https://panoramas.pt" },
-                            { name: "Viriatus Brunch", type: "E-Commerce", industry: "Restaurante", url: "https://viriatusbrunch.pt" },
-                            { name: "Panoramas", type: "Institucional", industry: "Imobiliário", url: "https://panoramas.pt" },
-                            { name: "Eco Green", type: "Landing Page", industry: "Sustainability", url: "https://panoramas.pt" },
+                            { name: "Inpe", type: "E-Commerce", industry: "Calçado", url: "https://inpe.pt" },
+                            { name: "Panoramas", type: "Institucional", industry: "Informação e Comunicação", url: "https://panoramas.pt", zoomed: true },
+                            { name: "Orion Technik", type: "Institucional", industry: "Aviação & Defesa", url: "https://orionaviation.eu" },
+                            { name: "Viriatus Brunch", type: "Institucional", industry: "Restauração", url: "https://viriatusbrunch.pt" },
+                            { name: "Polly", type: "Landing Page", industry: "Tecnologia", url: "https://polly.photo" },
                             { isCTA: true },
                         ].map((item, idx) => (
                             item.isCTA ? (
@@ -425,7 +454,7 @@ const WebsiteDesign = () => {
                                         <div className="iframe-wrapper">
                                             <iframe
                                                 src={item.url}
-                                                className="iframe-preview"
+                                                className={`iframe-preview ${item.zoomed ? 'iframe-zoomed' : ''}`}
                                                 title={item.name}
                                                 loading="lazy"
                                             />
@@ -451,99 +480,123 @@ const WebsiteDesign = () => {
             </section>
 
 
-            {/* ===== SECTION 5.5: TRANSFORMATION STORYTELLING ===== */}
-            <section className="wd-transformation-section" ref={transRef}>
-                <div className="wd-trans-sticky">
-                    <div className="container wd-trans-container">
+            {/* ===== SECTION 5.5: 3D COMPUTER ZOOM CTA ===== */}
+            <section className="wd-zoom-section" ref={zoomRef}>
+                <div className="wd-zoom-sticky">
+                    {(() => {
+                        // Reaches 100% zoom focus at 70% of the section scroll
+                        const focusProgress = Math.min(1, zoomProgress / 0.7);
+                        const scaleVal = 1 + Math.pow(focusProgress, 1.4) * 1.2;
+                        const counterScaleVal = 1 - focusProgress * 0.2;
 
-                        {/* Narrative Overlay */}
-                        <div className="wd-trans-narrative">
-                            <div className="section-label">A Transformação Num Piscar de Olhos</div>
+                        return (
+                            <>
+                                {/* Ambient Radial Lighting Glow */}
+                                <div
+                                    className="wd-zoom-bg-glow"
+                                    style={{ opacity: Math.min(1, 0.2 + focusProgress * 0.8) }}
+                                ></div>
 
-                            <div className="wd-trans-texts">
-                                <div className={`trans-text-step ${transStep === 0 ? 'active' : ''}`}>
-                                    <h2>Isto é o aspeto de um website focado no <span className="gradient-word">criador</span>, não no utilizador.</h2>
-                                    <p>Texto denso, ausência de pontos focais claros, um botão escondido. O utilizador fica confuso e abandona a página instantes depois.</p>
-                                </div>
-
-                                <div className={`trans-text-step ${transStep === 1 ? 'active' : ''}`}>
-                                    <h2>1. Tornamos a Ação Óbvia</h2>
-                                    <p>Primeiro passo: contraste e clareza. Destacamos o que importa (o seu Call-to-Action) para captar a atenção no momento exato de decisão.</p>
-                                </div>
-
-                                <div className={`trans-text-step ${transStep === 2 ? 'active' : ''}`}>
-                                    <h2>2. Organizamos a Mensagem</h2>
-                                    <p>Removemos o ruído. Implementamos tipografia legível, espaços em branco respiráveis e alinhamento intencional. A leitura torna-se fluida.</p>
-                                </div>
-
-                                <div className={`trans-text-step ${transStep === 3 ? 'active' : ''}`}>
-                                    <h2>3. Resultado: Mais Conversões</h2>
-                                    <p>Rematamos com prova social (estrelas, marcas confiáveis) para construir confiança absoluta. O Caos virou uma máquina de vendas premium.</p>
-                                </div>
-                            </div>
-                        </div>
-
-                        {/* Visual Mockup */}
-                        <div className="wd-trans-visual">
-                            <div className={`wd-mockup-window step-${transStep}`}>
-                                <div className="mockup-browser-bar">
-                                    <div className="dots"><span></span><span></span><span></span></div>
-                                    <div className="url-bar">www.oseunegocio.com</div>
-                                </div>
-
-                                <div className="mockup-body">
-                                    <header className="mockup-header">
-                                        <div className="mockup-logo">LOGOTIPO</div>
-                                        <nav className="mockup-nav">
-                                            <span>Serviços</span>
-                                            <span>Sobre</span>
-                                            <div className="mockup-cta">Comprar</div>
-                                        </nav>
-                                    </header>
-
-                                    <div className="mockup-hero">
-                                        <div className="mockup-hero-content">
-                                            <div className="mockup-trust hidden-element trust-badges">
-                                                <span>⭐⭐⭐⭐⭐ Excelentes Avaliações</span>
-                                            </div>
-                                            <div className="mockup-title">
-                                                <div className="line l-1"></div>
-                                                <div className="line l-2"></div>
-                                                <div className="line l-3 short"></div>
-                                            </div>
-                                            <div className="mockup-desc">
-                                                <div className="desc-line"></div>
-                                                <div className="desc-line"></div>
-                                            </div>
-                                            <div className="mockup-main-cta">FALE CONNOSCO</div>
+                                {/* 3D Computer Workstation Rig */}
+                                <div
+                                    className="wd-computer-rig"
+                                    style={{
+                                        transform: `scale(${scaleVal})`,
+                                    }}
+                                >
+                                    {/* Monitor Chassis (Dead Centered Vertically) */}
+                                    <div className="wd-monitor-chassis">
+                                        {/* Bezel */}
+                                        <div
+                                            className="wd-monitor-bezel"
+                                            style={{
+                                                opacity: Math.max(0, 1 - (focusProgress - 0.25) * 2.8),
+                                            }}
+                                        >
+                                            <div className="wd-camera-dot"></div>
                                         </div>
+
+                                        {/* Monitor Screen Area */}
+                                        <div className="wd-monitor-screen">
+                                            <div className="wd-screen-grid-bg"></div>
+
+                                            {/* CTA Content inside the Monitor Screen */}
+                                            <div
+                                                className="wd-screen-cta-container"
+                                                style={{
+                                                    transform: `scale(${counterScaleVal})`,
+                                                    opacity: Math.min(1, 0.9 + focusProgress * 0.1)
+                                                }}
+                                            >
+                                                <h2 className="wd-zoom-title">
+                                                    Pronto para o seu website <br />
+                                                    <span className="gradient-word">gerar resultados?</span>
+                                                </h2>
+                                                <p className="wd-zoom-subtitle">
+                                                    Vamos construir um website preparado para crescer com o seu negócio.
+                                                </p>
+                                                <div className="wd-zoom-action">
+                                                    <button
+                                                        className="magnetic-btn wd-zoom-btn"
+                                                        onClick={() => {
+                                                            setModalSubject("website");
+                                                            setIsModalOpen(true);
+                                                        }}
+                                                    >
+                                                        <span className="btn-text">Começar Projeto</span>
+                                                        <div className="btn-fill"></div>
+                                                    </button>
+                                                </div>
+                                            </div>
+                                        </div>
+
+                                        {/* Stand & Base (Positioned relative to chassis) */}
+                                        <div
+                                            className="wd-monitor-stand"
+                                            style={{
+                                                opacity: Math.max(0, 1 - focusProgress * 2.2),
+                                                transform: `translateX(-50%) translateY(${focusProgress * 30}px)`
+                                            }}
+                                        ></div>
+                                        <div
+                                            className="wd-monitor-base"
+                                            style={{
+                                                opacity: Math.max(0, 1 - focusProgress * 2.2),
+                                                transform: `translateX(-50%) translateY(${focusProgress * 50}px)`
+                                            }}
+                                        ></div>
                                     </div>
 
-                                    <div className="mockup-features">
-                                        <div className="feat-box"></div>
-                                        <div className="feat-box"></div>
-                                        <div className="feat-box"></div>
+                                    {/* Keyboard on Desk */}
+                                    <div
+                                        className="wd-desk-keyboard"
+                                        style={{
+                                            opacity: Math.max(0, 1 - focusProgress * 2.4),
+                                            transform: `translateX(-50%) translateY(${focusProgress * 70}px) rotateX(55deg)`
+                                        }}
+                                    >
+                                        <div className="keyboard-keys"></div>
                                     </div>
                                 </div>
-                            </div>
-                        </div>
 
-                    </div>
+                                {/* Scroll Hint overlay when zoom is low */}
+                                <div
+                                    className="wd-zoom-hint"
+                                    style={{ opacity: Math.max(0, 1 - focusProgress * 4) }}
+                                >
+                                    <span>Scroll para aproximar</span>
+                                    <div className="scroll-arrow">↓</div>
+                                </div>
+                            </>
+                        );
+                    })()}
                 </div>
             </section>
-
-
-            {/* ===== FINAL CTA ===== */}
-            <section className="wd-final-cta">
-                <div className="container">
-                    <h2>Pronto para transformar o seu website em <span className="gradient-word">rendimento?</span></h2>
-                    <p>Vamos conversar sobre como engenhamos experiências digitais que convertem visitantes em clientes.</p>
-                    <Link href="/contactos" className="magnetic-btn">
-                        <span className="btn-text">Começar Projeto</span>
-                        <div className="btn-fill"></div>
-                    </Link>
-                </div>
-            </section>
+            <ContactModal
+                isOpen={isModalOpen}
+                onClose={() => setIsModalOpen(false)}
+                defaultSubject={modalSubject}
+            />
         </main>
     );
 };

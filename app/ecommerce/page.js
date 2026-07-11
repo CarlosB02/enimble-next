@@ -83,12 +83,84 @@ const Ecommerce = () => {
                 <div className="container">
                     <div className="ec-impact-content reveal">
                         <div className="ec-impact-text">
-                            <span className="ec-label">Impacto no Negócio</span>
-                            <h2>A sua loja física tem horário.<br /><span className="ec-highlight">A sua loja online não.</span></h2>
-                            <p>Transforme o seu negócio num canal de vendas escalável que opera 24/7, alcança clientes em qualquer lugar e gera receita sem as limitações de um espaço físico.</p>
+                            <h2>Enquanto dorme,<br /><span className="ec-highlight">a sua loja vende.</span></h2>
+                            <p>Transforme o seu negócio num canal de vendas que funciona 24/7, chega a mais clientes e cresce sem limitações.</p>
+                            <div style={{ marginTop: '2rem' }}>
+                                <Link href="/contactos" className="smart-btn" style={{ padding: '1rem 2rem', fontSize: '1.1rem' }}>
+                                    <span>Criar a Minha Loja</span>
+                                </Link>
+                            </div>
                         </div>
                         <div className="ec-impact-visual" style={{ padding: 0, background: 'transparent', border: 'none', boxShadow: 'none' }}>
                             <AnimatedDashboard />
+                        </div>
+                    </div>
+                </div>
+            </section>
+
+            {/* ===== PORTFOLIO / CASE STUDY ===== */}
+            <section className="ec-portfolio-section" id="ec-portfolio">
+                <div className="container">
+                    <div className="ec-portfolio-header reveal">
+                        <h2>Exemplo de uma <span className="gradient-word">Loja Online de Sucesso</span></h2>
+                    </div>
+
+                    <div className="ec-portfolio-card reveal">
+                        <div className="ec-portfolio-visual">
+                            <div className="ec-mockup-browser">
+                                <div className="ec-mockup-header">
+                                    <span className="dot red"></span>
+                                    <span className="dot yellow"></span>
+                                    <span className="dot green"></span>
+                                    <span className="ec-mockup-url">inpe.pt</span>
+                                </div>
+                                <div className="ec-mockup-body">
+                                    <iframe
+                                        src="https://inpe.pt"
+                                        title="Portfólio Loja Online"
+                                        style={{ width: '100%', height: '400px', border: 'none', borderRadius: '12px' }}
+                                    />
+                                </div>
+                            </div>
+                        </div>
+
+                        <div className="ec-portfolio-info">
+                            <h3 className="ec-portfolio-title">Esqueça os Templates</h3>
+                            <p className="ec-portfolio-desc">
+                                Seguimos o branding da marca e criamos algo único. Rápidas, intuitivas e preparadas para vender.
+                            </p>
+
+                            <div className="ec-portfolio-metrics">
+                                <div className="ec-metric">
+                                    <span className="ec-metric-num">100%</span>
+                                    <span className="ec-metric-label">Customizado</span>
+                                </div>
+                                <div className="ec-metric">
+                                    <span className="ec-metric-num">24/7</span>
+                                    <span className="ec-metric-label">Sempre a vender</span>
+                                </div>
+                            </div>
+
+                            <ul className="ec-portfolio-features">
+                                <li>
+                                    <span className="ec-feat-icon">✓</span>
+                                    <span>Experiência mobile em primeiro lugar</span>
+                                </li>
+                                <li>
+                                    <span className="ec-feat-icon">✓</span>
+                                    <span>Integração de pagamentos simplificada</span>
+                                </li>
+                                <li>
+                                    <span className="ec-feat-icon">✓</span>
+                                    <span>Maior visibilidade nas pesquisas do Google</span>
+                                </li>
+                            </ul>
+
+                            <div style={{ marginTop: '2.2rem' }}>
+                                <Link href="/contactos" className="smart-btn" style={{ padding: '0.9rem 2.2rem', fontSize: '1rem' }}>
+                                    <span style={{ color: '#ffffff' }}>Criar Loja Personalizada</span>
+                                </Link>
+                            </div>
                         </div>
                     </div>
                 </div>
@@ -98,8 +170,7 @@ const Ecommerce = () => {
             <section className="ec-advantages-section">
                 <div className="container">
                     <div className="ec-adv-header reveal">
-                        <span className="ec-label">Porquê Vender Online</span>
-                        <h2>Vantagens Que <span className="gradient-word">Mudam o Jogo</span></h2>
+                        <h2>Porque Vale a Pena <span className="gradient-word">Vender Online</span></h2>
                     </div>
 
                     <div className="ec-adv-grid">
@@ -108,10 +179,10 @@ const Ecommerce = () => {
                                 <img src="/servicos/ecommerce/e-nimble-service-global-reach.png" alt="Alcance global para e-commerce - e-nimble" />
                             </div>
                             <h3>Alcance Global</h3>
-                            <p>Venda para todo o país — ou o mundo inteiro — sem abrir mais lojas.</p>
+                            <p>Venda para todo o país ou o mundo inteiro, sem custos adicionais.</p>
                             <div className="ec-adv-stat">
                                 <strong>+300%</strong>
-                                <span>alcance vs. loja física</span>
+                                <span>Alcance potencial</span>
                             </div>
                         </div>
 
@@ -123,7 +194,7 @@ const Ecommerce = () => {
                             <p>A sua loja nunca fecha. Gere vendas à noite, fins de semana e feriados.</p>
                             <div className="ec-adv-stat">
                                 <strong>40%</strong>
-                                <span>das compras fora do horário</span>
+                                <span>Compras fora de horas</span>
                             </div>
                         </div>
 
@@ -135,7 +206,7 @@ const Ecommerce = () => {
                             <p>Uma loja bem construída posiciona a sua marca como líder no mercado.</p>
                             <div className="ec-adv-stat">
                                 <strong>+85%</strong>
-                                <span>confiança com loja própria</span>
+                                <span>Mais Credibilidade</span>
                             </div>
                         </div>
 
@@ -144,10 +215,10 @@ const Ecommerce = () => {
                                 <img src="/servicos/ecommerce/e-nimble-service-data-driven-results.png" alt="Dados e insights de e-commerce - e-nimble" />
                             </div>
                             <h3>Dados e Insights</h3>
-                            <p>Saiba exatamente o que os seus clientes querem, compram e abandonam.</p>
+                            <p>Saiba exatamente o que os seus clientes querem e compram.</p>
                             <div className="ec-adv-stat">
-                                <strong>Real-time</strong>
-                                <span>analytics integrados</span>
+                                <strong>Tempo-Real</strong>
+                                <span>Decisões com dados</span>
                             </div>
                         </div>
                     </div>
@@ -158,7 +229,7 @@ const Ecommerce = () => {
             <section className="ec-showcase-section">
                 <div className="container">
                     <div className="ec-showcase-header reveal">
-                        <span className="ec-label">Sectores</span>
+                        <span className="ec-label">SOLUÇÕES PARA TODOS OS SETORES</span>
                         <h2>Lojas Que <span className="gradient-word">Vendem</span></h2>
                     </div>
 
@@ -173,7 +244,7 @@ const Ecommerce = () => {
                             <div className="ec-showcase-icon">
                                 <img src="/servicos/ecommerce/agency-expertise-food-gourmet.png" alt="E-commerce alimentar e gourmet - e-nimble" />
                             </div>
-                            <span>Alimentar & Gourmet</span>
+                            <span>Alimentar & Bebidas</span>
                         </div>
                         <div className="ec-showcase-item reveal delay-2">
                             <div className="ec-showcase-icon">
@@ -211,6 +282,31 @@ const Ecommerce = () => {
                             </div>
                             <span>Cuidado Pessoal</span>
                         </div>
+                        <div className="ec-showcase-item reveal delay-1">
+                            <div className="ec-showcase-icon">
+                                <img src="/servicos/ecommerce/loja-online-pet-shop.png" alt="E-commerce de loja de animais - e-nimble" />
+                            </div>
+                            <span>Loja de Animais</span>
+                        </div>
+                        <div className="ec-showcase-item reveal delay-2">
+                            <div className="ec-showcase-icon">
+                                <img src="/servicos/ecommerce/loja-online-desporto-fitness.png" alt="E-commerce de desporto e fitness - e-nimble" />
+                            </div>
+                            <span>Desporto & Fitness</span>
+                        </div>
+                        <div className="ec-showcase-item reveal delay-3">
+                            <div className="ec-showcase-icon">
+                                <img src="/servicos/ecommerce/loja-online-automovel.png" alt="E-commerce automóvel - e-nimble" />
+                            </div>
+                            <span>Automóvel</span>
+                        </div>
+                        <div className="ec-showcase-item reveal delay-4" style={{ background: 'var(--shop-warm)', border: '2px dashed rgba(58, 0, 255, 0.2)', justifyContent: 'center', padding: '1.5rem 1rem' }}>
+                            <span style={{ fontSize: '1.1rem', fontWeight: '700', color: 'var(--shop-text)', marginBottom: '0.4rem' }}>E muito mais...</span>
+                            <p style={{ fontSize: '0.8rem', color: 'var(--shop-text-muted)', marginBottom: '1.2rem', lineHeight: '1.3' }}>Soluções à sua medida.</p>
+                            <Link href="/contactos" className="smart-btn" style={{ padding: '0.7rem 1.4rem', fontSize: '0.9rem' }}>
+                                <span style={{ color: '#ffffff' }}>Pedir Proposta</span>
+                            </Link>
+                        </div>
                     </div>
                 </div>
             </section>
@@ -219,8 +315,7 @@ const Ecommerce = () => {
             <section className="ec-journey-section">
                 <div className="container">
                     <div className="ec-journey-header reveal">
-                        <span className="ec-label">Experiência do Cliente</span>
-                        <h2>Da Descoberta ao Checkout em 3 Cliques</h2>
+                        <h2>Da Descoberta à Entrega em 4 Cliques</h2>
                     </div>
 
                     <div className="ec-journey-flow">
@@ -230,7 +325,7 @@ const Ecommerce = () => {
                             </div>
                             <div className="ec-js-content">
                                 <h4>Descoberta</h4>
-                                <p>Catálogo com filtros inteligentes, pesquisa rápida e recomendações.</p>
+                                <p>Encontre rapidamente o produto certo.</p>
                             </div>
                         </div>
 
@@ -242,7 +337,7 @@ const Ecommerce = () => {
                             </div>
                             <div className="ec-js-content">
                                 <h4>Carrinho</h4>
-                                <p>One-click add, preview instantâneo e cálculo automático de envio.</p>
+                                <p>Adicionar ao carrinho deve ser simples e imediato.</p>
                             </div>
                         </div>
 
@@ -254,7 +349,7 @@ const Ecommerce = () => {
                             </div>
                             <div className="ec-js-content">
                                 <h4>Checkout</h4>
-                                <p>MBWay, Apple Pay, cartão. Sem fricção, sem páginas extra, sem desistências.</p>
+                                <p>Pagamento rápido, seguro e sem distrações.</p>
                             </div>
                         </div>
 
@@ -266,65 +361,15 @@ const Ecommerce = () => {
                             </div>
                             <div className="ec-js-content">
                                 <h4>Entrega</h4>
-                                <p>Tracking automático, emails de status e experiência pós-compra premium.</p>
+                                <p>Acompanhe cada encomenda até à entrega com tracking automático.</p>
                             </div>
                         </div>
                     </div>
-                </div>
-            </section>
 
-            {/* ===== CREDIBILITY & EXPERTISE ===== */}
-            <section className="ec-trust-section">
-                <div className="container">
-                    <div className="ec-trust-header reveal">
-                        <span className="ec-label">Construído para Durar</span>
-                        <h2>Infraestrutura de Nível <span className="gradient-word">Enterprise</span></h2>
-                    </div>
-
-                    <div className="ec-trust-grid">
-                        <div className="ec-trust-item reveal delay-1">
-                            <div className="ec-trust-num">99.9%</div>
-                            <span>Uptime garantido</span>
-                        </div>
-                        <div className="ec-trust-item reveal delay-2">
-                            <div className="ec-trust-num">&lt;1s</div>
-                            <span>Tempo de carregamento</span>
-                        </div>
-                        <div className="ec-trust-item reveal delay-3">
-                            <div className="ec-trust-num">SSL</div>
-                            <span>Segurança certificada</span>
-                        </div>
-                        <div className="ec-trust-item reveal delay-4">
-                            <div className="ec-trust-num">RGPD</div>
-                            <span>Conformidade legal</span>
-                        </div>
-                    </div>
-
-                    <div className="ec-trust-features reveal">
-                        <div className="ec-tf-col">
-                            <h4>Performance</h4>
-                            <ul>
-                                <li>CDN global para velocidade máxima</li>
-                                <li>Imagens otimizadas automaticamente</li>
-                                <li>Cache inteligente para picos de tráfego</li>
-                            </ul>
-                        </div>
-                        <div className="ec-tf-col">
-                            <h4>Integrações</h4>
-                            <ul>
-                                <li>Pagamentos: Stripe, MBWay, PayPal</li>
-                                <li>Envios: CTT, DPD, UPS</li>
-                                <li>Marketing: Pixel, CAPI, Analytics</li>
-                            </ul>
-                        </div>
-                        <div className="ec-tf-col">
-                            <h4>Suporte</h4>
-                            <ul>
-                                <li>Formação completa da plataforma</li>
-                                <li>Suporte técnico dedicado</li>
-                                <li>Atualizações e manutenção incluídas</li>
-                            </ul>
-                        </div>
+                    <div style={{ textAlign: 'center', marginTop: '3.5rem' }} className="reveal">
+                        <Link href="/contactos" className="smart-btn" style={{ padding: '1rem 2.5rem', fontSize: '1.1rem' }}>
+                            <span style={{ color: '#ffffff' }}>Quero uma Loja Assim</span>
+                        </Link>
                     </div>
                 </div>
             </section>
@@ -334,7 +379,6 @@ const Ecommerce = () => {
                 <div className="container">
                     <div className="ec-cta-content">
                         <h2>A sua loja está <span className="gradient-word">pronta.</span><br /><span className="ec-highlight">E os seus clientes estão à espera.</span></h2>
-                        <p>Setup completo em menos de 15 dias.</p>
                         <Link href="/contactos" className="smart-btn">
                             <span>Começar a Vender</span>
                         </Link>

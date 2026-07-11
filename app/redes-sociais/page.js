@@ -22,7 +22,7 @@ const Counter = ({ end, duration = 2000, suffix = "" }) => {
                 animationFrame = requestAnimationFrame(animate);
             }
         };
-        
+
         const observer = new IntersectionObserver((entries) => {
             if (entries[0].isIntersecting) {
                 animationFrame = requestAnimationFrame(animate);
@@ -31,7 +31,7 @@ const Counter = ({ end, duration = 2000, suffix = "" }) => {
         }, { threshold: 0.1 });
 
         if (countRef.current) observer.observe(countRef.current);
-        
+
         return () => {
             if (animationFrame) cancelAnimationFrame(animationFrame);
             observer.disconnect();
@@ -51,7 +51,7 @@ const RedesSociais = () => {
             <section className="social-hero">
                 <div className="container hero-split">
                     <div className="hero-text-social reveal">
-                        <div className="live-badge">🔴 LIVE NOW</div>
+                        <div className="live-badge">🔴 LIVE AGORA</div>
                         <h1 className="social-title">A sua marca num <span className="text-gradient-social">Nível Viral.</span>
                         </h1>
                         <p className="social-subtitle">Transforme seguidores em fãs e likes em vendas. Gerimos as suas redes
@@ -62,16 +62,18 @@ const RedesSociais = () => {
 
                             <div style={{ display: 'flex', alignItems: 'center', gap: '-10px' }}>
                                 <div
-                                    style={{ width: '40px', height: '40px', borderRadius: '50%', background: '#ddd', border: '2px solid #0f0f0f', marginRight: '-10px' }}>
+                                    style={{ width: '40px', height: '40px', borderRadius: '50%', background: '#1877F2', border: '2px solid #0f0f0f', marginRight: '-10px', display: 'flex', alignItems: 'center', justifyContent: 'center', color: 'white' }}>
+                                    <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"><path d="M18 2h-3a5 5 0 0 0-5 5v3H7v4h3v8h4v-8h3l1-4h-4V7a1 1 0 0 1 1-1h3z" /></svg>
                                 </div>
                                 <div
-                                    style={{ width: '40px', height: '40px', borderRadius: '50%', background: '#aaa', border: '2px solid #0f0f0f', marginRight: '-10px' }}>
+                                    style={{ width: '40px', height: '40px', borderRadius: '50%', background: 'linear-gradient(45deg, #f09433 0%, #e6683c 25%, #dc2743 50%, #cc2366 75%, #bc1888 100%)', border: '2px solid #0f0f0f', marginRight: '-10px', display: 'flex', alignItems: 'center', justifyContent: 'center', color: 'white' }}>
+                                    <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"><rect width="20" height="20" x="2" y="2" rx="5" ry="5" /><path d="M16 11.37A4 4 0 1 1 12.63 8 4 4 0 0 1 16 11.37z" /><line x1="17.5" x2="17.51" y1="6.5" y2="6.5" /></svg>
                                 </div>
                                 <div
-                                    style={{ width: '40px', height: '40px', borderRadius: '50%', background: '#888', border: '2px solid #0f0f0f' }}>
+                                    style={{ width: '40px', height: '40px', borderRadius: '50%', background: '#000', border: '2px solid #0f0f0f', display: 'flex', alignItems: 'center', justifyContent: 'center', color: 'white' }}>
+                                    <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" viewBox="0 0 16 16"><path d="M9 0h1.98c.144.715.54 1.617 1.235 2.512C12.895 3.389 13.797 4 15 4v2c-1.753 0-3.07-.814-4-1.829V11a5 5 0 1 1-5-5v2a3 3 0 1 0 3 3V0Z" /></svg>
                                 </div>
-                                <span style={{ marginLeft: '15px', fontWeight: 600, fontSize: '0.9rem' }}>+200
-                                    Parceiros</span>
+                                <span style={{ marginLeft: '15px', fontWeight: 600, fontSize: '0.9rem' }}>Conteúdo • Comunidade • Conversão</span>
                             </div>
                         </div>
                     </div>
@@ -107,10 +109,12 @@ const RedesSociais = () => {
             </section>
 
             {/* Marquee */}
-            <div className="marquee-wrapper">
-                <div className="marquee-content">
-                    <span>INSTAGRAM • STRATEGY • TIKTOK • GROWTH • FACEBOOK • COMMUNITY • LINKEDIN • CONTENT • </span>
-                    <span>INSTAGRAM • STRATEGY • TIKTOK • GROWTH • FACEBOOK • COMMUNITY • LINKEDIN • CONTENT • </span>
+            <div className="marquee-container">
+                <div className="marquee-wrapper">
+                    <div className="marquee-content">
+                        <span>CRIATIVIDADE • ATENÇÃO • CONTEÚDO • ALCANCE • COMUNIDADE • CONFIANÇA • CONVERSÃO • CRESCIMENTO • FIDELIZAÇÃO • ENGAGEMENT • VISIBILIDADE • RESULTADOS • </span>
+                        <span>CRIATIVIDADE • ATENÇÃO • CONTEÚDO • ALCANCE • COMUNIDADE • CONFIANÇA • CONVERSÃO • CRESCIMENTO • FIDELIZAÇÃO • ENGAGEMENT • VISIBILIDADE • RESULTADOS • </span>
+                    </div>
                 </div>
             </div>
 
@@ -172,13 +176,31 @@ const RedesSociais = () => {
                 </div>
             </section>
 
+            {/* ===== PROOF OF TRANSFORMATION ===== */}
+            <section className="rs-proof-section">
+                <div className="container">
+                    <div className="rs-proof-header reveal">
+                        <h2>Não Mostramos Só <span className="gradient-word">Bonito</span>.<br /> Mostramos <span className="gradient-word">Resultados.</span></h2>
+                    </div>
+
+                    <div style={{ height: '600px', position: 'relative' }} className="reveal delay-1">
+                        <CircularGallery
+                            bend={3}
+                            textColor="#ffffff"
+                            borderRadius={0.05}
+                            scrollEase={0.02}
+                            scrollSpeed={2}
+                        />
+                    </div>
+                </div>
+            </section>
             {/* ===== O PODER DE APARECER ===== */}
             <section className="rs-appear-section">
                 <div className="container">
                     <h2 className="rs-appear-title reveal">
                         O Poder de <span className="gradient-word">Aparecer</span>
                     </h2>
-                    
+
                     <div className="rs-appear-grid">
                         <div className="rs-phones-visual reveal">
                             {/* Instagram Phone */}
@@ -273,8 +295,7 @@ const RedesSociais = () => {
             <section className="rs-drivers-section">
                 <div className="container">
                     <div className="rs-drivers-header reveal">
-                        <span className="rs-tag">Revenue Drivers</span>
-                        <h2>4 Motores de <span className="gradient-word">Crescimento</span></h2>
+                        <h2>O Que Faz <span className="gradient-word">Crescer</span> uma Marca?</h2>
                     </div>
 
                     <div className="rs-drivers-grid">
@@ -283,12 +304,10 @@ const RedesSociais = () => {
                             <div className="rs-driver-emoji">
                                 <img src="/servicos/redes-sociais/marketing-agency-social-captivation.png" alt="Market Captivation Social - e-nimble" className="rs-icon-img" />
                             </div>
-                            <h3>Market Captivation</h3>
-                            <span className="rs-driver-label">Orgânico</span>
+                            <h3>Estratégia</h3>
+                            <span className="rs-driver-label">ATRAIR</span>
                             <ul>
-                                <li>Seguidores passivos → Advogados ativos</li>
-                                <li>Tráfego previsível sem pagar ads</li>
-                                <li>Brand voice que escala confiança</li>
+                                <li>Captamos a atenção do público certo.</li>
                             </ul>
                         </div>
 
@@ -297,12 +316,10 @@ const RedesSociais = () => {
                             <div className="rs-driver-emoji">
                                 <img src="/servicos/redes-sociais/marketing-agency-social-scaling.png" alt="High-Velocity Social Scaling - e-nimble" className="rs-icon-img" />
                             </div>
-                            <h3>High-Velocity Scaling</h3>
-                            <span className="rs-driver-label">Paid Ads</span>
+                            <h3>Conteúdo</h3>
+                            <span className="rs-driver-label">ENVOLVER</span>
                             <ul>
-                                <li>Campanhas ROAS-first agressivas</li>
-                                <li>Superar concorrentes em spend e resultado</li>
-                                <li>Funis otimizados para conversão imediata</li>
+                                <li>Criamos conteúdo que gera confiança e proximidade.</li>
                             </ul>
                         </div>
 
@@ -311,12 +328,10 @@ const RedesSociais = () => {
                             <div className="rs-driver-emoji">
                                 <img src="/servicos/redes-sociais/marketing-agency-social-conversion.png" alt="Conversion-First Social Content - e-nimble" className="rs-icon-img" />
                             </div>
-                            <h3>Conversion-First Content</h3>
-                            <span className="rs-driver-label">Criativo</span>
+                            <h3>Comunidade</h3>
+                            <span className="rs-driver-label">CONVERTER</span>
                             <ul>
-                                <li>Visuais que quebram padrões de scroll</li>
-                                <li>Cada asset engenhado para ação</li>
-                                <li>Hook → Desejo → Conversão</li>
+                                <li>Transformamos interesse em contactos, pedidos e vendas.</li>
                             </ul>
                         </div>
 
@@ -325,73 +340,15 @@ const RedesSociais = () => {
                             <div className="rs-driver-emoji">
                                 <img src="/servicos/redes-sociais/marketing-agency-social-intelligence.png" alt="Competitive Social Intelligence - e-nimble" className="rs-icon-img" />
                             </div>
-                            <h3>Competitive Intelligence</h3>
-                            <span className="rs-driver-label">Data</span>
+                            <h3>Análise</h3>
+                            <span className="rs-driver-label">OTIMIZAR</span>
                             <ul>
-                                <li>Roubar market share com dados</li>
-                                <li>Identificar pockets de lucro inexplorados</li>
-                                <li>Benchmarks que geram vantagem</li>
+                                <li>Com base em dados, evoluímos a estratégia.</li>
                             </ul>
                         </div>
                     </div>
                 </div>
             </section>
-
-            {/* ===== PROOF OF TRANSFORMATION ===== */}
-            <section className="rs-proof-section">
-                <div className="container">
-                    <div className="rs-proof-header reveal">
-                        <span className="rs-tag">Proof of Transformation</span>
-                        <h2>Não Mostramos Bonito. Mostramos <span className="gradient-word">Resultados.</span></h2>
-                    </div>
-
-                    <div style={{ height: '600px', position: 'relative' }} className="reveal delay-1">
-                        <CircularGallery 
-                            bend={3} 
-                            textColor="#ffffff" 
-                            borderRadius={0.05} 
-                            scrollEase={0.02}
-                            scrollSpeed={2}
-                        />
-                    </div>
-                </div>
-            </section>
-
-            {/* ===== THE CERTAINTY PATH ===== */}
-            <section className="rs-path-section">
-                <div className="container">
-                    <div className="rs-path-header reveal">
-                        <span className="rs-tag">The Certainty Path</span>
-                        <h2>4 Passos. <span className="gradient-word">Zero Incerteza.</span></h2>
-                    </div>
-
-                    <div className="rs-path-track">
-                        <div className="rs-path-line"></div>
-                        <div className="rs-path-step reveal delay-1">
-                            <div className="rs-path-dot"><span>01</span></div>
-                            <h4>Audit & Extraction</h4>
-                            <p>Encontrar o ouro escondido.</p>
-                        </div>
-                        <div className="rs-path-step reveal delay-2">
-                            <div className="rs-path-dot"><span>02</span></div>
-                            <h4>Strategy Injection</h4>
-                            <p>O plano para vencer.</p>
-                        </div>
-                        <div className="rs-path-step reveal delay-3">
-                            <div className="rs-path-dot"><span>03</span></div>
-                            <h4>Aggressive Execution</h4>
-                            <p>Ir para o terreno.</p>
-                        </div>
-                        <div className="rs-path-step reveal delay-4">
-                            <div className="rs-path-dot"><span>04</span></div>
-                            <h4>Scale & Dominate</h4>
-                            <p>Multiplicar o que funciona.</p>
-                        </div>
-                    </div>
-                </div>
-            </section>
-
-
 
             {/* ===== FINAL CTA ===== */}
             <section className="rs-final-cta">

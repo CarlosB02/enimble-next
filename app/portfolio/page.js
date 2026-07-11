@@ -256,7 +256,7 @@ const Portfolio = () => {
                     <div className="container" style={{ position: 'relative' }}>
                         <div className="gallery-flex">
                             <div className="gallery-flex-item">
-                                <img src="https://images.unsplash.com/photo-1600607686527-6fb886090705?auto=format&fit=crop&w=600&q=80"
+                                <img src="/assets/portfolio/detalhe-1.png"
                                     alt="Work 1" />
                             </div>
                             <div className="gallery-flex-item text-center">

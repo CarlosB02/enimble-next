@@ -18,7 +18,7 @@ const AnimatedDashboard = () => {
                     className={`dash-header-item ${activeTab === 'reports' ? 'active' : ''}`}
                     onClick={() => setActiveTab('reports')}
                 >
-                    Relatórios
+                    Encomendas
                 </div>
                 <div
                     className={`dash-header-item ${activeTab === 'analysis' ? 'active' : ''}`}
@@ -81,24 +81,30 @@ const AnimatedDashboard = () => {
                         <div className="dash-side-stats">
                             <div className="dash-stat-card">
                                 <div className="dash-stat-label">Receita</div>
-                                <div className="dash-stat-value">
-                                    <CountUp end={45.2} decimals={1} prefix="€ " suffix="k" duration={2000} />
+                                <div className="dash-stat-value-container">
+                                    <span className="dash-stat-value">
+                                        <CountUp end={45200} separator=" " suffix=" €" duration={2000} />
+                                    </span>
+                                    <span className="dash-stat-indicator">↑ 12%</span>
                                 </div>
-                                <div className="dash-stat-indicator">↑ 12%</div>
                             </div>
                             <div className="dash-stat-card">
                                 <div className="dash-stat-label">Despesas</div>
-                                <div className="dash-stat-value">
-                                    <CountUp end={12.8} decimals={1} prefix="€ " suffix="k" duration={2000} />
+                                <div className="dash-stat-value-container">
+                                    <span className="dash-stat-value">
+                                        <CountUp end={12800} separator=" " suffix=" €" duration={2000} />
+                                    </span>
+                                    <span className="dash-stat-indicator-down">↓ 5%</span>
                                 </div>
-                                <div className="dash-stat-indicator-down">↓ 5%</div>
                             </div>
                             <div className="dash-stat-card">
                                 <div className="dash-stat-label">Lucro Líquido</div>
-                                <div className="dash-stat-value">
-                                    <CountUp end={32.4} decimals={1} prefix="€ " suffix="k" duration={2000} />
+                                <div className="dash-stat-value-container">
+                                    <span className="dash-stat-value">
+                                        <CountUp end={32400} separator=" " suffix=" €" duration={2000} />
+                                    </span>
+                                    <span className="dash-stat-indicator">↑ 18%</span>
                                 </div>
-                                <div className="dash-stat-indicator">↑ 18%</div>
                             </div>
                         </div>
                     </>
@@ -107,7 +113,7 @@ const AnimatedDashboard = () => {
                     <div className="dash-tab-content">
                         <div className="dash-chart-header">
                             <span className="dash-chart-title">Comparativo Mensal</span>
-                            <span className="dash-chart-value">2025</span>
+                            <span className="dash-chart-value">2026</span>
                         </div>
                         <div className="dash-bar-chart-container">
                             {[60, 80, 45, 90, 75, 50, 85, 95].map((height, i) => (
@@ -121,7 +127,7 @@ const AnimatedDashboard = () => {
                             ))}
                         </div>
                         <div className="dash-report-summary">
-                            <p>Análise detalhada de despesas vs receitas por centro de custo.</p>
+                            <p>Análise detalhada de evolução de encomendas recebidas.</p>
                         </div>
                     </div>
                 )}

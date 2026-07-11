@@ -1,313 +1,592 @@
 'use client';
 
-import React, { useEffect } from 'react';
+import React, { useState, useEffect, useRef } from 'react';
 import Link from 'next/link';
 import useScrollReveal from '@/hooks/useScrollReveal';
+
 import './Ads.css';
 
-const Ads = () => {
+const platforms = [
+    { id: 'meta', name: 'Meta Ads', path: '/servicos/ads/meta.png' },
+    { id: 'google', name: 'Google Ads', path: '/servicos/ads/google.png' },
+    { id: 'linkedin', name: 'LinkedIn Ads', path: '/servicos/ads/linkedin.png' },
+    { id: 'tiktok', name: 'TikTok Ads', path: '/servicos/ads/tiktok.png' }
+];
+
+const AdsPage = () => {
     useScrollReveal();
 
+    // 1. Radar Hero States
+    const [radarAlerts, setRadarAlerts] = useState([
+        { id: 1, type: 'search', time: 'Agora mesmo', text: 'Lead qualificada registada' },
+        { id: 2, type: 'meta', time: 'Há 1 min', text: 'Campanha otimizada automaticament' }
+    ]);
+
+    // 2. Attention Simulator States
+    const [withAds, setWithAds] = useState(false);
+    const [searchQuery, setSearchQuery] = useState('');
+    const [clickCount, setClickCount] = useState(12);
+
+    // 3. Safety Scale Slider State
+    const [scaleLevel, setScaleLevel] = useState(1);
+
+
+    // Dynamic typing effect for Simulator search query
     useEffect(() => {
+        const fullQuery = 'comprar sapatos desportivos online';
+        let currentIndex = 0;
+        let typingInterval;
+
+        const startTyping = () => {
+            setSearchQuery('');
+            currentIndex = 0;
+            clearInterval(typingInterval);
+
+            typingInterval = setInterval(() => {
+                if (currentIndex < fullQuery.length) {
+                    setSearchQuery(prev => prev + fullQuery.charAt(currentIndex));
+                    currentIndex++;
+                } else {
+                    clearInterval(typingInterval);
+                    // Pause, then re-type after 6 seconds
+                    setTimeout(startTyping, 6000);
+                }
+            }, 100);
+        };
+
+        startTyping();
+        return () => clearInterval(typingInterval);
+    }, []);
+
+    // Periodic radar notifications simulation
+    useEffect(() => {
+        const alertTemplates = [
+            { type: 'search', text: 'Nova compra registada: 142,50 €' },
+            { type: 'meta', text: 'Pedido de orçamento recebido' },
+            { type: 'tiktok', text: 'Lead qualificada registada: Formulário' },
+            { type: 'search', text: 'Nova venda confirmada' },
+            { type: 'meta', text: 'Cliente recorrente voltou a comprar' }
+        ];
+
+        const interval = setInterval(() => {
+            const randomTemplate = alertTemplates[Math.floor(Math.random() * alertTemplates.length)];
+            const newAlert = {
+                id: Date.now(),
+                type: randomTemplate.type,
+                time: 'Agora',
+                text: randomTemplate.text
+            };
+
+            setRadarAlerts(prev => [newAlert, prev[0], prev[1]].slice(0, 3));
+        }, 5000);
+
+        return () => clearInterval(interval);
+    }, []);
+
+    // Incremental clicks for the active Ads simulator
+    useEffect(() => {
+        if (!withAds) return;
+        const interval = setInterval(() => {
+            setClickCount(prev => prev + Math.floor(Math.random() * 2) + 1);
+        }, 1500);
+        return () => clearInterval(interval);
+    }, [withAds]);
+
+    // Safety scale details configuration
+    const scaleDetails = {
+        1: {
+            title: 'Fase 01: Lançamento & Testes',
+            desc: 'Iniciação controlada. Testamos 5-10 variações de criativos e públicos com orçamentos mínimos. Risco zero, máximo de dados recolhidos.',
+            investment: 450,
+            roas: '2.4x',
+            status: 'Fase de Testes',
+            capi: true,
+            budgetCap: false,
+            fatigueAlert: false,
+            scaleCurve: 'M 10 150 Q 80 150 150 140 T 290 130',
+            dotCoords: { cx: 290, cy: 130 }
+        },
+        2: {
+            title: 'Fase 02: Otimização de ROAS',
+            desc: 'Desligamos criativos ineficientes e direcionamos verba para os públicos com melhor custo por aquisição. Estabilização do Pixel.',
+            investment: 1200,
+            roas: '4.5x',
+            status: 'Estável & Otimizado',
+            capi: true,
+            budgetCap: true,
+            fatigueAlert: false,
+            scaleCurve: 'M 10 150 Q 80 120 150 90 T 290 70',
+            dotCoords: { cx: 290, cy: 70 }
+        },
+        3: {
+            title: 'Fase 03: Escala Horizontal',
+            desc: 'Expandimos a nossa presença gerando públicos Lookalike (Semelhantes) e testando novos canais de aquisição (Google Search + Meta Remarketing).',
+            investment: 4800,
+            roas: '6.2x',
+            status: 'Escala Ativa',
+            capi: true,
+            budgetCap: true,
+            fatigueAlert: true,
+            scaleCurve: 'M 10 150 Q 80 90 150 60 T 290 35',
+            dotCoords: { cx: 290, cy: 35 }
+        },
+        4: {
+            title: 'Fase 04: Domínio de Mercado',
+            desc: 'Escala vertical agressiva do orçamento. Monitorização contínua de saturação criativa e audiências exclusivas para manter o retorno ótimo.',
+            investment: 14500,
+            roas: '8.5x',
+            status: 'Performance Extrema',
+            capi: true,
+            budgetCap: true,
+            fatigueAlert: true,
+            scaleCurve: 'M 10 150 Q 80 60 150 30 T 290 10',
+            dotCoords: { cx: 290, cy: 10 }
+        }
+    };
+
+    const activeDetails = scaleDetails[scaleLevel];
+
+    useEffect(() => {
+        document.title = 'Anúncios Pagos | E-NIMBLE';
         document.body.classList.add('ads-body');
         return () => document.body.classList.remove('ads-body');
     }, []);
 
     return (
-        <main>
-            {/* Grid BG */}
-            <div className="grid-bg"></div>
+        <main style={{ position: 'relative' }}>
+            {/* Holographic background */}
+            <div className="grid-bg-dark"></div>
+            <div className="ads-bg-glow-top"></div>
+            <div className="ads-bg-glow-bottom"></div>
 
-            {/* Radar Hero */}
+            {/* ===== HERO: TARGET LOCKED (Centrado) ===== */}
             <section className="ads-hero">
+                {/* Radar em background */}
                 <div className="radar-container">
                     <div className="radar-line"></div>
                     <div className="target-dot" style={{ top: '20%', left: '30%' }}></div>
                     <div className="target-dot" style={{ top: '70%', left: '80%', animationDelay: '0.5s' }}></div>
                     <div className="target-dot" style={{ top: '40%', left: '60%', animationDelay: '1.2s' }}></div>
+                    <div className="target-dot" style={{ top: '15%', left: '75%', animationDelay: '0.8s' }}></div>
                 </div>
+
+                {/* Consola Central */}
                 <div className="hero-content-ads reveal">
-                    <h1>Target Locked.</h1>
-                    <div className="subtitle-typewriter">Atingimos o seu cliente ideal. {">_"}</div>
-                </div>
-            </section>
+                    <h1>CLIENTE IDENTIFICADO</h1>
+                    <div className="subtitle-typewriter">Chegamos ao cliente certo, no momento certo. {">_"}</div>
 
-            {/* Data Cards */}
-            <section className="data-section">
-                <div className="container">
-                    <div className="mb-5">
-                        <h2 style={{ fontFamily: 'Syne', fontSize: '2.5rem' }}> Protocolos de Growth</h2>
-                        <p style={{ opacity: 0.7 }}>Análise de métricas em tempo real.</p>
-                    </div>
-                    <div className="data-grid">
-                        <div className="data-card reveal delay-1">
-                            <div className="data-head">
-                                <span className="data-label">CTR Médio</span>
-                                <span style={{ color: 'var(--ads-primary)' }}>▲ +2.4%</span>
-                            </div>
-                            <div className="data-val">4.8%</div>
-                            <div className="bar-chart" style={{ marginTop: '20px' }}>
-                                <div className="bar" style={{ height: '30%' }}></div>
-                                <div className="bar" style={{ height: '50%' }}></div>
-                                <div className="bar" style={{ height: '40%' }}></div>
-                                <div className="bar" style={{ height: '80%' }}></div>
-                                <div className="bar" style={{ height: '60%' }}></div>
-                                <div className="bar" style={{ height: '100%' }}></div>
-                            </div>
-                            <p style={{ marginTop: '1rem', fontSize: '0.9rem', color: 'var(--ads-text-muted)' }}>Otimização criativa para maximizar cliques qualificados.</p>
-                        </div>
-                        <div className="data-card reveal delay-2">
-                            <div className="data-head">
-                                <span className="data-label">ROAS Target</span>
-                                <span style={{ color: 'var(--ads-primary)' }}>System Optimal</span>
-                            </div>
-                            <div className="data-val">8.5x</div>
-                            <p style={{ fontSize: '4rem', textAlign: 'right', opacity: 0.05, position: 'absolute', bottom: '-20px', right: 0 }}>$</p>
-                            <p style={{ marginTop: '2rem', fontSize: '0.9rem', color: 'var(--ads-text-muted)' }}>Por cada 1€ investido, garantimos o retorno máximo possível.</p>
-                        </div>
-                        <div className="data-card reveal delay-3">
-                            <div className="data-head">
-                                <span className="data-label">Status</span>
-                                <span style={{ color: 'var(--ads-alert)' }}>● Tracking</span>
-                            </div>
-                            <h3 style={{ marginBottom: '1rem' }}>Pixel Perfect</h3>
-                            <p style={{ fontSize: '0.9rem', color: 'var(--ads-text-muted)' }}>Instalação avançada de Conversões API (CAPI) para Facebook e Google Ads.</p>
-                        </div>
-                    </div>
-                </div>
-            </section>
-
-            {/* ===== SPEED & IMPACT ===== */}
-            <section className="ads-speed-section">
-                <div className="container">
-                    <div className="ads-speed-content reveal">
-                        <div className="ads-speed-text">
-                            <span className="ads-chip">Velocidade & Impacto</span>
-                            <h2>Enquanto o orgânico cresce,<br /><span className="ads-gradient-text">os ads já estão a vender.</span></h2>
-                            <p>Coloque a sua marca frente ao público certo em minutos — não meses. Paid Ads é o acelerador que transforma budget em clientes reais, com precisão cirúrgica e resultados imediatos.</p>
-                        </div>
-                        <div className="ads-speed-visual">
-                            <div className="ads-radar-mini">
-                                <div className="ads-rm-ring r1"></div>
-                                <div className="ads-rm-ring r2"></div>
-                                <div className="ads-rm-ring r3"></div>
-                                <div className="ads-rm-center">
-                                    <span>LIVE</span>
+                    {/* Feed de Conversões Integrado no Cartão */}
+                    <div className="radar-feed-inline">
+                        <span className="feed-title">Registo de Conversões Recentes</span>
+                        <div className="live-events-feed">
+                            {radarAlerts.map(alert => (
+                                <div key={alert.id} className={`feed-event-row ${alert.type === 'meta' ? 'meta-event' : ''}`}>
+                                    <div className="event-icon">
+                                        {alert.type === 'meta' ? '●' : '▲'}
+                                    </div>
+                                    <div className="event-details">
+                                        <span className="event-txt">{alert.text}</span>
+                                        <span className="event-time">{alert.time}</span>
+                                    </div>
                                 </div>
-                                <div className="ads-rm-dot d1"></div>
-                                <div className="ads-rm-dot d2"></div>
-                                <div className="ads-rm-dot d3"></div>
-                                <div className="ads-rm-dot d4"></div>
-                                <div className="ads-rm-dot d5"></div>
-                            </div>
+                            ))}
                         </div>
                     </div>
                 </div>
             </section>
 
-            {/* ===== STRATEGIC TARGETING ===== */}
-            <section className="ads-target-section">
+
+            {/* ===== OMNIPRESENCE: Onde o Público Clica ===== */}
+            <section className="ads-omni-section">
                 <div className="container">
-                    <div className="ads-target-header reveal">
-                        <span className="ads-chip">Vantagem Estratégica</span>
-                        <h2>Precisão Que o Orgânico <span className="gradient-word">Não Tem</span></h2>
+                    <div className="section-header-center reveal">
+                        <h2>Onde os seus clientes <span className="gradient-word">decidem</span></h2>
+                        <p>Cobrimos todos os pontos de contacto onde os seus clientes passam tempo diariamente.</p>
                     </div>
 
-                    <div className="ads-target-grid">
-                        <div className="ads-target-card reveal delay-1">
-                            <div className="ads-tc-icon">
-                                <div className="ads-crosshair">
-                                    <span></span><span></span><span></span><span></span>
-                                    <div className="ads-ch-dot"></div>
-                                </div>
-                            </div>
-                            <h3>Micro-Segmentação</h3>
-                            <p>Idade, interesses, comportamento de compra, localização — encontramos o seu comprador ideal num universo de milhões.</p>
-                        </div>
+                    <div className="omni-grid">
 
-                        <div className="ads-target-card reveal delay-2">
-                            <div className="ads-tc-icon">
-                                <div className="ads-intent-pulse">
-                                    <div className="ads-ip-wave w1"></div>
-                                    <div className="ads-ip-wave w2"></div>
-                                    <div className="ads-ip-core">
-                                        <img src="/servicos/ads/e-nimble-ads-intent-search.png" alt="Momento de Intenção de Compra - e-nimble" className="ads-icon-img" />
+                        {/* Google Search Card */}
+                        <div className="omni-card reveal">
+                            <div className="omni-device-preview">
+                                <div className="screen-search">
+                                    <div className="search-bar-mini"></div>
+                                    <div className="search-ad-mini">
+                                        <div className="search-ad-mini-title"></div>
+                                        <div className="search-ad-mini-desc"></div>
+                                        <div className="search-ad-mini-badge"></div>
+                                    </div>
+                                    <div className="search-ad-mini" style={{ animationDelay: '1s' }}>
+                                        <div className="search-ad-mini-title"></div>
+                                        <div className="search-ad-mini-desc"></div>
+                                        <div className="search-ad-mini-badge"></div>
                                     </div>
                                 </div>
                             </div>
-                            <h3>Momento de Intenção</h3>
-                            <p>Apareça exatamente quando alguém pesquisa pelo que vende. No segundo exato em que estão prontos para comprar.</p>
+                            <h3>Pesquisa Google</h3>
+                            <p>Apareça exatamente quando existe intenção de compra.</p>
                         </div>
 
-                        <div className="ads-target-card reveal delay-3">
-                            <div className="ads-tc-icon">
-                                <div className="ads-control-grid">
-                                    <div className="ads-cg active"></div>
-                                    <div className="ads-cg active"></div>
-                                    <div className="ads-cg"></div>
-                                    <div className="ads-cg active"></div>
-                                    <div className="ads-cg"></div>
-                                    <div className="ads-cg active"></div>
-                                    <div className="ads-cg"></div>
-                                    <div className="ads-cg active"></div>
-                                    <div className="ads-cg active"></div>
+                        {/* Social Feed Card */}
+                        <div className="omni-card reveal" style={{ animationDelay: '0.1s' }}>
+                            <div className="omni-device-preview">
+                                <div className="screen-social">
+                                    <div className="social-ad-card">
+                                        <div className="social-ad-img"></div>
+                                        <div className="social-ad-text"></div>
+                                        <div className="social-ad-btn"></div>
+                                    </div>
                                 </div>
                             </div>
-                            <h3>Controlo Total</h3>
-                            <p>Decida onde, quando e como a sua marca aparece. Sem algoritmos aleatórios — só intenção estratégica.</p>
+                            <h3>Social Feed</h3>
+                            <p>Apareça no Instagram e Facebook junto do seu cliente ideal.</p>
                         </div>
+
+                        {/* Video Reels Card */}
+                        <div className="omni-card reveal" style={{ animationDelay: '0.2s' }}>
+                            <div className="omni-device-preview">
+                                <div className="screen-video">
+                                    <div className="video-ad-bg"></div>
+                                    <div className="video-play-btn">▶</div>
+                                    <div className="video-progress-bar"></div>
+                                    <div className="video-badge">Sponsored</div>
+                                </div>
+                            </div>
+                            <h3>Video & Reels</h3>
+                            <p>Capte atenção em segundos através de vídeos no TikTok e Instagram Reels.</p>
+                        </div>
+
+                        {/* Banner Network Card */}
+                        <div className="omni-card reveal" style={{ animationDelay: '0.3s' }}>
+                            <div className="omni-device-preview">
+                                <div className="screen-banner">
+                                    <div className="banner-grid-lines">
+                                        <div className="banner-grid-line"></div>
+                                        <div className="banner-grid-line" style={{ width: '80%' }}></div>
+                                    </div>
+                                    <div className="banner-ad-box"></div>
+                                </div>
+                            </div>
+                            <h3>Display Banner</h3>
+                            <p>Reforce a lembrança da marca com campanhas de marketing inteligentes.</p>
+                        </div>
+
                     </div>
                 </div>
             </section>
 
-            {/* ===== DIGITAL LANDSCAPE / PRESENCE ===== */}
-            <section className="ads-landscape-section">
+            {/* ===== PLATFORMS MARQUEE: Plataformas de Anúncios ===== */}
+            <section className="ads-platforms-marquee">
+                <div className="marquee-fade-left"></div>
+                <div className="marquee-fade-right"></div>
+                <div className="platforms-marquee-track">
+                    {/* Render twice for infinite loop */}
+                    {[...platforms, ...platforms].map((platform, idx) => (
+                        <div key={`${platform.id}-${idx}`} className="platform-logo-item">
+                            <div className="platform-logo-wrapper">
+                                <img
+                                    src={platform.path}
+                                    alt={platform.name}
+                                    className="platform-img"
+                                    onError={(e) => {
+                                        e.currentTarget.style.display = 'none';
+                                    }}
+                                />
+                                <span className="platform-fallback-icon">{platform.name[0]}</span>
+                            </div>
+                            <span className="platform-name">{platform.name}</span>
+                        </div>
+                    ))}
+                </div>
+            </section>
+
+            {/* ===== CREATIVES: Galeria de Criativos ===== */}
+            <section className="ads-creatives-section">
                 <div className="container">
-                    <div className="ads-landscape-header reveal">
-                        <span className="ads-chip">Digital Landscape</span>
-                        <h2>Omnipresença nos Espaços que Importam</h2>
+                    <div className="section-header-center reveal">
+                        <h2>Criativos de <span className="gradient-word">Alta Performance</span></h2>
+                        <p>A diferença entre ser ignorado e ser clicado começa no criativo.</p>
                     </div>
 
-                    <div className="ads-landscape-grid">
-                        <div className="ads-land-item reveal delay-1">
-                            <div className="ads-land-screen">
-                                <div className="ads-land-bar"><span></span><span></span><span></span></div>
-                                <div className="ads-land-content">
-                                    <div className="ads-land-ad">AD</div>
-                                </div>
+                    <div className="creatives-grid reveal">
+                        {/* Meta Feed */}
+                        <div className="creative-card">
+                            <div className="creative-img-container square">
+                                <img
+                                    src="/servicos/ads/criativos/meta.png"
+                                    alt="Meta Feed Creative"
+                                    className="creative-image"
+                                    onError={(e) => {
+                                        e.currentTarget.src = 'https://placehold.co/600x600/3a00ff/ffffff?text=Carregar+Criativo+Feed';
+                                    }}
+                                />
                             </div>
-                            <span>Google Search</span>
+                            <div className="creative-details">
+                                <h3>Feed Instagram & Facebook</h3>
+                                <p>Capta atenção enquanto o utilizador faz scroll.</p>
+                            </div>
                         </div>
-                        <div className="ads-land-item reveal delay-2">
-                            <div className="ads-land-screen social">
-                                <div className="ads-land-post"></div>
-                                <div className="ads-land-post ads-land-sponsored">
-                                    <span>Sponsored</span>
-                                </div>
-                                <div className="ads-land-post"></div>
+
+                        {/* Stories / Reels */}
+                        <div className="creative-card">
+                            <div className="creative-img-container portrait">
+                                <img
+                                    src="/servicos/ads/criativos/story.png"
+                                    alt="Stories & Reels Creative"
+                                    className="creative-image"
+                                    onError={(e) => {
+                                        e.currentTarget.src = 'https://placehold.co/1080x1920/bf0040/ffffff?text=Carregar+Criativo+Vertical';
+                                    }}
+                                />
                             </div>
-                            <span>Social Feed</span>
+                            <div className="creative-details">
+                                <h3>Stories & Reels</h3>
+                                <p>Mensagens rápidas pensadas para consumo em ecrã inteiro.</p>
+                            </div>
                         </div>
-                        <div className="ads-land-item reveal delay-3">
-                            <div className="ads-land-screen video">
-                                <div className="ads-land-play">▶</div>
-                                <div className="ads-land-overlay">Ad · 0:15</div>
+
+                        {/* Display Banner */}
+                        <div className="creative-card">
+                            <div className="creative-img-container landscape">
+                                <img
+                                    src="/servicos/ads/criativos/display.png"
+                                    alt="Google Display Creative"
+                                    className="creative-image"
+                                    onError={(e) => {
+                                        e.currentTarget.src = 'https://placehold.co/1200x675/00c853/ffffff?text=Carregar+Criativo+Banner';
+                                    }}
+                                />
                             </div>
-                            <span>Video & Reels</span>
-                        </div>
-                        <div className="ads-land-item reveal delay-4">
-                            <div className="ads-land-screen display">
-                                <div className="ads-land-banner"></div>
-                                <div className="ads-land-text-lines">
-                                    <div></div><div></div><div></div>
-                                </div>
+                            <div className="creative-details">
+                                <h3>Google Display</h3>
+                                <p>Mantém a sua marca presente ao longo da jornada de compra.</p>
                             </div>
-                            <span>Display Network</span>
                         </div>
                     </div>
                 </div>
             </section>
 
-            {/* ===== PERFORMANCE & OPTIMIZATION ===== */}
-            <section className="ads-perf-section">
+            {/* ===== RESULTS: Nós Mostramos Resultados ===== */}
+            <section className="ads-results-section">
                 <div className="container">
-                    <div className="ads-perf-header reveal">
-                        <span className="ads-chip">Fluxo de Performance</span>
-                        <h2>Escalar Com <span className="gradient-word">Segurança</span></h2>
+                    <div className="section-header-center reveal">
+                        <h2>Nós mostramos <span className="gradient-word">resultados</span></h2>
+                        <p>Uma estratégia completa para transformar investimento em crescimento.</p>
                     </div>
 
-                    <div className="ads-perf-flow">
-                        <div className="ads-perf-step reveal delay-1">
-                            <div className="ads-ps-num">01</div>
-                            <div className="ads-ps-bar">
-                                <div className="ads-ps-fill" style={{ '--pf': '30%' }}></div>
+                    <div className="results-grid">
+                        {/* Segmentação Estudada */}
+                        <div className="results-card reveal">
+                            <div className="results-icon-wrapper">
+                                <img
+                                    src="/servicos/ads/segmentacao.png"
+                                    alt="Segmentação estudada"
+                                    className="results-icon-img"
+                                    onError={(e) => {
+                                        e.currentTarget.style.display = 'none';
+                                    }}
+                                />
                             </div>
-                            <h4>Lançar</h4>
-                            <p>Testes iniciais com múltiplos criativos e audiências.</p>
+                            <h3>Segmentação estudada</h3>
+                            <p>Encontramos o público certo para maximizar cada euro investido.</p>
                         </div>
-                        <div className="ads-perf-step reveal delay-2">
-                            <div className="ads-ps-num">02</div>
-                            <div className="ads-ps-bar">
-                                <div className="ads-ps-fill" style={{ '--pf': '55%' }}></div>
+
+                        {/* Criativos fortes */}
+                        <div className="results-card reveal" style={{ animationDelay: '0.1s' }}>
+                            <div className="results-icon-wrapper">
+                                <img
+                                    src="/servicos/ads/criativos.png"
+                                    alt="Criativos fortes"
+                                    className="results-icon-img"
+                                    onError={(e) => {
+                                        e.currentTarget.style.display = 'none';
+                                    }}
+                                />
                             </div>
-                            <h4>Medir</h4>
-                            <p>Tracking profundo de cada interação e conversão.</p>
+                            <h3>Criativos fortes</h3>
+                            <p>Conteúdo pensado para captar atenção e gerar ação.</p>
                         </div>
-                        <div className="ads-perf-step reveal delay-3">
-                            <div className="ads-ps-num">03</div>
-                            <div className="ads-ps-bar">
-                                <div className="ads-ps-fill" style={{ '--pf': '75%' }}></div>
+
+                        {/* Landing Pages que convertem */}
+                        <div className="results-card reveal" style={{ animationDelay: '0.2s' }}>
+                            <div className="results-icon-wrapper">
+                                <img
+                                    src="/servicos/ads/landing-pages.png"
+                                    alt="Landing Pages que convertem"
+                                    className="results-icon-img"
+                                    onError={(e) => {
+                                        e.currentTarget.style.display = 'none';
+                                    }}
+                                />
                             </div>
-                            <h4>Otimizar</h4>
-                            <p>Matar o que não funciona, escalar o que converte.</p>
+                            <h3>Landing Pages que convertem</h3>
+                            <p>Páginas rápidas, claras e focadas na conversão.</p>
                         </div>
-                        <div className="ads-perf-step reveal delay-4">
-                            <div className="ads-ps-num">04</div>
-                            <div className="ads-ps-bar">
-                                <div className="ads-ps-fill accent" style={{ '--pf': '95%' }}></div>
+
+                        {/* Otimização contínua */}
+                        <div className="results-card reveal" style={{ animationDelay: '0.3s' }}>
+                            <div className="results-icon-wrapper">
+                                <img
+                                    src="/servicos/ads/otimizacao.png"
+                                    alt="Otimização contínua"
+                                    className="results-icon-img"
+                                    onError={(e) => {
+                                        e.currentTarget.style.display = 'none';
+                                    }}
+                                />
                             </div>
-                            <h4>Dominar</h4>
-                            <p>Escala agressiva com ROAS comprovado.</p>
+                            <h3>Otimização contínua</h3>
+                            <p>Analisamos, testamos e melhoramos constantemente.</p>
                         </div>
                     </div>
                 </div>
             </section>
 
-            {/* ===== EXPERTISE / STRATEGIC MANAGEMENT ===== */}
-            <section className="ads-expertise-section">
+            {/* ===== SIMULATOR: A GUERRA PELA ATENÇÃO (Os concorrentes...) ===== */}
+            <section className="ads-attention-section">
                 <div className="container">
-                    <div className="ads-expertise-content reveal">
-                        <div className="ads-expertise-text">
-                            <span className="ads-chip">Gestão Estratégica</span>
-                            <h2>Decisões Baseadas em <span className="gradient-word">Dados.</span><br />Nunca em Suposições.</h2>
-                            <p>A nossa equipa analisa, ajusta e otimiza campanhas diariamente.<br />Cada decisão é informada por dados reais — não intuição.</p>
+                    <div className="section-header-center reveal">
+                        <h2>A Guerra pela <span className="gradient-word">Atenção</span></h2>
+                        <p>Os anúncios pagos capturam os clientes no instante exato da decisão. Veja o que acontece com a visibilidade online da sua marca.</p>
+                    </div>
+
+                    <div className="browser-mockup reveal">
+                        <div className="browser-bar">
+                            <div className="browser-dots">
+                                <span className="browser-dot red"></span>
+                                <span className="browser-dot yellow"></span>
+                                <span className="browser-dot green"></span>
+                            </div>
+                            <div className="browser-search-input">
+                                {searchQuery}
+                                <span className="search-cursor"></span>
+                            </div>
                         </div>
-                        <div className="ads-expertise-visual">
-                            <div className="ads-dash-mock">
-                                <div className="ads-dm-topbar">
-                                    <span className="ads-dm-dot r"></span>
-                                    <span className="ads-dm-dot y"></span>
-                                    <span className="ads-dm-dot g"></span>
+
+                        <div className="browser-content">
+                            {/* Particle traffic flows */}
+                            <div className="particle-container">
+                                {!withAds ? (
+                                    <>
+                                        {/* Particles flowing only to competitors */}
+                                        <div className="flow-particle particle-to-competitor" style={{ animationDelay: '0s' }}></div>
+                                        <div className="flow-particle particle-to-competitor" style={{ animationDelay: '0.5s' }}></div>
+                                        <div className="flow-particle particle-to-competitor" style={{ animationDelay: '1s' }}></div>
+                                        <div className="flow-particle particle-to-competitor" style={{ animationDelay: '1.5s' }}></div>
+                                        <div className="flow-particle particle-to-competitor" style={{ animationDelay: '2s' }}></div>
+                                    </>
+                                ) : (
+                                    <>
+                                        {/* Particles flowing directly to your business */}
+                                        <div className="flow-particle particle-to-me" style={{ animationDelay: '0s' }}></div>
+                                        <div className="flow-particle particle-to-me" style={{ animationDelay: '0.4s' }}></div>
+                                        <div className="flow-particle particle-to-me" style={{ animationDelay: '0.8s' }}></div>
+                                        <div className="flow-particle particle-to-me" style={{ animationDelay: '1.2s' }}></div>
+                                        <div className="flow-particle particle-to-me" style={{ animationDelay: '1.6s' }}></div>
+                                        <div className="flow-particle particle-to-me" style={{ animationDelay: '2s' }}></div>
+                                    </>
+                                )}
+                            </div>
+
+                            <div className="sim-grid">
+                                {/* Left Side: Competitor State */}
+                                <div className={`sim-side ${!withAds ? 'active-winner' : 'active-loser'}`}>
+                                    <div className="sim-header">
+                                        <h3>Concorrente A</h3>
+                                        <span className="sim-status-pill green-pill">1º Lugar</span>
+                                    </div>
+                                    <div className="mock-search-results">
+                                        <div className="result-block ad-block competitor">
+                                            <span className="result-ad-tag">Patrocinado</span>
+                                            <h4 className="result-title">Sapatos Premium Outlet - 50% Desconto</h4>
+                                            <div className="result-url">https://www.concorrente-loja.pt</div>
+                                            <p className="result-desc">Compre os melhores sapatos desportivos online com entregas gratuitas hoje mesmo. Stock limitado.</p>
+                                        </div>
+                                    </div>
+                                    <div style={{ marginTop: 'auto', paddingTop: '1.5rem', fontSize: '0.8rem', opacity: 0.8 }}>
+                                        {!withAds ? (
+                                            <span style={{ color: 'var(--ads-alert)' }}>● A receber todo o tráfego de compradores.</span>
+                                        ) : (
+                                            <span>● Ultrapassado pelo seu anúncio.</span>
+                                        )}
+                                    </div>
                                 </div>
-                                <div className="ads-dm-body">
-                                    <div className="ads-dm-row">
-                                        <span className="ads-dm-label">Campaign Alpha</span>
-                                        <div className="ads-dm-bar"><div style={{ width: '88%' }}></div></div>
-                                        <span className="ads-dm-val">8.2x</span>
+
+                                {/* Right Side: Your Brand State */}
+                                <div className={`sim-side ${withAds ? 'active-winner' : ''}`}>
+                                    <div className="sim-header">
+                                        <h3>A Sua Marca</h3>
+                                        <span className={`sim-status-pill ${withAds ? 'green-pill' : 'red-pill'}`}>
+                                            {withAds ? 'Anúncio Ativo' : 'Orgânico (Pág. 3)'}
+                                        </span>
                                     </div>
-                                    <div className="ads-dm-row">
-                                        <span className="ads-dm-label">Campaign Beta</span>
-                                        <div className="ads-dm-bar"><div style={{ width: '65%' }}></div></div>
-                                        <span className="ads-dm-val">5.4x</span>
+                                    <div className="mock-search-results">
+                                        {withAds ? (
+                                            <div className="result-block highlight">
+                                                <span className="result-ad-tag">Patrocinado</span>
+                                                <h4 className="result-title">Calçado Desportivo Oficial - A Melhor Coleção</h4>
+                                                <div className="result-url">https://www.asuamarca.pt</div>
+                                                <p className="result-desc">Melhores modelos e ofertas exclusivas online. Compre agora a sua coleção favorita com a nossa marca.</p>
+                                            </div>
+                                        ) : (
+                                            <div style={{ opacity: 0.25 }}>
+                                                <div className="result-block">
+                                                    <h4 className="result-title">Sapatos Desportivos - Coleção Completa</h4>
+                                                    <div className="result-url">https://www.asuamarca.pt</div>
+                                                    <p className="result-desc">Descubra calçado de desporto no nosso catálogo e-commerce...</p>
+                                                </div>
+                                            </div>
+                                        )}
                                     </div>
-                                    <div className="ads-dm-row">
-                                        <span className="ads-dm-label">Campaign Gamma</span>
-                                        <div className="ads-dm-bar"><div style={{ width: '92%' }}></div></div>
-                                        <span className="ads-dm-val">9.1x</span>
-                                    </div>
-                                    <div className="ads-dm-row paused">
-                                        <span className="ads-dm-label">Campaign Delta</span>
-                                        <div className="ads-dm-bar"><div style={{ width: '15%' }}></div></div>
-                                        <span className="ads-dm-val off">Paused</span>
+                                    <div style={{ marginTop: 'auto', paddingTop: '1.5rem', fontSize: '0.8rem', display: 'flex', justifyContent: 'space-between', alignItems: 'center' }}>
+                                        {withAds ? (
+                                            <span style={{ color: 'var(--ads-success)', fontWeight: 'bold' }}>
+                                                ● {clickCount} Cliques Convertidos
+                                            </span>
+                                        ) : (
+                                            <span style={{ color: 'var(--ads-alert)' }}>● Invisível no momento de pesquisa.</span>
+                                        )}
                                     </div>
                                 </div>
                             </div>
+
+                            <span className="traffic-source">Pesquisa de Utilizadores</span>
+                        </div>
+                    </div>
+
+                    <div className="simulator-controls reveal">
+                        <button
+                            className={`sim-switch-btn ${withAds ? 'active' : ''}`}
+                            onClick={() => setWithAds(!withAds)}
+                        >
+                            {withAds ? 'Desativar Ads (Perder Clientes)' : 'Reverter o Cenário e Dominar'}
+                        </button>
+                        <div style={{ marginTop: '2rem', maxWidth: '650px', margin: '2rem auto 0 auto' }}>
+                            <p style={{ fontStyle: 'italic', fontSize: '1.1rem', color: '#fff', lineHeight: '1.4' }}>
+                                "Os seus concorrentes já estão a investir. E os seus clientes estão a vê-los primeiro."
+                            </p>
                         </div>
                     </div>
                 </div>
             </section>
 
-            {/* ===== MOMENTUM CTA ===== */}
-            <section className="ads-momentum-cta">
+            {/* ===== CTA: MOMENTUM (Iniciar Campanha) ===== */}
+            <section className="ads-cta-section">
+                <div className="cta-glow-bg"></div>
                 <div className="container reveal">
-                    <div className="ads-momentum-content">
-                        <div className="ads-momentum-arrows">
-                            <span className="ads-ma">›</span>
-                            <span className="ads-ma">›</span>
-                            <span className="ads-ma">›</span>
+                    <div className="cta-container-glass">
+                        <div className="cta-arrows-animation">
+                            <span className="cta-arrow">›</span>
+                            <span className="cta-arrow">›</span>
+                            <span className="cta-arrow">›</span>
                         </div>
-                        <h2>Os seus concorrentes já estão a <span className="gradient-word">investir.</span><br /><span className="ads-gradient-text">E os seus clientes estão a vê-los primeiro.</span></h2>
-                        <Link href="/contactos" className="cy-btn">Iniciar Campanha</Link>
+                        <h2>Pronto para <span>Escalar o Seu Negócio?</span></h2>
+                        <p style={{ color: 'var(--ads-text-muted)', marginBottom: '2rem', maxWidth: '600px', margin: '0 auto 2.5rem' }}>
+                            Desenvolvemos campanhas de tráfego construídas para gerar resultados, reduzir desperdício e maximizar o retorno do investimento.
+                        </p>
+                        <Link href="/contactos" className="cta-btn-premium">
+                            Quero Escalar o Meu Negócio
+                        </Link>
                     </div>
                 </div>
             </section>
@@ -315,4 +594,4 @@ const Ads = () => {
     );
 };
 
-export default Ads;
+export default AdsPage;

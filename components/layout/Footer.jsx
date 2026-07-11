@@ -28,6 +28,7 @@ const Footer = () => {
                             <li><Link href="/redes-sociais">Marketing Social</Link></li>
                             <li><Link href="/ecommerce">E-commerce</Link></li>
                             <li><Link href="/ads">Tráfego Pago</Link></li>
+                            <li><Link href="/automacao">AI & Automação</Link></li>
                             <li><Link href="/branding">Branding</Link></li>
                             <li><Link href="/formacao">Formação</Link></li>
                         </ul>
@@ -56,7 +57,7 @@ const Footer = () => {
                 </div>
 
                 <div className="footer-bottom">
-                    <p>&copy; 2024 E-Nimble. Todos os direitos reservados.</p>
+                    <p>&copy; 2026 E-Nimble. Todos os direitos reservados.</p>
                     <div className="legal-links">
                         <a href="#">Privacidade</a>
                         <a href="#">Termos</a>

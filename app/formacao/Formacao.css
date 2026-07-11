@@ -17,9 +17,15 @@ body.edu-body .header.header-scrolled {
     box-shadow: 0 4px 20px rgba(0, 0, 0, 0.05);
 }
 
-body.edu-body .logo-text,
-body.edu-body .main-nav a {
+body.edu-body .header.header-scrolled .logo-text,
+body.edu-body .header.header-scrolled .main-nav a,
+body.edu-body .header .dropdown-menu a {
     color: var(--edu-text) !important;
+}
+
+body.edu-body .header:not(.header-scrolled) .logo-text,
+body.edu-body .header:not(.header-scrolled) .main-nav > ul > li > a {
+    color: #ffffff !important;
 }
 
 body.edu-body .main-nav a:hover {
@@ -30,8 +36,19 @@ body.edu-body .main-nav a:hover {
 /* HERO */
 .edu-hero {
     position: relative;
-    padding: 200px 0 80px;
-    border-bottom: 1px solid rgba(0, 0, 0, 0.1);
+    padding: 240px 0 140px;
+    background-image: linear-gradient(135deg, rgba(0, 0, 0, 0.85) 0%, rgba(58, 0, 255, 0.4) 100%), url('/servicos/formacao/edu-hero-bg-photo.png');
+    background-size: cover;
+    background-position: center;
+    background-repeat: no-repeat;
+    background-attachment: scroll;
+    color: white;
+    border-bottom: none;
+}
+
+.edu-hero-container {
+    position: relative;
+    z-index: 5;
 }
 
 .hero-label {
@@ -52,21 +69,34 @@ body.edu-body .main-nav a:hover {
 
 .edu-title {
     font-family: 'Syne', sans-serif;
-    font-size: clamp(3rem, 7vw, 6rem);
+    font-size: clamp(3rem, 6.5vw, 5.8rem);
     line-height: 0.95;
     font-weight: 700;
     letter-spacing: -2px;
     margin-bottom: 2rem;
     margin-top: 1rem;
+    color: white;
+    text-shadow: 0 4px 15px rgba(0, 0, 0, 0.4);
+}
+
+.highlight-word {
+    background: var(--gradient-edu);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
+    display: inline-block;
 }
 
 .edu-intro {
     font-family: 'DM Serif Display', serif;
-    font-size: 2rem;
-    line-height: 1.3;
+    font-size: clamp(1.4rem, 2.5vw, 2.1rem);
+    line-height: 1.4;
     max-width: 800px;
-    color: #444;
+    color: rgba(255, 255, 255, 0.95);
     font-style: italic;
+    border-left: 4px solid var(--edu-accent);
+    padding-left: 1.5rem;
+    text-shadow: 0 2px 10px rgba(0, 0, 0, 0.3);
 }
 
 
@@ -206,7 +236,7 @@ details[open] .arrow-icon {
     text-align: center;
     position: absolute;
     top: 50px;
-    right: 10%;
+    right: 0;
     transform: rotate(15deg);
     box-shadow: 0 10px 30px rgba(58, 0, 255, 0.4);
     animation: floatBadge 5s ease-in-out infinite;
@@ -274,213 +304,239 @@ details[open] .arrow-icon {
     font-size: clamp(1.8rem, 4vw, 3rem);
     line-height: 1.1;
     font-weight: 600;
+    margin-bottom: 1rem;
 }
 
-.edu-value-text p {
+.edu-value-lead {
+    color: #555;
+    font-size: 1.05rem;
+    line-height: 1.6;
+    margin-bottom: 2rem;
+}
+
+.edu-features {
+    display: flex;
+    flex-direction: column;
+    gap: 1.25rem;
+}
+
+.edu-feature-item {
+    display: flex;
+    align-items: flex-start;
+    gap: 1rem;
+    text-align: left;
+}
+
+.edu-feature-icon {
+    width: 42px;
+    height: 42px;
+    min-width: 42px;
+    border-radius: 12px;
+    background: rgba(58, 0, 255, 0.08);
+    color: var(--edu-accent);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    transition: all 0.3s ease;
+}
+
+.edu-feature-item:hover .edu-feature-icon {
+    background: var(--gradient-edu);
+    color: white;
+    transform: translateY(-2px);
+}
+
+.edu-feature-item strong {
+    display: block;
+    font-size: 0.98rem;
+    color: #1a1a1a;
+    font-weight: 700;
+    margin-bottom: 0.2rem;
+}
+
+.edu-feature-item p {
+    font-size: 0.88rem;
     color: #666;
-    font-size: 1rem;
-    line-height: 1.7;
+    margin: 0 !important;
+    line-height: 1.4;
 }
 
 .edu-value-visual {
-    background: white;
+    position: relative;
+    overflow: hidden;
     border-radius: 20px;
-    padding: 2.5rem;
-    border: 1px solid rgba(0, 0, 0, 0.04);
-    box-shadow: 0 8px 30px rgba(0, 0, 0, 0.03);
+    box-shadow: 0 12px 40px rgba(0, 0, 0, 0.05);
 }
 
-/* Growth Evolution */
-.edu-growth-visual {
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    gap: 0;
-    margin-bottom: 1rem;
+.edu-value-team-img {
+    width: 100%;
+    height: auto;
+    min-height: 380px;
+    max-height: 480px;
+    object-fit: cover;
+    display: block;
+    transition: transform 0.6s cubic-bezier(0.16, 1, 0.3, 1);
 }
 
-.edu-gv-item {
-    display: flex;
-    align-items: center;
-}
-
-.edu-gv-icon {
-    width: 56px;
-    height: 56px;
-    background: rgba(58, 0, 255, 0.04);
-    border: 1px solid rgba(58, 0, 255, 0.08);
-    border-radius: 50%;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    font-size: 1.4rem;
-    transition: all 0.3s ease;
-    flex-shrink: 0;
-}
-
-.edu-gv-item:hover .edu-gv-icon {
-    transform: scale(1.15);
-    box-shadow: 0 4px 15px rgba(58, 0, 255, 0.1);
-}
-
-.edu-gv-final .edu-gv-icon {
-    background: var(--edu-accent);
-    border-color: transparent;
-    box-shadow: 0 4px 20px rgba(58, 0, 255, 0.25);
-}
-
-.edu-gv-line {
-    width: 40px;
-    height: 2px;
-    background: rgba(58, 0, 255, 0.1);
-    flex-shrink: 0;
-}
-
-.edu-gv-labels {
-    display: flex;
-    justify-content: space-between;
-    padding: 0 8px;
-}
-
-.edu-gv-labels span {
-    font-size: 0.7rem;
-    color: #aaa;
-    text-transform: uppercase;
-    letter-spacing: 1px;
-    font-weight: 600;
-    text-align: center;
-    width: 25%;
+.edu-value-visual:hover .edu-value-team-img {
+    transform: scale(1.05);
 }
 
 
-/* --- TEAM IMPACT --- */
-.edu-impact-section {
-    background: linear-gradient(180deg, #ffffff 0%, #f9f0f5 100%);
+/* --- HOW IT WORKS (COMO FUNCIONA) --- */
+.edu-how-section {
+    background: linear-gradient(180deg, #ffffff 0%, #f7f9fc 100%);
     padding: 7rem 0;
+    position: relative;
 }
 
-.edu-impact-section .container {
+.edu-how-section .container {
     max-width: 1100px;
     margin: 0 auto;
     padding: 0 2rem;
+    position: relative;
 }
 
-.edu-impact-header {
+.edu-how-header {
     text-align: center;
-    margin-bottom: 4rem;
+    margin-bottom: 4.5rem;
 }
 
-.edu-impact-header h2 {
+.edu-how-header h2 {
     font-family: 'Syne', sans-serif;
-    font-size: clamp(1.8rem, 4vw, 2.5rem);
-    font-weight: 600;
+    font-size: clamp(2rem, 4vw, 2.8rem);
+    font-weight: 700;
     line-height: 1.2;
 }
 
-.edu-impact-grid {
+.edu-how-lead {
+    color: #555;
+    font-size: 1.1rem;
+    max-width: 650px;
+    margin: 1rem auto 0;
+}
+
+.edu-how-grid {
     display: grid;
     grid-template-columns: repeat(4, 1fr);
-    gap: 1.5rem;
-}
-
-.edu-impact-card {
-    background: #ffffff;
-    border-radius: 16px;
-    padding: 2.5rem 1.5rem;
-    border: 1px solid rgba(0, 0, 0, 0.04);
-    transition: all 0.4s cubic-bezier(0.23, 1, 0.32, 1);
+    gap: 2rem;
     position: relative;
-    overflow: hidden;
-    text-align: center;
-    box-shadow: 0 4px 20px rgba(0, 0, 0, 0.03);
 }
 
-.edu-impact-card::before {
+.edu-how-grid::before {
     content: '';
     position: absolute;
-    top: 0;
-    left: 0;
-    width: 0;
-    height: 4px;
-    background: var(--gradient-edu);
-    transition: width 0.4s ease;
+    top: 64px;
+    left: 10%;
+    right: 10%;
+    height: 2px;
+    background-image: linear-gradient(to right, rgba(58, 0, 255, 0.2) 50%, rgba(255, 255, 255, 0) 0%);
+    background-position: bottom;
+    background-size: 10px 2px;
+    background-repeat: repeat-x;
+    z-index: 1;
 }
 
-.edu-impact-card:hover::before {
-    width: 100%;
-}
-
-.edu-impact-card:hover {
-    transform: translateY(-5px);
-    box-shadow: 0 12px 30px rgba(0, 0, 0, 0.05);
-    background: white;
-}
-
-.edu-ic-bar {
-    width: 100%;
-    height: 5px;
-    background: rgba(58, 0, 255, 0.04);
-    border-radius: 3px;
-    overflow: hidden;
-    margin-bottom: 1.5rem;
-}
-
-.edu-ic-fill {
+.edu-how-card {
+    border: 1.5px solid transparent;
+    background: linear-gradient(#ffffff, #ffffff) padding-box, var(--gradient-edu) border-box;
+    border-radius: 20px;
+    padding: 1.8rem 1.8rem 2.2rem;
+    box-shadow: 0 4px 24px rgba(0, 0, 0, 0.02);
+    transition: all 0.4s cubic-bezier(0.16, 1, 0.3, 1);
+    position: relative;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    text-align: center;
+    z-index: 2;
     height: 100%;
-    width: var(--icf, 50%);
-    background: var(--gradient-edu);
-    border-radius: 3px;
-    animation: icFillGrow 1.5s ease-out forwards;
-    transform-origin: left;
 }
 
-@keyframes icFillGrow {
-    from {
-        transform: scaleX(0);
-    }
-
-    to {
-        transform: scaleX(1);
-    }
+.edu-how-card:hover {
+    transform: translateY(-8px);
+    box-shadow: 0 16px 36px rgba(58, 0, 255, 0.12);
 }
 
-.edu-impact-card h3 {
-    font-family: 'Syne', sans-serif;
-    font-size: 1rem;
-    font-weight: 600;
-    margin-bottom: 0.5rem;
+.edu-how-card-badge {
+    position: absolute;
+    top: 1.2rem;
+    left: 50%;
+    transform: translateX(-50%);
+    font-size: 0.65rem;
+    font-weight: 800;
     text-transform: uppercase;
+    letter-spacing: 2px;
+    color: var(--edu-accent);
+    background: rgba(58, 0, 255, 0.06);
+    padding: 4px 12px;
+    border-radius: 20px;
+    transition: all 0.3s ease;
 }
 
-.edu-impact-card p {
-    font-size: 0.82rem;
-    color: #888;
-    line-height: 1.5;
-    margin-bottom: 1rem;
+.edu-how-card:hover .edu-how-card-badge {
+    background: var(--gradient-edu);
+    color: white;
 }
 
-.edu-ic-stat {
-    padding-top: 1rem;
-    border-top: 1px solid rgba(0, 0, 0, 0.04);
+.edu-how-icon-wrapper {
+    width: 70px;
+    height: 70px;
+    border-radius: 50%;
+    background: rgba(58, 0, 255, 0.04);
+    border: 1px solid rgba(58, 0, 255, 0.08);
+    color: var(--edu-accent);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin-bottom: 1.5rem;
+    margin-top: 0;
+    transition: all 0.4s cubic-bezier(0.16, 1, 0.3, 1);
+    position: relative;
+    z-index: 2;
 }
 
-.edu-ic-stat strong {
-    display: block;
+.edu-how-card:hover .edu-how-icon-wrapper {
+    background: var(--gradient-edu);
+    color: white;
+    transform: scale(1.1) rotate(5deg);
+    box-shadow: 0 8px 24px rgba(58, 0, 255, 0.2);
+}
+
+.edu-how-icon {
+    width: 28px;
+    height: 28px;
+    transition: transform 0.4s ease;
+}
+
+.edu-how-card h3 {
     font-family: 'Syne', sans-serif;
-    font-size: 1.5rem;
+    font-size: 1.15rem;
     font-weight: 700;
-    background: var(--gradient-edu);
-    -webkit-background-clip: text;
-    -webkit-text-fill-color: transparent;
-    background-clip: text;
-    margin-bottom: 0.15rem;
+    margin-bottom: 0.4rem;
+    line-height: 1.3;
+    color: #1a1a1a;
+    min-height: 3rem;
+    display: flex;
+    align-items: center;
+    justify-content: center;
 }
 
-.edu-ic-stat span {
-    font-size: 0.68rem;
-    color: #aaa;
+.edu-how-subtitle {
+    font-size: 0.72rem;
     text-transform: uppercase;
-    letter-spacing: 1px;
+    letter-spacing: 1.5px;
+    color: #888;
+    font-weight: 700;
+    margin-bottom: 1.2rem;
+    display: inline-block;
+}
+
+.edu-how-card p {
+    font-size: 0.88rem;
+    color: #666;
+    line-height: 1.6;
+    margin: 0;
 }
 
 
@@ -588,6 +644,267 @@ details[open] .arrow-icon {
 }
 
 
+/* --- FINANCIAMENTO SECTION --- */
+/* --- FINANCIAMENTO SECTION --- */
+.edu-funding-section {
+    background: #f7f9fc;
+    color: #1a1a1a;
+    padding: 7rem 0;
+    position: relative;
+    overflow: hidden;
+}
+
+.edu-funding-section::before {
+    content: '';
+    position: absolute;
+    top: -50%;
+    left: -20%;
+    width: 600px;
+    height: 600px;
+    background: radial-gradient(circle, rgba(58, 0, 255, 0.06) 0%, rgba(255,255,255,0) 70%);
+    border-radius: 50%;
+    pointer-events: none;
+}
+
+.edu-funding-section::after {
+    content: '';
+    position: absolute;
+    bottom: -50%;
+    right: -20%;
+    width: 600px;
+    height: 600px;
+    background: radial-gradient(circle, rgba(191, 0, 64, 0.04) 0%, rgba(255,255,255,0) 70%);
+    border-radius: 50%;
+    pointer-events: none;
+}
+
+.edu-funding-section .container {
+    max-width: 1100px;
+    margin: 0 auto;
+    padding: 0 2rem;
+    position: relative;
+    z-index: 2;
+}
+
+.edu-funding-header {
+    text-align: center;
+    max-width: 750px;
+    margin: 0 auto 4rem;
+}
+
+.edu-funding-header .edu-chip {
+    background: rgba(58, 0, 255, 0.04);
+    color: var(--edu-accent);
+    border-color: rgba(58, 0, 255, 0.1);
+}
+
+.edu-funding-header h2 {
+    font-family: 'Syne', sans-serif;
+    font-size: clamp(2rem, 4.5vw, 3.2rem);
+    font-weight: 700;
+    line-height: 1.1;
+    margin-top: 0.5rem;
+    margin-bottom: 1rem;
+    color: #1a1a1a;
+}
+
+.edu-funding-lead {
+    color: #555;
+    font-size: 1.05rem;
+    line-height: 1.6;
+}
+
+/* Highlights Grid */
+.edu-funding-highlights {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 1.5rem;
+    margin-bottom: 4rem;
+}
+
+.edu-fh-card {
+    background: #ffffff;
+    border: 1px solid rgba(0, 0, 0, 0.04);
+    border-radius: 16px;
+    padding: 2rem 1.5rem;
+    position: relative;
+    display: flex;
+    flex-direction: column;
+    gap: 1.2rem;
+    transition: all 0.3s cubic-bezier(0.23, 1, 0.32, 1);
+    box-shadow: 0 4px 20px rgba(0, 0, 0, 0.02);
+}
+
+.edu-fh-card:hover {
+    transform: translateY(-5px);
+    border-color: rgba(58, 0, 255, 0.15);
+    box-shadow: 0 12px 30px rgba(58, 0, 255, 0.06);
+    background: #ffffff;
+}
+
+.edu-fh-card.highlight-card {
+    border: 1.5px solid transparent;
+    background: linear-gradient(#ffffff, #ffffff) padding-box, var(--gradient-edu) border-box;
+}
+
+.edu-fh-badge {
+    position: absolute;
+    top: 1rem;
+    right: 1rem;
+    background: var(--gradient-edu);
+    color: white;
+    font-size: 0.68rem;
+    font-weight: 700;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+    padding: 3px 10px;
+    border-radius: 20px;
+}
+
+.edu-fh-icon {
+    width: 56px;
+    height: 56px;
+    border-radius: 12px;
+    background: rgba(58, 0, 255, 0.04);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.edu-funding-icon-img {
+    width: 32px;
+    height: 32px;
+    object-fit: contain;
+}
+
+.edu-fh-card h4 {
+    font-family: 'Syne', sans-serif;
+    font-size: 1.15rem;
+    font-weight: 700;
+    color: #1a1a1a;
+    margin-bottom: 0.4rem;
+}
+
+.edu-fh-card p {
+    font-size: 0.88rem;
+    color: #666;
+    line-height: 1.5;
+    margin: 0;
+}
+
+/* Process Flow (Empresa -> Candidatura -> Formação -> Certificado) */
+.edu-funding-flow {
+    background: rgba(255, 255, 255, 0.6);
+    border: 1px solid rgba(0, 0, 0, 0.04);
+    border-radius: 24px;
+    padding: 3rem 2rem;
+    backdrop-filter: blur(10px);
+}
+
+.edu-flow-title {
+    text-align: center;
+    margin-bottom: 2.5rem;
+}
+
+.edu-flow-title h3 {
+    font-family: 'Syne', sans-serif;
+    font-size: 1.1rem;
+    font-weight: 700;
+    color: #1a1a1a;
+    text-transform: uppercase;
+    letter-spacing: 2px;
+}
+
+.edu-flow-steps {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 0.8rem;
+}
+
+.edu-flow-step {
+    flex: 1;
+    background: #ffffff;
+    border: 1px solid rgba(0, 0, 0, 0.04);
+    border-radius: 16px;
+    padding: 1.8rem 1.2rem;
+    text-align: center;
+    position: relative;
+    transition: all 0.3s ease;
+    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.01);
+}
+
+.edu-flow-step:hover {
+    background: #ffffff;
+    transform: translateY(-4px);
+    border-color: var(--edu-accent);
+    box-shadow: 0 8px 24px rgba(58, 0, 255, 0.06);
+}
+
+.edu-flow-step.highlight-step {
+    border: 1.5px solid transparent;
+    background: linear-gradient(#ffffff, #ffffff) padding-box, var(--gradient-edu) border-box;
+}
+
+.edu-step-number {
+    position: absolute;
+    top: 0.8rem;
+    right: 1rem;
+    font-family: 'Syne', sans-serif;
+    font-size: 0.75rem;
+    font-weight: 800;
+    color: rgba(0, 0, 0, 0.15);
+}
+
+.edu-step-icon {
+    width: 56px;
+    height: 56px;
+    border-radius: 50%;
+    background: rgba(58, 0, 255, 0.04);
+    color: var(--edu-accent);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin: 0 auto 1.2rem;
+    transition: all 0.3s ease;
+}
+
+.edu-flow-step-img {
+    width: 30px;
+    height: 30px;
+    object-fit: contain;
+}
+
+.edu-flow-step:hover .edu-step-icon {
+    background: var(--gradient-edu);
+    color: white;
+    transform: scale(1.1);
+}
+
+.edu-step-content h4 {
+    font-family: 'Syne', sans-serif;
+    font-size: 1.05rem;
+    font-weight: 700;
+    color: #1a1a1a;
+    margin-bottom: 0.4rem;
+}
+
+.edu-step-content p {
+    font-size: 0.8rem;
+    color: #666;
+    line-height: 1.4;
+    margin: 0;
+}
+
+.edu-flow-arrow {
+    color: rgba(0, 0, 0, 0.15);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-shrink: 0;
+}
+
+
 /* --- CLOSING CTA --- */
 .edu-closing-section {
     padding: 8rem 0;
@@ -649,6 +966,28 @@ details[open] .arrow-icon {
    RESPONSIVE
    ============================================ */
 @media (max-width: 900px) {
+    .edu-hero {
+        padding: 200px 0 100px;
+        text-align: center;
+    }
+
+    .edu-intro {
+        border-left: none;
+        border-bottom: 2px solid var(--edu-accent);
+        padding-left: 0;
+        padding-bottom: 1.5rem;
+        margin-left: auto;
+        margin-right: auto;
+    }
+
+    .cert-badge {
+        position: relative;
+        top: auto;
+        right: auto;
+        margin: 2.5rem auto 0;
+        transform: rotate(5deg);
+    }
+
     .curriculum-section {
         grid-template-columns: 1fr;
     }
@@ -672,8 +1011,16 @@ details[open] .arrow-icon {
         gap: 2rem;
     }
 
-    .edu-impact-grid {
+    .edu-how-grid {
         grid-template-columns: repeat(2, 1fr);
+        gap: 1.5rem;
+    }
+    .edu-how-grid::before {
+        display: none;
+    }
+    .edu-how-card h3 {
+        min-height: auto;
+        margin-bottom: 0.5rem;
     }
 
     .edu-cred-grid {
@@ -690,7 +1037,7 @@ details[open] .arrow-icon {
 }
 
 @media (max-width: 600px) {
-    .edu-impact-grid {
+    .edu-how-grid {
         grid-template-columns: 1fr;
     }
 
@@ -698,6 +1045,7 @@ details[open] .arrow-icon {
         grid-template-columns: 1fr;
     }
 }
+
 .edu-cert-img {
     width: 40px;
     height: 40px;
@@ -715,4 +1063,13 @@ details[open] .arrow-icon {
     width: 35px;
     height: 35px;
     object-fit: contain;
+}
+
+/* Force gradient words to display properly */
+.gradient-word {
+    background: var(--gradient-edu) !important;
+    -webkit-background-clip: text !important;
+    -webkit-text-fill-color: transparent !important;
+    background-clip: text !important;
+    display: inline-block !important;
 }

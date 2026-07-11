@@ -12,6 +12,13 @@
     --shop-cream: #f5f3f0;
 }
 
+.gradient-word {
+    background: var(--gradient-shop);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
+}
+
 body.shop-body {
     background-color: var(--shop-bg);
     color: var(--shop-text);
@@ -20,6 +27,7 @@ body.shop-body {
 
 body.shop-body .header.header-scrolled {
     background-color: rgba(255, 255, 255, 0.95) !important;
+    box-shadow: 0 4px 20px rgba(0, 0, 0, 0.05) !important;
 }
 
 body.shop-body .logo-text,
@@ -27,9 +35,28 @@ body.shop-body .main-nav a {
     color: #1a1a1a !important;
 }
 
-body.shop-body .header.header-scrolled .logo-text,
-body.shop-body .header.header-scrolled .main-nav a {
+/* Nav Button styling for Ecommerce Page */
+body.shop-body .btn-nav {
+    border-color: rgba(26, 26, 26, 0.3) !important;
+    background: rgba(26, 26, 26, 0.05) !important;
+    color: #1a1a1a !important;
+}
+
+body.shop-body .btn-nav:hover {
+    background: #1a1a1a !important;
     color: white !important;
+    border-color: #1a1a1a !important;
+}
+
+/* Hamburger menu styling for Ecommerce Page */
+body.shop-body .hamburger,
+body.shop-body .hamburger::before,
+body.shop-body .hamburger::after {
+    background: #1a1a1a !important;
+}
+
+body.shop-body .nav-open .hamburger {
+    background: transparent !important;
 }
 
 
@@ -275,6 +302,7 @@ body.shop-body .header.header-scrolled .main-nav a {
 .smart-btn span {
     position: relative;
     z-index: 10;
+    color: white !important;
 }
 
 .smart-btn::after {
@@ -423,6 +451,197 @@ body.shop-body .header.header-scrolled .main-nav a {
     color: #aaa;
     text-transform: uppercase;
     letter-spacing: 2px;
+}
+
+
+/* --- PORTFOLIO / CASE STUDY --- */
+.ec-portfolio-section {
+    background: #ffffff;
+    padding: 7rem 0;
+}
+
+.ec-portfolio-section .container {
+    max-width: 1100px;
+    margin: 0 auto;
+    padding: 0 2rem;
+}
+
+.ec-portfolio-header {
+    text-align: center;
+    margin-bottom: 4rem;
+}
+
+.ec-portfolio-header h2 {
+    font-family: 'Syne', sans-serif;
+    font-size: clamp(2rem, 4vw, 2.5rem);
+    font-weight: 700;
+    line-height: 1.1;
+    margin-bottom: 1rem;
+}
+
+.ec-portfolio-header p {
+    color: var(--shop-text-muted);
+    font-size: 1.1rem;
+    max-width: 600px;
+    margin: 0 auto;
+}
+
+.ec-portfolio-card {
+    display: grid;
+    grid-template-columns: 1.1fr 0.9fr;
+    gap: 4rem;
+    align-items: center;
+    background: var(--shop-warm);
+    border-radius: 24px;
+    padding: 3rem;
+    border: 1px solid rgba(0, 0, 0, 0.03);
+    box-shadow: 0 10px 40px rgba(0, 0, 0, 0.02);
+}
+
+.ec-portfolio-visual {
+    width: 100%;
+}
+
+.ec-mockup-browser {
+    background: #ffffff;
+    border-radius: 16px;
+    border: 1px solid rgba(0, 0, 0, 0.06);
+    box-shadow: 0 15px 45px rgba(0, 0, 0, 0.04);
+    overflow: hidden;
+    width: 100%;
+}
+
+.ec-mockup-header {
+    background: #fbfbfc;
+    padding: 12px 16px;
+    border-bottom: 1px solid rgba(0, 0, 0, 0.04);
+    display: flex;
+    align-items: center;
+    gap: 8px;
+}
+
+.ec-mockup-header .dot {
+    width: 10px;
+    height: 10px;
+    border-radius: 50%;
+    display: inline-block;
+}
+
+.ec-mockup-header .red { background: #ff5f56; }
+.ec-mockup-header .yellow { background: #ffbd2e; }
+.ec-mockup-header .green { background: #27c93f; }
+
+.ec-mockup-url {
+    background: #f1f1f4;
+    font-size: 0.72rem;
+    color: var(--shop-text-muted);
+    padding: 4px 20px;
+    border-radius: 20px;
+    margin-left: 20px;
+    font-family: 'Inter', sans-serif;
+    letter-spacing: 0.3px;
+    flex-grow: 1;
+    text-align: center;
+    max-width: 300px;
+}
+
+.ec-mockup-body {
+    padding: 1rem;
+    background: #ffffff;
+}
+
+.ec-portfolio-info {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+}
+
+.ec-portfolio-title {
+    font-family: 'Syne', sans-serif;
+    font-size: 1.8rem;
+    font-weight: 700;
+    line-height: 1.2;
+    margin-bottom: 0.8rem;
+    color: var(--shop-text);
+}
+
+.ec-portfolio-desc {
+    color: var(--shop-text-muted);
+    font-size: 1rem;
+    line-height: 1.6;
+    margin-bottom: 1.8rem;
+}
+
+.ec-portfolio-metrics {
+    display: flex;
+    gap: 2.5rem;
+    margin-bottom: 2rem;
+    border-bottom: 1px solid rgba(0, 0, 0, 0.05);
+    padding-bottom: 1.5rem;
+}
+
+.ec-metric {
+    display: flex;
+    flex-direction: column;
+}
+
+.ec-metric-num {
+    font-family: 'Syne', sans-serif;
+    font-size: 2.2rem;
+    font-weight: 700;
+    background: var(--gradient-shop);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
+    line-height: 1;
+    margin-bottom: 0.4rem;
+}
+
+.ec-metric-label {
+    font-size: 0.78rem;
+    color: var(--shop-text-muted);
+    font-weight: 500;
+}
+
+.ec-portfolio-features {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+    display: flex;
+    flex-direction: column;
+    gap: 0.85rem;
+}
+
+.ec-portfolio-features li {
+    display: flex;
+    align-items: flex-start;
+    gap: 0.8rem;
+    font-size: 0.88rem;
+    color: var(--shop-text);
+    line-height: 1.4;
+}
+
+.ec-feat-icon {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 20px;
+    height: 20px;
+    background: rgba(58, 0, 255, 0.08);
+    color: var(--shop-accent);
+    border-radius: 50%;
+    font-size: 0.65rem;
+    font-weight: bold;
+    margin-top: 2px;
+    flex-shrink: 0;
+}
+
+@media (max-width: 991px) {
+    .ec-portfolio-card {
+        grid-template-columns: 1fr;
+        gap: 3rem;
+        padding: 2rem;
+    }
 }
 
 
