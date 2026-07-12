@@ -7,10 +7,10 @@ import useScrollReveal from '@/hooks/useScrollReveal';
 import './Ads.css';
 
 const platforms = [
-    { id: 'meta', name: 'Meta Ads', path: '/servicos/ads/meta.png' },
-    { id: 'google', name: 'Google Ads', path: '/servicos/ads/google.png' },
-    { id: 'linkedin', name: 'LinkedIn Ads', path: '/servicos/ads/linkedin.png' },
-    { id: 'tiktok', name: 'TikTok Ads', path: '/servicos/ads/tiktok.png' }
+    { id: 'meta', name: 'Meta', path: '/servicos/ads/meta.png' },
+    { id: 'google', name: 'Google', path: '/servicos/ads/google.png' },
+    { id: 'linkedin', name: 'LinkedIn', path: '/servicos/ads/linkedin.png' },
+    { id: 'tiktok', name: 'TikTok', path: '/servicos/ads/tiktok.png' }
 ];
 
 const AdsPage = () => {
@@ -351,7 +351,6 @@ const AdsPage = () => {
                                         e.currentTarget.style.display = 'none';
                                     }}
                                 />
-                                <span className="platform-fallback-icon">{platform.name[0]}</span>
                             </div>
                             <span className="platform-name">{platform.name}</span>
                         </div>

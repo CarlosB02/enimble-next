@@ -263,8 +263,7 @@ const AutomacaoPage = () => {
                     <div className="auto-compare-grid reveal">
                         <div className={`auto-compare-card manual-card ${compareMode === 'manual' ? 'highlight-side' : ''}`}>
                             <div className="auto-compare-header">
-                                <span className="auto-compare-badge">Operação Tradicional</span>
-                                <h3 style={{ margin: 0, fontSize: '1.25rem' }}>Trabalho Manual</h3>
+                                <span className="auto-compare-badge">Operação Manual</span>
                             </div>
                             <ul className="auto-compare-list">
                                 <li className="auto-compare-item">
@@ -289,7 +288,6 @@ const AutomacaoPage = () => {
                         <div className={`auto-compare-card auto-card ${compareMode === 'auto' ? 'highlight-side' : ''}`}>
                             <div className="auto-compare-header">
                                 <span className="auto-compare-badge">Operação Inteligente</span>
-                                <h3 style={{ margin: 0, fontSize: '1.25rem' }}>Fluxos Inteligentes</h3>
                             </div>
                             <ul className="auto-compare-list">
                                 <li className="auto-compare-item">
@@ -321,11 +319,11 @@ const AutomacaoPage = () => {
                 <div className="container">
                     <div className="text-center reveal">
                         <h2 className="auto-section-title">
-                            Ecossistemas de Automação & IA <br />
-                            <span className="auto-gradient-text">Construídos para Resultados Medíveis</span>
+                            Automatize as Áreas<br />
+                            <span className="auto-gradient-text">Que Mais Consomem Tempo</span>
                         </h2>
                         <p className="auto-section-desc">
-                            Integrámos ferramentas, dados e inteligência artificial para que cada departamento do seu negócio funcione como uma engrenagem perfeita.
+                            Implementamos automações e IA onde geram mais impacto no dia a dia da sua empresa.
                         </p>
                     </div>
 
@@ -333,18 +331,26 @@ const AutomacaoPage = () => {
 
                         {/* Card 1 - Sales & CRM */}
                         <div className="auto-bento-card col-span-8 reveal delay-1">
+                            <div className="auto-bento-header" style={{ display: 'flex', alignItems: 'flex-start', gap: '1rem', marginBottom: '1.5rem' }}>
+                                <div className="auto-bento-icon-wrapper" style={{ flexShrink: 0, marginBottom: 0, background: 'transparent', border: 'none' }}>
+                                    <img src="/icons/automacao/vendas.png" alt="Vendas" width={52} height={52} />
+                                </div>
+                                <div>
+                                    <h3 style={{ marginBottom: '0.5rem' }}>Automação de Vendas & Leads</h3>
+                                    <p style={{ marginBottom: 0 }}>
+                                        Da primeira lead ao negócio fechado, sem tarefas manuais.
+                                    </p>
+                                </div>
+                            </div>
                             <div>
-                                <div className="auto-bento-icon-wrapper">🚀</div>
-                                <h3>Automação de Vendas & Nutrição de Leads</h3>
-                                <p>
-                                    Revolucione o seu funil comercial. Desde o momento em que a lead preenche um formulário até à reunião agendada no calendário, todos os passos acontecem de forma fluida.
-                                </p>
                                 <div className="auto-mini-workflow-preview">
-                                    <span className="auto-mini-pill">Lead Nurturing</span>
+                                    <span className="auto-mini-pill">Qualificação IA</span>
                                     <span>➔</span>
-                                    <span className="auto-mini-pill">CRM Automation</span>
+                                    <span className="auto-mini-pill">CRM</span>
                                     <span>➔</span>
-                                    <span className="auto-mini-pill">Appointment Scheduling</span>
+                                    <span className="auto-mini-pill">Follow-up</span>
+                                    <span>➔</span>
+                                    <span className="auto-mini-pill">Agendamento</span>
                                 </div>
                             </div>
                             <div className="auto-bento-tags">
@@ -357,27 +363,35 @@ const AutomacaoPage = () => {
 
                         {/* Card 2 - Content & Blog */}
                         <div className="auto-bento-card col-span-4 reveal delay-2">
-                            <div>
-                                <div className="auto-bento-icon-wrapper">✍️</div>
-                                <h3>Publicação Automática de Blog & Conteúdo</h3>
-                                <p>
-                                    Manter o site atualizado deixa de ser um encargo. Criamos fluxos de IA que pesquisam temas, geram rascunhos otimizados para SEO e publicam no seu blog com aprovação simples.
-                                </p>
+                            <div className="auto-bento-header" style={{ display: 'flex', alignItems: 'flex-start', gap: '1rem', marginBottom: '1.5rem' }}>
+                                <div className="auto-bento-icon-wrapper" style={{ flexShrink: 0, marginBottom: 0, background: 'transparent', border: 'none' }}>
+                                    <img src="/icons/automacao/conteudo.png" alt="Conteúdo" width={52} height={52} />
+                                </div>
+                                <div>
+                                    <h3 style={{ marginBottom: '0.5rem' }}>Blog & Conteúdo</h3>
+                                    <p style={{ marginBottom: 0 }}>
+                                        Conteúdo criado e publicado automaticamente.
+                                    </p>
+                                </div>
                             </div>
                             <div className="auto-bento-tags">
-                                <span className="auto-tag">Automatic Blog Publishing</span>
-                                <span className="auto-tag">SEO Workflows</span>
+                                <span className="auto-tag">SEO</span>
+                                <span className="auto-tag">Blog</span>
                             </div>
                         </div>
 
                         {/* Card 3 - Customer Experience */}
                         <div className="auto-bento-card col-span-4 reveal delay-1">
-                            <div>
-                                <div className="auto-bento-icon-wrapper">💌</div>
-                                <h3>Comunicação & Experiência do Cliente</h3>
-                                <p>
-                                    Crie jornadas inesquecíveis. Envie sequências de email automatizadas, notificações de estado do pedido por WhatsApp e lembretes sem depender da memória humana.
-                                </p>
+                            <div className="auto-bento-header" style={{ display: 'flex', alignItems: 'flex-start', gap: '1rem', marginBottom: '1.5rem' }}>
+                                <div className="auto-bento-icon-wrapper" style={{ flexShrink: 0, marginBottom: 0, background: 'transparent', border: 'none' }}>
+                                    <img src="/icons/automacao/comunicacao.png" alt="Comunicação" width={52} height={52} />
+                                </div>
+                                <div>
+                                    <h3 style={{ marginBottom: '0.5rem' }}>Comunicação com Clientes</h3>
+                                    <p style={{ marginBottom: 0 }}>
+                                        Emails, WhatsApp e notificações em piloto automático.
+                                    </p>
+                                </div>
                             </div>
                             <div className="auto-bento-tags">
                                 <span className="auto-tag">Automated Email Sequences</span>
@@ -387,12 +401,18 @@ const AutomacaoPage = () => {
 
                         {/* Card 4 - Internal Workflows & APIs */}
                         <div className="auto-bento-card col-span-8 reveal delay-2">
+                            <div className="auto-bento-header" style={{ display: 'flex', alignItems: 'flex-start', gap: '1rem', marginBottom: '1.5rem' }}>
+                                <div className="auto-bento-icon-wrapper" style={{ flexShrink: 0, marginBottom: 0, background: 'transparent', border: 'none' }}>
+                                    <img src="/icons/automacao/integracao.png" alt="Integração" width={52} height={52} />
+                                </div>
+                                <div>
+                                    <h3 style={{ marginBottom: '0.5rem' }}>Integração de Plataformas</h3>
+                                    <p style={{ marginBottom: 0 }}>
+                                        Todas as suas ferramentas a trabalhar em conjunto.
+                                    </p>
+                                </div>
+                            </div>
                             <div>
-                                <div className="auto-bento-icon-wrapper">⚙️</div>
-                                <h3>Fluxos Internos & Integração entre Plataformas</h3>
-                                <p>
-                                    Acabe com as ilhas de informação. Ligamos o seu software de faturação, CRM, folhas de cálculo e ferramentas de equipa através de APIs e automações personalizadas.
-                                </p>
                                 <div className="auto-mini-workflow-preview">
                                     <span className="auto-mini-pill">API Integrations</span>
                                     <span>➔</span>
@@ -411,12 +431,16 @@ const AutomacaoPage = () => {
                         {/* Card 5 - AI Workflows & Reporting */}
                         <div className="auto-bento-card col-span-12 reveal delay-3">
                             <div style={{ display: 'grid', gridTemplateColumns: '1fr 1fr', gap: '2rem', alignItems: 'center' }}>
-                                <div>
-                                    <div className="auto-bento-icon-wrapper">📊</div>
-                                    <h3>Workflows de IA & Relatórios de Gestão Automáticos</h3>
-                                    <p>
-                                        Transforme dados dispersos em decisões estratégicas. O nosso sistema compila dados operacionais de várias fontes e entrega relatórios claros diretamente no seu email ou Slack.
-                                    </p>
+                                <div className="auto-bento-header" style={{ display: 'flex', alignItems: 'flex-start', gap: '1rem' }}>
+                                    <div className="auto-bento-icon-wrapper" style={{ flexShrink: 0, marginBottom: 0, background: 'transparent', border: 'none' }}>
+                                        <img src="/icons/automacao/relatorios.png" alt="Relatórios" width={52} height={52} />
+                                    </div>
+                                    <div>
+                                        <h3 style={{ marginBottom: '0.5rem' }}>IA & Relatórios</h3>
+                                        <p style={{ marginBottom: 0 }}>
+                                            Dados transformados em decisões, automaticamente.
+                                        </p>
+                                    </div>
                                 </div>
                                 <div className="auto-bento-tags" style={{ marginTop: 0 }}>
                                     <span className="auto-tag">AI-powered Workflows</span>
