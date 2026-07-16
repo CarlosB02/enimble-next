@@ -13,7 +13,7 @@ const HomePage = () => {
     const [activeIndex, setActiveIndex] = useState(0);
     const [processActiveIndex, setProcessActiveIndex] = useState(0);
     const [portfolioActiveIndex, setPortfolioActiveIndex] = useState(0);
-    
+
     const gridRef = useRef(null);
     const processGridRef = useRef(null);
     const portfolioGridRef = useRef(null);
@@ -23,16 +23,16 @@ const HomePage = () => {
         try {
             const items = container.querySelectorAll(selector);
             if (!items || !items.length) return 0;
-            
+
             const firstItem = items[0];
             if (!firstItem) return 0;
-            
+
             const itemWidth = firstItem.offsetWidth || 285;
             const gap = 20; // 1.25rem gap
-            
+
             const scrollLeft = container.scrollLeft || 0;
             const index = Math.round(scrollLeft / (itemWidth + gap));
-            
+
             return Math.max(0, Math.min(index, items.length - 1));
         } catch (err) {
             console.error('Error in getActiveIndexFromScroll:', err);
@@ -265,7 +265,6 @@ const HomePage = () => {
                     <div className="pp-header reveal">
                         <span className="pp-chip">Trabalhos Selecionados</span>
                         <h2 className="section-subtitle">Resultados Que Falam Por Si</h2>
-                        <p className="pp-sub">Uma amostra do que construímos para os nossos clientes.</p>
                     </div>
 
                     <div className="pp-grid-container">
