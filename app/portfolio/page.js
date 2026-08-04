@@ -3,30 +3,106 @@
 import React, { useEffect, useRef, useState } from 'react';
 import Link from 'next/link';
 import useScrollReveal from '@/hooks/useScrollReveal';
-import InfiniteMenu from '@/components/ui/InfiniteMenu';
 import ContactSection from '@/components/sections/ContactSection';
 import './Portfolio.css';
 import ScrollFloat from '@/components/ui/ScrollFloat';
+
+const PORTFOLIO_ITEMS = [
+    {
+        id: 'moving-people-website',
+        image: '/assets/portfolio/moving-people-website.png',
+        link: 'https://movingpeople.com',
+        title: 'Moving People',
+        description: 'Website Corporativo',
+        category: 'website',
+    },
+    {
+        id: 'moving-people-ads',
+        image: '/assets/portfolio/moving-people-ads.png',
+        link: '#',
+        title: 'Moving People',
+        description: 'Anúncios Pagos / Campaign Design',
+        category: 'branding',
+    },
+    {
+        id: 'carmetrix-website',
+        image: '/assets/portfolio/carmetrix-website.png',
+        link: 'https://carmetrix.pt',
+        title: 'Carmetrix',
+        description: 'Website & Plataforma Digital',
+        category: 'website',
+    },
+    {
+        id: 'carmetrix-branding',
+        image: '/assets/portfolio/carmetrix-branding.png',
+        link: '#',
+        title: 'Carmetrix',
+        description: 'Identidade Visual & Branding',
+        category: 'branding',
+    },
+    {
+        id: 'file-on-website',
+        image: '/assets/portfolio/file-on-website.png',
+        link: 'https://fileon.pt',
+        title: 'File On',
+        description: 'Website Corporativo de Serviços',
+        category: 'website',
+    },
+    {
+        id: 'viriatus-brunch-logo',
+        image: '/assets/portfolio/viriatus-brunch-logo.png',
+        link: '#',
+        title: 'Viriatus Brunch',
+        description: 'Design de Logótipo & Branding',
+        category: 'branding',
+    },
+    {
+        id: 'viriatus-brunch-website',
+        image: '/assets/portfolio/viriatus-brunch-website.png',
+        link: 'https://viriatusbrunch.pt',
+        title: 'Viriatus Brunch',
+        description: 'Website de Restauração & Menu Digital',
+        category: 'website',
+    },
+    {
+        id: 'loja-dos-pets-website',
+        image: '/assets/portfolio/loja-dos-pets-website.png',
+        link: '#',
+        title: 'Loja dos Pets',
+        description: 'E-commerce / Loja de Animais',
+        category: 'website',
+    },
+    {
+        id: 'polly-photo-website',
+        image: '/assets/portfolio/polly-photo-website.png',
+        link: 'https://polly.photo/pt',
+        title: 'Polly Photo',
+        description: 'Website de Portfolio Fotográfico',
+        category: 'website',
+    },
+    {
+        id: 'polly-photo-logo',
+        image: '/assets/portfolio/polly.photo-logo.png',
+        link: '#',
+        title: 'Polly Photo',
+        description: 'Identidade Corporativa & Logo',
+        category: 'branding',
+    },
+    {
+        id: 'orion-aviation-website',
+        image: '/assets/portfolio/orion-aviation-website.png',
+        link: 'https://orionaviation.eu',
+        title: 'Orion Aviation',
+        description: 'Website Corporativo de Aviação',
+        category: 'website',
+    }
+];
 
 const Portfolio = () => {
     useScrollReveal();
     const cursorDotRef = useRef(null);
     const cursorOutlineRef = useRef(null);
-
-    // Gallery Scroll Logic
-    const galleryRef = useRef(null);
-    const [scrollProgress, setScrollProgress] = useState(0);
-
-    const handleScroll = () => {
-        if (galleryRef.current) {
-            const { scrollLeft, scrollWidth, clientWidth } = galleryRef.current;
-            const scrollableDist = scrollWidth - clientWidth;
-            if (scrollableDist > 0) {
-                const scrolled = (scrollLeft / scrollableDist) * 100;
-                setScrollProgress(scrolled);
-            }
-        }
-    };
+    const [selectedFilter, setSelectedFilter] = useState('all');
 
     useEffect(() => {
         document.body.classList.add('portfolio-body');
@@ -64,29 +140,16 @@ const Portfolio = () => {
                     top: `${posY}px`
                 }, { duration: 500, fill: "forwards" });
             }
-
-            // Outline follows with animation
-            if (cursorOutlineRef.current) {
-                cursorOutlineRef.current.animate({
-                    left: `${posX}px`,
-                    top: `${posY}px`
-                }, { duration: 500, fill: "forwards" });
-            }
         };
 
         window.addEventListener('mousemove', handleMouseMove);
-
-        // Add Event Listeners for Hover Effects via Delegation or direct attachment
-        // Since we are in React, we can attach handlers directly in JSX mostly,
-        // but for 'a' tags outside our control (like nav), global is harder.
-        // We will handle project items specifically in JSX.
 
         // Logic for other links to expand cursor
         const handleLinkEnter = () => {
             if (cursorOutlineRef.current) {
                 cursorOutlineRef.current.style.width = '60px';
                 cursorOutlineRef.current.style.height = '60px';
-                cursorOutlineRef.current.style.backgroundColor = 'rgba(255,255,255,0.1)';
+                cursorOutlineRef.current.style.backgroundColor = 'rgba(58, 0, 255, 0.05)';
             }
         };
 
@@ -98,13 +161,11 @@ const Portfolio = () => {
             }
         };
 
-        // Attach to general links not caught by React (if any) or simplified usage
         const links = document.querySelectorAll('a:not(.project-item), button');
         links.forEach(el => {
             el.addEventListener('mouseenter', handleLinkEnter);
             el.addEventListener('mouseleave', handleLinkLeave);
         });
-
 
         return () => {
             document.body.classList.remove('portfolio-body');
@@ -116,7 +177,9 @@ const Portfolio = () => {
         };
     }, []);
 
-
+    const filteredItems = selectedFilter === 'all'
+        ? PORTFOLIO_ITEMS
+        : PORTFOLIO_ITEMS.filter(item => item.category === selectedFilter);
 
     return (
         <>
@@ -132,125 +195,100 @@ const Portfolio = () => {
                     </div>
                 </section>
 
-                <section style={{ height: '600px', position: 'relative', margin: '4rem 0' }}>
-                    <InfiniteMenu items={[
-                        {
-                            image: '/assets/portfolio/moving-people-website.png',
-                            link: '#',
-                            title: 'Moving People',
-                            description: 'Website',
-                            position: 'top center',
-                            iframe: 'https://movingpeople.com'
-                        },
-                        {
-                            image: '/assets/portfolio/moving-people-ads.png',
-                            link: '#',
-                            title: 'Moving People',
-                            description: 'Anuncios Pagos',
-                            fit: 'contain'
-                        },
-                        {
-                            image: '/assets/portfolio/carmetrix-website.png',
-                            link: '#',
-                            title: 'Carmetrix',
-                            description: 'Website',
-                            position: 'top center',
-                            iframe: 'https://carmetrix.pt'
-                        },
-                        {
-                            image: '/assets/portfolio/carmetrix-branding.png',
-                            link: '#',
-                            title: 'Carmetrix',
-                            description: 'Branding',
-                            fit: 'contain'
-                        },
-                        {
-                            image: '/assets/portfolio/file-on-website.png',
-                            link: '#',
-                            title: 'File On',
-                            description: 'Website',
-                            position: 'top center',
-                            iframe: 'https://fileon.pt'
-                        },
-                        {
-                            image: '/assets/portfolio/viriatus-brunch-logo.png',
-                            link: '#',
-                            title: 'Viriatus Brunch',
-                            description: 'Branding'
-                        },
-                        {
-                            image: '/assets/portfolio/viriatus-brunch-website.png',
-                            link: '#',
-                            title: 'Viriatus Brunch',
-                            description: 'Website',
-                            position: 'top center',
-                            iframe: 'https://viriatusbrunch.pt'
-                        },
-                        {
-                            image: '/assets/portfolio/loja-dos-pets-website.png',
-                            link: '#',
-                            title: 'Loja dos Pets',
-                            description: 'Website',
-                            position: 'top center'
-                        },
-                        {
-                            image: '/assets/portfolio/polly-photo-website.png',
-                            link: '#',
-                            title: 'Polly',
-                            description: 'Website',
-                            iframe: 'https://polly.photo/pt',
-                            position: 'top center'
-                        },
-                        {
-                            image: '/assets/portfolio/polly.photo-logo.png',
-                            link: '#',
-                            title: 'Polly',
-                            description: 'Branding',
-                            fit: 'contain'
-                        },
-                        {
-                            image: '/assets/portfolio/orion-aviation-website.png',
-                            link: '#',
-                            title: 'Orion Aviation',
-                            description: 'Website',
-                            position: 'top center',
-                            iframe: 'https://orionaviation.eu'
-                        }
-                    ]} scale={1} />
-                </section>
-
-                {/* Methodology Section */}
-                <section className="methodology-section">
+                {/* Portfolio Showcase Grid */}
+                <section className="portfolio-showcase-section">
                     <div className="container">
-                        <div className="methodology-header">
-                            <h2 className="section-title-large">Metodologia Própria</h2>
-                            <p className="section-subtitle">Somos criativos mas não improvisamos</p>
+                        {/* Filters */}
+                        <div className="portfolio-filters">
+                            <button
+                                className={`filter-btn ${selectedFilter === 'all' ? 'active' : ''}`}
+                                onClick={() => setSelectedFilter('all')}
+                            >
+                                Tudo
+                            </button>
+                            <button
+                                className={`filter-btn ${selectedFilter === 'website' ? 'active' : ''}`}
+                                onClick={() => setSelectedFilter('website')}
+                            >
+                                Websites
+                            </button>
+                            <button
+                                className={`filter-btn ${selectedFilter === 'branding' ? 'active' : ''}`}
+                                onClick={() => setSelectedFilter('branding')}
+                            >
+                                Logos & Branding
+                            </button>
                         </div>
-                        <div className="methodology-grid">
-                            <div className="methodology-item">
-                                <span className="step-number">01</span>
-                                <h3>Diagnóstico Estratégico</h3>
-                            </div>
-                            <div className="methodology-item">
-                                <span className="step-number">02</span>
-                                <h3>Definição de Objetivos e KPIs</h3>
-                            </div>
-                            <div className="methodology-item">
-                                <span className="step-number">03</span>
-                                <h3>Execução Focada em Conversão</h3>
-                            </div>
-                            <div className="methodology-item">
-                                <span className="step-number">04</span>
-                                <h3>Otimização Contínua</h3>
-                            </div>
-                            <div className="methodology-item">
-                                <span className="step-number">05</span>
-                                <h3>Reporting<br />Estratégico</h3>
-                            </div>
+
+                        {/* Grid */}
+                        <div className="portfolio-grid">
+                            {filteredItems.map((item) => (
+                                <div
+                                    key={item.id}
+                                    className="portfolio-card-wrapper"
+                                >
+                                    {item.category === 'website' ? (
+                                        // Website Mockup Frame
+                                        <div className="portfolio-card browser-card">
+                                            <div className="browser-frame">
+                                                <div className="browser-header">
+                                                    <div className="browser-dots">
+                                                        <span className="dot red"></span>
+                                                        <span className="dot yellow"></span>
+                                                        <span className="dot green"></span>
+                                                    </div>
+                                                    <div className="browser-address-bar">
+                                                        {item.link !== '#' ? item.link.replace('https://', '') : `${item.title.toLowerCase().replace(/\s+/g, '')}.pt`}
+                                                    </div>
+                                                </div>
+                                                <div className="browser-content">
+                                                    <img src={item.image} alt={item.title} />
+                                                    <div className="portfolio-overlay">
+                                                        <div className="portfolio-overlay-content">
+                                                            <span className="item-category">Website</span>
+                                                            <h3>{item.title}</h3>
+                                                            <p>{item.description}</p>
+                                                            {item.link !== '#' && (
+                                                                <a href={item.link} target="_blank" rel="noopener noreferrer" className="visit-site-link">
+                                                                    Visitar Website
+                                                                    <span className="link-arrow">↗</span>
+                                                                </a>
+                                                            )}
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                            <div className="card-info-below">
+                                                <h3>{item.title}</h3>
+                                                <span className="badge-category">Website</span>
+                                            </div>
+                                        </div>
+                                    ) : (
+                                        // Branding Presentation Frame
+                                        <div className="portfolio-card branding-card">
+                                            <div className="branding-frame">
+                                                <div className="branding-content">
+                                                    <img src={item.image} alt={item.title} />
+                                                    <div className="portfolio-overlay">
+                                                        <div className="portfolio-overlay-content">
+                                                            <span className="item-category">Branding & Logo</span>
+                                                            <h3>{item.title}</h3>
+                                                            <p>{item.description}</p>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                            <div className="card-info-below">
+                                                <h3>{item.title}</h3>
+                                                <span className="badge-category">Branding</span>
+                                            </div>
+                                        </div>
+                                    )}
+                                </div>
+                            ))}
                         </div>
                     </div>
                 </section>
-
                 {/* Visual Gallery (Refactored) */}
                 <section className="gallery-section refactored-gallery">
                     <div className="container" style={{ position: 'relative' }}>

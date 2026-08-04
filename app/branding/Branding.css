@@ -47,6 +47,7 @@ body.brand-body .main-nav a {
     background-image: linear-gradient(var(--brand-grid-color) 1px, transparent 1px),
         linear-gradient(90deg, var(--brand-grid-color) 1px, transparent 1px);
     background-size: 40px 40px;
+    overflow: hidden;
 }
 
 .big-brand-text {
@@ -1260,6 +1261,35 @@ body.brand-body .main-nav a {
     .br-enviro-grid > .br-enviro-item,
     .br-emotion-pillars > .br-pillar-card,
     .br-strategy-grid > .br-strat-card {
+        flex: 0 0 85% !important;
+        scroll-snap-align: center !important;
+        margin-bottom: 0 !important;
+        white-space: normal !important;
+        word-wrap: break-word !important;
+        overflow-wrap: break-word !important;
+    }
+
+    .service-items-grid {
+        display: flex !important;
+        flex-direction: row !important;
+        flex-wrap: nowrap !important;
+        justify-content: flex-start !important;
+        overflow-x: auto !important;
+        overflow-y: hidden !important;
+        scroll-snap-type: x mandatory !important;
+        scrollbar-width: none !important;
+        -ms-overflow-style: none !important;
+        gap: 1.25rem !important;
+        padding: 0.5rem 1.8rem 1.5rem 1.8rem !important;
+        margin-left: -1.8rem !important;
+        margin-right: -1.8rem !important;
+    }
+
+    .service-items-grid::-webkit-scrollbar {
+        display: none !important;
+    }
+
+    .service-items-grid > .service-item-card {
         flex: 0 0 85% !important;
         scroll-snap-align: center !important;
         margin-bottom: 0 !important;

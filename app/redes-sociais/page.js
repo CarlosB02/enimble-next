@@ -100,7 +100,7 @@ const RedesSociais = () => {
                         <p className="social-subtitle">Transforme seguidores em fãs e likes em vendas. Gerimos as suas redes
                             com estratégia, criatividade e dados.</p>
 
-                        <div style={{ display: 'flex', gap: '1rem', flexWrap: 'wrap' }}>
+                        <div className="hero-cta-group">
                             <a href="#contactos" className="btn-social">Começar Agora</a>
 
                             <div style={{ display: 'flex', alignItems: 'center', gap: '-10px' }}>
@@ -250,6 +250,10 @@ const RedesSociais = () => {
                             scrollSpeed={2}
                         />
                     </div>
+
+                    <div style={{ textAlign: 'center', marginTop: '3.5rem' }}>
+                        <a href="#contactos" className="btn-social btn-gradient-social">Quero Resultados Assim</a>
+                    </div>
                 </div>
             </section>
             {/* ===== O PODER DE APARECER ===== */}
@@ -361,6 +365,10 @@ const RedesSociais = () => {
                             />
                         ))}
                     </div>
+
+                    <div style={{ textAlign: 'center', marginTop: '3.5rem' }}>
+                        <a href="#contactos" className="btn-social btn-gradient-social">Aumentar a Minha Visibilidade</a>
+                    </div>
                 </div>
             </section>
 
@@ -421,7 +429,7 @@ const RedesSociais = () => {
                         </div>
                     </div>
                     {/* Carousel navigation dots for mobile view */}
-                    <div className="carousel-dots">
+                    <div className="carousel-dots" style={{ marginTop: '2rem' }}>
                         {Array.from({ length: 4 }).map((_, idx) => (
                             <button
                                 key={idx}
@@ -434,6 +442,10 @@ const RedesSociais = () => {
                                 aria-label={`Ir para a etapa ${idx + 1}`}
                             />
                         ))}
+                    </div>
+
+                    <div style={{ textAlign: 'center', marginTop: '3.5rem' }}>
+                        <a href="#contactos" className="btn-social btn-gradient-social">Vamos Crescer a Minha Marca</a>
                     </div>
                 </div>
             </section>

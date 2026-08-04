@@ -529,54 +529,101 @@ body.auto-body {
    ========================================================================== */
 
 .auto-impact-section {
-  padding: 3rem 0;
+  padding: 4rem 0;
   background: #ffffff;
   border-bottom: 1px solid rgba(0, 0, 0, 0.05);
 }
 
 .auto-metrics-grid {
   display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+  grid-template-columns: repeat(3, 1fr);
   gap: 2rem;
 }
 
 .auto-metric-card {
+  position: relative;
   text-align: center;
-  padding: 1.5rem;
-  border-radius: 20px;
-  background: #f8fafc;
-  border: 1px solid rgba(0, 0, 0, 0.04);
-  transition: transform 0.3s ease;
+  padding: 2.25rem 1.75rem;
+  border-radius: 24px;
+  background: #ffffff;
+  border: 1px solid rgba(0, 0, 0, 0.06);
+  box-shadow: 0 10px 30px -10px rgba(0, 0, 0, 0.04);
+  transition: all 0.35s cubic-bezier(0.16, 1, 0.3, 1);
+  overflow: hidden;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+}
+
+.auto-metric-card::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  height: 4px;
+  background: var(--auto-gradient);
+  opacity: 0.7;
+  transition: opacity 0.35s ease, height 0.35s ease;
 }
 
 .auto-metric-card:hover {
-  transform: translateY(-4px);
-  background: #ffffff;
-  box-shadow: var(--auto-shadow-card);
+  transform: translateY(-6px);
+  background: linear-gradient(180deg, #ffffff 0%, rgba(58, 0, 255, 0.02) 100%);
+  border-color: rgba(58, 0, 255, 0.18);
+  box-shadow: 0 20px 40px -12px rgba(58, 0, 255, 0.12), 0 8px 16px -4px rgba(0, 0, 0, 0.02);
+}
+
+.auto-metric-card:hover::before {
+  opacity: 1;
+  height: 5px;
 }
 
 .auto-metric-val {
   font-family: var(--font-headings);
-  font-size: 2.8rem;
-  font-weight: 800;
-  line-height: 1;
+  font-size: clamp(2rem, 2.5vw, 2.4rem);
+  font-weight: 500;
+  line-height: 1.1;
   margin-bottom: 0.5rem;
   background: var(--auto-gradient);
   -webkit-background-clip: text;
   -webkit-text-fill-color: transparent;
+  background-clip: text;
 }
 
 .auto-metric-label {
-  font-size: 0.95rem;
+  font-size: 1.05rem;
   font-weight: 600;
   color: var(--auto-text-main);
-  margin-bottom: 0.25rem;
+  margin-bottom: 0.35rem;
+  line-height: 1.3;
 }
 
 .auto-metric-sub {
-  font-size: 0.8rem;
+  font-size: 0.88rem;
   color: var(--auto-text-muted);
+  line-height: 1.5;
 }
+
+@media (max-width: 992px) {
+  .auto-metrics-grid {
+    grid-template-columns: repeat(3, 1fr);
+    gap: 1.25rem;
+  }
+
+  .auto-metric-card {
+    padding: 1.75rem 1.25rem;
+  }
+}
+
+@media (max-width: 768px) {
+  .auto-metrics-grid {
+    grid-template-columns: 1fr;
+    gap: 1.25rem;
+  }
+}
+
 
 /* ==========================================================================
    3. BEFORE VS AFTER (MANUAL VS AUTOMATED)
@@ -1024,18 +1071,21 @@ body.auto-body {
 }
 
 .auto-roadmap-card {
-  background: #ffffff;
+  border: 1px solid transparent;
+  background: linear-gradient(#ffffff, #ffffff) padding-box, 
+              linear-gradient(90deg, #3A00FF, #BF0040, #3A00FF) border-box;
+  background-size: 200% auto;
   border-radius: 20px;
   padding: 2rem 1.5rem;
-  border: 1px solid rgba(0, 0, 0, 0.06);
   box-shadow: var(--auto-shadow-card);
   position: relative;
   transition: all 0.3s ease;
+  animation: movingBorder 4s linear infinite;
 }
 
 .auto-roadmap-card:hover {
   transform: translateY(-4px);
-  box-shadow: var(--auto-shadow-hover);
+  box-shadow: 0 10px 30px -10px rgba(58, 0, 255, 0.12);
 }
 
 .auto-step-num {
@@ -1086,8 +1136,21 @@ body.auto-body {
 }
 
 .auto-faq-item[open] {
-  border-color: rgba(58, 0, 255, 0.2);
-  box-shadow: var(--auto-shadow-card);
+  border: 1px solid transparent;
+  background: linear-gradient(#ffffff, #ffffff) padding-box, 
+              linear-gradient(90deg, #3A00FF, #BF0040, #3A00FF) border-box;
+  background-size: 200% auto;
+  animation: movingBorder 4s linear infinite;
+  box-shadow: 0 10px 30px -10px rgba(58, 0, 255, 0.12);
+}
+
+@keyframes movingBorder {
+  0% {
+    background-position: 0% center;
+  }
+  100% {
+    background-position: 200% center;
+  }
 }
 
 .auto-faq-summary {
@@ -1101,6 +1164,16 @@ body.auto-body {
   justify-content: space-between;
   list-style: none;
   user-select: none;
+  outline: none;
+}
+
+.auto-faq-summary:focus,
+.auto-faq-summary:active {
+  outline: none;
+}
+
+.auto-faq-item[open] .auto-faq-summary {
+  padding-bottom: 0.75rem;
 }
 
 .auto-faq-summary::-webkit-details-marker {
@@ -1126,10 +1199,23 @@ body.auto-body {
 }
 
 .auto-faq-content {
-  padding: 0 1.75rem 1.5rem;
+  padding: 0 1.75rem 1.5rem 1.75rem;
   color: var(--auto-text-muted);
   font-size: 1rem;
   line-height: 1.6;
+  opacity: 0;
+  transform: translateY(-8px);
+}
+
+.auto-faq-item[open] .auto-faq-content {
+  animation: faqOpen 0.35s cubic-bezier(0.16, 1, 0.3, 1) forwards;
+}
+
+@keyframes faqOpen {
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
 }
 
 /* ==========================================================================
@@ -1206,8 +1292,66 @@ body.auto-body {
 }
 
 @media (max-width: 640px) {
-  .auto-roadmap-grid {
-    grid-template-columns: 1fr;
+  .auto-roadmap-grid,
+  .auto-compare-grid,
+  .auto-metrics-grid,
+  .auto-nodes-flow {
+    display: flex !important;
+    flex-direction: row !important;
+    overflow-x: auto;
+    scroll-snap-type: x mandatory;
+    scroll-behavior: smooth;
+    -webkit-overflow-scrolling: touch;
+    padding: 1rem 0.25rem;
+    gap: 1.25rem;
+    scrollbar-width: none;
+  }
+
+  .auto-roadmap-grid::-webkit-scrollbar,
+  .auto-compare-grid::-webkit-scrollbar,
+  .auto-metrics-grid::-webkit-scrollbar,
+  .auto-nodes-flow::-webkit-scrollbar {
+    display: none;
+  }
+
+  .auto-roadmap-card,
+  .auto-compare-card,
+  .auto-metric-card,
+  .auto-node-card {
+    flex: 0 0 85% !important;
+    scroll-snap-align: center;
+  }
+
+  .auto-connector-line {
+    display: none !important;
+  }
+
+  .auto-simulator-header {
+    padding: 1rem;
+    flex-direction: column;
+    align-items: stretch;
+    gap: 0.75rem;
+  }
+
+  .auto-sim-status {
+    justify-content: center;
+  }
+
+  .auto-simulator-tabs {
+    overflow-x: auto;
+    flex-wrap: nowrap;
+    scrollbar-width: none;
+    -webkit-overflow-scrolling: touch;
+    max-width: 100%;
+  }
+
+  .auto-simulator-tabs::-webkit-scrollbar {
+    display: none;
+  }
+
+  .auto-tab-btn {
+    flex-shrink: 0;
+    white-space: nowrap;
   }
 
   .auto-hero {

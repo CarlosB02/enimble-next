@@ -233,7 +233,7 @@ body.shop-body .nav-open .hamburger {
     max-width: 100%;
     max-height: 40px;
     object-fit: contain;
-    filter: grayscale(1) opacity(0.5);
+    filter: grayscale(0) opacity(0.8);
     transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
     cursor: pointer;
 }
@@ -292,6 +292,7 @@ body.shop-body .nav-open .hamburger {
     box-shadow: 0 10px 25px rgba(58, 0, 255, 0.3);
     text-decoration: none;
     display: inline-block;
+    text-align: center;
 }
 
 .smart-btn:hover {
@@ -1191,12 +1192,13 @@ body.shop-body .nav-open .hamburger {
     }
 
     .smart-btn {
-        padding: 1rem 2rem !important;
-        font-size: 1.1rem !important;
+        padding: 0.8rem 1.5rem !important;
+        font-size: 1rem !important;
         display: block;
         width: 100%;
-        max-width: 280px;
+        max-width: 300px;
         margin: 0 auto;
+        text-align: center;
     }
 
     .ec-cta-content h2 {

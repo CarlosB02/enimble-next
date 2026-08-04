@@ -331,6 +331,11 @@ const AdsPage = () => {
                             />
                         ))}
                     </div>
+                    <div style={{ textAlign: 'center', marginTop: '3rem' }}>
+                        <Link href="/contactos" className="cta-btn-premium">
+                            Quero Escalar o Meu Negócio
+                        </Link>
+                    </div>
                 </div>
             </section>
 
@@ -436,6 +441,11 @@ const AdsPage = () => {
                             />
                         ))}
                     </div>
+                    <div style={{ textAlign: 'center', marginTop: '3rem' }}>
+                        <Link href="/contactos" className="cta-btn-premium">
+                            Quero Escalar o Meu Negócio
+                        </Link>
+                    </div>
                 </div>
             </section>
 
@@ -526,6 +536,11 @@ const AdsPage = () => {
                                 aria-label={`Ir para o resultado ${idx + 1}`}
                             />
                         ))}
+                    </div>
+                    <div style={{ textAlign: 'center', marginTop: '3rem' }}>
+                        <Link href="/contactos" className="cta-btn-premium">
+                            Quero Escalar o Meu Negócio
+                        </Link>
                     </div>
                 </div>
             </section>

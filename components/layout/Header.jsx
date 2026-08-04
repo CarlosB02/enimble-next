@@ -112,7 +112,7 @@ const Header = () => {
         return pathname.includes(path);
     };
 
-    const lightPages = ['/redes-sociais', '/portfolio', '/ecommerce', '/automacao', '/formacao', '/branding'];
+    const lightPages = ['/redes-sociais', '/portfolio', '/ecommerce', '/formacao', '/branding'];
     const isLightHeroPage = lightPages.includes(pathname);
 
     return (
@@ -165,7 +165,7 @@ const Header = () => {
                             </li>
                             <li><Link href="/portfolio">Portfólio</Link></li>
                             <li><Link href="/sobre">Sobre Nós</Link></li>
-                            <li><Link href="/contactos" className="btn-nav">Marcar um café ☕</Link></li>
+                            <li><Link href="/contactos" className="btn-nav">Marcar um café <img src="/assets/coffee.png" alt="café" className="coffee-emoji-img" /></Link></li>
                         </ul>
                     </nav>
                 </div>
@@ -198,7 +198,7 @@ const Header = () => {
                         <li className="menu-item-animate"><Link href="/sobre" onClick={() => setIsMobileMenuOpen(false)}>Sobre Nós</Link></li>
                         <li className="menu-item-animate action-btn-li">
                             <Link href="/contactos" className="btn-nav btn-nav-gradient" onClick={() => setIsMobileMenuOpen(false)}>
-                                Marcar um café ☕
+                                Marcar um café <img src="/assets/coffee.png" alt="café" className="coffee-emoji-img" />
                             </Link>
                         </li>
                     </ul>

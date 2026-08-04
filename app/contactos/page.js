@@ -88,10 +88,10 @@ const Contactos = () => {
                         {/* LEFT COLUMN: Branding & Info */}
                         <div className="contact-info-panel reveal">
                             <h2 className="info-title">
-                                Fale Connosco <span className="emoji-icon">☕</span>
+                                Fale Connosco <img src="/assets/coffee.png" alt="Café" className="emoji-icon png-emoji" />
                             </h2>
                             <p className="info-desc">
-                                Gostamos de conhecer os nossos parceiros pessoalmente. Venha visitar-nos no nosso espaço ou agende uma reunião/videochamada rápida connosco.
+                                Agende uma reunião presencial ou online e descubra como podemos ajudar a fazer crescer o seu negócio.
                             </p>
 
                             <div className="info-details">
@@ -108,14 +108,6 @@ const Contactos = () => {
                                     <div>
                                         <strong>Ligar ou WhatsApp</strong>
                                         <a href="tel:+351912163485">912 163 485</a>
-                                    </div>
-                                </div>
-
-                                <div className="info-card">
-                                    <span className="info-card-icon">📍</span>
-                                    <div>
-                                        <strong>Localização</strong>
-                                        <p>Viseu, Portugal</p>
                                     </div>
                                 </div>
                             </div>

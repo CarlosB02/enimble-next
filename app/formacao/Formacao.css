@@ -105,7 +105,7 @@ body.edu-body .main-nav a:hover {
     display: grid;
     grid-template-columns: 1fr 1.5fr;
     gap: 4rem;
-    padding: 6rem 0;
+    padding: 6rem 2rem;
     border-bottom: 1px solid rgba(0, 0, 0, 0.1);
 }
 
@@ -907,7 +907,7 @@ details[open] .arrow-icon {
 
 /* --- CLOSING CTA --- */
 .edu-closing-section {
-    padding: 8rem 0;
+    padding: 4rem 0 8rem;
     background: var(--edu-secondary);
     overflow: hidden;
     position: relative;
@@ -990,6 +990,7 @@ details[open] .arrow-icon {
 
     .curriculum-section {
         grid-template-columns: 1fr;
+        padding: 4rem 2rem;
     }
 
     .sticky-col {

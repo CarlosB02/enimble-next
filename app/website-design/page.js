@@ -36,16 +36,16 @@ const WebsiteDesign = () => {
         try {
             const items = container.querySelectorAll(selector);
             if (!items || !items.length) return 0;
-            
+
             const firstItem = items[0];
             if (!firstItem) return 0;
-            
+
             const itemWidth = firstItem.offsetWidth || 285;
             const gap = 20; // 1.25rem gap
-            
+
             const scrollLeft = container.scrollLeft || 0;
             const index = Math.round(scrollLeft / (itemWidth + gap));
-            
+
             return Math.max(0, Math.min(index, items.length - 1));
         } catch (err) {
             console.error('Error in getActiveIndexFromScroll:', err);
@@ -273,7 +273,7 @@ const WebsiteDesign = () => {
             <section className="creative-hero" ref={heroRef}>
                 <canvas id="hero-canvas" ref={canvasRef}></canvas>
                 <div className="hero-overlay">
-                    <h1 className="glitch-text" data-text="Não criamos sites.">Não criamos sites.</h1>
+                    <h1 className="glitch-text" data-text="Não criamos sites.">Não fazemos sites.</h1>
                     <h2 className="subtitle-reveal">Criamos <span className="highlight-creative">Experiências Digitais.</span>
                     </h2>
                 </div>
@@ -354,17 +354,15 @@ const WebsiteDesign = () => {
                                         </div>
                                         <p>{service.desc}</p>
 
-                                        <div
-                                            className="wd-service-link"
+                                        <button
+                                            className="wd-service-btn"
                                             onClick={() => {
                                                 setModalSubject("website");
                                                 setIsModalOpen(true);
                                             }}
-                                            style={{ cursor: 'pointer' }}
                                         >
                                             {service.linkText || "VER CASOS DE ESTUDO"}
-                                            <span className="arrow">↗</span>
-                                        </div>
+                                        </button>
                                     </div>
                                 </div>
                             ))}
@@ -528,7 +526,7 @@ const WebsiteDesign = () => {
                     <div className="wd-cases-header">
                         <span className="section-label">Casos de Sucesso</span>
                         <h2>Projetos que Elevam o <span className="gradient-word">Padrão Digital</span></h2>
-                        <p>Uma seleção de websites que combinam estética impecável com engenharia de conversão.</p>
+                        <p>Uma seleção de websites que combinam estética impecável com conversão.</p>
                     </div>
 
                     <div className="wd-cases-container">

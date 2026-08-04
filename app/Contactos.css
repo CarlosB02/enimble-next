@@ -332,3 +332,821 @@ body.contact-body .header.header-scrolled .btn-nav:hover {
     margin-bottom: 1rem;
   }
 }
+
+/* Base styles for the coffee form (copied from contactos page) */
+.creative-form-v2 {
+    display: flex;
+    flex-direction: column;
+    gap: 1.8rem;
+}
+
+.coffee-form-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    gap: 1.5rem;
+    padding-bottom: 1.5rem;
+    border-bottom: 1px solid rgba(255, 255, 255, 0.06);
+}
+
+.form-heading {
+    font-family: var(--font-headings);
+    font-size: 1.1rem;
+    font-weight: 600;
+    color: rgba(255, 255, 255, 0.85);
+    margin-bottom: 0.8rem;
+}
+
+.coffee-row-selector {
+    display: flex;
+    background: rgba(255, 255, 255, 0.03);
+    border: 1px solid rgba(255, 255, 255, 0.06);
+    border-radius: 30px;
+    padding: 0.3rem;
+    gap: 0.2rem;
+}
+
+.coffee-row-btn {
+    background: transparent;
+    border: none;
+    color: rgba(255, 255, 255, 0.6);
+    font-family: var(--font-main);
+    font-size: 0.85rem;
+    font-weight: 600;
+    padding: 0.6rem 1.1rem;
+    border-radius: 20px;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    white-space: nowrap;
+}
+
+.coffee-row-btn:hover {
+    color: #ffffff;
+    background: rgba(255, 255, 255, 0.04);
+}
+
+.coffee-row-btn.active {
+    background: #ffffff;
+    color: #05060f;
+    box-shadow: 0 4px 12px rgba(255, 255, 255, 0.1);
+}
+
+.coffee-cup-container-v2 {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 90px;
+    height: 90px;
+}
+
+.coffee-cup-widget {
+    position: relative;
+    width: 60px;
+    height: 48px;
+    background: rgba(255, 255, 255, 0.02);
+    border: 3px solid #ffffff;
+    border-top: none;
+    border-radius: 0 0 30px 30px;
+    box-shadow: 0 5px 0 rgba(255, 255, 255, 0.05);
+}
+
+.cup-handle {
+    position: absolute;
+    top: 6px;
+    right: -17px;
+    width: 17px;
+    height: 24px;
+    border: 3px solid #ffffff;
+    border-left: none;
+    border-radius: 0 12px 12px 0;
+}
+
+.cup-plate {
+    position: absolute;
+    bottom: -8px;
+    left: 50%;
+    transform: translateX(-50%);
+    width: 75px;
+    height: 5px;
+    background: #ffffff;
+    border-radius: 10px;
+}
+
+.cup-smoke-group {
+    position: absolute;
+    top: -24px;
+    left: 50%;
+    transform: translateX(-50%);
+    display: flex;
+    gap: 7px;
+}
+
+.smoke-line {
+    width: 2px;
+    height: 18px;
+    background: rgba(255, 255, 255, 0.4);
+    border-radius: 5px;
+    filter: blur(1px);
+    animation: steamAnimation 2.2s infinite ease-in-out;
+}
+
+.smoke-line:nth-child(2) {
+    animation-delay: 0.4s;
+    height: 24px;
+}
+
+.smoke-line:nth-child(3) {
+    animation-delay: 0.8s;
+}
+
+.cup-liquid-flow {
+    position: absolute;
+    bottom: 3px;
+    left: 3px;
+    width: calc(100% - 6px);
+    background: linear-gradient(180deg, #5c3a21 0%, #301f14 100%);
+    border-radius: 0 0 26px 26px;
+    transition: height 0.6s cubic-bezier(0.4, 0, 0.2, 1);
+    overflow: hidden;
+}
+
+.liquid-foam {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 3px;
+    background: #dfb28c;
+    opacity: 0.8;
+}
+
+.cup-liquid-flow.expresso {
+    height: 25%;
+}
+
+.cup-liquid-flow.pingado {
+    height: 60%;
+    background: linear-gradient(180deg, #d8ac88 0%, #7d5032 100%);
+}
+
+.cup-liquid-flow.duplo {
+    height: 90%;
+}
+
+.form-group-v2 {
+    position: relative;
+    width: 100%;
+}
+
+.form-group-v2 input,
+.form-group-v2 textarea {
+    width: 100%;
+    padding: 1.1rem 1.2rem;
+    background: rgba(255, 255, 255, 0.02);
+    border: 1px solid rgba(255, 255, 255, 0.08);
+    border-radius: 12px;
+    font-family: var(--font-main);
+    font-size: 0.95rem;
+    color: #ffffff;
+    outline: none;
+    transition: all 0.3s ease;
+}
+
+.form-group-v2 textarea {
+    resize: none;
+    min-height: 100px;
+}
+
+.form-group-v2 label {
+    position: absolute;
+    left: 1.2rem;
+    top: 1.1rem;
+    color: rgba(255, 255, 255, 0.4);
+    pointer-events: none;
+    transition: all 0.3s cubic-bezier(0.25, 0.8, 0.25, 1);
+    font-size: 0.95rem;
+}
+
+.form-group-v2 input:focus,
+.form-group-v2 textarea:focus {
+    background: rgba(255, 255, 255, 0.04);
+    border-color: #3A00FF;
+    box-shadow: 0 0 12px rgba(58, 0, 255, 0.15);
+}
+
+.form-group-v2 input:focus ~ label,
+.form-group-v2 input:not(:placeholder-shown) ~ label,
+.form-group-v2 textarea:focus ~ label,
+.form-group-v2 textarea:not(:placeholder-shown) ~ label {
+    top: -8px;
+    left: 0.8rem;
+    font-size: 0.75rem;
+    padding: 0 0.4rem;
+    background: #0d0f1b;
+    color: #ffffff;
+    border-radius: 4px;
+    font-weight: 600;
+}
+
+.btn-submit-v2 {
+    width: 100%;
+    background: var(--gradient-main);
+    color: #ffffff;
+    border: none;
+    border-radius: 14px;
+    padding: 1.1rem;
+    font-family: var(--font-headings);
+    font-size: 1rem;
+    font-weight: 700;
+    cursor: pointer;
+    transition: all 0.3s cubic-bezier(0.25, 0.8, 0.25, 1);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 0.8rem;
+    box-shadow: 0 10px 25px rgba(58, 0, 255, 0.2);
+}
+
+.btn-submit-v2:hover {
+    transform: translateY(-3px);
+    box-shadow: 0 15px 35px rgba(191, 0, 64, 0.3);
+}
+
+.btn-submit-v2:active {
+    transform: translateY(-1px);
+}
+
+.btn-submit-v2 span {
+    transition: transform 0.3s ease;
+}
+
+.btn-submit-v2:hover span {
+    transform: translateX(6px) rotate(-15deg);
+}
+
+.success-card {
+    text-align: center;
+    padding: 2rem 1rem;
+    animation: scaleIn 0.5s cubic-bezier(0.175, 0.885, 0.32, 1.275) forwards;
+}
+
+.success-icon-wrapper {
+    position: relative;
+    width: 80px;
+    height: 80px;
+    background: rgba(255, 255, 255, 0.05);
+    border-radius: 50%;
+    margin: 0 auto 1.5rem;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border: 2px dashed rgba(255, 255, 255, 0.2);
+}
+
+.success-pulse {
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    border-radius: 50%;
+    border: 2px solid #3A00FF;
+    animation: pingEffect 1.5s infinite ease-out;
+}
+
+.success-emoji {
+    font-size: 2.5rem;
+}
+
+.success-card h3 {
+    font-family: var(--font-headings);
+    font-size: 1.8rem;
+    margin-bottom: 0.8rem;
+}
+
+.success-card p {
+    font-size: 0.95rem;
+    color: rgba(255, 255, 255, 0.7);
+    line-height: 1.6;
+    margin-bottom: 2rem;
+}
+
+.btn-reset {
+    background: rgba(255, 255, 255, 0.06);
+    border: 1px solid rgba(255, 255, 255, 0.15);
+    color: #ffffff;
+    padding: 0.7rem 1.5rem;
+    border-radius: 10px;
+    font-family: var(--font-headings);
+    font-weight: 600;
+    cursor: pointer;
+    transition: all 0.2s ease;
+}
+
+.btn-reset:hover {
+    background: rgba(255, 255, 255, 0.12);
+    border-color: rgba(255, 255, 255, 0.3);
+}
+
+/* Light Theme Contacts (Main Page) */
+.contacts-wrapper.light-theme-contacts {
+  position: relative;
+  z-index: 2;
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 4rem;
+  align-items: center;
+  margin-top: 3rem;
+  color: var(--text-color);
+}
+
+.contacts-wrapper.light-theme-contacts .contact-info-panel {
+  padding: 1rem;
+}
+
+.contacts-wrapper.light-theme-contacts .info-title {
+  font-family: var(--font-headings);
+  font-size: clamp(2rem, 4vw, 3rem);
+  font-weight: 500;
+  line-height: 1.15;
+  margin-bottom: 1.5rem;
+  color: var(--text-color);
+}
+
+.contacts-wrapper.light-theme-contacts .info-title .emoji-icon {
+  display: inline-block;
+}
+
+.png-emoji {
+  width: 1.2em;
+  height: 1.2em;
+  vertical-align: middle;
+  margin-left: 0.3rem;
+  display: inline-block;
+}
+
+.contacts-wrapper.light-theme-contacts .info-desc {
+  font-size: 1.1rem;
+  color: var(--text-muted);
+  line-height: 1.7;
+  margin-bottom: 3rem;
+}
+
+.contacts-wrapper.light-theme-contacts .info-details {
+  display: flex;
+  flex-direction: column;
+  gap: 1.8rem;
+}
+
+.contacts-wrapper.light-theme-contacts .info-card {
+  display: flex;
+  align-items: center;
+  gap: 1.5rem;
+  padding: 1.2rem;
+  background: white;
+  border: 1px solid rgba(0, 0, 0, 0.05);
+  border-radius: 16px;
+  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.02);
+  transition: transform 0.3s ease, border-color 0.3s ease, box-shadow 0.3s ease;
+}
+
+.contacts-wrapper.light-theme-contacts .info-card:hover {
+  transform: translateX(8px);
+  border-color: rgba(58, 0, 255, 0.15);
+  box-shadow: 0 15px 35px rgba(58, 0, 255, 0.05);
+}
+
+.contacts-wrapper.light-theme-contacts .info-card-icon {
+  font-size: 1.8rem;
+  width: 50px;
+  height: 50px;
+  background: #f0f2ff;
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.contacts-wrapper.light-theme-contacts .info-card strong {
+  display: block;
+  font-family: var(--font-headings);
+  font-size: 0.85rem;
+  color: #888;
+  text-transform: uppercase;
+  letter-spacing: 1px;
+  margin-bottom: 0.2rem;
+}
+
+.contacts-wrapper.light-theme-contacts .info-card a,
+.contacts-wrapper.light-theme-contacts .info-card p {
+  font-size: 1.1rem;
+  font-weight: 600;
+  color: var(--text-color);
+  text-decoration: none;
+  margin: 0;
+}
+
+.contacts-wrapper.light-theme-contacts .creative-form-v2 {
+  display: flex;
+  flex-direction: column;
+  gap: 1.8rem;
+}
+
+/* Right Side: Light glass card & Coffee selector styling */
+.contacts-wrapper.light-theme-contacts .light-contacts-card {
+  background: rgba(255, 255, 255, 0.8);
+  backdrop-filter: blur(16px);
+  -webkit-backdrop-filter: blur(16px);
+  border: 1px solid rgba(0, 0, 0, 0.06);
+  box-shadow: 0 20px 50px rgba(58, 0, 255, 0.04);
+  border-radius: 24px;
+  padding: 3rem;
+  transition: border-color 0.3s ease, box-shadow 0.3s ease;
+}
+
+.contacts-wrapper.light-theme-contacts .light-contacts-card:hover {
+  border-color: rgba(58, 0, 255, 0.15);
+  box-shadow: 0 25px 60px rgba(58, 0, 255, 0.08);
+}
+
+.contacts-wrapper.light-theme-contacts .coffee-form-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  gap: 1.5rem;
+  padding-bottom: 1.5rem;
+  border-bottom: 1px solid rgba(0, 0, 0, 0.06);
+}
+
+.contacts-wrapper.light-theme-contacts .form-heading {
+  font-family: var(--font-headings);
+  font-size: 1.1rem;
+  font-weight: 600;
+  color: var(--text-color);
+  margin-bottom: 0.8rem;
+}
+
+.contacts-wrapper.light-theme-contacts .coffee-row-selector {
+  display: flex;
+  background: rgba(0, 0, 0, 0.03);
+  border: 1px solid rgba(0, 0, 0, 0.06);
+  border-radius: 30px;
+  padding: 0.3rem;
+  gap: 0.2rem;
+}
+
+.contacts-wrapper.light-theme-contacts .coffee-row-btn {
+  background: transparent;
+  border: none;
+  color: rgba(0, 0, 0, 0.6);
+  font-family: var(--font-main);
+  font-size: 0.85rem;
+  font-weight: 600;
+  padding: 0.6rem 1.1rem;
+  border-radius: 20px;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  white-space: nowrap;
+}
+
+.contacts-wrapper.light-theme-contacts .coffee-row-btn:hover {
+  color: #000000;
+  background: rgba(0, 0, 0, 0.04);
+}
+
+.contacts-wrapper.light-theme-contacts .coffee-row-btn.active {
+  background: var(--color-primary-blue);
+  color: #ffffff;
+  box-shadow: 0 4px 12px rgba(58, 0, 255, 0.2);
+}
+
+/* Coffee Cup styling for light theme */
+.contacts-wrapper.light-theme-contacts .coffee-cup-container-v2 {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 90px;
+  height: 90px;
+}
+
+.contacts-wrapper.light-theme-contacts .coffee-cup-widget {
+  position: relative;
+  width: 60px;
+  height: 48px;
+  background: rgba(0, 0, 0, 0.01);
+  border: 3px solid #1a1a1a;
+  border-top: none;
+  border-radius: 0 0 30px 30px;
+  box-shadow: 0 5px 0 rgba(0, 0, 0, 0.05);
+}
+
+.contacts-wrapper.light-theme-contacts .cup-handle {
+  position: absolute;
+  top: 6px;
+  right: -17px;
+  width: 17px;
+  height: 24px;
+  border: 3px solid #1a1a1a;
+  border-left: none;
+  border-radius: 0 12px 12px 0;
+}
+
+.contacts-wrapper.light-theme-contacts .cup-plate {
+  position: absolute;
+  bottom: -8px;
+  left: 50%;
+  transform: translateX(-50%);
+  width: 75px;
+  height: 5px;
+  background: #1a1a1a;
+  border-radius: 10px;
+}
+
+.contacts-wrapper.light-theme-contacts .smoke-line {
+  background: rgba(0, 0, 0, 0.25);
+}
+
+/* Inputs styling */
+.contacts-wrapper.light-theme-contacts .form-group-v2 {
+  position: relative;
+  width: 100%;
+}
+
+.contacts-wrapper.light-theme-contacts .form-group-v2 input,
+.contacts-wrapper.light-theme-contacts .form-group-v2 textarea {
+  width: 100%;
+  padding: 1.1rem 1.2rem;
+  background: rgba(0, 0, 0, 0.01);
+  border: 1px solid rgba(0, 0, 0, 0.08);
+  border-radius: 12px;
+  font-family: var(--font-main);
+  font-size: 0.95rem;
+  color: var(--text-color);
+  outline: none;
+  transition: all 0.3s ease;
+}
+
+.contacts-wrapper.light-theme-contacts .form-group-v2 textarea {
+  resize: none;
+  min-height: 100px;
+}
+
+.contacts-wrapper.light-theme-contacts .form-group-v2 label {
+  position: absolute;
+  left: 1.2rem;
+  top: 1.1rem;
+  color: rgba(0, 0, 0, 0.4);
+  pointer-events: none;
+  transition: all 0.3s cubic-bezier(0.25, 0.8, 0.25, 1);
+  font-size: 0.95rem;
+}
+
+.contacts-wrapper.light-theme-contacts .form-group-v2 input:focus,
+.contacts-wrapper.light-theme-contacts .form-group-v2 textarea:focus {
+  background: #ffffff;
+  border-color: var(--color-primary-blue);
+  box-shadow: 0 0 12px rgba(58, 0, 255, 0.08);
+}
+
+.contacts-wrapper.light-theme-contacts .form-group-v2 input:focus ~ label,
+.contacts-wrapper.light-theme-contacts .form-group-v2 input:not(:placeholder-shown) ~ label,
+.contacts-wrapper.light-theme-contacts .form-group-v2 textarea:focus ~ label,
+.contacts-wrapper.light-theme-contacts .form-group-v2 textarea:not(:placeholder-shown) ~ label {
+  top: -8px;
+  left: 0.8rem;
+  font-size: 0.75rem;
+  padding: 0 0.4rem;
+  background: #ffffff;
+  color: var(--color-primary-blue);
+  border-radius: 4px;
+  font-weight: 600;
+}
+
+/* Success Card styling */
+.contacts-wrapper.light-theme-contacts .success-card {
+  text-align: center;
+  padding: 2rem 1rem;
+  animation: scaleIn 0.5s cubic-bezier(0.175, 0.885, 0.32, 1.275) forwards;
+}
+
+.contacts-wrapper.light-theme-contacts .success-icon-wrapper {
+  position: relative;
+  width: 80px;
+  height: 80px;
+  background: rgba(58, 0, 255, 0.05);
+  border-radius: 50%;
+  margin: 0 auto 1.5rem;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border: 2px dashed rgba(58, 0, 255, 0.2);
+}
+
+.contacts-wrapper.light-theme-contacts .success-pulse {
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  border-radius: 50%;
+  border: 2px solid var(--color-primary-blue);
+  animation: pingEffect 1.5s infinite ease-out;
+}
+
+.contacts-wrapper.light-theme-contacts .success-emoji {
+  font-size: 2.5rem;
+}
+
+.contacts-wrapper.light-theme-contacts .success-card h3 {
+  font-family: var(--font-headings);
+  font-size: 1.8rem;
+  margin-bottom: 0.8rem;
+  color: var(--text-color);
+}
+
+.contacts-wrapper.light-theme-contacts .success-card p {
+  font-size: 0.95rem;
+  color: var(--text-muted);
+  line-height: 1.6;
+  margin-bottom: 2rem;
+}
+
+.contacts-wrapper.light-theme-contacts .btn-reset {
+  background: rgba(0, 0, 0, 0.04);
+  border: 1px solid rgba(0, 0, 0, 0.1);
+  color: var(--text-color);
+  padding: 0.7rem 1.5rem;
+  border-radius: 10px;
+  font-family: var(--font-headings);
+  font-weight: 600;
+  cursor: pointer;
+  transition: all 0.2s ease;
+}
+
+.contacts-wrapper.light-theme-contacts .btn-reset:hover {
+  background: rgba(0, 0, 0, 0.08);
+  border-color: rgba(0, 0, 0, 0.2);
+}
+
+@media (max-width: 991px) {
+  .contacts-wrapper.light-theme-contacts {
+    grid-template-columns: 1fr;
+    gap: 3rem;
+  }
+  .contacts-wrapper.light-theme-contacts .contact-info-panel {
+    text-align: center;
+  }
+  .contacts-wrapper.light-theme-contacts .info-card {
+    text-align: left;
+  }
+}
+
+@media (max-width: 600px) {
+  .contacts-wrapper.light-theme-contacts .container {
+    padding: 0 1rem;
+  }
+  .contacts-wrapper.light-theme-contacts .light-contacts-card {
+    padding: 1.25rem;
+  }
+  .contacts-wrapper.light-theme-contacts .coffee-form-header {
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 1rem;
+  }
+  .contacts-wrapper.light-theme-contacts .coffee-row-selector {
+    width: 100%;
+    display: flex;
+    box-sizing: border-box;
+  }
+  .contacts-wrapper.light-theme-contacts .coffee-row-btn {
+    flex: 1;
+    text-align: center;
+    padding: 0.5rem 0.5rem;
+    font-size: 0.8rem;
+  }
+  .contacts-wrapper.light-theme-contacts .coffee-cup-container-v2 {
+    align-self: center;
+    height: 60px;
+  }
+  .contacts-wrapper.light-theme-contacts .info-card {
+    padding: 1rem;
+    gap: 1rem;
+  }
+  .contacts-wrapper.light-theme-contacts .info-card-icon {
+    font-size: 1.5rem;
+    width: 40px;
+    height: 40px;
+    flex-shrink: 0;
+  }
+  .contacts-wrapper.light-theme-contacts .info-card a,
+  .contacts-wrapper.light-theme-contacts .info-card p {
+    font-size: 0.95rem;
+    word-break: break-all;
+  }
+}
+
+@media (max-width: 380px) {
+  .contacts-wrapper.light-theme-contacts .light-contacts-card {
+    padding: 1rem;
+  }
+  .contacts-wrapper.light-theme-contacts .coffee-row-btn {
+    padding: 0.5rem 0.25rem;
+    font-size: 0.75rem;
+  }
+}
+
+/* Smoke, liquid animation and helper classes for the coffee widget */
+.contacts-wrapper.light-theme-contacts .cup-smoke-group {
+  position: absolute;
+  top: -24px;
+  left: 50%;
+  transform: translateX(-50%);
+  display: flex;
+  gap: 7px;
+}
+
+.contacts-wrapper.light-theme-contacts .smoke-line {
+  width: 2px;
+  height: 18px;
+  background: rgba(0, 0, 0, 0.25);
+  border-radius: 5px;
+  filter: blur(1px);
+  animation: steamAnimation 2.2s infinite ease-in-out;
+}
+
+.contacts-wrapper.light-theme-contacts .smoke-line:nth-child(2) {
+  animation-delay: 0.4s;
+  height: 24px;
+}
+
+.contacts-wrapper.light-theme-contacts .smoke-line:nth-child(3) {
+  animation-delay: 0.8s;
+}
+
+.contacts-wrapper.light-theme-contacts .cup-liquid-flow {
+  position: absolute;
+  bottom: 3px;
+  left: 3px;
+  width: calc(100% - 6px);
+  background: linear-gradient(180deg, #5c3a21 0%, #301f14 100%);
+  border-radius: 0 0 26px 26px;
+  transition: height 0.6s cubic-bezier(0.4, 0, 0.2, 1);
+  overflow: hidden;
+}
+
+.contacts-wrapper.light-theme-contacts .liquid-foam {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 3px;
+  background: #dfb28c;
+  opacity: 0.8;
+}
+
+.contacts-wrapper.light-theme-contacts .cup-liquid-flow.expresso {
+  height: 25%;
+}
+
+.contacts-wrapper.light-theme-contacts .cup-liquid-flow.pingado {
+  height: 60%;
+  background: linear-gradient(180deg, #d8ac88 0%, #7d5032 100%);
+}
+
+.contacts-wrapper.light-theme-contacts .cup-liquid-flow.duplo {
+  height: 90%;
+}
+
+@keyframes steamAnimation {
+  0% {
+    transform: translateY(8px) scaleX(1);
+    opacity: 0;
+  }
+  50% {
+    transform: translateY(0) scaleX(1.3);
+    opacity: 0.55;
+  }
+  100% {
+    transform: translateY(-8px) scaleX(0.7);
+    opacity: 0;
+  }
+}
+
+@keyframes scaleIn {
+  from {
+    opacity: 0;
+    transform: scale(0.9);
+  }
+  to {
+    opacity: 1;
+    transform: scale(1);
+  }
+}
+
+@keyframes pingEffect {
+  0% {
+    transform: scale(1);
+    opacity: 0.6;
+  }
+  100% {
+    transform: scale(1.35);
+    opacity: 0;
+  }
+}
+

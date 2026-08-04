@@ -52,45 +52,6 @@ const Sobre = () => {
                         Nascemos para descomplicar o digital e torná-lo numa extensão natural da sua marca.
                     </p>
                 </section>
-
-                {/* Horizontal Timeline */}
-                <div
-                    style={{
-                        paddingLeft: '10vw', marginBottom: '2rem', fontFamily: "'Syne'", fontSize: '2rem', color: 'var(--text-muted)', fontWeight: 700
-                    }}>
-                    A Jornada {">"}
-                </div>
-                <div className="timeline-wrapper reveal" ref={sliderRef}>
-                    <div className="timeline-item">
-                        <div className="time-year">2021</div>
-                        <h3 className="time-title">A Origem</h3>
-                        <p style={{ color: 'var(--text-muted)' }}>O início num pequeno escritório, com apenas dois portáteis e
-                            uma visão de
-                            design disruptivo.</p>
-                    </div>
-                    <div className="timeline-item">
-                        <div className="time-year">2022</div>
-                        <h3 className="time-title">Primeiro Big Client</h3>
-                        <p style={{ color: 'var(--text-muted)' }}>Ganhámos a confiança de uma marca internacional, provando que
-                            criatividade
-                            não tem tamanho.</p>
-                    </div>
-                    <div className="timeline-item">
-                        <div className="time-year">2023</div>
-                        <h3 className="time-title">Expansão da Equipa</h3>
-                        <p style={{ color: 'var(--text-muted)' }}>Integração de especialistas em Marketing e Branding para
-                            oferecer um serviço
-                            360º.</p>
-                    </div>
-                    <div className="timeline-item">
-                        <div className="time-year">2024</div>
-                        <h3 className="time-title">E-Nimble Academy</h3>
-                        <p style={{ color: 'var(--text-muted)' }}>Lançamento da área de formação para partilhar conhecimento com
-                            o mercado.
-                        </p>
-                    </div>
-                </div>
-
                 {/* Core Values (DNA) */}
                 <section className="dna-values container reveal">
                     <div className="value-orb">

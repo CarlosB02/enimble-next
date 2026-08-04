@@ -114,9 +114,9 @@ const HomePage = () => {
             </section>
 
             <section id="servicos" className="services">
-                <div className="container text-center mb-5">
-                    <h2 className="section-title">Aumentar resultados</h2>
-                    <h3 className="section-subtitle">Aumente a presença e os resultados da sua empresa hoje!</h3>
+                <div className="container text-center mb-5 reveal">
+                    <span className="pp-chip" style={{ display: 'inline-block', marginBottom: '1rem' }}>Aumentar resultados</span>
+                    <h2 className="section-subtitle">Aumente a <span className="gradient-text">presença e os resultados</span> da sua empresa hoje!</h2>
                 </div>
 
                 <div className="container services-grid-container mb-5">
@@ -193,7 +193,7 @@ const HomePage = () => {
                             <h2>Formação certificada para a sua empresa.
                                 <span className="gradient-text"> Financiamento até 100%.</span></h2>
                             <p className="fc-lead">
-                                Programas práticos e certificados, com possibilidade de financiamento até 100%, através de entidades formadoras parceiras.
+                                Programas práticos e certificados com financiamento até 100%.
                             </p>
 
                             <div className="fc-features">
@@ -206,7 +206,6 @@ const HomePage = () => {
                                     </div>
                                     <div>
                                         <strong>Entidades certificadas DGERT & SIGO</strong>
-                                        <p>Emissão de certificados oficiais com validade nacional</p>
                                     </div>
                                 </div>
 
@@ -218,8 +217,7 @@ const HomePage = () => {
                                         </svg>
                                     </div>
                                     <div>
-                                        <strong>Financiamento a 100%</strong>
-                                        <p>Apoiamos a candidatura aos incentivos disponíveis.</p>
+                                        <strong>Financiamento até 100%</strong>
                                     </div>
                                 </div>
 
@@ -231,7 +229,6 @@ const HomePage = () => {
                                     </div>
                                     <div>
                                         <strong>Programas à Medida do Negócio</strong>
-                                        <p>Conteúdos adaptados aos objetivos e desafios da sua empresa.</p>
                                     </div>
                                 </div>
                             </div>
@@ -264,7 +261,7 @@ const HomePage = () => {
                 <div className="container">
                     <div className="pp-header reveal">
                         <span className="pp-chip">Trabalhos Selecionados</span>
-                        <h2 className="section-subtitle">Resultados Que Falam Por Si</h2>
+                        <h2 className="section-subtitle"><span className="gradient-text">Resultados</span> Que Falam Por Si</h2>
                     </div>
 
                     <div className="pp-grid-container">
@@ -346,7 +343,7 @@ const HomePage = () => {
                             Ver Portfolio Completo
                         </Link>
                         <Link href="/contactos" className="btn btn-primary pp-btn-contact">
-                            Iniciar Conversa
+                            Falar Connosco
                         </Link>
                     </div>
                 </div>
@@ -378,7 +375,7 @@ const HomePage = () => {
                     <div className="text-center mb-5 reveal">
                         <span className="process-chip">O NOSSO MÉTODO</span>
                         <h2 className="section-subtitle">O processo que lhe dá <span className="process-highlight">mais resultados</span></h2>
-                        <p className="process-intro">Combinamos estratégia, criatividade e dados para transformar a sua presença digital de forma previsível e consistente.</p>
+                        <p className="process-intro">Combinamos estratégia, criatividade e dados para transformar a sua presença digital.</p>
                     </div>
 
                     <div className="process-flow-container">
@@ -435,9 +432,9 @@ const HomePage = () => {
                 <div className="container">
                     <div className="gp-simple-card reveal">
                         <div className="gp-simple-text">
-                            <h2>Mais do que uma agência,<br /><span className="gp-highlight">o seu parceiro de crescimento.</span></h2>
+                            <h2>Mais do que uma agência,<br /><span className="gp-highlight">um parceiro.</span></h2>
                             <p>
-                                Não nos limitamos a prestar serviços. Sempre que identificamos sinergias reais, <strong>ligamos os nossos clientes entre si</strong> para criar novas oportunidades de negócio.
+                                Ligamos pessoas, empresas e oportunidades para gerar crescimento.
                             </p>
                             <Link href="/contactos" className="btn btn-primary gp-btn-simple">
                                 Conhecer o Ecossistema

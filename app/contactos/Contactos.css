@@ -130,13 +130,21 @@ body.contact-body .header.header-scrolled .btn-nav:hover {
 .info-title {
     font-family: var(--font-headings);
     font-size: clamp(2rem, 4vw, 3rem);
-    font-weight: 800;
+    font-weight: 500;
     line-height: 1.15;
     margin-bottom: 1.5rem;
     color: #ffffff;
 }
 
 .info-title .emoji-icon {
+    display: inline-block;
+}
+
+.png-emoji {
+    width: 1.2em;
+    height: 1.2em;
+    vertical-align: middle;
+    margin-left: 0.3rem;
     display: inline-block;
 }
 
@@ -581,14 +589,31 @@ body.contact-body .header.header-scrolled .btn-nav:hover {
         padding-bottom: 60px;
     }
 
+    .contact-page-immersive .container {
+        padding: 0 1rem;
+    }
+
     .glass-panel {
-        padding: 1.8rem;
+        padding: 1.25rem;
     }
 
     .coffee-form-header {
         flex-direction: column;
         align-items: flex-start;
         gap: 1rem;
+    }
+
+    .coffee-row-selector {
+        width: 100%;
+        display: flex;
+        box-sizing: border-box;
+    }
+
+    .coffee-row-btn {
+        flex: 1;
+        text-align: center;
+        padding: 0.5rem 0.5rem;
+        font-size: 0.8rem;
     }
 
     .coffee-cup-container-v2 {
@@ -602,5 +627,34 @@ body.contact-body .header.header-scrolled .btn-nav:hover {
 
     .info-desc {
         margin-bottom: 2rem;
+    }
+
+    .info-card {
+        padding: 1rem;
+        gap: 1rem;
+    }
+
+    .info-card-icon {
+        font-size: 1.5rem;
+        width: 40px;
+        height: 40px;
+        flex-shrink: 0;
+    }
+
+    .info-card a,
+    .info-card p {
+        font-size: 0.95rem;
+        word-break: break-all;
+    }
+}
+
+@media (max-width: 380px) {
+    .glass-panel {
+        padding: 1rem;
+    }
+
+    .coffee-row-btn {
+        padding: 0.5rem 0.25rem;
+        font-size: 0.75rem;
     }
 }

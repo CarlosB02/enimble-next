@@ -1,6 +1,6 @@
 'use client';
 
-import React, { useState, useEffect } from 'react';
+import React, { useState, useEffect, useRef } from 'react';
 import Link from 'next/link';
 import useScrollReveal from '@/hooks/useScrollReveal';
 import dynamic from 'next/dynamic';
@@ -18,9 +18,9 @@ const AutomacaoPage = () => {
         vendas: {
             title: 'Captura & Conversão de Leads',
             nodes: [
-                { step: '01', icon: '🎯', title: 'Lead Registado', detail: 'Formulário ou Anúncio' },
-                { step: '02', icon: '🤖', title: 'Qualificação IA', detail: 'Análise de perfil em 0.4s' },
-                { step: '03', icon: '🔄', title: 'CRM & Follow-up', detail: 'Nutrição & WhatsApp' },
+                { step: '01', icon: '🎯', title: 'Lead Nova', detail: 'Formulário ou Anúncio' },
+                { step: '02', icon: '🤖', title: 'Qualificação IA', detail: 'Perfil analisado em segundos' },
+                { step: '03', icon: '🔄', title: 'CRM & Follow-up', detail: 'Emails, WhatsApp e CRM' },
                 { step: '04', icon: '📅', title: 'Agendamento', detail: 'Reunião no Calendário' }
             ],
             metric: 'Tempo médio de resposta: 1.2 segundos (vs 4 horas manuais)'
@@ -28,10 +28,10 @@ const AutomacaoPage = () => {
         marketing: {
             title: 'Publicação & Email Marketing',
             nodes: [
-                { step: '01', icon: '✍️', title: 'Novo Artigo / Ideia', detail: 'Briefing estratégico' },
-                { step: '02', icon: '🧠', title: 'Workflow de IA', detail: 'SEO & Copywriting' },
-                { step: '03', icon: '📰', title: 'Blog Automático', detail: 'Publicação & Imagens' },
-                { step: '04', icon: '📧', title: 'Sequência Email', detail: 'Disparo para a lista' }
+                { step: '01', icon: '✍️', title: 'Novo Artigo / Ideia', detail: 'Briefing ou tema' },
+                { step: '02', icon: '🧠', title: 'IA & SEO', detail: 'Conteúdo otimizado' },
+                { step: '03', icon: '📰', title: 'Publicação', detail: 'Blog e Redes Sociais' },
+                { step: '04', icon: '📧', title: 'Email Marketing', detail: 'Envio automático' }
             ],
             metric: 'Publicação multicanal 100% autónoma sem intervenção diária'
         },
@@ -39,9 +39,9 @@ const AutomacaoPage = () => {
             title: 'Processos Internos & ERP',
             nodes: [
                 { step: '01', icon: '📥', title: 'Entrada de Dados', detail: 'Faturas, PDFs ou Forms' },
-                { step: '02', icon: '🔍', title: 'Extração Inteligente', detail: 'Validação sem erro' },
-                { step: '03', icon: '🔌', title: 'Integração via API', detail: 'Sincronização entre Apps' },
-                { step: '04', icon: '📊', title: 'Relatórios IA', detail: 'Dashboards atualizados' }
+                { step: '02', icon: '🔍', title: 'Extração Inteligente', detail: 'Validação automática' },
+                { step: '03', icon: '🔌', title: 'Integração', detail: 'Sincronização entre Apps' },
+                { step: '04', icon: '📊', title: 'Relatórios', detail: 'Dashboards atualizados' }
             ],
             metric: 'Zero erros de introdução manual e 100% de consistência'
         },
@@ -49,9 +49,9 @@ const AutomacaoPage = () => {
             title: 'Suporte & Notificações de Cliente',
             nodes: [
                 { step: '01', icon: '💬', title: 'Contacto do Cliente', detail: 'Chat, Email ou WhatsApp' },
-                { step: '02', icon: '⚡', title: 'Agente de IA', detail: 'Resolução imediata' },
-                { step: '03', icon: '🔔', title: 'Notificação', detail: 'Alerta de estado em tempo real' },
-                { step: '04', icon: '⭐', title: 'Satisfação', detail: 'Feedback & Fidelização' }
+                { step: '02', icon: '⚡', title: 'Agente de IA', detail: 'Resposta imediata' },
+                { step: '03', icon: '🔔', title: 'Notificação', detail: 'Atualização em tempo real' },
+                { step: '04', icon: '⭐', title: 'Satisfação', detail: 'Feedback do Cliente' }
             ],
             metric: 'NPS +42% através de respostas e acompanhamento instantâneos'
         }
@@ -59,6 +59,27 @@ const AutomacaoPage = () => {
 
     // 2. Before vs After Comparison Mode
     const [compareMode, setCompareMode] = useState('auto'); // 'manual' | 'auto'
+    const compareGridRef = useRef(null);
+    const nodesFlowRef = useRef(null);
+
+    const handleCompareSwitch = (mode) => {
+        setCompareMode(mode);
+        if (compareGridRef.current) {
+            const container = compareGridRef.current;
+            const scrollLeft = mode === 'manual' ? 0 : container.scrollWidth;
+            container.scrollTo({ left: scrollLeft, behavior: 'smooth' });
+        }
+    };
+
+    const handleCompareScroll = (e) => {
+        const container = e.currentTarget;
+        const scrollLeft = container.scrollLeft;
+        const cardWidth = container.clientWidth;
+        const newMode = scrollLeft > cardWidth / 2 ? 'auto' : 'manual';
+        if (newMode !== compareMode) {
+            setCompareMode(newMode);
+        }
+    };
 
     // 3. Interactive Hours & ROI Saved Calculator
     const [teamSize, setTeamSize] = useState(12);
@@ -82,6 +103,12 @@ const AutomacaoPage = () => {
         document.body.classList.add('auto-body');
         return () => document.body.classList.remove('auto-body');
     }, []);
+
+    useEffect(() => {
+        if (nodesFlowRef.current) {
+            nodesFlowRef.current.scrollTo({ left: 0 });
+        }
+    }, [activeScenario]);
 
     return (
         <main className="automacao-page">
@@ -107,8 +134,8 @@ const AutomacaoPage = () => {
                 <div className="container">
                     <div className="auto-hero-content">
                         <h1 className="auto-hero-h1">
-                            O Seu Negócio Trabalha.<br />
-                            <span className="auto-gradient-text">Mesmo Quando Dorme.</span>
+                            Menos Tarefas<br />
+                            <span className="auto-gradient-text">Mais Crescimento.</span>
                         </h1>
                         <p className="auto-hero-p">
                             Automatizamos tarefas repetitivas e criamos fluxos inteligentes para que a sua equipa se concentre no que realmente importa.
@@ -149,7 +176,7 @@ const AutomacaoPage = () => {
                                     className={`auto-tab-btn ${activeScenario === 'marketing' ? 'active' : ''}`}
                                     onClick={() => setActiveScenario('marketing')}
                                 >
-                                    Conteúdo & Email
+                                    Conteúdo & Marketing
                                 </button>
                                 <button
                                     className={`auto-tab-btn ${activeScenario === 'operacoes' ? 'active' : ''}`}
@@ -161,7 +188,7 @@ const AutomacaoPage = () => {
                                     className={`auto-tab-btn ${activeScenario === 'experiencia' ? 'active' : ''}`}
                                     onClick={() => setActiveScenario('experiencia')}
                                 >
-                                    Suporte & Notificações
+                                    Suporte ao Cliente
                                 </button>
                             </div>
                             <div className="auto-sim-status">
@@ -171,7 +198,7 @@ const AutomacaoPage = () => {
                         </div>
 
                         <div className="auto-pipeline-canvas">
-                            <div className="auto-nodes-flow">
+                            <div className="auto-nodes-flow" ref={nodesFlowRef}>
                                 {scenarios[activeScenario].nodes.map((node, index) => (
                                     <React.Fragment key={index}>
                                         <div className="auto-node-card active-step">
@@ -191,8 +218,7 @@ const AutomacaoPage = () => {
                         </div>
 
                         <div className="auto-sim-footer">
-                            <span>⚡ <strong>Impacto Operacional:</strong> {scenarios[activeScenario].metric}</span>
-                            <span className="auto-metrics-pill">Zero fricção humana</span>
+                            <span>⚡ <strong>Processos executados automaticamente, 24/7</strong></span>
                         </div>
                     </div>
                 </div>
@@ -207,22 +233,17 @@ const AutomacaoPage = () => {
                         <div className="auto-metric-card reveal delay-1">
                             <div className="auto-metric-val">+85%</div>
                             <div className="auto-metric-label">Redução de Tarefas Repetitivas</div>
-                            <div className="auto-metric-sub">A equipa foca-se no que gera receita</div>
+                            <div className="auto-metric-sub">A equipa foca-se no que cria valor</div>
                         </div>
                         <div className="auto-metric-card reveal delay-2">
                             <div className="auto-metric-val">0.0s</div>
-                            <div className="auto-metric-label">Atraso na Resposta a Leads</div>
-                            <div className="auto-metric-sub">Atendimento e qualificação instantâneos</div>
+                            <div className="auto-metric-label">Tempo de Resposta a Novas Leads</div>
+                            <div className="auto-metric-sub">Qualificação e contacto imediato.</div>
                         </div>
                         <div className="auto-metric-card reveal delay-3">
                             <div className="auto-metric-val">100%</div>
                             <div className="auto-metric-label">Consistência nos Processos</div>
-                            <div className="auto-metric-sub">Eliminação total do erro humano</div>
-                        </div>
-                        <div className="auto-metric-card reveal delay-4">
-                            <div className="auto-metric-val">3.4x</div>
-                            <div className="auto-metric-label">Capacidade de Escala</div>
-                            <div className="auto-metric-sub">Mais volume com a mesma equipa</div>
+                            <div className="auto-metric-sub">Menos erros. Mais controlo.</div>
                         </div>
                     </div>
                 </div>
@@ -235,11 +256,10 @@ const AutomacaoPage = () => {
                 <div className="container">
                     <div className="text-center reveal">
                         <h2 className="auto-section-title">
-                            Como a sua empresa opera hoje <br />
-                            <span className="auto-gradient-text">vs. Como pode operar amanhã</span>
+                            O próximo nível <span className="auto-gradient-text">da sua operação</span>
                         </h2>
                         <p className="auto-section-desc">
-                            A diferença entre empresas que estagnam e empresas que lideram está na forma como gerem o seu recurso mais valioso: o tempo.
+                            Pequenas automatizações geram grandes ganhos em produtividade, rapidez e eficiência.
                         </p>
                     </div>
 
@@ -247,24 +267,25 @@ const AutomacaoPage = () => {
                         <div className="auto-compare-switch">
                             <button
                                 className={`auto-switch-btn ${compareMode === 'manual' ? 'active-manual' : ''}`}
-                                onClick={() => setCompareMode('manual')}
+                                onClick={() => handleCompareSwitch('manual')}
                             >
                                 ⚠️ Operação Manual
                             </button>
                             <button
                                 className={`auto-switch-btn ${compareMode === 'auto' ? 'active-auto' : ''}`}
-                                onClick={() => setCompareMode('auto')}
+                                onClick={() => handleCompareSwitch('auto')}
                             >
                                 🚀 Operação Inteligente
                             </button>
                         </div>
                     </div>
 
-                    <div className="auto-compare-grid reveal">
+                    <div 
+                        className="auto-compare-grid reveal"
+                        ref={compareGridRef}
+                        onScroll={handleCompareScroll}
+                    >
                         <div className={`auto-compare-card manual-card ${compareMode === 'manual' ? 'highlight-side' : ''}`}>
-                            <div className="auto-compare-header">
-                                <span className="auto-compare-badge">Operação Manual</span>
-                            </div>
                             <ul className="auto-compare-list">
                                 <li className="auto-compare-item">
                                     <span className="icon">❌</span>
@@ -286,9 +307,6 @@ const AutomacaoPage = () => {
                         </div>
 
                         <div className={`auto-compare-card auto-card ${compareMode === 'auto' ? 'highlight-side' : ''}`}>
-                            <div className="auto-compare-header">
-                                <span className="auto-compare-badge">Operação Inteligente</span>
-                            </div>
                             <ul className="auto-compare-list">
                                 <li className="auto-compare-item">
                                     <span className="icon">✅</span>
@@ -300,7 +318,7 @@ const AutomacaoPage = () => {
                                 </li>
                                 <li className="auto-compare-item">
                                     <span className="icon">✅</span>
-                                    <span><strong>Nutrição e CRM Automático:</strong> Nenhum contacto fica esquecido.</span>
+                                    <span><strong>CRM Inteligente:</strong> Nenhum contacto fica esquecido.</span>
                                 </li>
                                 <li className="auto-compare-item">
                                     <span className="icon">✅</span>
@@ -309,229 +327,29 @@ const AutomacaoPage = () => {
                             </ul>
                         </div>
                     </div>
-                </div>
-            </section>
-
-            {/* ==========================================
-                4. SERVICES WE OFFER (BENTO MATRIX)
-            ========================================== */}
-            <section className="auto-matrix-section">
-                <div className="container">
-                    <div className="text-center reveal">
-                        <h2 className="auto-section-title">
-                            Automatize as Áreas<br />
-                            <span className="auto-gradient-text">Que Mais Consomem Tempo</span>
-                        </h2>
-                        <p className="auto-section-desc">
-                            Implementamos automações e IA onde geram mais impacto no dia a dia da sua empresa.
-                        </p>
-                    </div>
-
-                    <div className="auto-bento-grid">
-
-                        {/* Card 1 - Sales & CRM */}
-                        <div className="auto-bento-card col-span-8 reveal delay-1">
-                            <div className="auto-bento-header" style={{ display: 'flex', alignItems: 'flex-start', gap: '1rem', marginBottom: '1.5rem' }}>
-                                <div className="auto-bento-icon-wrapper" style={{ flexShrink: 0, marginBottom: 0, background: 'transparent', border: 'none' }}>
-                                    <img src="/icons/automacao/vendas.png" alt="Vendas" width={52} height={52} />
-                                </div>
-                                <div>
-                                    <h3 style={{ marginBottom: '0.5rem' }}>Automação de Vendas & Leads</h3>
-                                    <p style={{ marginBottom: 0 }}>
-                                        Da primeira lead ao negócio fechado, sem tarefas manuais.
-                                    </p>
-                                </div>
-                            </div>
-                            <div>
-                                <div className="auto-mini-workflow-preview">
-                                    <span className="auto-mini-pill">Qualificação IA</span>
-                                    <span>➔</span>
-                                    <span className="auto-mini-pill">CRM</span>
-                                    <span>➔</span>
-                                    <span className="auto-mini-pill">Follow-up</span>
-                                    <span>➔</span>
-                                    <span className="auto-mini-pill">Agendamento</span>
-                                </div>
-                            </div>
-                            <div className="auto-bento-tags">
-                                <span className="auto-tag">Sistemas de Follow-up</span>
-                                <span className="auto-tag">Agendamento Automático</span>
-                                <span className="auto-tag">CRM Sync</span>
-                                <span className="auto-tag">Qualificação IA</span>
-                            </div>
-                        </div>
-
-                        {/* Card 2 - Content & Blog */}
-                        <div className="auto-bento-card col-span-4 reveal delay-2">
-                            <div className="auto-bento-header" style={{ display: 'flex', alignItems: 'flex-start', gap: '1rem', marginBottom: '1.5rem' }}>
-                                <div className="auto-bento-icon-wrapper" style={{ flexShrink: 0, marginBottom: 0, background: 'transparent', border: 'none' }}>
-                                    <img src="/icons/automacao/conteudo.png" alt="Conteúdo" width={52} height={52} />
-                                </div>
-                                <div>
-                                    <h3 style={{ marginBottom: '0.5rem' }}>Blog & Conteúdo</h3>
-                                    <p style={{ marginBottom: 0 }}>
-                                        Conteúdo criado e publicado automaticamente.
-                                    </p>
-                                </div>
-                            </div>
-                            <div className="auto-bento-tags">
-                                <span className="auto-tag">SEO</span>
-                                <span className="auto-tag">Blog</span>
-                            </div>
-                        </div>
-
-                        {/* Card 3 - Customer Experience */}
-                        <div className="auto-bento-card col-span-4 reveal delay-1">
-                            <div className="auto-bento-header" style={{ display: 'flex', alignItems: 'flex-start', gap: '1rem', marginBottom: '1.5rem' }}>
-                                <div className="auto-bento-icon-wrapper" style={{ flexShrink: 0, marginBottom: 0, background: 'transparent', border: 'none' }}>
-                                    <img src="/icons/automacao/comunicacao.png" alt="Comunicação" width={52} height={52} />
-                                </div>
-                                <div>
-                                    <h3 style={{ marginBottom: '0.5rem' }}>Comunicação com Clientes</h3>
-                                    <p style={{ marginBottom: 0 }}>
-                                        Emails, WhatsApp e notificações em piloto automático.
-                                    </p>
-                                </div>
-                            </div>
-                            <div className="auto-bento-tags">
-                                <span className="auto-tag">Automated Email Sequences</span>
-                                <span className="auto-tag">Customer Notifications</span>
-                            </div>
-                        </div>
-
-                        {/* Card 4 - Internal Workflows & APIs */}
-                        <div className="auto-bento-card col-span-8 reveal delay-2">
-                            <div className="auto-bento-header" style={{ display: 'flex', alignItems: 'flex-start', gap: '1rem', marginBottom: '1.5rem' }}>
-                                <div className="auto-bento-icon-wrapper" style={{ flexShrink: 0, marginBottom: 0, background: 'transparent', border: 'none' }}>
-                                    <img src="/icons/automacao/integracao.png" alt="Integração" width={52} height={52} />
-                                </div>
-                                <div>
-                                    <h3 style={{ marginBottom: '0.5rem' }}>Integração de Plataformas</h3>
-                                    <p style={{ marginBottom: 0 }}>
-                                        Todas as suas ferramentas a trabalhar em conjunto.
-                                    </p>
-                                </div>
-                            </div>
-                            <div>
-                                <div className="auto-mini-workflow-preview">
-                                    <span className="auto-mini-pill">API Integrations</span>
-                                    <span>➔</span>
-                                    <span className="auto-mini-pill">Internal Workflows</span>
-                                    <span>➔</span>
-                                    <span className="auto-mini-pill">Business Process Automation</span>
-                                </div>
-                            </div>
-                            <div className="auto-bento-tags">
-                                <span className="auto-tag">Integrações entre Plataformas</span>
-                                <span className="auto-tag">Custom Automations</span>
-                                <span className="auto-tag">API Workflows</span>
-                            </div>
-                        </div>
-
-                        {/* Card 5 - AI Workflows & Reporting */}
-                        <div className="auto-bento-card col-span-12 reveal delay-3">
-                            <div style={{ display: 'grid', gridTemplateColumns: '1fr 1fr', gap: '2rem', alignItems: 'center' }}>
-                                <div className="auto-bento-header" style={{ display: 'flex', alignItems: 'flex-start', gap: '1rem' }}>
-                                    <div className="auto-bento-icon-wrapper" style={{ flexShrink: 0, marginBottom: 0, background: 'transparent', border: 'none' }}>
-                                        <img src="/icons/automacao/relatorios.png" alt="Relatórios" width={52} height={52} />
-                                    </div>
-                                    <div>
-                                        <h3 style={{ marginBottom: '0.5rem' }}>IA & Relatórios</h3>
-                                        <p style={{ marginBottom: 0 }}>
-                                            Dados transformados em decisões, automaticamente.
-                                        </p>
-                                    </div>
-                                </div>
-                                <div className="auto-bento-tags" style={{ marginTop: 0 }}>
-                                    <span className="auto-tag">AI-powered Workflows</span>
-                                    <span className="auto-tag">Reporting Automations</span>
-                                    <span className="auto-tag">Data Extraction</span>
-                                    <span className="auto-tag">Dashboards em Tempo Real</span>
-                                </div>
-                            </div>
-                        </div>
-
+                    <div className="text-center reveal mt-5">
+                        <Link href="/contactos" className="auto-btn-primary">
+                            Mudar para a Operação Inteligente
+                        </Link>
                     </div>
                 </div>
             </section>
 
             {/* ==========================================
-                5. OPERATIONAL ROI & HOURS CALCULATOR
-            ========================================== */}
-            <section id="calculadora" className="auto-calculator-section">
-                <div className="container">
-                    <div className="text-center reveal">
-                        <h2 className="auto-section-title">
-                            Quanto tempo a sua empresa está a perder hoje?
-                        </h2>
-                        <p className="auto-section-desc">
-                            Ajuste os indicadores abaixo e veja quantas horas de trabalho manual a sua equipa pode recuperar todos os meses através da automação.
-                        </p>
-                    </div>
-
-                    <div className="auto-calculator-box reveal delay-1" style={{ marginTop: '3.5rem' }}>
-                        <div className="auto-calc-controls">
-                            <div className="auto-slider-group">
-                                <div className="auto-slider-header">
-                                    <span className="auto-slider-label">Membros na equipa:</span>
-                                    <span className="auto-slider-val">{teamSize} colaboradores</span>
-                                </div>
-                                <input
-                                    type="range"
-                                    min="2"
-                                    max="100"
-                                    value={teamSize}
-                                    onChange={(e) => setTeamSize(Number(e.target.value))}
-                                    className="auto-range-input"
-                                />
-                            </div>
-
-                            <div className="auto-slider-group">
-                                <div className="auto-slider-header">
-                                    <span className="auto-slider-label">Horas manuais repetitivas/semana por pessoa:</span>
-                                    <span className="auto-slider-val">{hoursPerWeek}h / semana</span>
-                                </div>
-                                <input
-                                    type="range"
-                                    min="2"
-                                    max="25"
-                                    value={hoursPerWeek}
-                                    onChange={(e) => setHoursPerWeek(Number(e.target.value))}
-                                    className="auto-range-input"
-                                />
-                            </div>
-                        </div>
-
-                        <div className="auto-calc-results">
-                            <div className="auto-res-item">
-                                <div className="auto-res-num">~{hoursSavedPerMonth.toLocaleString()}h</div>
-                                <div className="auto-res-desc">Horas operacionais recuperadas por mês</div>
-                            </div>
-                            <div className="auto-res-item">
-                                <div className="auto-res-num">+{estimatedCapacityBoost}%</div>
-                                <div className="auto-res-desc">Aumento estimado de capacidade sem contratar</div>
-                            </div>
-                            <Link href="/contactos" className="auto-btn-primary" style={{ width: '100%', marginTop: '1rem' }}>
-                                Recupere Este Tempo Agora →
-                            </Link>
-                        </div>
-                    </div>
-                </div>
-            </section>
-
-            {/* ==========================================
-                6. CORE MANIFESTO SECTION
+                4. CORE MANIFESTO SECTION
             ========================================== */}
             <section className="auto-manifesto-section">
                 <div className="container">
                     <div className="auto-manifesto-box reveal">
                         <div className="auto-manifesto-quote">
-                            "Automação não é sobre substituir pessoas. <br />
-                            <span className="auto-gradient-text">É sobre permitir que negócios cresçam sem crescer a complexidade.</span>"
+                            Automação não é sobre substituir pessoas. <br />
+                            <span className="auto-gradient-text">É sobre permitir que negócios cresçam sem crescer a complexidade.</span>
                         </div>
-                        <p className="auto-manifesto-sub">
-                            Quando remove o peso do trabalho repetitivo dos ombros da sua equipa, liberta o seu verdadeiro potencial criativo, comercial e estratégico.
-                        </p>
+                        <div className="mt-4">
+                            <Link href="/contactos" className="auto-btn-secondary">
+                                Falar com um Especialista
+                            </Link>
+                        </div>
                     </div>
                 </div>
             </section>
@@ -543,10 +361,10 @@ const AutomacaoPage = () => {
                 <div className="container">
                     <div className="text-center reveal">
                         <h2 className="auto-section-title">
-                            Como Transformamos a Sua Operação
+                            Como Transformamos <span className="auto-gradient-text">a Sua Operação</span>
                         </h2>
                         <p className="auto-section-desc">
-                            Um método estruturado em 4 passos para implementar automação e IA com segurança e sem interromper o seu negócio.
+                            Um método simples e rápido para implementar automação e IA sem interromper o seu negócio.
                         </p>
                     </div>
 
@@ -554,23 +372,28 @@ const AutomacaoPage = () => {
                         <div className="auto-roadmap-card reveal delay-1">
                             <div className="auto-step-num">01</div>
                             <h4>Mapeamento de Processos</h4>
-                            <p>Analisamos os fluxos de trabalho atuais para identificar onde a sua equipa perde tempo e onde ocorrem gargalos.</p>
+                            <p>Analisamos os processos e identificamos oportunidades de automação.</p>
                         </div>
                         <div className="auto-roadmap-card reveal delay-2">
                             <div className="auto-step-num">02</div>
-                            <h4>Arquitetura & IA Customizada</h4>
-                            <p>Desenhamos as integrações e modelos de inteligência artificial perfeitamente adaptados ao seu software e modelo de negócio.</p>
+                            <h4>Solução Personalizada</h4>
+                            <p>Desenhamos fluxos e IA adaptados ao seu negócio.</p>
                         </div>
                         <div className="auto-roadmap-card reveal delay-3">
                             <div className="auto-step-num">03</div>
-                            <h4>Implementação Silenciosa</h4>
-                            <p>Conectamos as suas plataformas e testamos cada fluxo em ambiente controlado, garantindo transição sem atritos.</p>
+                            <h4>Implementação</h4>
+                            <p>Ligamos as ferramentas e colocamos tudo a funcionar.</p>
                         </div>
                         <div className="auto-roadmap-card reveal delay-4">
                             <div className="auto-step-num">04</div>
-                            <h4>Operação Autónoma & Escala</h4>
-                            <p>Os seus sistemas passam a operar em piloto automático enquanto monitorizamos a eficiência e otimizamos os resultados.</p>
+                            <h4>Otimização Contínua</h4>
+                            <p>Monitorizamos, melhoramos e escalamos os resultados.</p>
                         </div>
+                    </div>
+                    <div className="text-center reveal mt-5">
+                        <Link href="/contactos" className="auto-btn-primary">
+                            Iniciar Diagnóstico Gratuito
+                        </Link>
                     </div>
                 </div>
             </section>
@@ -594,7 +417,7 @@ const AutomacaoPage = () => {
                                 <span className="auto-faq-icon">+</span>
                             </summary>
                             <div className="auto-faq-content">
-                                Não. O objetivo da E-Nimble é integrar os softwares que a sua equipa já utiliza diariamente (como CRM, email, ERP, WhatsApp ou ferramentas de gestão), conectando-os através de APIs e automações inteligentes sem forçar novas migrações.
+                                Não. Integramos os softwares que a sua empresa já utiliza (CRM, ERP, email, WhatsApp, entre outros), ligando tudo através de automações inteligentes, sem necessidade de mudar de plataforma.
                             </div>
                         </details>
 
@@ -604,7 +427,7 @@ const AutomacaoPage = () => {
                                 <span className="auto-faq-icon">+</span>
                             </summary>
                             <div className="auto-faq-content">
-                                Pelo contrário. Com inteligência artificial avançada e fluxos personalizados, a comunicação torna-se imediata, relevante e contextual. Além disso, ao automatizar tarefas mecânicas, a sua equipa fica com mais tempo livre para conversas humanas de alto valor.
+                                Pelo contrário. A automação trata das tarefas repetitivas, enquanto a sua equipa ganha mais tempo para conversas humanas e de maior valor.
                             </div>
                         </details>
 
@@ -614,7 +437,7 @@ const AutomacaoPage = () => {
                                 <span className="auto-faq-icon">+</span>
                             </summary>
                             <div className="auto-faq-content">
-                                Zero. Desenhamos sistemas invisíveis que trabalham nos bastidores. A sua equipa apenas nota que as tarefas repetitivas desapareceram e que as informações aparecem prontas nos locais certos.
+                                Não. Criamos soluções simples de utilizar. A tecnologia trabalha nos bastidores para que a sua equipa continue a usar as ferramentas do dia a dia.
                             </div>
                         </details>
 
@@ -624,7 +447,7 @@ const AutomacaoPage = () => {
                                 <span className="auto-faq-icon">+</span>
                             </summary>
                             <div className="auto-faq-content">
-                                Automações prioritárias de alto impacto (como qualificação instantânea de leads, agendamento automático e notificações) são habitualmente implementadas e operacionais em poucas semanas.
+                                Depende da complexidade do projeto, mas muitas automações começam a gerar resultados imediatamente após a implementação.
                             </div>
                         </details>
                     </div>
@@ -642,10 +465,10 @@ const AutomacaoPage = () => {
                             <span className="auto-gradient-text">próximo nível de eficiência?</span>
                         </h2>
                         <p className="auto-cta-p">
-                            Agende uma conversa com os nossos especialistas e descubra como a automação inteligente pode transformar o dia-a-dia e a rentabilidade do seu negócio.
+                            Descubra como a automação pode libertar tempo, reduzir custos e acelerar o crescimento do seu negócio.
                         </p>
                         <Link href="/contactos" className="auto-btn-primary" style={{ padding: '1.25rem 3rem', fontSize: '1.1rem' }}>
-                            Marcar Reunião Estratégica ☕
+                            Agendar Diagnóstico Gratuito
                         </Link>
                     </div>
                 </div>

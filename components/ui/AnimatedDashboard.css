@@ -154,20 +154,22 @@
 /* Reports Tab Styles */
 .dash-bar-chart-container {
     display: flex;
-    justify-content: space-around;
+    justify-content: center;
+    gap: 12px;
     align-items: flex-end;
     height: 150px;
     padding-bottom: 20px;
     border-bottom: 1px solid #e2e8f0;
+    max-width: 360px;
+    margin: 0 auto;
+    width: 100%;
 }
 .dash-bar-column {
     display: flex;
     flex-direction: column;
     align-items: center;
-    width: 8%;
+    width: 28px;
     height: 100%;
-    margin-left: 20px;
-    margin-right: 20px;
     justify-content: flex-end;
 }
 .dash-bar-fill {
@@ -265,6 +267,27 @@
     z-index: 0;
 }
 @media (max-width: 480px) {
-    .dash-side-stats { grid-template-columns: 1fr; }
+    .dash-side-stats {
+        grid-template-columns: repeat(3, 1fr);
+        gap: 8px;
+    }
+    .dash-stat-card {
+        padding: 8px 4px;
+    }
+    .dash-stat-label {
+        font-size: 0.7rem;
+    }
+    .dash-stat-value {
+        font-size: 0.8rem;
+    }
+    .dash-stat-indicator, .dash-stat-indicator-down {
+        font-size: 0.65rem;
+    }
     .dash-bar-label { font-size: 0.6rem; }
+    .dash-bar-chart-container {
+        gap: 8px;
+    }
+    .dash-bar-column {
+        width: 24px;
+    }
 }

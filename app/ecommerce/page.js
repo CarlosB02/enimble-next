@@ -280,6 +280,11 @@ const Ecommerce = () => {
                             />
                         ))}
                     </div>
+                    <div style={{ textAlign: 'center', marginTop: '3.5rem' }} className="reveal">
+                        <Link href="/contactos" className="smart-btn" style={{ padding: '0.9rem 2.2rem', fontSize: '1rem' }}>
+                            <span style={{ color: '#ffffff' }}>Criar a Minha Loja</span>
+                        </Link>
+                    </div>
                 </div>
             </section>
 
@@ -361,7 +366,7 @@ const Ecommerce = () => {
                         <div className="ec-showcase-item reveal delay-4" style={{ background: 'var(--shop-warm)', border: '2px dashed rgba(58, 0, 255, 0.2)', justifyContent: 'center', padding: '1.5rem 1rem' }}>
                             <span style={{ fontSize: '1.1rem', fontWeight: '700', color: 'var(--shop-text)', marginBottom: '0.4rem' }}>E muito mais...</span>
                             <p style={{ fontSize: '0.8rem', color: 'var(--shop-text-muted)', marginBottom: '1.2rem', lineHeight: '1.3' }}>Soluções à sua medida.</p>
-                            <Link href="/contactos" className="smart-btn" style={{ padding: '0.7rem 1.4rem', fontSize: '0.9rem' }}>
+                            <Link href="/contactos" className="smart-btn" style={{ padding: '0.5rem 1rem', fontSize: '0.9rem' }}>
                                 <span style={{ color: '#ffffff' }}>Pedir Proposta</span>
                             </Link>
                         </div>
@@ -465,7 +470,7 @@ const Ecommerce = () => {
             <section className="ec-cta-section reveal">
                 <div className="container">
                     <div className="ec-cta-content">
-                        <h2>A sua loja está <span className="gradient-word">pronta.</span><br /><span className="ec-highlight">E os seus clientes estão à espera.</span></h2>
+                        <h2>A sua loja está <span className="gradient-word">pronta. </span><br /><span className="ec-highlight">E os seus clientes estão à espera.</span></h2>
                         <Link href="/contactos" className="smart-btn">
                             <span>Começar a Vender</span>
                         </Link>

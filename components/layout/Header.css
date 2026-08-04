@@ -172,6 +172,14 @@
   box-shadow: 0 5px 15px rgba(0, 0, 0, 0.2);
 }
 
+.coffee-emoji-img {
+  width: 1.2em;
+  height: 1.2em;
+  vertical-align: middle;
+  margin-left: 0.3rem;
+  display: inline-block;
+}
+
 /* Mobile Navigation Toggle */
 .mobile-nav-toggle {
   display: none;

@@ -715,29 +715,29 @@
     margin-bottom: 1.5rem;
 }
 
-.wd-service-link {
-    display: flex;
+.wd-service-btn {
+    display: inline-flex;
     align-items: center;
-    gap: 0.6rem;
-    color: #3A00FF;
+    justify-content: center;
+    padding: 0.8rem 1.5rem;
+    background: var(--gradient-main);
+    color: #ffffff;
     font-weight: 700;
-    font-size: 0.9rem;
+    font-size: 0.85rem;
     text-transform: uppercase;
     letter-spacing: 1px;
+    border-radius: 100px;
+    border: none;
+    cursor: pointer;
     transition: all 0.3s ease;
     margin-top: auto;
+    width: 100%;
 }
 
-.wd-service-link .arrow {
-    transition: transform 0.3s ease;
-}
-
-.wd-service-card:hover .wd-service-link {
-    gap: 1rem;
-}
-
-.wd-service-card:hover .wd-service-link .arrow {
-    transform: translate(3px, -3px);
+.wd-service-btn:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 5px 15px rgba(58, 0, 255, 0.3);
+    opacity: 0.9;
 }
 
 
@@ -1633,12 +1633,12 @@
     }
 
     .wd-service-card-header {
-        flex-direction: column;
-        align-items: flex-start;
-        gap: 1rem;
+        flex-direction: row;
+        align-items: center;
+        gap: 0.8rem;
     }
 
     .wd-service-card h3 {
-        font-size: 1.4rem;
+        font-size: 1.15rem;
     }
 }
