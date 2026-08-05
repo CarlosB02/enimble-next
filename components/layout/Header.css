@@ -329,8 +329,6 @@
     overflow-y: auto !important;
     overflow-x: hidden !important;
     -webkit-overflow-scrolling: touch;
-    transform: translate3d(0, 0, 0);
-    -webkit-transform: translate3d(0, 0, 0);
   }
 
   .mobile-menu-links {
@@ -347,7 +345,7 @@
   /* Entrance animations for items inside drawer */
   .menu-item-animate {
     opacity: 0;
-    transform: translateX(25px);
+    transform: translateY(18px);
     transition: opacity 0.5s cubic-bezier(0.16, 1, 0.3, 1), transform 0.5s cubic-bezier(0.16, 1, 0.3, 1);
     width: 100%;
   }
@@ -355,7 +353,7 @@
   #menu-toggle:checked~.mobile-nav-drawer .menu-item-animate,
   .mobile-nav-drawer.drawer-open .menu-item-animate {
     opacity: 1;
-    transform: translateX(0);
+    transform: translateY(0);
   }
 
   .mobile-nav-drawer .menu-item-animate:nth-child(1) {
@@ -414,8 +412,6 @@
   /* services dropdown styling */
   .mobile-nav-drawer .dropdown-menu {
     position: static;
-    transform: translate3d(0, 0, 0);
-    -webkit-transform: translate3d(0, 0, 0);
     will-change: max-height;
     background: transparent;
     box-shadow: none;
