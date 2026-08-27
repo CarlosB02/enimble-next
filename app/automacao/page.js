@@ -2,11 +2,111 @@
 
 import React, { useState, useEffect, useRef } from 'react';
 import Link from 'next/link';
+import Image from 'next/image';
 import useScrollReveal from '@/hooks/useScrollReveal';
 import dynamic from 'next/dynamic';
 import './Automacao.css';
 
 const Hyperspeed = dynamic(() => import('@/components/ui/Hyperspeed'), { ssr: false });
+
+// Componente isolado para cada item do FAQ, com medição real de altura
+const FaqItem = ({ question, answer, defaultOpen = false }) => {
+    const [isOpen, setIsOpen] = useState(defaultOpen);
+    const contentRef = useRef(null);
+    const [height, setHeight] = useState(defaultOpen ? undefined : 0);
+
+    useEffect(() => {
+        if (isOpen) {
+            setHeight(contentRef.current.scrollHeight);
+        } else {
+            setHeight(0);
+        }
+    }, [isOpen]);
+
+    return (
+        <div className={`auto-faq-item ${isOpen ? 'is-open' : ''}`}>
+            <div className="auto-faq-summary" onClick={() => setIsOpen(!isOpen)}>
+                <span>{question}</span>
+                <span className="auto-faq-icon">{isOpen ? '−' : '+'}</span>
+            </div>
+            <div
+                className="auto-faq-content-wrapper"
+                style={{ height: height !== undefined ? `${height}px` : 'auto', overflow: 'hidden', transition: 'height 0.3s ease' }}
+            >
+                <div ref={contentRef} className="auto-faq-content">
+                    {answer}
+                </div>
+            </div>
+        </div>
+    );
+};
+
+// Componente accordion para o workflow simulator em mobile
+const WorkflowAccordionItem = ({ scenarioKey, scenario, isOpen, onToggle }) => {
+    const contentRef = useRef(null);
+    const [height, setHeight] = useState(isOpen ? undefined : 0);
+    const nodesRef = useRef(null);
+
+    useEffect(() => {
+        if (isOpen) {
+            setHeight(contentRef.current.scrollHeight);
+        } else {
+            setHeight(0);
+        }
+    }, [isOpen]);
+
+    useEffect(() => {
+        if (isOpen && nodesRef.current) {
+            nodesRef.current.scrollTo({ left: 0 });
+        }
+    }, [isOpen]);
+
+    const labels = {
+        vendas: 'Vendas & CRM',
+        marketing: 'Conteúdo & Marketing',
+        operacoes: 'Processos Internos',
+        experiencia: 'Suporte ao Cliente'
+    };
+
+    return (
+        <div className={`auto-workflow-accordion-item ${isOpen ? 'is-open' : ''}`}>
+            <div className="auto-workflow-accordion-header" onClick={onToggle}>
+                <div className="auto-workflow-accordion-header-left">
+                    <span className="auto-workflow-accordion-pulse-dot"></span>
+                    <span>{labels[scenarioKey]}</span>
+                </div>
+                <span className="auto-workflow-accordion-icon">{isOpen ? '−' : '+'}</span>
+            </div>
+            <div
+                className="auto-workflow-accordion-body"
+                style={{ height: height !== undefined ? `${height}px` : 'auto', overflow: 'hidden', transition: 'height 0.35s cubic-bezier(0.16, 1, 0.3, 1)' }}
+            >
+                <div ref={contentRef} className="auto-workflow-accordion-content">
+                    <div className="auto-nodes-flow auto-nodes-flow-accordion" ref={nodesRef}>
+                        {scenario.nodes.map((node, index) => (
+                            <React.Fragment key={index}>
+                                <div className="auto-node-card active-step">
+                                    <span className="auto-node-step">Passo {node.step}</span>
+                                    <div className="auto-node-icon">{node.icon}</div>
+                                    <div className="auto-node-title">{node.title}</div>
+                                    <div className="auto-node-detail">{node.detail}</div>
+                                </div>
+                                {index < scenario.nodes.length - 1 && (
+                                    <div className="auto-connector-line">
+                                        <div className="auto-connector-pulse"></div>
+                                    </div>
+                                )}
+                            </React.Fragment>
+                        ))}
+                    </div>
+                    <div className="auto-workflow-accordion-footer">
+                        <span>⚡ <strong>Processos executados automaticamente, 24/7</strong></span>
+                    </div>
+                </div>
+            </div>
+        </div>
+    );
+};
 
 const AutomacaoPage = () => {
     useScrollReveal();
@@ -88,17 +188,6 @@ const AutomacaoPage = () => {
     const hoursSavedPerMonth = Math.round(teamSize * hoursPerWeek * 4.33);
     const estimatedCapacityBoost = (hoursPerWeek * 2.5).toFixed(0);
 
-    // Accordion handler for single-open behavior
-    const handleDetailsClick = (e) => {
-        const targetDetail = e.currentTarget;
-        const details = document.querySelectorAll('.auto-faq-item');
-        details.forEach((detail) => {
-            if (detail !== targetDetail) {
-                detail.removeAttribute('open');
-            }
-        });
-    };
-
     useEffect(() => {
         document.body.classList.add('auto-body');
         return () => document.body.classList.remove('auto-body');
@@ -142,7 +231,7 @@ const AutomacaoPage = () => {
                         </p>
                         <div className="auto-hero-ctas">
                             <Link href="/contactos" className="auto-btn-primary">
-                                Agendar Sessão de Diagnóstico
+                                Agendar Diagnóstico Gratuito
                             </Link>
                         </div>
                     </div>
@@ -159,11 +248,12 @@ const AutomacaoPage = () => {
                             O Seu Negócio em <span className="auto-gradient-text">Piloto Automático</span>
                         </h2>
                         <p className="auto-section-desc">
-                            Selecione um cenário abaixo e veja como a nossa automação integra diferentes ferramentas e processos de ponta a ponta.
+                            Selecione um cenário abaixo e veja como a nossa automação integra diferentes ferramentas e processos.
                         </p>
                     </div>
 
-                    <div className="auto-simulator-wrapper reveal">
+                    {/* Desktop: Tabs + Pipeline (hidden on mobile) */}
+                    <div className="auto-simulator-wrapper reveal auto-simulator-desktop">
                         <div className="auto-simulator-header">
                             <div className="auto-simulator-tabs">
                                 <button
@@ -199,7 +289,7 @@ const AutomacaoPage = () => {
 
                         <div className="auto-pipeline-canvas">
                             <div className="auto-nodes-flow" ref={nodesFlowRef}>
-                                {scenarios[activeScenario].nodes.map((node, index) => (
+                                {activeScenario && scenarios[activeScenario] && scenarios[activeScenario].nodes.map((node, index) => (
                                     <React.Fragment key={index}>
                                         <div className="auto-node-card active-step">
                                             <span className="auto-node-step">Passo {node.step}</span>
@@ -220,6 +310,19 @@ const AutomacaoPage = () => {
                         <div className="auto-sim-footer">
                             <span>⚡ <strong>Processos executados automaticamente, 24/7</strong></span>
                         </div>
+                    </div>
+
+                    {/* Mobile: Accordion (hidden on desktop) */}
+                    <div className="auto-simulator-accordion-mobile reveal">
+                        {Object.entries(scenarios).map(([key, scenario]) => (
+                            <WorkflowAccordionItem
+                                key={key}
+                                scenarioKey={key}
+                                scenario={scenario}
+                                isOpen={activeScenario === key}
+                                onToggle={() => setActiveScenario(activeScenario === key ? null : key)}
+                            />
+                        ))}
                     </div>
                 </div>
             </section>
@@ -280,7 +383,7 @@ const AutomacaoPage = () => {
                         </div>
                     </div>
 
-                    <div 
+                    <div
                         className="auto-compare-grid reveal"
                         ref={compareGridRef}
                         onScroll={handleCompareScroll}
@@ -288,19 +391,27 @@ const AutomacaoPage = () => {
                         <div className={`auto-compare-card manual-card ${compareMode === 'manual' ? 'highlight-side' : ''}`}>
                             <ul className="auto-compare-list">
                                 <li className="auto-compare-item">
-                                    <span className="icon">❌</span>
+                                    <span className="icon">
+                                        <img src="/servicos/automacao/cross.png" alt="Cruz" style={{ height: '24px', width: 'auto' }} />
+                                    </span>
                                     <span><strong>Atendimento Lento:</strong> Leads esperam demasiado por uma resposta.</span>
                                 </li>
                                 <li className="auto-compare-item">
-                                    <span className="icon">❌</span>
+                                    <span className="icon">
+                                        <img src="/servicos/automacao/cross.png" alt="Cruz" style={{ height: '24px', width: 'auto' }} />
+                                    </span>
                                     <span><strong>Desperdício de Talento:</strong> Horas perdidas a copiar informação.</span>
                                 </li>
                                 <li className="auto-compare-item">
-                                    <span className="icon">❌</span>
+                                    <span className="icon">
+                                        <img src="/servicos/automacao/cross.png" alt="Cruz" style={{ height: '24px', width: 'auto' }} />
+                                    </span>
                                     <span><strong>Falhas de Follow-up:</strong> Oportunidades acabam por escapar.</span>
                                 </li>
                                 <li className="auto-compare-item">
-                                    <span className="icon">❌</span>
+                                    <span className="icon">
+                                        <img src="/servicos/automacao/cross.png" alt="Cruz" style={{ height: '24px', width: 'auto' }} />
+                                    </span>
                                     <span><strong>Custo Proibitivo de Escala:</strong> Mais trabalho exige mais pessoas.</span>
                                 </li>
                             </ul>
@@ -309,19 +420,27 @@ const AutomacaoPage = () => {
                         <div className={`auto-compare-card auto-card ${compareMode === 'auto' ? 'highlight-side' : ''}`}>
                             <ul className="auto-compare-list">
                                 <li className="auto-compare-item">
-                                    <span className="icon">✅</span>
+                                    <span className="icon">
+                                        <img src="/servicos/automacao/check.png" alt="Visto" style={{ height: '24px', width: 'auto' }} />
+                                    </span>
                                     <span><strong>Resposta em Segundos:</strong> Clientes recebem resposta em segundos.</span>
                                 </li>
                                 <li className="auto-compare-item">
-                                    <span className="icon">✅</span>
+                                    <span className="icon">
+                                        <img src="/servicos/automacao/check.png" alt="Visto" style={{ height: '24px', width: 'auto' }} />
+                                    </span>
                                     <span><strong>Foco em Tarefas de Alto Valor:</strong> Menos tarefas repetitivas, mais resultados.</span>
                                 </li>
                                 <li className="auto-compare-item">
-                                    <span className="icon">✅</span>
+                                    <span className="icon">
+                                        <img src="/servicos/automacao/check.png" alt="Visto" style={{ height: '24px', width: 'auto' }} />
+                                    </span>
                                     <span><strong>CRM Inteligente:</strong> Nenhum contacto fica esquecido.</span>
                                 </li>
                                 <li className="auto-compare-item">
-                                    <span className="icon">✅</span>
+                                    <span className="icon">
+                                        <img src="/servicos/automacao/check.png" alt="Visto" style={{ height: '24px', width: 'auto' }} />
+                                    </span>
                                     <span><strong>Escala Ilimitada:</strong> O negócio cresce sem aumentar a equipa.</span>
                                 </li>
                             </ul>
@@ -401,9 +520,9 @@ const AutomacaoPage = () => {
             {/* ==========================================
                 8. FAQ ACCORDION
             ========================================== */}
-            <section className="auto-faq-section">
+            <section className="auto-faq-section reveal">
                 <div className="container">
-                    <div className="text-center reveal">
+                    <div className="text-center mb-5">
                         <span className="auto-section-label">Perguntas Frequentes</span>
                         <h2 className="auto-section-title">
                             Esclareça As Suas Dúvidas
@@ -411,45 +530,23 @@ const AutomacaoPage = () => {
                     </div>
 
                     <div className="auto-faq-container">
-                        <details className="auto-faq-item reveal delay-1" open onClick={handleDetailsClick}>
-                            <summary className="auto-faq-summary">
-                                <span>É preciso mudar os programas ou softwares que a minha empresa já usa?</span>
-                                <span className="auto-faq-icon">+</span>
-                            </summary>
-                            <div className="auto-faq-content">
-                                Não. Integramos os softwares que a sua empresa já utiliza (CRM, ERP, email, WhatsApp, entre outros), ligando tudo através de automações inteligentes, sem necessidade de mudar de plataforma.
-                            </div>
-                        </details>
-
-                        <details className="auto-faq-item reveal delay-2" onClick={handleDetailsClick}>
-                            <summary className="auto-faq-summary">
-                                <span>A automação torna o contacto com o cliente impessoal?</span>
-                                <span className="auto-faq-icon">+</span>
-                            </summary>
-                            <div className="auto-faq-content">
-                                Pelo contrário. A automação trata das tarefas repetitivas, enquanto a sua equipa ganha mais tempo para conversas humanas e de maior valor.
-                            </div>
-                        </details>
-
-                        <details className="auto-faq-item reveal delay-3" onClick={handleDetailsClick}>
-                            <summary className="auto-faq-summary">
-                                <span>A minha equipa vai precisar de conhecimentos técnicos para utilizar?</span>
-                                <span className="auto-faq-icon">+</span>
-                            </summary>
-                            <div className="auto-faq-content">
-                                Não. Criamos soluções simples de utilizar. A tecnologia trabalha nos bastidores para que a sua equipa continue a usar as ferramentas do dia a dia.
-                            </div>
-                        </details>
-
-                        <details className="auto-faq-item reveal delay-4" onClick={handleDetailsClick}>
-                            <summary className="auto-faq-summary">
-                                <span>Quanto tempo demora até vermos os primeiros resultados?</span>
-                                <span className="auto-faq-icon">+</span>
-                            </summary>
-                            <div className="auto-faq-content">
-                                Depende da complexidade do projeto, mas muitas automações começam a gerar resultados imediatamente após a implementação.
-                            </div>
-                        </details>
+                        <FaqItem
+                            defaultOpen={true}
+                            question="É preciso mudar os programas ou softwares que a minha empresa já usa?"
+                            answer="Não. Integramos os softwares que a sua empresa já utiliza (CRM, ERP, email, WhatsApp, entre outros), ligando tudo através de automações inteligentes, sem necessidade de mudar de plataforma."
+                        />
+                        <FaqItem
+                            question="A automação torna o contacto com o cliente impessoal?"
+                            answer="Pelo contrário. A automação trata das tarefas repetitivas, enquanto a sua equipa ganha mais tempo para conversas humanas e de maior valor."
+                        />
+                        <FaqItem
+                            question="A minha equipa vai precisar de conhecimentos técnicos para utilizar?"
+                            answer="Não. Criamos soluções simples de utilizar. A tecnologia trabalha nos bastidores para que a sua equipa continue a usar as ferramentas do dia a dia."
+                        />
+                        <FaqItem
+                            question="Quanto tempo demora até vermos os primeiros resultados?"
+                            answer="Depende da complexidade do projeto, mas muitas automações começam a gerar resultados imediatamente após a implementação."
+                        />
                     </div>
                 </div>
             </section>

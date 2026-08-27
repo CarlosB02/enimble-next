@@ -170,7 +170,7 @@ const Ecommerce = () => {
                         <div className="ec-portfolio-info">
                             <h3 className="ec-portfolio-title">Esqueça os Templates</h3>
                             <p className="ec-portfolio-desc">
-                                Seguimos o branding da marca e criamos algo único. Rápidas, intuitivas e preparadas para vender.
+                                Seguimos o branding da marca e criamos uma loja única. Rápidas, intuitivas e preparadas para vender.
                             </p>
 
                             <div className="ec-portfolio-metrics">
@@ -366,7 +366,7 @@ const Ecommerce = () => {
                         <div className="ec-showcase-item reveal delay-4" style={{ background: 'var(--shop-warm)', border: '2px dashed rgba(58, 0, 255, 0.2)', justifyContent: 'center', padding: '1.5rem 1rem' }}>
                             <span style={{ fontSize: '1.1rem', fontWeight: '700', color: 'var(--shop-text)', marginBottom: '0.4rem' }}>E muito mais...</span>
                             <p style={{ fontSize: '0.8rem', color: 'var(--shop-text-muted)', marginBottom: '1.2rem', lineHeight: '1.3' }}>Soluções à sua medida.</p>
-                            <Link href="/contactos" className="smart-btn" style={{ padding: '0.5rem 1rem', fontSize: '0.9rem' }}>
+                            <Link href="/contactos" className="smart-btn" style={{ padding: '0.4rem 0.8rem', fontSize: '0.8rem', width: 'auto' }}>
                                 <span style={{ color: '#ffffff' }}>Pedir Proposta</span>
                             </Link>
                         </div>
@@ -471,8 +471,8 @@ const Ecommerce = () => {
                 <div className="container">
                     <div className="ec-cta-content">
                         <h2>A sua loja está <span className="gradient-word">pronta. </span><br /><span className="ec-highlight">E os seus clientes estão à espera.</span></h2>
-                        <Link href="/contactos" className="smart-btn">
-                            <span>Começar a Vender</span>
+                        <Link href="/contactos" className="smart-btn" style={{ padding: '1rem 2.5rem', fontSize: '1.1rem', marginTop: '1.5rem' }}>
+                            <span style={{ color: '#ffffff' }}>Começar a Vender</span>
                         </Link>
                     </div>
                 </div>

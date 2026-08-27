@@ -355,7 +355,7 @@ body.shop-body .nav-open .hamburger {
 /* --- BUSINESS IMPACT --- */
 .ec-impact-section {
     background: var(--shop-warm);
-    padding: 7rem 0;
+    padding: 4.5rem 0;
 }
 
 .ec-impact-section .container {
@@ -458,7 +458,7 @@ body.shop-body .nav-open .hamburger {
 /* --- PORTFOLIO / CASE STUDY --- */
 .ec-portfolio-section {
     background: #ffffff;
-    padding: 7rem 0;
+    padding: 4.5rem 0;
 }
 
 .ec-portfolio-section .container {
@@ -649,7 +649,7 @@ body.shop-body .nav-open .hamburger {
 /* --- KEY ADVANTAGES --- */
 .ec-advantages-section {
     background: linear-gradient(180deg, #ffffff 0%, #f9f0f5 100%);
-    padding: 7rem 0;
+    padding: 4.5rem 0;
 }
 
 .ec-advantages-section .container {
@@ -776,7 +776,7 @@ body.shop-body .nav-open .hamburger {
 /* --- INDUSTRY SHOWCASE --- */
 .ec-showcase-section {
     background: var(--shop-cream);
-    padding: 7rem 0;
+    padding: 4.5rem 0;
 }
 
 .ec-showcase-section .container {
@@ -850,7 +850,7 @@ body.shop-body .nav-open .hamburger {
 /* --- SHOPPING JOURNEY --- */
 .ec-journey-section {
     background: #ffffff;
-    padding: 7rem 0;
+    padding: 4.5rem 0;
 }
 
 .ec-journey-section .container {
@@ -953,7 +953,7 @@ body.shop-body .nav-open .hamburger {
 /* --- CREDIBILITY / TRUST --- */
 .ec-trust-section {
     background: var(--shop-warm);
-    padding: 7rem 0;
+    padding: 4.5rem 0;
 }
 
 .ec-trust-section .container {
@@ -1058,7 +1058,7 @@ body.shop-body .nav-open .hamburger {
 /* --- FINAL CTA --- */
 .ec-cta-section {
     background: white;
-    padding: 7rem 0;
+    padding: 4.5rem 0;
     text-align: center;
     position: relative;
 }

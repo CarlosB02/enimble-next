@@ -272,6 +272,18 @@ body.ads-body .header.header-scrolled .main-nav a:hover {
     display: inline-block;
 }
 
+@media (max-width: 768px) {
+    .subtitle-typewriter {
+        white-space: normal !important;
+        animation: none !important;
+        border-right: none !important;
+        width: auto !important;
+        font-size: 0.85rem !important;
+    }
+}
+
+
+
 @keyframes typing {
     from {
         width: 0;
@@ -410,7 +422,7 @@ body.ads-body .header.header-scrolled .main-nav a:hover {
    SIMULATOR: A Guerra Pela Atenção (Light Theme)
    ========================================================================== */
 .ads-attention-section {
-    padding: 8rem 0;
+    padding: 4.5rem 0;
     position: relative;
     background-color: #f8f9fd;
     /* Light Section Contrast */
@@ -804,7 +816,7 @@ body.ads-body .header.header-scrolled .main-nav a:hover {
    CONTROL BOARD: Escalar Com Segurança (Light Theme)
    ========================================================================== */
 .ads-scale-section {
-    padding: 8rem 0;
+    padding: 4.5rem 0;
     position: relative;
     background-color: #ffffff;
     /* White section bg */
@@ -1066,7 +1078,7 @@ body.ads-body .header.header-scrolled .main-nav a:hover {
    OMNIPRESENÇA: Onde o Público Clica (Light Theme)
    ========================================================================== */
 .ads-omni-section {
-    padding: 8rem 0;
+    padding: 4.5rem 0;
     position: relative;
     background-color: #f5f6fa;
     /* Light Section Contrast */
@@ -1428,7 +1440,7 @@ body.ads-body .header.header-scrolled .main-nav a:hover {
    FINAL CTA: Iniciar Campanha (Momentum Light)
    ========================================================================== */
 .ads-cta-section {
-    padding: 10rem 0;
+    padding: 4.5rem 0;
     position: relative;
     text-align: center;
     background-color: #ffffff;
@@ -1616,7 +1628,7 @@ body.ads-body .header.header-scrolled .main-nav a:hover {
    UNIFIED LIVE ADS DASHBOARD (Secção 02: Bloco Único de Gestão de Ads)
    ========================================================================== */
 .ads-dashboard-section {
-    padding: 8rem 0;
+    padding: 4.5rem 0;
     position: relative;
     background: radial-gradient(circle at 10% 20%, rgba(58, 0, 255, 0.015) 0%, rgba(244, 246, 252, 0.4) 90%);
     border-bottom: 1px solid rgba(0, 0, 0, 0.04);
@@ -2434,7 +2446,7 @@ body.ads-body .header.header-scrolled .main-nav a:hover {
     position: relative;
     width: 100%;
     background-color: #ffffff; /* pure white */
-    padding: 2.5rem 0;
+    padding: 4.5rem 0;
     overflow: hidden;
     display: flex;
     align-items: center;
@@ -2493,13 +2505,13 @@ body.ads-body .header.header-scrolled .main-nav a:hover {
 }
 
 .platform-logo-wrapper {
-    width: 32px;
-    height: 32px;
+    width: 52px;
+    height: 52px;
     display: flex;
     align-items: center;
     justify-content: center;
     border-radius: 8px;
-    background: #f8f9fc;
+    background: transparent;
     overflow: hidden;
     position: relative;
 }
@@ -2548,13 +2560,17 @@ body.ads-body .header.header-scrolled .main-nav a:hover {
         padding: 0.5rem 1rem;
         gap: 0.75rem;
     }
+    .platform-logo-wrapper {
+        width: 44px;
+        height: 44px;
+    }
 }
 
 /* ==========================================================================
    CRIATIVOS: Galeria de Criativos
    ========================================================================== */
 .ads-creatives-section {
-    padding: 8rem 0;
+    padding: 4.5rem 0;
     position: relative;
     background-color: #f8f9fd; /* Alternating section background color */
     z-index: 2;
@@ -2654,7 +2670,7 @@ body.ads-body .header.header-scrolled .main-nav a:hover {
         gap: 2rem;
     }
     .ads-creatives-section {
-        padding: 5rem 0;
+        padding: 4.5rem 0;
     }
     .creative-img-container {
         height: 300px;
@@ -2665,7 +2681,7 @@ body.ads-body .header.header-scrolled .main-nav a:hover {
    METODOLOGIA: Nós Mostramos Resultados
    ========================================================================== */
 .ads-results-section {
-    padding: 8rem 0;
+    padding: 4.5rem 0;
     position: relative;
     background-color: #ffffff; /* Contrast with #f5f6fa and #f8f9fd */
     z-index: 2;
@@ -2786,7 +2802,7 @@ body.ads-body .header.header-scrolled .main-nav a:hover {
         gap: 1.5rem;
     }
     .ads-results-section {
-        padding: 5rem 0;
+        padding: 4.5rem 0;
     }
 }
 
@@ -2927,3 +2943,6 @@ body.ads-body .header.header-scrolled .main-nav a:hover {
         text-align: center;
     }
 }
+
+
+

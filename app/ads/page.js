@@ -7,10 +7,14 @@ import useScrollReveal from '@/hooks/useScrollReveal';
 import './Ads.css';
 
 const platforms = [
-    { id: 'meta', name: 'Meta', path: '/servicos/ads/meta.png' },
-    { id: 'google', name: 'Google', path: '/servicos/ads/google.png' },
-    { id: 'linkedin', name: 'LinkedIn', path: '/servicos/ads/linkedin.png' },
-    { id: 'tiktok', name: 'TikTok', path: '/servicos/ads/tiktok.png' }
+    { id: 'meta', path: '/servicos/ads/meta.png' },
+    { id: 'google', path: '/servicos/ads/google.png' },
+    { id: 'linkedin', path: '/servicos/ads/linkedin.png' },
+    { id: 'tiktok', path: '/servicos/ads/tiktok.png' },
+    { id: 'meta', path: '/servicos/ads/meta.png' },
+    { id: 'google', path: '/servicos/ads/google.png' },
+    { id: 'linkedin', path: '/servicos/ads/linkedin.png' },
+    { id: 'tiktok', path: '/servicos/ads/tiktok.png' },
 ];
 
 const AdsPage = () => {
@@ -122,7 +126,7 @@ const AdsPage = () => {
             };
 
             setRadarAlerts(prev => [newAlert, prev[0], prev[1]].slice(0, 3));
-        }, 5000);
+        }, 2500);
 
         return () => clearInterval(interval);
     }, []);
@@ -217,7 +221,7 @@ const AdsPage = () => {
                 {/* Consola Central */}
                 <div className="hero-content-ads reveal">
                     <h1>CLIENTE IDENTIFICADO</h1>
-                    <div className="subtitle-typewriter">Chegamos ao cliente certo, no momento certo. {">_"}</div>
+                    <div className="subtitle-typewriter">Chegamos ao cliente certo, no momento certo.</div>
 
                     {/* Feed de Conversões Integrado no Cartão */}
                     <div className="radar-feed-inline">
@@ -350,14 +354,13 @@ const AdsPage = () => {
                             <div className="platform-logo-wrapper">
                                 <img
                                     src={platform.path}
-                                    alt={platform.name}
+                                    alt={platform.id}
                                     className="platform-img"
                                     onError={(e) => {
                                         e.currentTarget.style.display = 'none';
                                     }}
                                 />
                             </div>
-                            <span className="platform-name">{platform.name}</span>
                         </div>
                     ))}
                 </div>
@@ -443,7 +446,7 @@ const AdsPage = () => {
                     </div>
                     <div style={{ textAlign: 'center', marginTop: '3rem' }}>
                         <Link href="/contactos" className="cta-btn-premium">
-                            Quero Escalar o Meu Negócio
+                            Quero Mais Clientes
                         </Link>
                     </div>
                 </div>
@@ -539,7 +542,7 @@ const AdsPage = () => {
                     </div>
                     <div style={{ textAlign: 'center', marginTop: '3rem' }}>
                         <Link href="/contactos" className="cta-btn-premium">
-                            Quero Escalar o Meu Negócio
+                            Agendar Diagnóstico Gratuito
                         </Link>
                     </div>
                 </div>
@@ -688,7 +691,7 @@ const AdsPage = () => {
                             Desenvolvemos campanhas de tráfego construídas para gerar resultados, reduzir desperdício e maximizar o retorno do investimento.
                         </p>
                         <Link href="/contactos" className="cta-btn-premium">
-                            Quero Escalar o Meu Negócio
+                            Impulsionar o Meu Negócio
                         </Link>
                     </div>
                 </div>

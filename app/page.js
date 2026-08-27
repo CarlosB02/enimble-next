@@ -102,7 +102,7 @@ const HomePage = () => {
                         <h1 className="fade-in">Transformamos estratégia em crescimento.</h1>
                         <p className="fade-in delay-1">Da estratégia à execução, desenvolvemos soluções digitais que impulsionam empresas ambiciosas.</p>
                         <div className="hero-buttons fade-in delay-2">
-                            <a href="#servicos" className="btn btn-primary">O que podemos fazer por si?</a>
+                            <a href="#servicos" className="btn btn-primary">O que fazemos?</a>
                             <a href="#contactos" className="btn btn-outline">Fale Connosco</a>
                         </div>
                     </div>
@@ -340,7 +340,7 @@ const HomePage = () => {
 
                     <div className="pp-cta reveal">
                         <Link href="/portfolio" className="btn btn-outline pp-btn-explore">
-                            Ver Portfolio Completo
+                            Ver Portfólio Completo
                         </Link>
                         <Link href="/contactos" className="btn btn-primary pp-btn-contact">
                             Falar Connosco
