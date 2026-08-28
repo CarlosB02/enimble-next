@@ -121,7 +121,7 @@ const HomePage = () => {
 
                 <div className="container services-grid-container mb-5">
                     <div className="services-grid" ref={gridRef} onScroll={handleScroll}>
-                        <div className="service-item card-website">
+                        <div className={`service-item card-website ${activeIndex === 0 ? 'active' : ''}`}>
                             <div className="card-icon">
                                 <LottieIcon src="https://lottie.host/5c9a5518-11dc-4622-8612-5ae8907ec686/8eLHOX5NVK.json" />
                             </div>
@@ -129,7 +129,7 @@ const HomePage = () => {
                             <p className="card-desc">Transforme visitantes em clientes com um site rápido, moderno e otimizado.</p>
                             <Link href="/website-design" className="card-link">Atrair Mais Clientes <span className="arrow">→</span></Link>
                         </div>
-                        <div className="service-item card-social">
+                        <div className={`service-item card-social ${activeIndex === 1 ? 'active' : ''}`}>
                             <div className="card-icon">
                                 <LottieIcon src="https://lottie.host/4886a942-45cf-4b3f-96d7-d66bf818bfc4/pw0h3HS12Z.json" />
                             </div>
@@ -137,7 +137,7 @@ const HomePage = () => {
                             <p className="card-desc">Construa uma comunidade leal e aumente o alcance da sua marca.</p>
                             <Link href="/redes-sociais" className="card-link">Ganhar Visibilidade <span className="arrow">→</span></Link>
                         </div>
-                        <div className="service-item card-email">
+                        <div className={`service-item card-email ${activeIndex === 2 ? 'active' : ''}`}>
                             <div className="card-icon">
                                 <LottieIcon src="https://lottie.host/bc961cf8-ebe1-4f7c-8b67-cd20927832e7/AFWRhMAMNS.json" />
                             </div>
@@ -145,7 +145,7 @@ const HomePage = () => {
                             <p className="card-desc">Venda 24/7 com uma loja online automatizada e segura.</p>
                             <Link href="/ecommerce" className="card-link">Expandir o Mercado <span className="arrow">→</span></Link>
                         </div>
-                        <div className="service-item card-ads">
+                        <div className={`service-item card-ads ${activeIndex === 3 ? 'active' : ''}`}>
                             <div className="card-icon">
                                 <LottieIcon src="https://lottie.host/f0cc2f57-20d5-4009-96d0-f64fc3bf86a1/hrOaqeeD1o.json" />
                             </div>
@@ -153,7 +153,7 @@ const HomePage = () => {
                             <p className="card-desc">Alcance o público certo no momento certo com campanhas de alto retorno.</p>
                             <Link href="/ads" className="card-link">Acelerar Vendas <span className="arrow">→</span></Link>
                         </div>
-                        <div className="service-item card-automation">
+                        <div className={`service-item card-automation ${activeIndex === 4 ? 'active' : ''}`}>
                             <div className="card-icon">
                                 <LottieIcon src="https://lottie.host/4ac68310-62a1-4fe3-ae59-d4e3a6ac8328/czJrojWHvi.json" />
                             </div>
@@ -161,7 +161,7 @@ const HomePage = () => {
                             <p className="card-desc">Otimize processos com inteligência artificial e automação de tarefas.</p>
                             <Link href="/automacao" className="card-link">Aumentar Eficiência <span className="arrow">→</span></Link>
                         </div>
-                        <div className="service-item card-branding">
+                        <div className={`service-item card-branding ${activeIndex === 5 ? 'active' : ''}`}>
                             <div className="card-icon">
                                 <LottieIcon src="https://lottie.host/edb6c29a-de5a-48f1-9746-673e126e5cc9/VSgbbbBOSO.json" />
                             </div>

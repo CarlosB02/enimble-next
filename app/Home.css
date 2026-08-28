@@ -1371,7 +1371,7 @@
       scroll-behavior: smooth;
       -webkit-overflow-scrolling: touch;
       gap: 1.25rem;
-      padding: 1.5rem 2rem;
+      padding: 2rem calc(50% - min(142.5px, 40vw));
       scrollbar-width: none;
       margin: 0;
     }
@@ -1391,11 +1391,25 @@
       scroll-snap-align: center;
       margin: 0;
       height: auto;
-      transform: none !important;
-      transition: box-shadow 0.3s ease;
+      transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
     }
 
-    .service-item:hover,
+    .service-item.active,
+    .service-item:hover {
+      transform: translateY(-10px) scale(1.02) !important;
+      box-shadow: 0 30px 60px rgba(58, 0, 255, 0.15) !important;
+    }
+
+    .service-item.active::after,
+    .service-item:hover::after {
+      opacity: 1 !important;
+    }
+
+    .service-item.active .card-icon,
+    .service-item:hover .card-icon {
+      transform: scale(1.15) rotate(3deg) !important;
+    }
+
     .pp-card:hover,
     .process-flow-card:hover {
       transform: none !important;
