@@ -1135,6 +1135,13 @@ details[open] .arrow-icon {
         border-color: rgba(58, 0, 255, 0.25) !important;
     }
 
+    .edu-flow-step.active .edu-step-icon,
+    .edu-flow-step:hover .edu-step-icon {
+        background: var(--gradient-edu) !important;
+        color: white !important;
+        transform: scale(1.1) !important;
+    }
+
     .edu-flow-arrow {
         display: none !important;
     }

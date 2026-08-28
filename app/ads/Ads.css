@@ -2908,6 +2908,11 @@ body.ads-body .header.header-scrolled .main-nav a:hover {
         border-color: rgba(58, 0, 255, 0.25) !important;
     }
 
+    .omni-card.active::before,
+    .omni-card:hover::before {
+        background: var(--gradient-main) !important;
+    }
+
     .creative-card.active,
     .creative-card:hover {
         transform: translateY(-8px) !important;
@@ -2920,6 +2925,17 @@ body.ads-body .header.header-scrolled .main-nav a:hover {
         transform: translateY(-8px) !important;
         box-shadow: 0 20px 45px rgba(58, 0, 255, 0.12) !important;
         border-color: rgba(58, 0, 255, 0.25) !important;
+    }
+
+    .results-card.active::before,
+    .results-card:hover::before {
+        background: var(--gradient-main) !important;
+    }
+
+    .results-card.active .results-icon-wrapper,
+    .results-card:hover .results-icon-wrapper {
+        transform: scale(1.05) rotate(5deg) !important;
+        box-shadow: 0 8px 20px rgba(58, 0, 255, 0.15) !important;
     }
 
     .carousel-dots {

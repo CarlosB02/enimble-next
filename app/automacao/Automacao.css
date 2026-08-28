@@ -1338,6 +1338,12 @@ body.auto-body {
     border-color: rgba(58, 0, 255, 0.25) !important;
   }
 
+  .auto-metric-card.active::before,
+  .auto-metric-card:hover::before {
+    opacity: 1 !important;
+    height: 5px !important;
+  }
+
   .auto-connector-line {
     display: none !important;
   }
@@ -1502,7 +1508,9 @@ body.auto-body {
     scroll-snap-type: x mandatory;
     scroll-behavior: smooth;
     -webkit-overflow-scrolling: touch;
-    padding: 0.75rem 0.25rem;
+    padding: 1.5rem calc(50% - min(142.5px, 40vw)) !important;
+    margin-left: -0.75rem !important;
+    margin-right: -0.75rem !important;
     gap: 1rem;
     scrollbar-width: none;
   }
@@ -1512,8 +1520,9 @@ body.auto-body {
   }
 
   .auto-nodes-flow-accordion .auto-node-card {
-    flex: 0 0 80% !important;
-    scroll-snap-align: center;
+    flex: 0 0 285px !important;
+    max-width: 80vw !important;
+    scroll-snap-align: center !important;
     min-width: 0;
   }
 

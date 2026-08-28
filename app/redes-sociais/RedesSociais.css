@@ -1439,6 +1439,7 @@
         padding: 2rem 0;
     }
 
+    .bento-grid,
     .rs-drivers-grid,
     .rs-appear-text {
         display: flex !important;
@@ -1462,11 +1463,13 @@
         padding-top: 2rem !important;
     }
 
+    .bento-grid::-webkit-scrollbar,
     .rs-drivers-grid::-webkit-scrollbar,
     .rs-appear-text::-webkit-scrollbar {
         display: none !important;
     }
 
+    .bento-grid>.bento-card,
     .rs-drivers-grid>.rs-driver-card,
     .rs-appear-text>.advantage-item {
         flex: 0 0 285px !important;
@@ -1479,6 +1482,13 @@
         transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1) !important;
     }
 
+    .bento-card.active,
+    .bento-card:hover {
+        transform: translateY(-8px) !important;
+        box-shadow: 0 20px 45px rgba(58, 0, 255, 0.12) !important;
+        border-color: rgba(58, 0, 255, 0.25) !important;
+    }
+
     .rs-driver-card.active,
     .rs-driver-card:hover {
         transform: translateY(-8px) !important;
@@ -1486,11 +1496,30 @@
         border-color: rgba(58, 0, 255, 0.25) !important;
     }
 
+    .rs-driver-card.active::before,
+    .rs-driver-card:hover::before {
+        width: 100% !important;
+    }
+
+    .rs-driver-card.active .rs-icon-img,
+    .rs-driver-card:hover .rs-icon-img {
+        transform: scale(1.1) !important;
+    }
+
     .advantage-item.active,
     .advantage-item:hover {
         transform: translateY(-5px) !important;
         box-shadow: 0 15px 35px rgba(58, 0, 255, 0.12) !important;
         border-color: rgba(58, 0, 255, 0.25) !important;
+    }
+
+    .advantage-item.active .adv-num,
+    .advantage-item:hover .adv-num {
+        background: var(--gradient-main) !important;
+        color: white !important;
+        border-color: transparent !important;
+        transform: translate(-50%, -50%) scale(1.15) !important;
+        box-shadow: 0 8px 20px rgba(58, 0, 255, 0.3) !important;
     }
 
     .rs-driver-card h3 {
@@ -1527,10 +1556,6 @@
 @media (max-width: 600px) {
     .rs-cost-title {
         flex-direction: column;
-    }
-
-    .rs-drivers-grid {
-        grid-template-columns: 1fr;
     }
 
     .rs-path-step {

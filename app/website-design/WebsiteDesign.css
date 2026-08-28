@@ -1500,11 +1500,21 @@
         border-color: rgba(58, 0, 255, 0.25) !important;
     }
 
+    .wd-checklist-item.active::before,
+    .wd-checklist-item:hover::before {
+        width: 100% !important;
+    }
+
     .wd-process-card.active,
     .wd-process-card:hover {
         transform: translateY(-8px) !important;
         box-shadow: 0 20px 45px rgba(58, 0, 255, 0.12) !important;
         border-color: rgba(58, 0, 255, 0.25) !important;
+    }
+
+    .wd-process-card.active::before,
+    .wd-process-card:hover::before {
+        opacity: 1 !important;
     }
 
     .wd-case-card.active,

@@ -1149,11 +1149,27 @@ body.shop-body .nav-open .hamburger {
         border-color: rgba(58, 0, 255, 0.25) !important;
     }
 
+    .ec-adv-card.active::before,
+    .ec-adv-card:hover::before {
+        width: 100% !important;
+    }
+
+    .ec-adv-card.active .ec-adv-icon,
+    .ec-adv-card:hover .ec-adv-icon {
+        transform: scale(1.1) !important;
+        background: rgba(58, 0, 255, 0.1) !important;
+    }
+
     .ec-showcase-item.active,
     .ec-showcase-item:hover {
         transform: translateY(-6px) scale(1.02) !important;
         box-shadow: 0 15px 35px rgba(58, 0, 255, 0.12) !important;
         border-color: rgba(58, 0, 255, 0.25) !important;
+    }
+
+    .ec-showcase-item.active .ec-showcase-icon,
+    .ec-showcase-item:hover .ec-showcase-icon {
+        transform: scale(1.15) rotate(-5deg) !important;
     }
 
     .ec-journey-step.active,
@@ -1204,14 +1220,6 @@ body.shop-body .nav-open .hamburger {
 }
 
 @media (max-width: 600px) {
-    .ec-adv-grid {
-        grid-template-columns: 1fr;
-    }
-
-    .ec-showcase-grid {
-        grid-template-columns: repeat(2, 1fr);
-    }
-
     .ec-trust-grid {
         grid-template-columns: 1fr;
     }

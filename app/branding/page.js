@@ -65,10 +65,10 @@ const Branding = () => {
             name: 'Logótipo & Símbolo',
             description: 'Construção da identidade principal, marcas vetoriais, símbolos responsivos e vetorização.',
             items: [
-                { title: 'Logótipo Principal', tag: 'Vetor / Primary', img: null },
-                { title: 'Símbolo & Ícone', tag: 'Favicon / Badge', img: null },
-                { title: 'Variações de Cor', tag: 'RGB & CMYK', img: null },
-                { title: 'Grid de Construção', tag: 'Proporções', img: null }
+                { id: 'logo_principal', title: 'Logótipo Principal', tag: 'Vetor / Primary', img: null },
+                { id: 'simbolo_icone', title: 'Símbolo & Ícone', tag: 'Favicon / Badge', img: null },
+                { id: 'variacoes_cor', title: 'Variações de Cor', tag: 'RGB & CMYK', img: null },
+                { id: 'grid_construcao', title: 'Grid de Construção', tag: 'Proporções', img: null }
             ]
         },
         {
@@ -77,10 +77,10 @@ const Branding = () => {
             name: 'Manual de Normas',
             description: 'Guia completo de aplicação visual com regras de utilização, margens de segurança e proibições.',
             items: [
-                { title: 'Guia de Cores', tag: 'HEX / Pantone', img: null },
-                { title: 'Hierarquia Tipográfica', tag: 'Fonts & System', img: null },
-                { title: 'Margens de Segurança', tag: 'Clearspace', img: null },
-                { title: 'Exemplos de Aplicação', tag: 'Do\'s & Don\'ts', img: null }
+                { id: 'guia_cores', title: 'Guia de Cores', tag: 'HEX / Pantone', img: null },
+                { id: 'hierarquia_tipografica', title: 'Hierarquia Tipográfica', tag: 'Fonts & System', img: null },
+                { id: 'margens_seguranca', title: 'Margens de Segurança', tag: 'Clearspace', img: null },
+                { id: 'exemplos_aplicacao', title: 'Exemplos de Aplicação', tag: 'Do\'s & Don\'ts', img: null }
             ]
         },
         {
@@ -89,10 +89,10 @@ const Branding = () => {
             name: 'Estacionário & Merch',
             description: 'Aplicações físicas premium da sua marca para impressionar clientes e equipa no mundo real.',
             items: [
-                { title: 'T-Shirt & Vestuário', tag: 'Merch', img: null },
-                { title: 'Caneta & Bloco', tag: 'Papelaria', img: null },
-                { title: 'Cartões de Visita', tag: 'Estacionário', img: null },
-                { title: 'Packaging & Sacos', tag: 'Embalagem', img: null }
+                { id: 'tshirt_vestuario', title: 'T-Shirt & Vestuário', tag: 'Merch', img: null },
+                { id: 'caneta_bloco', title: 'Caneta & Bloco', tag: 'Papelaria', img: null },
+                { id: 'cartoes_visita', title: 'Cartões de Visita', tag: 'Estacionário', img: null },
+                { id: 'packaging_sacos', title: 'Packaging & Sacos', tag: 'Embalagem', img: null }
             ]
         },
         {
@@ -101,13 +101,294 @@ const Branding = () => {
             name: 'Naming & Slogan',
             description: 'Identidade verbal, criação de nome único e memorável, manifesto e tom de voz estratégico.',
             items: [
-                { title: 'Naming Concept', tag: 'Identidade Verbal', img: null },
-                { title: 'Tagline & Slogan', tag: 'Posicionamento', img: null },
-                { title: 'Tom de Voz', tag: 'Comunicação', img: null },
-                { title: 'Manifesto de Marca', tag: 'Storytelling', img: null }
+                { id: 'naming_concept', title: 'Naming Concept', tag: 'Identidade Verbal', img: null },
+                { id: 'tagline_slogan', title: 'Tagline & Slogan', tag: 'Posicionamento', img: null },
+                { id: 'tom_voz', title: 'Tom de Voz', tag: 'Comunicação', img: null },
+                { id: 'manifesto_marca', title: 'Manifesto de Marca', tag: 'Storytelling', img: null }
             ]
         }
     ];
+
+    const renderItemVisual = (item) => {
+        if (item.img) {
+            return <img src={item.img} alt={item.title} className="service-item-img" />;
+        }
+
+        switch (item.id) {
+            case 'logo_principal':
+                return (
+                    <div className="custom-visual logo-principal-visual">
+                        <svg viewBox="0 0 100 100" className="visual-svg">
+                            <defs>
+                                <linearGradient id="logoGrad" x1="0%" y1="0%" x2="100%" y2="100%">
+                                    <stop offset="0%" stopColor="#3A00FF" />
+                                    <stop offset="100%" stopColor="#BF0040" />
+                                </linearGradient>
+                            </defs>
+                            <path d="M25 20h25a20 20 0 0 1 0 40H25V20z" fill="url(#logoGrad)" />
+                            <path d="M25 60h45v15H25V60z" fill="url(#logoGrad)" opacity="0.9" />
+                            <circle cx="50" cy="40" r="10" fill="#ffffff" />
+                        </svg>
+                        <div className="visual-glow"></div>
+                    </div>
+                );
+            case 'simbolo_icone':
+                return (
+                    <div className="custom-visual simbolo-icone-visual">
+                        <div className="app-icon-container">
+                            <div className="app-icon-inner">
+                                <svg viewBox="0 0 100 100" className="icon-svg">
+                                    <defs>
+                                        <linearGradient id="iconGrad" x1="0%" y1="0%" x2="100%" y2="100%">
+                                            <stop offset="0%" stopColor="#3A00FF" />
+                                            <stop offset="100%" stopColor="#BF0040" />
+                                        </linearGradient>
+                                    </defs>
+                                    <polygon points="50,15 85,75 15,75" fill="url(#iconGrad)" />
+                                    <polygon points="50,35 73,75 27,75" fill="#111115" />
+                                    <polygon points="50,45 62,70 38,70" fill="url(#iconGrad)" />
+                                </svg>
+                            </div>
+                        </div>
+                    </div>
+                );
+            case 'variacoes_cor':
+                return (
+                    <div className="custom-visual color-variations-visual">
+                        <div className="color-swatches">
+                            <div className="swatch-item">
+                                <div className="swatch-color blue-swatch"></div>
+                                <span className="swatch-hex">#3A00FF</span>
+                                <span className="swatch-cmyk">C100 M84</span>
+                            </div>
+                            <div className="swatch-item">
+                                <div className="swatch-color red-swatch"></div>
+                                <span className="swatch-hex">#BF0040</span>
+                                <span className="swatch-cmyk">C0 M100</span>
+                            </div>
+                            <div className="swatch-item">
+                                <div className="swatch-color violet-swatch"></div>
+                                <span className="swatch-hex">#7A00B5</span>
+                                <span className="swatch-cmyk">C60 M100</span>
+                            </div>
+                        </div>
+                    </div>
+                );
+            case 'grid_construcao':
+                return (
+                    <div className="custom-visual grid-construction-visual">
+                        <div className="grid-overlay"></div>
+                        <svg viewBox="0 0 100 100" className="blueprint-svg">
+                            <circle cx="50" cy="50" r="35" stroke="rgba(58, 0, 255, 0.3)" strokeWidth="0.5" fill="none" strokeDasharray="2,2" />
+                            <circle cx="50" cy="50" r="20" stroke="rgba(191, 0, 64, 0.3)" strokeWidth="0.5" fill="none" />
+                            <line x1="10" y1="50" x2="90" y2="50" stroke="rgba(0, 0, 0, 0.15)" strokeWidth="0.5" />
+                            <line x1="50" y1="10" x2="50" y2="90" stroke="rgba(0, 0, 0, 0.15)" strokeWidth="0.5" />
+                            <line x1="20" y1="20" x2="80" y2="80" stroke="rgba(0, 0, 0, 0.1)" strokeWidth="0.5" strokeDasharray="1,1" />
+                            <line x1="80" y1="20" x2="20" y2="80" stroke="rgba(0, 0, 0, 0.1)" strokeWidth="0.5" strokeDasharray="1,1" />
+                            <rect x="30" y="30" width="40" height="40" stroke="rgba(58, 0, 255, 0.25)" strokeWidth="0.5" fill="none" />
+                            <path d="M30 50 L50 30 L70 50 L50 70 Z" stroke="#BF0040" strokeWidth="0.8" fill="none" />
+                        </svg>
+                        <span className="blueprint-tag">x = 1.618</span>
+                    </div>
+                );
+            case 'guia_cores':
+                return (
+                    <div className="custom-visual color-guide-visual">
+                        <div className="pantone-card blue-pantone">
+                            <div className="pantone-color-block"></div>
+                            <div className="pantone-meta">
+                                <span className="pantone-title">PANTONE</span>
+                                <span className="pantone-code">293 C</span>
+                            </div>
+                        </div>
+                        <div className="pantone-card red-pantone">
+                            <div className="pantone-color-block"></div>
+                            <div className="pantone-meta">
+                                <span className="pantone-title">PANTONE</span>
+                                <span className="pantone-code">199 C</span>
+                            </div>
+                        </div>
+                    </div>
+                );
+            case 'hierarquia_tipografica':
+                return (
+                    <div className="custom-visual typography-hierarchy-visual">
+                        <div className="typo-specimen">
+                            <div className="typo-row h1-spec">
+                                <span className="typo-label">H1</span>
+                                <span className="typo-preview heading-font">Aa</span>
+                            </div>
+                            <div className="typo-row h2-spec">
+                                <span className="typo-label">H2</span>
+                                <span className="typo-preview heading-font">Bold</span>
+                            </div>
+                            <div className="typo-row body-spec">
+                                <span className="typo-label">Body</span>
+                                <span className="typo-preview main-font">Sora text</span>
+                            </div>
+                        </div>
+                    </div>
+                );
+            case 'margens_seguranca':
+                return (
+                    <div className="custom-visual safety-margins-visual">
+                        <div className="clearspace-box">
+                            <div className="clearspace-dashed"></div>
+                            <div className="clearspace-logo">
+                                <svg viewBox="0 0 100 100" className="clearspace-svg">
+                                    <path d="M35 30 L65 30 L65 45 L45 45 L45 55 L65 55 L65 70 L35 70 Z" fill="#3A00FF" />
+                                </svg>
+                            </div>
+                            <span className="margin-guide margin-top">x</span>
+                            <span className="margin-guide margin-bottom">x</span>
+                            <span className="margin-guide margin-left">x</span>
+                            <span className="margin-guide margin-right">x</span>
+                        </div>
+                    </div>
+                );
+            case 'exemplos_aplicacao':
+                return (
+                    <div className="custom-visual application-examples-visual">
+                        <div className="example-panel correct-panel">
+                            <div className="example-logo-wrapper">
+                                <div className="mini-logo"></div>
+                            </div>
+                            <span className="example-badge ok-badge">✓ DO</span>
+                        </div>
+                        <div className="example-panel incorrect-panel">
+                            <div className="example-logo-wrapper distorted">
+                                <div className="mini-logo"></div>
+                            </div>
+                            <span className="example-badge dont-badge">✗ DONT</span>
+                        </div>
+                    </div>
+                );
+            case 'tshirt_vestuario':
+                return (
+                    <div className="custom-visual tshirt-vestuario-visual">
+                        <div className="tshirt-mockup">
+                            <svg viewBox="0 0 100 100" className="tshirt-svg">
+                                <path d="M30 20 L40 10 L50 15 L60 10 L70 20 L75 35 L65 37 L65 85 L35 85 L35 37 L25 35 Z" fill="#151515" stroke="#000" strokeWidth="1.5" />
+                                <circle cx="50" cy="35" r="4" fill="url(#logoGrad)" />
+                                <rect x="48" y="42" width="4" height="15" fill="url(#logoGrad)" />
+                            </svg>
+                        </div>
+                    </div>
+                );
+            case 'caneta_bloco':
+                return (
+                    <div className="custom-visual notebook-pen-visual">
+                        <div className="stationery-container">
+                            <div className="notebook-mock">
+                                <div className="notebook-bookmark"></div>
+                                <svg viewBox="0 0 50 70" className="notebook-logo-svg">
+                                    <polygon points="10,20 40,35 10,50" fill="url(#notebookGrad)" />
+                                </svg>
+                            </div>
+                            <div className="pen-mock"></div>
+                        </div>
+                        <svg className="hidden-defs">
+                            <defs>
+                                <linearGradient id="notebookGrad" x1="0%" y1="0%" x2="100%" y2="100%">
+                                    <stop offset="0%" stopColor="#3A00FF" />
+                                    <stop offset="100%" stopColor="#BF0040" />
+                                </linearGradient>
+                            </defs>
+                        </svg>
+                    </div>
+                );
+            case 'cartoes_visita':
+                return (
+                    <div className="custom-visual business-cards-visual">
+                        <div className="card-mock-wrapper">
+                            <div className="business-card back-card">
+                                <div className="card-logo-symbol"></div>
+                            </div>
+                            <div className="business-card front-card">
+                                <div className="card-mini-symbol"></div>
+                                <div className="card-text-lines">
+                                    <div className="card-line-bold"></div>
+                                    <div className="card-line-sm"></div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                );
+            case 'packaging_sacos':
+                return (
+                    <div className="custom-visual packaging-box-visual">
+                        <div className="packaging-container">
+                            <div className="bag-mock">
+                                <div className="bag-handle"></div>
+                                <div className="bag-logo"></div>
+                            </div>
+                            <div className="box-mock">
+                                <div className="box-tape"></div>
+                                <div className="box-logo"></div>
+                            </div>
+                        </div>
+                    </div>
+                );
+            case 'naming_concept':
+                return (
+                    <div className="custom-visual naming-concept-visual">
+                        <div className="semantic-nodes">
+                            <div className="node center-node">✦</div>
+                            <div className="node-line line-1"></div>
+                            <div className="node-line line-2"></div>
+                            <div className="node-line line-3"></div>
+                            <div className="node sub-node node-a">Idea</div>
+                            <div className="node sub-node node-b">Nimble</div>
+                            <div className="node sub-node node-c">Brand</div>
+                        </div>
+                    </div>
+                );
+            case 'tagline_slogan':
+                return (
+                    <div className="custom-visual tagline-slogan-visual">
+                        <div className="slogan-banner">
+                            <div className="slogan-stripe blue-stripe">E-NIMBLE</div>
+                            <div className="slogan-stripe red-stripe">GO DIGITAL</div>
+                        </div>
+                    </div>
+                );
+            case 'tom_voz':
+                return (
+                    <div className="custom-visual tone-of-voice-visual">
+                        <div className="soundwaves-container">
+                            <div className="wave-bar bar-1"></div>
+                            <div className="wave-bar bar-2"></div>
+                            <div className="wave-bar bar-3"></div>
+                            <div className="wave-bar bar-4"></div>
+                            <div className="wave-bar bar-5"></div>
+                            <div className="wave-bar bar-6"></div>
+                            <div className="wave-bar bar-7"></div>
+                        </div>
+                    </div>
+                );
+            case 'manifesto_marca':
+                return (
+                    <div className="custom-visual brand-manifesto-visual">
+                        <div className="manifesto-page">
+                            <div className="manifesto-quote-mark">“</div>
+                            <div className="manifesto-lines">
+                                <div className="manifesto-line m-line-1"></div>
+                                <div className="manifesto-line m-line-2"></div>
+                                <div className="manifesto-line m-line-3"></div>
+                                <div className="manifesto-line m-line-4"></div>
+                            </div>
+                        </div>
+                    </div>
+                );
+            default:
+                return (
+                    <div className="service-item-placeholder">
+                        <div className="placeholder-crosshairs">+</div>
+                        <span className="placeholder-text">{item.title}</span>
+                    </div>
+                );
+        }
+    };
 
     useEffect(() => {
         document.body.classList.add('brand-body');
@@ -310,14 +591,7 @@ const Branding = () => {
                                         {service.items.map((item, idx) => (
                                             <div key={idx} className="service-item-card">
                                                 <div className="service-item-img-container">
-                                                    {item.img ? (
-                                                        <img src={item.img} alt={item.title} className="service-item-img" />
-                                                    ) : (
-                                                        <div className="service-item-placeholder">
-                                                            <div className="placeholder-crosshairs">+</div>
-                                                            <span className="placeholder-text">{item.title}</span>
-                                                        </div>
-                                                    )}
+                                                    {renderItemVisual(item)}
                                                 </div>
                                                 <div className="service-item-info">
                                                     <span className="service-item-title">{item.title}</span>
