@@ -321,7 +321,7 @@ const WebsiteDesign = () => {
                                     linkText: "Quero Gerar Leads"
                                 }
                             ].map((service, idx) => (
-                                <div key={idx} className="wd-service-card">
+                                <div key={idx} className={`wd-service-card ${servicesActiveIndex === idx ? 'active' : ''}`}>
                                     {/* Browser Mockup Window with Iframe */}
                                     <div className="wd-browser-mockup">
                                         <div className="mockup-header">
@@ -395,7 +395,7 @@ const WebsiteDesign = () => {
 
                     <div className="wd-checklist-container">
                         <div className="wd-checklist-grid" ref={painGridRef} onScroll={handlePainScroll}>
-                            <div className="wd-checklist-item">
+                            <div className={`wd-checklist-item ${painActiveIndex === 0 ? 'active' : ''}`}>
                                 <div className="wd-checklist-icon">
                                     <img src="/servicos/website-design/slow-website-loading-impact.png" alt="Slow website loading impact - e-nimble" className="wd-checklist-img" />
                                 </div>
@@ -405,7 +405,7 @@ const WebsiteDesign = () => {
                                 </div>
                             </div>
 
-                            <div className="wd-checklist-item">
+                            <div className={`wd-checklist-item ${painActiveIndex === 1 ? 'active' : ''}`}>
                                 <div className="wd-checklist-icon">
                                     <img src="/servicos/website-design/website-clarity-strategy.png" alt="Website clarity and strategy - e-nimble" className="wd-checklist-img" />
                                 </div>
@@ -415,7 +415,7 @@ const WebsiteDesign = () => {
                                 </div>
                             </div>
 
-                            <div className="wd-checklist-item">
+                            <div className={`wd-checklist-item ${painActiveIndex === 2 ? 'active' : ''}`}>
                                 <div className="wd-checklist-icon">
                                     <img src="/servicos/website-design/e-nimble-premium-design-trust.png" alt="Design premium e profissional - e-nimble" className="wd-checklist-img" />
                                 </div>
@@ -425,7 +425,7 @@ const WebsiteDesign = () => {
                                 </div>
                             </div>
 
-                            <div className="wd-checklist-item">
+                            <div className={`wd-checklist-item ${painActiveIndex === 3 ? 'active' : ''}`}>
                                 <div className="wd-checklist-icon">
                                     <img src="/servicos/website-design/website-lead-conversion-results.png" alt="Website lead conversion and results - e-nimble" className="wd-checklist-img" />
                                 </div>
@@ -481,22 +481,22 @@ const WebsiteDesign = () => {
 
                     <div className="wd-process-container">
                         <div className="wd-process-grid" ref={processGridRef} onScroll={handleProcessScroll}>
-                            <div className="wd-process-card">
+                            <div className={`wd-process-card ${processActiveIndex === 0 ? 'active' : ''}`}>
                                 <h3>01. Compreender</h3>
                                 <p>Analisamos o seu negócio e objetivos.</p>
                             </div>
 
-                            <div className="wd-process-card">
+                            <div className={`wd-process-card ${processActiveIndex === 1 ? 'active' : ''}`}>
                                 <h3>02. Design</h3>
                                 <p>Alinhamos experiência e estética.</p>
                             </div>
 
-                            <div className="wd-process-card">
+                            <div className={`wd-process-card ${processActiveIndex === 2 ? 'active' : ''}`}>
                                 <h3>03. Performance</h3>
                                 <p>Velocidade, SEO e experiência.</p>
                             </div>
 
-                            <div className="wd-process-card">
+                            <div className={`wd-process-card ${processActiveIndex === 3 ? 'active' : ''}`}>
                                 <h3>04. Otimização</h3>
                                 <p>Medimos e otimizamos com base em dados.</p>
                             </div>
@@ -540,7 +540,7 @@ const WebsiteDesign = () => {
                                 { isCTA: true },
                             ].map((item, idx) => (
                                 item.isCTA ? (
-                                    <div key={idx} className="wd-case-card wd-case-cta">
+                                    <div key={idx} className={`wd-case-card wd-case-cta ${casesActiveIndex === idx ? 'active' : ''}`}>
                                         <div className="wd-case-cta-inner">
                                             <div className="cta-content">
                                                 <div className="cta-icon">＋</div>
@@ -555,7 +555,7 @@ const WebsiteDesign = () => {
                                         <div className="wd-case-info-spacer"></div>
                                     </div>
                                 ) : (
-                                    <div key={idx} className="wd-case-card">
+                                    <div key={idx} className={`wd-case-card ${casesActiveIndex === idx ? 'active' : ''}`}>
                                         {/* Browser Mockup Window with Iframe */}
                                         <div className="wd-browser-mockup">
                                             <div className="mockup-header">

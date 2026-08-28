@@ -1410,10 +1410,35 @@
       transform: scale(1.15) rotate(3deg) !important;
     }
 
-    .pp-card:hover,
+    .pp-card.active,
+    .pp-card:hover {
+      transform: translateY(-8px) !important;
+      box-shadow: 0 20px 45px rgba(0, 0, 0, 0.15) !important;
+    }
+
+    .process-flow-card.active,
     .process-flow-card:hover {
-      transform: none !important;
-      box-shadow: 0 15px 35px rgba(0, 0, 0, 0.05);
+      transform: translateY(-8px) !important;
+      box-shadow: 0 20px 45px rgba(58, 0, 255, 0.12) !important;
+      border-color: rgba(58, 0, 255, 0.2) !important;
+    }
+
+    .process-flow-card.active::before,
+    .process-flow-card:hover::before {
+      width: 100% !important;
+    }
+
+    .process-flow-card.active .process-step-badge,
+    .process-flow-card:hover .process-step-badge {
+      background: var(--gradient-main) !important;
+      color: white !important;
+      border-color: transparent !important;
+      transform: scale(1.1) !important;
+    }
+
+    .process-flow-card.active .process-icon-img,
+    .process-flow-card:hover .process-icon-img {
+      transform: scale(1.08) rotate(2deg) !important;
     }
 
     .pp-card-large .pp-thumb,

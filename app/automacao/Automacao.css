@@ -1301,7 +1301,9 @@ body.auto-body {
     scroll-snap-type: x mandatory;
     scroll-behavior: smooth;
     -webkit-overflow-scrolling: touch;
-    padding: 1rem 0.25rem;
+    padding: 2rem calc(50% - min(142.5px, 40vw)) !important;
+    margin-left: -2rem !important;
+    margin-right: -2rem !important;
     gap: 1.25rem;
     scrollbar-width: none;
   }
@@ -1317,8 +1319,23 @@ body.auto-body {
   .auto-compare-card,
   .auto-metric-card,
   .auto-node-card {
-    flex: 0 0 85% !important;
+    flex: 0 0 285px !important;
+    max-width: 80vw !important;
     scroll-snap-align: center;
+    transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1) !important;
+  }
+
+  .auto-roadmap-card.active,
+  .auto-roadmap-card:hover,
+  .auto-compare-card.active,
+  .auto-compare-card:hover,
+  .auto-metric-card.active,
+  .auto-metric-card:hover,
+  .auto-node-card.active,
+  .auto-node-card:hover {
+    transform: translateY(-8px) !important;
+    box-shadow: 0 20px 45px rgba(58, 0, 255, 0.12) !important;
+    border-color: rgba(58, 0, 255, 0.25) !important;
   }
 
   .auto-connector-line {

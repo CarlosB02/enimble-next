@@ -475,7 +475,7 @@
         scrollbar-width: none !important;
         -ms-overflow-style: none !important;
         gap: 1.25rem !important;
-        padding: 0.5rem 1rem 1.5rem 1rem !important;
+        padding: 2rem calc(50% - min(142.5px, 40vw)) !important;
         margin-left: -2rem !important;
         margin-right: -2rem !important;
     }
@@ -485,7 +485,8 @@
     }
 
     .bento-card {
-        flex: 0 0 85% !important;
+        flex: 0 0 285px !important;
+        max-width: 80vw !important;
         scroll-snap-align: center !important;
         height: auto !important;
         min-height: 280px !important;
@@ -494,6 +495,14 @@
         white-space: normal !important;
         word-wrap: break-word !important;
         overflow-wrap: break-word !important;
+        transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1) !important;
+    }
+
+    .bento-card.active,
+    .bento-card:hover {
+        transform: translateY(-8px) scale(1.02) !important;
+        box-shadow: 0 25px 50px rgba(58, 0, 255, 0.15) !important;
+        border-color: rgba(58, 0, 255, 0.3) !important;
     }
 
     .bento-card.large,
@@ -1441,7 +1450,7 @@
         scrollbar-width: none !important;
         -ms-overflow-style: none !important;
         gap: 1.5rem !important;
-        padding: 0.5rem 2rem 1.5rem 2rem !important;
+        padding: 2rem calc(50% - min(142.5px, 40vw)) !important;
         margin-left: -2rem !important;
         margin-right: -2rem !important;
         width: calc(100% + 4rem) !important;
@@ -1450,7 +1459,7 @@
     }
 
     .rs-appear-text {
-        padding-top: 2.5rem !important;
+        padding-top: 2rem !important;
     }
 
     .rs-drivers-grid::-webkit-scrollbar,
@@ -1460,13 +1469,28 @@
 
     .rs-drivers-grid>.rs-driver-card,
     .rs-appear-text>.advantage-item {
-        flex: 0 0 100% !important;
-        width: 100% !important;
-        max-width: 100% !important;
+        flex: 0 0 285px !important;
+        width: 285px !important;
+        max-width: 80vw !important;
         min-width: 0 !important;
         scroll-snap-align: center !important;
         margin-bottom: 0 !important;
         box-sizing: border-box !important;
+        transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1) !important;
+    }
+
+    .rs-driver-card.active,
+    .rs-driver-card:hover {
+        transform: translateY(-8px) !important;
+        box-shadow: 0 20px 45px rgba(58, 0, 255, 0.12) !important;
+        border-color: rgba(58, 0, 255, 0.25) !important;
+    }
+
+    .advantage-item.active,
+    .advantage-item:hover {
+        transform: translateY(-5px) !important;
+        box-shadow: 0 15px 35px rgba(58, 0, 255, 0.12) !important;
+        border-color: rgba(58, 0, 255, 0.25) !important;
     }
 
     .rs-driver-card h3 {

@@ -907,7 +907,7 @@ h4,
     scroll-behavior: smooth;
     -webkit-overflow-scrolling: touch;
     gap: 1.25rem;
-    padding: 1.5rem 2rem;
+    padding: 2rem calc(50% - min(142.5px, 40vw));
     scrollbar-width: none;
     margin: 0;
   }
@@ -919,16 +919,16 @@ h4,
   .service-item {
     flex: 0 0 285px;
     max-width: 80vw;
-    scroll-snap-align: start;
+    scroll-snap-align: center;
     margin: 0;
     height: auto;
-    transform: none !important;
-    transition: box-shadow 0.3s ease;
+    transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
   }
 
+  .service-item.active,
   .service-item:hover {
-    transform: none !important;
-    box-shadow: 0 15px 35px rgba(0, 0, 0, 0.05);
+    transform: translateY(-10px) scale(1.02) !important;
+    box-shadow: 0 30px 60px rgba(58, 0, 255, 0.15) !important;
   }
 
   .carousel-dots {

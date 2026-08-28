@@ -217,7 +217,7 @@ const Ecommerce = () => {
                     </div>
 
                     <div className="ec-adv-grid" ref={advGridRef} onScroll={handleAdvScroll}>
-                        <div className="ec-adv-card reveal delay-1">
+                        <div className={`ec-adv-card reveal delay-1 ${advActiveIndex === 0 ? 'active' : ''}`}>
                             <div className="ec-adv-icon">
                                 <img src="/servicos/ecommerce/e-nimble-service-global-reach.png" alt="Alcance global para e-commerce - e-nimble" />
                             </div>
@@ -229,7 +229,7 @@ const Ecommerce = () => {
                             </div>
                         </div>
 
-                        <div className="ec-adv-card reveal delay-2">
+                        <div className={`ec-adv-card reveal delay-2 ${advActiveIndex === 1 ? 'active' : ''}`}>
                             <div className="ec-adv-icon">
                                 <img src="/servicos/ecommerce/e-nimble-service-24-7-automation.png" alt="Vendas 24/7 e automação - e-nimble" />
                             </div>
@@ -241,19 +241,19 @@ const Ecommerce = () => {
                             </div>
                         </div>
 
-                        <div className="ec-adv-card reveal delay-3">
+                        <div className={`ec-adv-card reveal delay-3 ${advActiveIndex === 2 ? 'active' : ''}`}>
                             <div className="ec-adv-icon">
-                                <img src="/servicos/ecommerce/e-nimble-service-premium-branding.png" alt="Branding premium para e-commerce - e-nimble" />
+                                <img src="/servicos/ecommerce/e-nimble-service-frictionless-experience.png" alt="Experiência de compra otimizada - e-nimble" />
                             </div>
-                            <h3>Marca Premium</h3>
-                            <p>Uma loja bem construída posiciona a sua marca como líder no mercado.</p>
+                            <h3>Experiência Fluida</h3>
+                            <p>Checkout rápido para evitar carrinhos abandonados.</p>
                             <div className="ec-adv-stat">
                                 <strong>+85%</strong>
                                 <span>Mais Credibilidade</span>
                             </div>
                         </div>
 
-                        <div className="ec-adv-card reveal delay-4">
+                        <div className={`ec-adv-card reveal delay-4 ${advActiveIndex === 3 ? 'active' : ''}`}>
                             <div className="ec-adv-icon">
                                 <img src="/servicos/ecommerce/e-nimble-service-data-driven-results.png" alt="Dados e insights de e-commerce - e-nimble" />
                             </div>
@@ -297,73 +297,73 @@ const Ecommerce = () => {
                     </div>
 
                     <div className="ec-showcase-grid" ref={showcaseGridRef} onScroll={handleShowcaseScroll}>
-                        <div className="ec-showcase-item reveal delay-1">
+                        <div className={`ec-showcase-item reveal delay-1 ${showcaseActiveIndex === 0 ? 'active' : ''}`}>
                             <div className="ec-showcase-icon">
                                 <img src="/servicos/ecommerce/agency-expertise-fashion-ecommerce.png" alt="E-commerce de moda e vestuário - e-nimble" />
                             </div>
                             <span>Moda & Vestuário</span>
                         </div>
-                        <div className="ec-showcase-item reveal delay-1">
+                        <div className={`ec-showcase-item reveal delay-1 ${showcaseActiveIndex === 1 ? 'active' : ''}`}>
                             <div className="ec-showcase-icon">
                                 <img src="/servicos/ecommerce/agency-expertise-food-gourmet.png" alt="E-commerce alimentar e gourmet - e-nimble" />
                             </div>
                             <span>Alimentar & Bebidas</span>
                         </div>
-                        <div className="ec-showcase-item reveal delay-2">
+                        <div className={`ec-showcase-item reveal delay-2 ${showcaseActiveIndex === 2 ? 'active' : ''}`}>
                             <div className="ec-showcase-icon">
                                 <img src="/servicos/ecommerce/agency-expertise-health-wellness.png" alt="E-commerce de saúde e cosmética - e-nimble" />
                             </div>
                             <span>Saúde & Cosmética</span>
                         </div>
-                        <div className="ec-showcase-item reveal delay-2">
+                        <div className={`ec-showcase-item reveal delay-2 ${showcaseActiveIndex === 3 ? 'active' : ''}`}>
                             <div className="ec-showcase-icon">
                                 <img src="/servicos/ecommerce/agency-expertise-home-decor.png" alt="E-commerce de casa e decoração - e-nimble" />
                             </div>
                             <span>Casa & Decoração</span>
                         </div>
-                        <div className="ec-showcase-item reveal delay-3">
+                        <div className={`ec-showcase-item reveal delay-3 ${showcaseActiveIndex === 4 ? 'active' : ''}`}>
                             <div className="ec-showcase-icon">
                                 <img src="/servicos/ecommerce/agency-expertise-tech-gaming.png" alt="E-commerce de tecnologia e gaming - e-nimble" />
                             </div>
                             <span>Tecnologia & Gaming</span>
                         </div>
-                        <div className="ec-showcase-item reveal delay-3">
+                        <div className={`ec-showcase-item reveal delay-3 ${showcaseActiveIndex === 5 ? 'active' : ''}`}>
                             <div className="ec-showcase-icon">
                                 <img src="/servicos/ecommerce/agency-expertise-jewelry-luxury.png" alt="E-commerce de joalharia e luxo - e-nimble" />
                             </div>
                             <span>Joalharia & Acessórios</span>
                         </div>
-                        <div className="ec-showcase-item reveal delay-4">
+                        <div className={`ec-showcase-item reveal delay-4 ${showcaseActiveIndex === 6 ? 'active' : ''}`}>
                             <div className="ec-showcase-icon">
                                 <img src="/servicos/ecommerce/agency-expertise-digital-education.png" alt="E-commerce de educação e cursos - e-nimble" />
                             </div>
                             <span>Educação & Cursos</span>
                         </div>
-                        <div className="ec-showcase-item reveal delay-4">
+                        <div className={`ec-showcase-item reveal delay-4 ${showcaseActiveIndex === 7 ? 'active' : ''}`}>
                             <div className="ec-showcase-icon">
                                 <img src="/servicos/ecommerce/agency-expertise-personal-care.png" alt="E-commerce de cuidado pessoal - e-nimble" />
                             </div>
                             <span>Cuidado Pessoal</span>
                         </div>
-                        <div className="ec-showcase-item reveal delay-1">
+                        <div className={`ec-showcase-item reveal delay-1 ${showcaseActiveIndex === 8 ? 'active' : ''}`}>
                             <div className="ec-showcase-icon">
                                 <img src="/servicos/ecommerce/loja-online-pet-shop.png" alt="E-commerce de loja de animais - e-nimble" />
                             </div>
                             <span>Loja de Animais</span>
                         </div>
-                        <div className="ec-showcase-item reveal delay-2">
+                        <div className={`ec-showcase-item reveal delay-2 ${showcaseActiveIndex === 9 ? 'active' : ''}`}>
                             <div className="ec-showcase-icon">
                                 <img src="/servicos/ecommerce/loja-online-desporto-fitness.png" alt="E-commerce de desporto e fitness - e-nimble" />
                             </div>
                             <span>Desporto & Fitness</span>
                         </div>
-                        <div className="ec-showcase-item reveal delay-3">
+                        <div className={`ec-showcase-item reveal delay-3 ${showcaseActiveIndex === 10 ? 'active' : ''}`}>
                             <div className="ec-showcase-icon">
                                 <img src="/servicos/ecommerce/loja-online-automovel.png" alt="E-commerce automóvel - e-nimble" />
                             </div>
                             <span>Automóvel</span>
                         </div>
-                        <div className="ec-showcase-item reveal delay-4" style={{ background: 'var(--shop-warm)', border: '2px dashed rgba(58, 0, 255, 0.2)', justifyContent: 'center', padding: '1.5rem 1rem' }}>
+                        <div className={`ec-showcase-item reveal delay-4 ${showcaseActiveIndex === 11 ? 'active' : ''}`} style={{ background: 'var(--shop-warm)', border: '2px dashed rgba(58, 0, 255, 0.2)', justifyContent: 'center', padding: '1.5rem 1rem' }}>
                             <span style={{ fontSize: '1.1rem', fontWeight: '700', color: 'var(--shop-text)', marginBottom: '0.4rem' }}>E muito mais...</span>
                             <p style={{ fontSize: '0.8rem', color: 'var(--shop-text-muted)', marginBottom: '1.2rem', lineHeight: '1.3' }}>Soluções à sua medida.</p>
                             <Link href="/contactos" className="smart-btn" style={{ padding: '0.4rem 0.8rem', fontSize: '0.8rem', width: 'auto' }}>
@@ -397,7 +397,7 @@ const Ecommerce = () => {
                     </div>
 
                     <div className="ec-journey-flow" ref={journeyFlowRef} onScroll={handleJourneyScroll}>
-                        <div className="ec-journey-step reveal delay-1">
+                        <div className={`ec-journey-step reveal delay-1 ${journeyActiveIndex === 0 ? 'active' : ''}`}>
                             <div className="ec-js-icon">
                                 <img src="/servicos/ecommerce/customer-journey-discovery-optimization.png" alt="Fase de descoberta e pesquisa - e-nimble" />
                             </div>
@@ -409,7 +409,7 @@ const Ecommerce = () => {
 
                         <div className="ec-journey-connector"><span>→</span></div>
 
-                        <div className="ec-journey-step reveal delay-2">
+                        <div className={`ec-journey-step reveal delay-2 ${journeyActiveIndex === 1 ? 'active' : ''}`}>
                             <div className="ec-js-icon">
                                 <img src="/servicos/ecommerce/customer-journey-cart-conversion.png" alt="Fase de carrinho e conversão - e-nimble" />
                             </div>
@@ -421,7 +421,7 @@ const Ecommerce = () => {
 
                         <div className="ec-journey-connector"><span>→</span></div>
 
-                        <div className="ec-journey-step reveal delay-3">
+                        <div className={`ec-journey-step reveal delay-3 ${journeyActiveIndex === 2 ? 'active' : ''}`}>
                             <div className="ec-js-icon">
                                 <img src="/servicos/ecommerce/customer-journey-secure-payment-gateway.png" alt="Fase de checkout e pagamentos seguros - e-nimble" />
                             </div>
@@ -433,7 +433,7 @@ const Ecommerce = () => {
 
                         <div className="ec-journey-connector"><span>→</span></div>
 
-                        <div className="ec-journey-step reveal delay-4">
+                        <div className={`ec-journey-step reveal delay-4 ${journeyActiveIndex === 3 ? 'active' : ''}`}>
                             <div className="ec-js-icon">
                                 <img src="/servicos/ecommerce/customer-journey-logistics-integration.png" alt="Fase de entrega e logística - e-nimble" />
                             </div>

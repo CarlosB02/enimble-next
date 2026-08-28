@@ -266,7 +266,7 @@ const HomePage = () => {
 
                     <div className="pp-grid-container">
                         <div className="pp-grid" ref={portfolioGridRef} onScroll={handlePortfolioScroll}>
-                            <div className="pp-card pp-card-large reveal delay-1">
+                            <div className={`pp-card pp-card-large reveal delay-1 ${portfolioActiveIndex === 0 ? 'active' : ''}`}>
                                 <div className="pp-thumb" style={{ background: 'linear-gradient(135deg, #667eea 0%, #764ba2 100%)' }}>
                                     <div className="pp-overlay">
                                         <span className="pp-cat">Website Design</span>
@@ -274,7 +274,7 @@ const HomePage = () => {
                                     </div>
                                 </div>
                             </div>
-                            <div className="pp-card reveal delay-2">
+                            <div className={`pp-card reveal delay-2 ${portfolioActiveIndex === 1 ? 'active' : ''}`}>
                                 <div className="pp-thumb" style={{ background: 'linear-gradient(135deg, #f093fb 0%, #f5576c 100%)' }}>
                                     <div className="pp-overlay">
                                         <span className="pp-cat">Edição de Vídeo</span>
@@ -282,7 +282,7 @@ const HomePage = () => {
                                     </div>
                                 </div>
                             </div>
-                            <div className="pp-card reveal delay-3">
+                            <div className={`pp-card reveal delay-3 ${portfolioActiveIndex === 2 ? 'active' : ''}`}>
                                 <div className="pp-thumb" style={{ background: 'linear-gradient(135deg, #4facfe 0%, #00f2fe 100%)' }}>
                                     <div className="pp-overlay">
                                         <span className="pp-cat">Redes Sociais</span>
@@ -290,7 +290,7 @@ const HomePage = () => {
                                     </div>
                                 </div>
                             </div>
-                            <div className="pp-card pp-card-large reveal delay-4">
+                            <div className={`pp-card pp-card-large reveal delay-4 ${portfolioActiveIndex === 3 ? 'active' : ''}`}>
                                 <div className="pp-thumb" style={{ background: 'linear-gradient(135deg, #fa709a 0%, #fee140 100%)' }}>
                                     <div className="pp-overlay">
                                         <span className="pp-cat">Loja E-Commerce</span>
@@ -382,7 +382,7 @@ const HomePage = () => {
                         <div className="process-flow-grid" ref={processGridRef} onScroll={handleProcessScroll}>
                             <div className="process-connector-line"></div>
 
-                            <div className="process-flow-card reveal">
+                            <div className={`process-flow-card reveal ${processActiveIndex === 0 ? 'active' : ''}`}>
                                 <div className="process-step-badge">01</div>
                                 <div className="process-img-holder">
                                     <img src="/assets/process-problem.png" alt="Identificamos o Problema" className="process-icon-img" />
@@ -391,7 +391,7 @@ const HomePage = () => {
                                 <p>Analisamos o seu negócio para identificar oportunidades e remover barreiras ao crescimento.</p>
                             </div>
 
-                            <div className="process-flow-card reveal delay-1">
+                            <div className={`process-flow-card reveal delay-1 ${processActiveIndex === 1 ? 'active' : ''}`}>
                                 <div className="process-step-badge">02</div>
                                 <div className="process-img-holder">
                                     <img src="/assets/process-solution.png" alt="Criamos a Solução" className="process-icon-img" />
@@ -400,7 +400,7 @@ const HomePage = () => {
                                 <p>Desenvolvemos uma estratégia personalizada, alinhada com os objetivos da sua empresa.</p>
                             </div>
 
-                            <div className="process-flow-card reveal delay-2">
+                            <div className={`process-flow-card reveal delay-2 ${processActiveIndex === 2 ? 'active' : ''}`}>
                                 <div className="process-step-badge">03</div>
                                 <div className="process-img-holder">
                                     <img src="/assets/process-results.png" alt="Medimos Resultados" className="process-icon-img" />

@@ -255,7 +255,7 @@ const Formacao = () => {
 
                     {/* Highlights Cards */}
                     <div className="edu-funding-highlights reveal delay-1" ref={fundingRef} onScroll={handleFundingScroll}>
-                        <div className="edu-fh-card">
+                        <div className={`edu-fh-card ${fundingActiveIndex === 0 ? 'active' : ''}`}>
                             <div className="edu-fh-icon">
                                 <img src="/servicos/formacao/fundo-compensacao-trabalho-financiamento-formacao.png" alt="Fundo de Compensação do Trabalho Financiamento Formação e-nimble" className="edu-funding-icon-img" />
                             </div>
@@ -265,7 +265,7 @@ const Formacao = () => {
                             </div>
                         </div>
 
-                        <div className="edu-fh-card highlight-card">
+                        <div className={`edu-fh-card highlight-card ${fundingActiveIndex === 1 ? 'active' : ''}`}>
                             <div className="edu-fh-icon">
                                 <img src="/servicos/formacao/cheque-formacao-apoio-financeiro.png" alt="Cheque-Formação Apoio Financeiro e-nimble" className="edu-funding-icon-img" />
                             </div>
@@ -275,7 +275,7 @@ const Formacao = () => {
                             </div>
                         </div>
 
-                        <div className="edu-fh-card">
+                        <div className={`edu-fh-card ${fundingActiveIndex === 2 ? 'active' : ''}`}>
                             <div className="edu-fh-icon">
                                 <img src="/servicos/formacao/financiamento-formacao-100-percento.png" alt="Financiamento de Formação até 100 por cento e-nimble" className="edu-funding-icon-img" />
                             </div>
@@ -308,7 +308,7 @@ const Formacao = () => {
                         </div>
 
                         <div className="edu-flow-steps" ref={flowRef} onScroll={handleFlowScroll}>
-                            <div className="edu-flow-step">
+                            <div className={`edu-flow-step ${flowActiveIndex === 0 ? 'active' : ''}`}>
                                 <div className="edu-step-number">01</div>
                                 <div className="edu-step-icon">
                                     <img src="/servicos/formacao/diagnostico-necessidades-formacao.png" alt="Diagnóstico de Necessidades de Formação e-nimble" className="edu-flow-step-img" />
@@ -326,7 +326,7 @@ const Formacao = () => {
                                 </svg>
                             </div>
 
-                            <div className="edu-flow-step">
+                            <div className={`edu-flow-step ${flowActiveIndex === 1 ? 'active' : ''}`}>
                                 <div className="edu-step-number">02</div>
                                 <div className="edu-step-icon">
                                     <img src="/servicos/formacao/planeamento-plano-formacao-empresa.png" alt="Planeamento e Plano de Formação para Empresas e-nimble" className="edu-flow-step-img" />
@@ -344,7 +344,7 @@ const Formacao = () => {
                                 </svg>
                             </div>
 
-                            <div className="edu-flow-step">
+                            <div className={`edu-flow-step ${flowActiveIndex === 2 ? 'active' : ''}`}>
                                 <div className="edu-step-number">03</div>
                                 <div className="edu-step-icon">
                                     <img src="/servicos/formacao/formacao-pratica-presencial-hibrida.png" alt="Formação Prática Presencial ou Híbrida e-nimble" className="edu-flow-step-img" />
@@ -362,7 +362,7 @@ const Formacao = () => {
                                 </svg>
                             </div>
 
-                            <div className="edu-flow-step highlight-step">
+                            <div className={`edu-flow-step highlight-step ${flowActiveIndex === 3 ? 'active' : ''}`}>
                                 <div className="edu-step-number">04</div>
                                 <div className="edu-step-icon">
                                     <img src="/servicos/formacao/certificacao-dgert-formacao-sigo.png" alt="Certificação oficial DGERT e Registo na plataforma SIGO e-nimble" className="edu-flow-step-img" />

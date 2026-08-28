@@ -1099,7 +1099,7 @@ details[open] .arrow-icon {
         scrollbar-width: none !important;
         -ms-overflow-style: none !important;
         gap: 1.25rem !important;
-        padding: 0.5rem 1rem 1.5rem 1rem !important;
+        padding: 2rem calc(50% - min(142.5px, 40vw)) !important;
         margin-left: -2rem !important;
         margin-right: -2rem !important;
     }
@@ -1111,12 +1111,28 @@ details[open] .arrow-icon {
 
     .edu-funding-highlights > .edu-fh-card,
     .edu-flow-steps > .edu-flow-step {
-        flex: 0 0 85% !important;
+        flex: 0 0 285px !important;
+        max-width: 80vw !important;
         scroll-snap-align: center !important;
         margin-bottom: 0 !important;
         white-space: normal !important;
         word-wrap: break-word !important;
         overflow-wrap: break-word !important;
+        transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1) !important;
+    }
+
+    .edu-fh-card.active,
+    .edu-fh-card:hover {
+        transform: translateY(-8px) !important;
+        box-shadow: 0 20px 45px rgba(58, 0, 255, 0.12) !important;
+        border-color: rgba(58, 0, 255, 0.25) !important;
+    }
+
+    .edu-flow-step.active,
+    .edu-flow-step:hover {
+        transform: translateY(-8px) !important;
+        box-shadow: 0 20px 45px rgba(58, 0, 255, 0.12) !important;
+        border-color: rgba(58, 0, 255, 0.25) !important;
     }
 
     .edu-flow-arrow {

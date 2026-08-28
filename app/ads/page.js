@@ -255,7 +255,7 @@ const AdsPage = () => {
                     <div className="omni-grid" ref={omniGridRef} onScroll={handleOmniScroll}>
 
                         {/* Google Search Card */}
-                        <div className="omni-card reveal">
+                        <div className={`omni-card reveal ${omniActiveIndex === 0 ? 'active' : ''}`}>
                             <div className="omni-device-preview">
                                 <div className="screen-search">
                                     <div className="search-bar-mini"></div>
@@ -276,7 +276,7 @@ const AdsPage = () => {
                         </div>
 
                         {/* Social Feed Card */}
-                        <div className="omni-card reveal" style={{ animationDelay: '0.1s' }}>
+                        <div className={`omni-card reveal ${omniActiveIndex === 1 ? 'active' : ''}`} style={{ animationDelay: '0.1s' }}>
                             <div className="omni-device-preview">
                                 <div className="screen-social">
                                     <div className="social-ad-card">
@@ -291,7 +291,7 @@ const AdsPage = () => {
                         </div>
 
                         {/* Video Reels Card */}
-                        <div className="omni-card reveal" style={{ animationDelay: '0.2s' }}>
+                        <div className={`omni-card reveal ${omniActiveIndex === 2 ? 'active' : ''}`} style={{ animationDelay: '0.2s' }}>
                             <div className="omni-device-preview">
                                 <div className="screen-video">
                                     <div className="video-ad-bg"></div>
@@ -305,7 +305,7 @@ const AdsPage = () => {
                         </div>
 
                         {/* Banner Network Card */}
-                        <div className="omni-card reveal" style={{ animationDelay: '0.3s' }}>
+                        <div className={`omni-card reveal ${omniActiveIndex === 3 ? 'active' : ''}`} style={{ animationDelay: '0.3s' }}>
                             <div className="omni-device-preview">
                                 <div className="screen-banner">
                                     <div className="banner-grid-lines">
@@ -376,7 +376,7 @@ const AdsPage = () => {
 
                     <div className="creatives-grid reveal" ref={creativesGridRef} onScroll={handleCreativesScroll}>
                         {/* Meta Feed */}
-                        <div className="creative-card">
+                        <div className={`creative-card ${creativesActiveIndex === 0 ? 'active' : ''}`}>
                             <div className="creative-img-container square">
                                 <img
                                     src="/servicos/ads/criativos/meta.png"
@@ -394,7 +394,7 @@ const AdsPage = () => {
                         </div>
 
                         {/* Stories / Reels */}
-                        <div className="creative-card">
+                        <div className={`creative-card ${creativesActiveIndex === 1 ? 'active' : ''}`}>
                             <div className="creative-img-container portrait">
                                 <img
                                     src="/servicos/ads/criativos/story.png"
@@ -412,7 +412,7 @@ const AdsPage = () => {
                         </div>
 
                         {/* Display Banner */}
-                        <div className="creative-card">
+                        <div className={`creative-card ${creativesActiveIndex === 2 ? 'active' : ''}`}>
                             <div className="creative-img-container landscape">
                                 <img
                                     src="/servicos/ads/criativos/display.png"
@@ -462,7 +462,7 @@ const AdsPage = () => {
 
                     <div className="results-grid" ref={resultsGridRef} onScroll={handleResultsScroll}>
                         {/* Segmentação Estudada */}
-                        <div className="results-card reveal">
+                        <div className={`results-card reveal ${resultsActiveIndex === 0 ? 'active' : ''}`}>
                             <div className="results-icon-wrapper">
                                 <img
                                     src="/servicos/ads/segmentacao.png"
@@ -478,7 +478,7 @@ const AdsPage = () => {
                         </div>
 
                         {/* Criativos fortes */}
-                        <div className="results-card reveal" style={{ animationDelay: '0.1s' }}>
+                        <div className={`results-card reveal ${resultsActiveIndex === 1 ? 'active' : ''}`} style={{ animationDelay: '0.1s' }}>
                             <div className="results-icon-wrapper">
                                 <img
                                     src="/servicos/ads/criativos.png"
@@ -494,7 +494,7 @@ const AdsPage = () => {
                         </div>
 
                         {/* Landing Pages que convertem */}
-                        <div className="results-card reveal" style={{ animationDelay: '0.2s' }}>
+                        <div className={`results-card reveal ${resultsActiveIndex === 2 ? 'active' : ''}`} style={{ animationDelay: '0.2s' }}>
                             <div className="results-icon-wrapper">
                                 <img
                                     src="/servicos/ads/landing-pages.png"
@@ -510,7 +510,7 @@ const AdsPage = () => {
                         </div>
 
                         {/* Otimização contínua */}
-                        <div className="results-card reveal" style={{ animationDelay: '0.3s' }}>
+                        <div className={`results-card reveal ${resultsActiveIndex === 3 ? 'active' : ''}`} style={{ animationDelay: '0.3s' }}>
                             <div className="results-icon-wrapper">
                                 <img
                                     src="/servicos/ads/otimizacao.png"

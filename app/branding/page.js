@@ -168,7 +168,7 @@ const Branding = () => {
                     </div>
 
                     <div className="br-enviro-grid" ref={enviroRef} onScroll={handleEnviroScroll}>
-                        <div className="br-enviro-item reveal delay-1">
+                        <div className={`br-enviro-item reveal delay-1 ${enviroActiveIndex === 0 ? 'active' : ''}`}>
                             <div className="br-env-mockup digital">
                                 <div className="br-env-bar"><span></span><span></span><span></span></div>
                                 <div className="br-env-body">
@@ -178,7 +178,7 @@ const Branding = () => {
                             </div>
                             <span>Website</span>
                         </div>
-                        <div className="br-enviro-item reveal delay-2">
+                        <div className={`br-enviro-item reveal delay-2 ${enviroActiveIndex === 1 ? 'active' : ''}`}>
                             <div className="br-env-mockup card-mock">
                                 <div className="br-env-card-inner">
                                     <div className="br-env-logo"></div>
@@ -189,7 +189,7 @@ const Branding = () => {
                             </div>
                             <span>Cartões</span>
                         </div>
-                        <div className="br-enviro-item reveal delay-3">
+                        <div className={`br-enviro-item reveal delay-3 ${enviroActiveIndex === 2 ? 'active' : ''}`}>
                             <div className="br-env-mockup social-mock">
                                 <div className="br-env-avatar"></div>
                                 <div className="br-env-post-block">
@@ -198,7 +198,7 @@ const Branding = () => {
                             </div>
                             <span>Redes Sociais</span>
                         </div>
-                        <div className="br-enviro-item reveal delay-4">
+                        <div className={`br-enviro-item reveal delay-4 ${enviroActiveIndex === 3 ? 'active' : ''}`}>
                             <div className="br-env-mockup pack-mock">
                                 <div className="br-env-pack">
                                     <div className="br-env-logo sm"></div>
@@ -206,7 +206,7 @@ const Branding = () => {
                             </div>
                             <span>Packaging</span>
                         </div>
-                        <div className="br-enviro-item reveal delay-4">
+                        <div className={`br-enviro-item reveal delay-4 ${enviroActiveIndex === 4 ? 'active' : ''}`}>
                             <div className="br-env-mockup doc-mock">
                                 <div className="br-env-doc-header"></div>
                                 <div className="br-env-lines"><div></div><div></div><div></div></div>
@@ -349,22 +349,22 @@ const Branding = () => {
                         </div>
 
                         <div className="br-emotion-pillars" ref={emotionRef} onScroll={handleEmotionScroll}>
-                            <div className="br-pillar-card">
+                            <div className={`br-pillar-card ${emotionActiveIndex === 0 ? 'active' : ''}`}>
                                 <span className="br-pillar-num">01</span>
                                 <h4>Confiança</h4>
                                 <p>Uma identidade que transmite profissionalismo.</p>
                             </div>
-                            <div className="br-pillar-card">
+                            <div className={`br-pillar-card ${emotionActiveIndex === 1 ? 'active' : ''}`}>
                                 <span className="br-pillar-num">02</span>
                                 <h4>Diferenciação</h4>
                                 <p>Deixe de competir apenas pelo preço.</p>
                             </div>
-                            <div className="br-pillar-card">
+                            <div className={`br-pillar-card ${emotionActiveIndex === 2 ? 'active' : ''}`}>
                                 <span className="br-pillar-num">03</span>
                                 <h4>Conectar</h4>
                                 <p>As pessoas usam marcas com que se identificam.</p>
                             </div>
-                            <div className="br-pillar-card">
+                            <div className={`br-pillar-card ${emotionActiveIndex === 3 ? 'active' : ''}`}>
                                 <span className="br-pillar-num">04</span>
                                 <h4>Memorabilidade</h4>
                                 <p>Identidade marcante que sobressai no ecossistema.</p>
@@ -397,22 +397,22 @@ const Branding = () => {
                     </div>
 
                     <div className="br-strategy-grid" ref={strategyRef} onScroll={handleStrategyScroll}>
-                        <div className="br-strat-card reveal delay-1">
+                        <div className={`br-strat-card reveal delay-1 ${strategyActiveIndex === 0 ? 'active' : ''}`}>
                             <div className="br-sc-num">01</div>
                             <h4>Descoberta</h4>
                             <p>Compreendemos o negócio, o mercado e os objetivos.</p>
                         </div>
-                        <div className="br-strat-card reveal delay-2">
+                        <div className={`br-strat-card reveal delay-2 ${strategyActiveIndex === 1 ? 'active' : ''}`}>
                             <div className="br-sc-num">02</div>
                             <h4>Conceito</h4>
                             <p>Exploramos diferentes direções até encontrar a identidade certa.</p>
                         </div>
-                        <div className="br-strat-card reveal delay-3">
+                        <div className={`br-strat-card reveal delay-3 ${strategyActiveIndex === 2 ? 'active' : ''}`}>
                             <div className="br-sc-num">03</div>
                             <h4>Refinamento</h4>
                             <p>Ajustamos cada detalhe para garantir consistência e impacto.</p>
                         </div>
-                        <div className="br-strat-card reveal delay-4">
+                        <div className={`br-strat-card reveal delay-4 ${strategyActiveIndex === 3 ? 'active' : ''}`}>
                             <div className="br-sc-num">04</div>
                             <h4>Entrega</h4>
                             <p>Recebe todos os ficheiros e um guia para aplicar a marca.</p>

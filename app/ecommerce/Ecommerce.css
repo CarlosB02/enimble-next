@@ -1110,7 +1110,7 @@ body.shop-body .nav-open .hamburger {
         scrollbar-width: none !important;
         -ms-overflow-style: none !important;
         gap: 1.25rem !important;
-        padding: 0.5rem 1rem 1.5rem 1rem !important;
+        padding: 2rem calc(50% - min(142.5px, 40vw)) !important;
         margin-left: -2rem !important;
         margin-right: -2rem !important;
     }
@@ -1123,19 +1123,44 @@ body.shop-body .nav-open .hamburger {
 
     .ec-adv-card,
     .ec-journey-step {
-        flex: 0 0 85% !important;
+        flex: 0 0 285px !important;
+        max-width: 80vw !important;
         scroll-snap-align: center !important;
         margin-bottom: 0 !important;
         padding: 1.2rem !important;
         white-space: normal !important;
         word-wrap: break-word !important;
         overflow-wrap: break-word !important;
+        transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1) !important;
     }
 
     .ec-showcase-item {
-        flex: 0 0 65% !important;
+        flex: 0 0 285px !important;
+        max-width: 80vw !important;
         scroll-snap-align: center !important;
         margin-bottom: 0 !important;
+        transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1) !important;
+    }
+
+    .ec-adv-card.active,
+    .ec-adv-card:hover {
+        transform: translateY(-8px) !important;
+        box-shadow: 0 20px 45px rgba(58, 0, 255, 0.12) !important;
+        border-color: rgba(58, 0, 255, 0.25) !important;
+    }
+
+    .ec-showcase-item.active,
+    .ec-showcase-item:hover {
+        transform: translateY(-6px) scale(1.02) !important;
+        box-shadow: 0 15px 35px rgba(58, 0, 255, 0.12) !important;
+        border-color: rgba(58, 0, 255, 0.25) !important;
+    }
+
+    .ec-journey-step.active,
+    .ec-journey-step:hover {
+        transform: translateY(-8px) !important;
+        box-shadow: 0 20px 45px rgba(58, 0, 255, 0.12) !important;
+        border-color: rgba(58, 0, 255, 0.25) !important;
     }
 
     .ec-journey-connector {

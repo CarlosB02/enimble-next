@@ -170,19 +170,18 @@ const RedesSociais = () => {
                     </div>
 
                     <div className="bento-grid" ref={bentoGridRef} onScroll={handleBentoScroll}>
-                        <div className="bento-card large reveal delay-1">
+                        <div className={`bento-card large reveal ${bentoActiveIndex === 0 ? 'active' : ''}`}>
                             <div className="bento-icon">
-                                <img src="/servicos/redes-sociais/e-nimble-social-content-creation.png" alt="Criação de Conteúdo Social - e-nimble" className="rs-icon-img" />
+                                <img src="/servicos/redes-sociais/e-nimble-short-video-reels.png" alt="Vídeos Curtos & Reels Viral - e-nimble" className="rs-icon-img" />
                             </div>
                             <div>
-                                <h3>Criação de Conteúdo</h3>
-                                <p>Design gráfico, edição de vídeo (Reels/TikToks) e fotografia. Criamos visuais que
-                                    param o scroll e captam a atenção nos primeiros 3 segundos.</p>
+                                <h3>Vídeos Curtos & Reels</h3>
+                                <p>Roteiros viciantes, captação de alta qualidade e edição dinâmica que param o scroll e captam a atenção nos primeiros 3 segundos.</p>
                                 <div className="bento-cta">Ver Portfolio <span className="arrow">→</span></div>
                             </div>
                         </div>
 
-                        <div className="bento-card reveal delay-2">
+                        <div className={`bento-card reveal delay-2 ${bentoActiveIndex === 1 ? 'active' : ''}`}>
                             <div className="bento-icon">
                                 <img src="/servicos/redes-sociais/e-nimble-social-strategy-planning.png" alt="Planeamento Estratégico Social - e-nimble" className="rs-icon-img" />
                             </div>
@@ -193,7 +192,7 @@ const RedesSociais = () => {
                             </div>
                         </div>
 
-                        <div className="bento-card accent-bg reveal delay-3">
+                        <div className={`bento-card accent-bg reveal delay-3 ${bentoActiveIndex === 2 ? 'active' : ''}`}>
                             <div className="bento-icon">
                                 <img src="/servicos/redes-sociais/e-nimble-paid-social-traffic.png" alt="Gestão de Tráfego Pago Social - e-nimble" className="rs-icon-img" />
                             </div>
@@ -204,7 +203,7 @@ const RedesSociais = () => {
                             </div>
                         </div>
 
-                        <div className="bento-card large reveal delay-4">
+                        <div className={`bento-card large reveal delay-4 ${bentoActiveIndex === 3 ? 'active' : ''}`}>
                             <div className="bento-icon">
                                 <img src="/servicos/redes-sociais/e-nimble-social-community-management.png" alt="Gestão de Comunidade Social - e-nimble" className="rs-icon-img" />
                             </div>
@@ -327,21 +326,21 @@ const RedesSociais = () => {
                         </div>
 
                         <div className="rs-appear-text reveal" ref={appearGridRef} onScroll={handleAppearScroll}>
-                            <div className="advantage-item">
+                            <div className={`advantage-item ${appearActiveIndex === 0 ? 'active' : ''}`}>
                                 <div className="adv-num">01</div>
                                 <div className="adv-content">
                                     <h3>Autoridade Instantânea</h3>
                                     <p>Quem não é visto, não é lembrado. Uma presença forte gera confiança imediata no mercado.</p>
                                 </div>
                             </div>
-                            <div className="advantage-item">
+                            <div className={`advantage-item ${appearActiveIndex === 1 ? 'active' : ''}`}>
                                 <div className="adv-num">02</div>
                                 <div className="adv-content">
                                     <h3>Máquina de Vendas</h3>
                                     <p>Transformamos a atenção em faturação com funis de conteúdo desenhados para converter.</p>
                                 </div>
                             </div>
-                            <div className="advantage-item">
+                            <div className={`advantage-item ${appearActiveIndex === 2 ? 'active' : ''}`}>
                                 <div className="adv-num">03</div>
                                 <div className="adv-content">
                                     <h3>Comunidade Ativa</h3>
@@ -380,7 +379,7 @@ const RedesSociais = () => {
                     </div>
 
                     <div className="rs-drivers-grid" ref={driversGridRef} onScroll={handleDriversScroll}>
-                        <div className="rs-driver-card reveal delay-1">
+                        <div className={`rs-driver-card reveal delay-1 ${driversActiveIndex === 0 ? 'active' : ''}`}>
                             <div className="rs-driver-num">01</div>
                             <div className="rs-driver-emoji">
                                 <img src="/servicos/redes-sociais/marketing-agency-social-captivation.png" alt="Market Captivation Social - e-nimble" className="rs-icon-img" />
@@ -392,7 +391,7 @@ const RedesSociais = () => {
                             </ul>
                         </div>
 
-                        <div className="rs-driver-card reveal delay-2">
+                        <div className={`rs-driver-card reveal delay-2 ${driversActiveIndex === 1 ? 'active' : ''}`}>
                             <div className="rs-driver-num">02</div>
                             <div className="rs-driver-emoji">
                                 <img src="/servicos/redes-sociais/marketing-agency-social-scaling.png" alt="High-Velocity Social Scaling - e-nimble" className="rs-icon-img" />
@@ -404,7 +403,7 @@ const RedesSociais = () => {
                             </ul>
                         </div>
 
-                        <div className="rs-driver-card reveal delay-3">
+                        <div className={`rs-driver-card reveal delay-3 ${driversActiveIndex === 2 ? 'active' : ''}`}>
                             <div className="rs-driver-num">03</div>
                             <div className="rs-driver-emoji">
                                 <img src="/servicos/redes-sociais/marketing-agency-social-conversion.png" alt="Conversion-First Social Content - e-nimble" className="rs-icon-img" />
@@ -416,7 +415,7 @@ const RedesSociais = () => {
                             </ul>
                         </div>
 
-                        <div className="rs-driver-card reveal delay-4">
+                        <div className={`rs-driver-card reveal delay-4 ${driversActiveIndex === 3 ? 'active' : ''}`}>
                             <div className="rs-driver-num">04</div>
                             <div className="rs-driver-emoji">
                                 <img src="/servicos/redes-sociais/marketing-agency-social-intelligence.png" alt="Competitive Social Intelligence - e-nimble" className="rs-icon-img" />
