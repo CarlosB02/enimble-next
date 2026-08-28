@@ -268,9 +268,25 @@ const Branding = () => {
                     <div className="custom-visual tshirt-vestuario-visual">
                         <div className="tshirt-mockup">
                             <svg viewBox="0 0 100 100" className="tshirt-svg">
-                                <path d="M30 20 L40 10 L50 15 L60 10 L70 20 L75 35 L65 37 L65 85 L35 85 L35 37 L25 35 Z" fill="#151515" stroke="#000" strokeWidth="1.5" />
-                                <circle cx="50" cy="35" r="4" fill="url(#logoGrad)" />
-                                <rect x="48" y="42" width="4" height="15" fill="url(#logoGrad)" />
+                                <defs>
+                                    <linearGradient id="tshirtPrintGrad" x1="0%" y1="0%" x2="100%" y2="100%">
+                                        <stop offset="0%" stopColor="#3A00FF" />
+                                        <stop offset="100%" stopColor="#BF0040" />
+                                    </linearGradient>
+                                </defs>
+                                {/* Hanger */}
+                                <path d="M50 16 C50 11, 54 9, 54 6 C54 3, 48 3, 48 6" fill="none" stroke="#555" strokeWidth="1.5" strokeLinecap="round" />
+                                <path d="M38 19 L50 16 L62 19" fill="none" stroke="#555" strokeWidth="2" strokeLinecap="round" />
+                                
+                                {/* Realistic T-shirt body with curves */}
+                                <path d="M30 23 C33 22, 37 20, 42 20 C44 22, 47 23, 50 23 C53 23, 56 22, 58 20 C63 20, 67 22, 70 23 C73 25, 76 29, 79 34 C77 35, 73 36, 71 35 C71 40, 70 45, 70 46 L69 81 C69 83, 67 84, 65 84 L35 84 C33 84, 31 83, 31 81 L30 46 C30 45, 29 40, 29 35 C27 36, 23 35, 21 34 C24 29, 27 25, 30 23 Z" fill="#1b1b22" stroke="#000" strokeWidth="1.8" strokeLinejoin="round" />
+                                
+                                {/* Collar details */}
+                                <path d="M42 20 C44 22, 47 23, 50 23 C53 23, 56 22, 58 20 C57 24, 54 26, 50 26 C46 26, 43 24, 42 20 Z" fill="#0c0c10" />
+                                
+                                {/* Sleek chest gradient graphic */}
+                                <circle cx="50" cy="46" r="11" fill="url(#tshirtPrintGrad)" />
+                                <polygon points="50,40 53,46 50,52 47,46" fill="#ffffff" />
                             </svg>
                         </div>
                     </div>
