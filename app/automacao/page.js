@@ -87,7 +87,13 @@ const WorkflowAccordionItem = ({ scenarioKey, scenario, isOpen, onToggle }) => {
                             <React.Fragment key={index}>
                                 <div className="auto-node-card active-step">
                                     <span className="auto-node-step">Passo {node.step}</span>
-                                    <div className="auto-node-icon">{node.icon}</div>
+                                    <div className="auto-node-icon">
+                                        {node.icon.startsWith('/') ? (
+                                            <img src={node.icon} alt={node.title} style={{ width: '24px', height: '24px', objectFit: 'contain' }} />
+                                        ) : (
+                                            node.icon
+                                        )}
+                                    </div>
                                     <div className="auto-node-title">{node.title}</div>
                                     <div className="auto-node-detail">{node.detail}</div>
                                 </div>
@@ -118,40 +124,40 @@ const AutomacaoPage = () => {
         vendas: {
             title: 'Captura & Conversão de Leads',
             nodes: [
-                { step: '01', icon: '🎯', title: 'Lead Nova', detail: 'Formulário ou Anúncio' },
-                { step: '02', icon: '🤖', title: 'Qualificação IA', detail: 'Perfil analisado em segundos' },
-                { step: '03', icon: '🔄', title: 'CRM & Follow-up', detail: 'Emails, WhatsApp e CRM' },
-                { step: '04', icon: '📅', title: 'Agendamento', detail: 'Reunião no Calendário' }
+                { step: '01', icon: '/servicos/automacao/lead.png', title: 'Lead Nova', detail: 'Formulário ou Anúncio' },
+                { step: '02', icon: '/servicos/automacao/qualificaçao.png', title: 'Qualificação IA', detail: 'Perfil analisado em segundos' },
+                { step: '03', icon: '/servicos/automacao/crm.png', title: 'CRM & Follow-up', detail: 'Emails, WhatsApp e CRM' },
+                { step: '04', icon: '/servicos/automacao/agendamento.png', title: 'Agendamento', detail: 'Reunião no Calendário' }
             ],
             metric: 'Tempo médio de resposta: 1.2 segundos (vs 4 horas manuais)'
         },
         marketing: {
             title: 'Publicação & Email Marketing',
             nodes: [
-                { step: '01', icon: '✍️', title: 'Novo Artigo / Ideia', detail: 'Briefing ou tema' },
-                { step: '02', icon: '🧠', title: 'IA & SEO', detail: 'Conteúdo otimizado' },
-                { step: '03', icon: '📰', title: 'Publicação', detail: 'Blog e Redes Sociais' },
-                { step: '04', icon: '📧', title: 'Email Marketing', detail: 'Envio automático' }
+                { step: '01', icon: '/servicos/automacao/novo%20artigo.png', title: 'Novo Artigo / Ideia', detail: 'Briefing ou tema' },
+                { step: '02', icon: '/servicos/automacao/ia%20seo.png', title: 'IA & SEO', detail: 'Conteúdo otimizado' },
+                { step: '03', icon: '/servicos/automacao/publicaçao.png', title: 'Publicação', detail: 'Blog e Redes Sociais' },
+                { step: '04', icon: '/servicos/automacao/email.png', title: 'Email Marketing', detail: 'Envio automático' }
             ],
             metric: 'Publicação multicanal 100% autónoma sem intervenção diária'
         },
         operacoes: {
             title: 'Processos Internos & ERP',
             nodes: [
-                { step: '01', icon: '📥', title: 'Entrada de Dados', detail: 'Faturas, PDFs ou Forms' },
-                { step: '02', icon: '🔍', title: 'Extração Inteligente', detail: 'Validação automática' },
-                { step: '03', icon: '🔌', title: 'Integração', detail: 'Sincronização entre Apps' },
-                { step: '04', icon: '📊', title: 'Relatórios', detail: 'Dashboards atualizados' }
+                { step: '01', icon: '/servicos/automacao/entrada%20de%20dados.png', title: 'Entrada de Dados', detail: 'Faturas, PDFs ou Forms' },
+                { step: '02', icon: '/servicos/automacao/extraçao.png', title: 'Extração Inteligente', detail: 'Validação automática' },
+                { step: '03', icon: '/servicos/automacao/integraçao.png', title: 'Integração', detail: 'Sincronização entre Apps' },
+                { step: '04', icon: '/servicos/automacao/relatorios.png', title: 'Relatórios', detail: 'Dashboards atualizados' }
             ],
             metric: 'Zero erros de introdução manual e 100% de consistência'
         },
         experiencia: {
             title: 'Suporte & Notificações de Cliente',
             nodes: [
-                { step: '01', icon: '💬', title: 'Contacto do Cliente', detail: 'Chat, Email ou WhatsApp' },
-                { step: '02', icon: '⚡', title: 'Agente de IA', detail: 'Resposta imediata' },
-                { step: '03', icon: '🔔', title: 'Notificação', detail: 'Atualização em tempo real' },
-                { step: '04', icon: '⭐', title: 'Satisfação', detail: 'Feedback do Cliente' }
+                { step: '01', icon: '/servicos/automacao/contacto.png', title: 'Contacto do Cliente', detail: 'Chat, Email ou WhatsApp' },
+                { step: '02', icon: '/servicos/automacao/agente.png', title: 'Agente de IA', detail: 'Resposta imediata' },
+                { step: '03', icon: '/servicos/automacao/notificaçao.png', title: 'Notificação', detail: 'Atualização em tempo real' },
+                { step: '04', icon: '/servicos/automacao/satisfaçao.png', title: 'Satisfação', detail: 'Feedback do Cliente' }
             ],
             metric: 'NPS +42% através de respostas e acompanhamento instantâneos'
         }
@@ -293,7 +299,13 @@ const AutomacaoPage = () => {
                                     <React.Fragment key={index}>
                                         <div className="auto-node-card active-step">
                                             <span className="auto-node-step">Passo {node.step}</span>
-                                            <div className="auto-node-icon">{node.icon}</div>
+                                            <div className="auto-node-icon">
+                                                {node.icon.startsWith('/') ? (
+                                                    <img src={node.icon} alt={node.title} style={{ width: '24px', height: '24px', objectFit: 'contain' }} />
+                                                ) : (
+                                                    node.icon
+                                                )}
+                                            </div>
                                             <div className="auto-node-title">{node.title}</div>
                                             <div className="auto-node-detail">{node.detail}</div>
                                         </div>
