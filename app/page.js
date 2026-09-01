@@ -107,7 +107,7 @@ const HomePage = () => {
                         </div>
                     </div>
                     <div className="hero-image fade-in delay-2">
-                        <img src="/assets/rocket-hero.png" alt="Rocket Launch" />
+                        <img src="/assets/rocket-hero.webp" alt="Rocket Launch" />
                     </div>
                 </div>
                 <div className="cloud-divider"></div>
@@ -242,9 +242,9 @@ const HomePage = () => {
 
                         <div className="service-image formacao-image-wrapper">
                             <div className="formacao-image-card">
-                                <img src="/assets/team-new.png" alt="Formação Empresarial e-nimble" />
+                                <img src="/assets/team-new.webp" alt="Formação Empresarial e-nimble" />
                                 <div className="fc-floating-badge badge-bottom">
-                                    <img src="/assets/lightning.png" alt="Flash" style={{ width: '24px', height: '24px' }} className="fc-badge-icon" />
+                                    <img src="/assets/lightning.webp" alt="Flash" style={{ width: '24px', height: '24px' }} className="fc-badge-icon" />
                                     <div>
                                         <strong>100% Dedutível</strong>
                                         <small>Sem Custo Empresarial</small>
@@ -320,20 +320,20 @@ const HomePage = () => {
                         <span className="pp-trust-label">Marcas que confiam em nós</span>
                         <div className="pp-trust-logos">
                             <div className="pp-trust-logos-slide">
-                                <img src="/assets/logos/logo-a.png" alt="Empresa A" className="trust-logo" />
-                                <img src="/assets/logos/logo-b.png" alt="Empresa B" className="trust-logo" />
-                                <img src="/assets/logos/logo-c.png" alt="Empresa C" className="trust-logo" />
-                                <img src="/assets/logos/logo-d.png" alt="Empresa D" className="trust-logo" />
-                                <img src="/assets/logos/logo-e.png" alt="Empresa E" className="trust-logo" />
-                                <img src="/assets/logos/logo-f.png" alt="Empresa F" className="trust-logo" />
+                                <img src="/assets/logos/logo-a.webp" alt="Empresa A" className="trust-logo" />
+                                <img src="/assets/logos/logo-b.webp" alt="Empresa B" className="trust-logo" />
+                                <img src="/assets/logos/logo-c.webp" alt="Empresa C" className="trust-logo" />
+                                <img src="/assets/logos/logo-d.webp" alt="Empresa D" className="trust-logo" />
+                                <img src="/assets/logos/logo-e.webp" alt="Empresa E" className="trust-logo" />
+                                <img src="/assets/logos/logo-f.webp" alt="Empresa F" className="trust-logo" />
                             </div>
                             <div className="pp-trust-logos-slide" aria-hidden="true">
-                                <img src="/assets/logos/logo-a.png" alt="Empresa A" className="trust-logo" />
-                                <img src="/assets/logos/logo-b.png" alt="Empresa B" className="trust-logo" />
-                                <img src="/assets/logos/logo-c.png" alt="Empresa C" className="trust-logo" />
-                                <img src="/assets/logos/logo-d.png" alt="Empresa D" className="trust-logo" />
-                                <img src="/assets/logos/logo-e.png" alt="Empresa E" className="trust-logo" />
-                                <img src="/assets/logos/logo-f.png" alt="Empresa F" className="trust-logo" />
+                                <img src="/assets/logos/logo-a.webp" alt="Empresa A" className="trust-logo" />
+                                <img src="/assets/logos/logo-b.webp" alt="Empresa B" className="trust-logo" />
+                                <img src="/assets/logos/logo-c.webp" alt="Empresa C" className="trust-logo" />
+                                <img src="/assets/logos/logo-d.webp" alt="Empresa D" className="trust-logo" />
+                                <img src="/assets/logos/logo-e.webp" alt="Empresa E" className="trust-logo" />
+                                <img src="/assets/logos/logo-f.webp" alt="Empresa F" className="trust-logo" />
                             </div>
                         </div>
                     </div>
@@ -364,7 +364,7 @@ const HomePage = () => {
                             </div>
                         </div>
                         <div className="ideas-light-image">
-                            <img src="/assets/support.png" alt="Valorizamos as suas ideias" />
+                            <img src="/assets/support.webp" alt="Valorizamos as suas ideias" />
                         </div>
                     </div>
                 </div>
@@ -385,7 +385,7 @@ const HomePage = () => {
                             <div className={`process-flow-card reveal ${processActiveIndex === 0 ? 'active' : ''}`}>
                                 <div className="process-step-badge">01</div>
                                 <div className="process-img-holder">
-                                    <img src="/assets/process-problem.png" alt="Identificamos o Problema" className="process-icon-img" />
+                                    <img src="/assets/process-problem.webp" alt="Identificamos o Problema" className="process-icon-img" />
                                 </div>
                                 <h3>Identificamos o Problema</h3>
                                 <p>Analisamos o seu negócio para identificar oportunidades e remover barreiras ao crescimento.</p>
@@ -394,7 +394,7 @@ const HomePage = () => {
                             <div className={`process-flow-card reveal delay-1 ${processActiveIndex === 1 ? 'active' : ''}`}>
                                 <div className="process-step-badge">02</div>
                                 <div className="process-img-holder">
-                                    <img src="/assets/process-solution.png" alt="Criamos a Solução" className="process-icon-img" />
+                                    <img src="/assets/process-solution.webp" alt="Criamos a Solução" className="process-icon-img" />
                                 </div>
                                 <h3>Criamos a Solução</h3>
                                 <p>Desenvolvemos uma estratégia personalizada, alinhada com os objetivos da sua empresa.</p>
@@ -403,7 +403,7 @@ const HomePage = () => {
                             <div className={`process-flow-card reveal delay-2 ${processActiveIndex === 2 ? 'active' : ''}`}>
                                 <div className="process-step-badge">03</div>
                                 <div className="process-img-holder">
-                                    <img src="/assets/process-results.png" alt="Medimos Resultados" className="process-icon-img" />
+                                    <img src="/assets/process-results.webp" alt="Medimos Resultados" className="process-icon-img" />
                                 </div>
                                 <h3>Medimos Resultados</h3>
                                 <p>Acompanhamos, otimizamos e melhoramos continuamente o desempenho da estratégia.</p>
@@ -441,7 +441,7 @@ const HomePage = () => {
                             </Link>
                         </div>
                         <div className="gp-simple-image">
-                            <img src="/assets/process-mascot.png" alt="Parceiro de crescimento" />
+                            <img src="/assets/process-mascot.webp" alt="Parceiro de crescimento" />
                         </div>
                     </div>
                 </div>

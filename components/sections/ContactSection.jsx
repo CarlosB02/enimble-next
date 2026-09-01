@@ -47,7 +47,7 @@ const ContactSection = () => {
                     {/* LEFT COLUMN: Branding & Info */}
                     <div className="contact-info-panel reveal">
                         <h2 className="info-title" style={{ fontSize: 'clamp(1.75rem, 3.5vw, 2.5rem)' }}>
-                            Vamos <span className="gradient-text">Conversar?</span> <img src="/assets/coffee.png" alt="Café" className="emoji-icon png-emoji" style={{ width: '0.9em', height: '0.9em' }} />
+                            Vamos <span className="gradient-text">Conversar?</span> <img src="/assets/coffee.webp" alt="Café" className="emoji-icon png-emoji" style={{ width: '0.9em', height: '0.9em' }} />
                         </h2>
                         <p className="info-desc">
                             Agende uma reunião presencial ou online e descubra como podemos ajudar a fazer crescer o seu negócio.

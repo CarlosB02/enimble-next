@@ -88,7 +88,7 @@ const Contactos = () => {
                         {/* LEFT COLUMN: Branding & Info */}
                         <div className="contact-info-panel reveal">
                             <h2 className="info-title">
-                                Fale Connosco <img src="/assets/coffee.png" alt="Café" className="emoji-icon png-emoji" />
+                                Fale Connosco <img src="/assets/coffee.webp" alt="Café" className="emoji-icon png-emoji" />
                             </h2>
                             <p className="info-desc">
                                 Agende uma reunião presencial ou online e descubra como podemos ajudar a fazer crescer o seu negócio.

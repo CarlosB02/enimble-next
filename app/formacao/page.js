@@ -72,7 +72,7 @@ const Formacao = () => {
                     <p className="edu-intro">"Não é sobre teoria. É sobre equipar a sua força de trabalho com as ferramentas
                         digitais que o mercado exige hoje."</p>
                     <div className="cert-badge">
-                        <img src="/servicos/formacao/e-nimble-training-certification-star.png" alt="Certificação DGERT e-nimble" className="edu-cert-img" />
+                        <img src="/servicos/formacao/e-nimble-training-certification-star.webp" alt="Certificação DGERT e-nimble" className="edu-cert-img" />
                         <span style={{ fontWeight: 700, fontSize: '0.9rem' }}>DGERT<br />CERTIFIED</span>
                     </div>
                 </div>
@@ -236,7 +236,7 @@ const Formacao = () => {
                         </div>
 
                         <div className="edu-value-visual">
-                            <img src="/servicos/formacao/team-new.png" alt="Equipa e-nimble em formação prática corporativa" className="edu-value-team-img" />
+                            <img src="/servicos/formacao/team-new.webp" alt="Equipa e-nimble em formação prática corporativa" className="edu-value-team-img" />
                         </div>
                     </div>
                 </div>
@@ -257,7 +257,7 @@ const Formacao = () => {
                     <div className="edu-funding-highlights reveal delay-1" ref={fundingRef} onScroll={handleFundingScroll}>
                         <div className={`edu-fh-card ${fundingActiveIndex === 0 ? 'active' : ''}`}>
                             <div className="edu-fh-icon">
-                                <img src="/servicos/formacao/fundo-compensacao-trabalho-financiamento-formacao.png" alt="Fundo de Compensação do Trabalho Financiamento Formação e-nimble" className="edu-funding-icon-img" />
+                                <img src="/servicos/formacao/fundo-compensacao-trabalho-financiamento-formacao.webp" alt="Fundo de Compensação do Trabalho Financiamento Formação e-nimble" className="edu-funding-icon-img" />
                             </div>
                             <div>
                                 <h4>Fundo de Compensação</h4>
@@ -267,7 +267,7 @@ const Formacao = () => {
 
                         <div className={`edu-fh-card highlight-card ${fundingActiveIndex === 1 ? 'active' : ''}`}>
                             <div className="edu-fh-icon">
-                                <img src="/servicos/formacao/cheque-formacao-apoio-financeiro.png" alt="Cheque-Formação Apoio Financeiro e-nimble" className="edu-funding-icon-img" />
+                                <img src="/servicos/formacao/cheque-formacao-apoio-financeiro.webp" alt="Cheque-Formação Apoio Financeiro e-nimble" className="edu-funding-icon-img" />
                             </div>
                             <div>
                                 <h4>Cheque-Formação</h4>
@@ -277,7 +277,7 @@ const Formacao = () => {
 
                         <div className={`edu-fh-card ${fundingActiveIndex === 2 ? 'active' : ''}`}>
                             <div className="edu-fh-icon">
-                                <img src="/servicos/formacao/financiamento-formacao-100-percento.png" alt="Financiamento de Formação até 100 por cento e-nimble" className="edu-funding-icon-img" />
+                                <img src="/servicos/formacao/financiamento-formacao-100-percento.webp" alt="Financiamento de Formação até 100 por cento e-nimble" className="edu-funding-icon-img" />
                             </div>
                             <div>
                                 <h4>Até 100% Financiado</h4>
@@ -311,7 +311,7 @@ const Formacao = () => {
                             <div className={`edu-flow-step ${flowActiveIndex === 0 ? 'active' : ''}`}>
                                 <div className="edu-step-number">01</div>
                                 <div className="edu-step-icon">
-                                    <img src="/servicos/formacao/diagnostico-necessidades-formacao.png" alt="Diagnóstico de Necessidades de Formação e-nimble" className="edu-flow-step-img" />
+                                    <img src="/servicos/formacao/diagnostico-necessidades-formacao.webp" alt="Diagnóstico de Necessidades de Formação e-nimble" className="edu-flow-step-img" />
                                 </div>
                                 <div className="edu-step-content">
                                     <h4>Diagnóstico</h4>
@@ -329,7 +329,7 @@ const Formacao = () => {
                             <div className={`edu-flow-step ${flowActiveIndex === 1 ? 'active' : ''}`}>
                                 <div className="edu-step-number">02</div>
                                 <div className="edu-step-icon">
-                                    <img src="/servicos/formacao/planeamento-plano-formacao-empresa.png" alt="Planeamento e Plano de Formação para Empresas e-nimble" className="edu-flow-step-img" />
+                                    <img src="/servicos/formacao/planeamento-plano-formacao-empresa.webp" alt="Planeamento e Plano de Formação para Empresas e-nimble" className="edu-flow-step-img" />
                                 </div>
                                 <div className="edu-step-content">
                                     <h4>Planeamento</h4>
@@ -347,7 +347,7 @@ const Formacao = () => {
                             <div className={`edu-flow-step ${flowActiveIndex === 2 ? 'active' : ''}`}>
                                 <div className="edu-step-number">03</div>
                                 <div className="edu-step-icon">
-                                    <img src="/servicos/formacao/formacao-pratica-presencial-hibrida.png" alt="Formação Prática Presencial ou Híbrida e-nimble" className="edu-flow-step-img" />
+                                    <img src="/servicos/formacao/formacao-pratica-presencial-hibrida.webp" alt="Formação Prática Presencial ou Híbrida e-nimble" className="edu-flow-step-img" />
                                 </div>
                                 <div className="edu-step-content">
                                     <h4>Formação</h4>
@@ -365,7 +365,7 @@ const Formacao = () => {
                             <div className={`edu-flow-step highlight-step ${flowActiveIndex === 3 ? 'active' : ''}`}>
                                 <div className="edu-step-number">04</div>
                                 <div className="edu-step-icon">
-                                    <img src="/servicos/formacao/certificacao-dgert-formacao-sigo.png" alt="Certificação oficial DGERT e Registo na plataforma SIGO e-nimble" className="edu-flow-step-img" />
+                                    <img src="/servicos/formacao/certificacao-dgert-formacao-sigo.webp" alt="Certificação oficial DGERT e Registo na plataforma SIGO e-nimble" className="edu-flow-step-img" />
                                 </div>
                                 <div className="edu-step-content">
                                     <h4>Certificação</h4>

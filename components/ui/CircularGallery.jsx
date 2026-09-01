@@ -336,8 +336,8 @@ class App {
   }
   createMedias(items, bend = 1, textColor, borderRadius, font) {
     const defaultItems = [
-      { image: `/servicos/redes-sociais/criativos/meta.png`, text: 'Post 1' },
-      { image: `/servicos/redes-sociais/criativos/twitter.png`, text: 'Post 2' },
+      { image: `/servicos/redes-sociais/criativos/meta.webp`, text: 'Post 1' },
+      { image: `/servicos/redes-sociais/criativos/twitter.webp`, text: 'Post 2' },
       { image: `/servicos/redes-sociais/criativos/3.jpg`, text: 'Post 3' },
       { image: `/servicos/redes-sociais/criativos/4.jpg`, text: 'Post 4' },
       { image: `/servicos/redes-sociais/criativos/5.jpg`, text: 'Post 5' },

@@ -10,7 +10,7 @@ import ScrollFloat from '@/components/ui/ScrollFloat';
 const PORTFOLIO_ITEMS = [
     {
         id: 'moving-people-website',
-        image: '/assets/portfolio/moving-people-website.png',
+        image: '/assets/portfolio/moving-people-website.webp',
         link: 'https://movingpeople.com',
         title: 'Moving People',
         description: 'Website Corporativo',
@@ -18,7 +18,7 @@ const PORTFOLIO_ITEMS = [
     },
     {
         id: 'moving-people-ads',
-        image: '/assets/portfolio/moving-people-ads.png',
+        image: '/assets/portfolio/moving-people-ads.webp',
         link: '#',
         title: 'Moving People',
         description: 'Anúncios Pagos / Campaign Design',
@@ -26,7 +26,7 @@ const PORTFOLIO_ITEMS = [
     },
     {
         id: 'carmetrix-website',
-        image: '/assets/portfolio/carmetrix-website.png',
+        image: '/assets/portfolio/carmetrix-website.webp',
         link: 'https://carmetrix.pt',
         title: 'Carmetrix',
         description: 'Website & Plataforma Digital',
@@ -34,7 +34,7 @@ const PORTFOLIO_ITEMS = [
     },
     {
         id: 'carmetrix-branding',
-        image: '/assets/portfolio/carmetrix-branding.png',
+        image: '/assets/portfolio/carmetrix-branding.webp',
         link: '#',
         title: 'Carmetrix',
         description: 'Identidade Visual & Branding',
@@ -42,7 +42,7 @@ const PORTFOLIO_ITEMS = [
     },
     {
         id: 'file-on-website',
-        image: '/assets/portfolio/file-on-website.png',
+        image: '/assets/portfolio/file-on-website.webp',
         link: 'https://fileon.pt',
         title: 'File On',
         description: 'Website Corporativo de Serviços',
@@ -50,7 +50,7 @@ const PORTFOLIO_ITEMS = [
     },
     {
         id: 'viriatus-brunch-logo',
-        image: '/assets/portfolio/viriatus-brunch-logo.png',
+        image: '/assets/portfolio/viriatus-brunch-logo.webp',
         link: '#',
         title: 'Viriatus Brunch',
         description: 'Design de Logótipo & Branding',
@@ -58,7 +58,7 @@ const PORTFOLIO_ITEMS = [
     },
     {
         id: 'viriatus-brunch-website',
-        image: '/assets/portfolio/viriatus-brunch-website.png',
+        image: '/assets/portfolio/viriatus-brunch-website.webp',
         link: 'https://viriatusbrunch.pt',
         title: 'Viriatus Brunch',
         description: 'Website de Restauração & Menu Digital',
@@ -66,7 +66,7 @@ const PORTFOLIO_ITEMS = [
     },
     {
         id: 'loja-dos-pets-website',
-        image: '/assets/portfolio/loja-dos-pets-website.png',
+        image: '/assets/portfolio/loja-dos-pets-website.webp',
         link: '#',
         title: 'Loja dos Pets',
         description: 'E-commerce / Loja de Animais',
@@ -74,7 +74,7 @@ const PORTFOLIO_ITEMS = [
     },
     {
         id: 'polly-photo-website',
-        image: '/assets/portfolio/polly-photo-website.png',
+        image: '/assets/portfolio/polly-photo-website.webp',
         link: 'https://polly.photo/pt',
         title: 'Polly Photo',
         description: 'Website de Portfolio Fotográfico',
@@ -82,7 +82,7 @@ const PORTFOLIO_ITEMS = [
     },
     {
         id: 'polly-photo-logo',
-        image: '/assets/portfolio/polly.photo-logo.png',
+        image: '/assets/portfolio/polly.photo-logo.webp',
         link: '#',
         title: 'Polly Photo',
         description: 'Identidade Corporativa & Logo',
@@ -90,7 +90,7 @@ const PORTFOLIO_ITEMS = [
     },
     {
         id: 'orion-aviation-website',
-        image: '/assets/portfolio/orion-aviation-website.png',
+        image: '/assets/portfolio/orion-aviation-website.webp',
         link: 'https://orionaviation.eu',
         title: 'Orion Aviation',
         description: 'Website Corporativo de Aviação',
@@ -294,7 +294,7 @@ const Portfolio = () => {
                     <div className="container" style={{ position: 'relative' }}>
                         <div className="gallery-flex">
                             <div className="gallery-flex-item">
-                                <img src="/assets/portfolio/detalhe-1.png"
+                                <img src="/assets/portfolio/detalhe-1.webp"
                                     alt="Work 1" />
                             </div>
                             <div className="gallery-flex-item text-center">

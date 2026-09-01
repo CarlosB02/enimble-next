@@ -301,7 +301,7 @@ const WebsiteDesign = () => {
                                     desc: "Construa autoridade, inspire confiança e destaque-se no seu setor.",
                                     tag: "Autoridade de Marca",
                                     preview: "https://panoramas.pt",
-                                    icon: "/servicos/website-design/e-nimble-corporate-website-authority.png",
+                                    icon: "/servicos/website-design/e-nimble-corporate-website-authority.webp",
                                     linkText: "Quero Autoridade Online"
                                 },
                                 {
@@ -309,7 +309,7 @@ const WebsiteDesign = () => {
                                     desc: "Lojas online concebidas para vender mais, com uma experiência de compra sem fricção.",
                                     tag: "Máquinas de Vendas",
                                     preview: "https://inpe.pt",
-                                    icon: "/servicos/website-design/e-nimble-ecommerce-conversion-store.png",
+                                    icon: "/servicos/website-design/e-nimble-ecommerce-conversion-store.webp",
                                     linkText: "Quero Vender Online"
                                 },
                                 {
@@ -317,7 +317,7 @@ const WebsiteDesign = () => {
                                     desc: "Páginas focadas num único objetivo: transformar visitantes em clientes.",
                                     tag: "Geração de Leads",
                                     preview: "https://polly.photo",
-                                    icon: "/servicos/website-design/e-nimble-lead-generation-landing-page.png",
+                                    icon: "/servicos/website-design/e-nimble-lead-generation-landing-page.webp",
                                     linkText: "Quero Gerar Leads"
                                 }
                             ].map((service, idx) => (
@@ -397,7 +397,7 @@ const WebsiteDesign = () => {
                         <div className="wd-checklist-grid" ref={painGridRef} onScroll={handlePainScroll}>
                             <div className={`wd-checklist-item ${painActiveIndex === 0 ? 'active' : ''}`}>
                                 <div className="wd-checklist-icon">
-                                    <img src="/servicos/website-design/slow-website-loading-impact.png" alt="Slow website loading impact - e-nimble" className="wd-checklist-img" />
+                                    <img src="/servicos/website-design/slow-website-loading-impact.webp" alt="Slow website loading impact - e-nimble" className="wd-checklist-img" />
                                 </div>
                                 <div className="wd-checklist-text">
                                     <h3>Carrega lentamente</h3>
@@ -407,7 +407,7 @@ const WebsiteDesign = () => {
 
                             <div className={`wd-checklist-item ${painActiveIndex === 1 ? 'active' : ''}`}>
                                 <div className="wd-checklist-icon">
-                                    <img src="/servicos/website-design/website-clarity-strategy.png" alt="Website clarity and strategy - e-nimble" className="wd-checklist-img" />
+                                    <img src="/servicos/website-design/website-clarity-strategy.webp" alt="Website clarity and strategy - e-nimble" className="wd-checklist-img" />
                                 </div>
                                 <div className="wd-checklist-text">
                                     <h3>Não é claro o que fazer</h3>
@@ -417,7 +417,7 @@ const WebsiteDesign = () => {
 
                             <div className={`wd-checklist-item ${painActiveIndex === 2 ? 'active' : ''}`}>
                                 <div className="wd-checklist-icon">
-                                    <img src="/servicos/website-design/e-nimble-premium-design-trust.png" alt="Design premium e profissional - e-nimble" className="wd-checklist-img" />
+                                    <img src="/servicos/website-design/e-nimble-premium-design-trust.webp" alt="Design premium e profissional - e-nimble" className="wd-checklist-img" />
                                 </div>
                                 <div className="wd-checklist-text">
                                     <h3>Parece pouco profissional</h3>
@@ -427,7 +427,7 @@ const WebsiteDesign = () => {
 
                             <div className={`wd-checklist-item ${painActiveIndex === 3 ? 'active' : ''}`}>
                                 <div className="wd-checklist-icon">
-                                    <img src="/servicos/website-design/website-lead-conversion-results.png" alt="Website lead conversion and results - e-nimble" className="wd-checklist-img" />
+                                    <img src="/servicos/website-design/website-lead-conversion-results.webp" alt="Website lead conversion and results - e-nimble" className="wd-checklist-img" />
                                 </div>
                                 <div className="wd-checklist-text">
                                     <h3>Não gera contactos</h3>

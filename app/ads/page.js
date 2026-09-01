@@ -7,14 +7,14 @@ import useScrollReveal from '@/hooks/useScrollReveal';
 import './Ads.css';
 
 const platforms = [
-    { id: 'meta', path: '/servicos/ads/meta.png' },
-    { id: 'google', path: '/servicos/ads/google.png' },
-    { id: 'linkedin', path: '/servicos/ads/linkedin.png' },
-    { id: 'tiktok', path: '/servicos/ads/tiktok.png' },
-    { id: 'meta', path: '/servicos/ads/meta.png' },
-    { id: 'google', path: '/servicos/ads/google.png' },
-    { id: 'linkedin', path: '/servicos/ads/linkedin.png' },
-    { id: 'tiktok', path: '/servicos/ads/tiktok.png' },
+    { id: 'meta', path: '/servicos/ads/meta.webp' },
+    { id: 'google', path: '/servicos/ads/google.webp' },
+    { id: 'linkedin', path: '/servicos/ads/linkedin.webp' },
+    { id: 'tiktok', path: '/servicos/ads/tiktok.webp' },
+    { id: 'meta', path: '/servicos/ads/meta.webp' },
+    { id: 'google', path: '/servicos/ads/google.webp' },
+    { id: 'linkedin', path: '/servicos/ads/linkedin.webp' },
+    { id: 'tiktok', path: '/servicos/ads/tiktok.webp' },
 ];
 
 const AdsPage = () => {
@@ -379,7 +379,7 @@ const AdsPage = () => {
                         <div className={`creative-card ${creativesActiveIndex === 0 ? 'active' : ''}`}>
                             <div className="creative-img-container square">
                                 <img
-                                    src="/servicos/ads/criativos/meta.png"
+                                    src="/servicos/ads/criativos/meta.webp"
                                     alt="Meta Feed Creative"
                                     className="creative-image"
                                     onError={(e) => {
@@ -397,7 +397,7 @@ const AdsPage = () => {
                         <div className={`creative-card ${creativesActiveIndex === 1 ? 'active' : ''}`}>
                             <div className="creative-img-container portrait">
                                 <img
-                                    src="/servicos/ads/criativos/story.png"
+                                    src="/servicos/ads/criativos/story.webp"
                                     alt="Stories & Reels Creative"
                                     className="creative-image"
                                     onError={(e) => {
@@ -415,7 +415,7 @@ const AdsPage = () => {
                         <div className={`creative-card ${creativesActiveIndex === 2 ? 'active' : ''}`}>
                             <div className="creative-img-container landscape">
                                 <img
-                                    src="/servicos/ads/criativos/display.png"
+                                    src="/servicos/ads/criativos/display.webp"
                                     alt="Google Display Creative"
                                     className="creative-image"
                                     onError={(e) => {
@@ -465,7 +465,7 @@ const AdsPage = () => {
                         <div className={`results-card reveal ${resultsActiveIndex === 0 ? 'active' : ''}`}>
                             <div className="results-icon-wrapper">
                                 <img
-                                    src="/servicos/ads/segmentacao.png"
+                                    src="/servicos/ads/segmentacao.webp"
                                     alt="Segmentação estudada"
                                     className="results-icon-img"
                                     onError={(e) => {
@@ -481,7 +481,7 @@ const AdsPage = () => {
                         <div className={`results-card reveal ${resultsActiveIndex === 1 ? 'active' : ''}`} style={{ animationDelay: '0.1s' }}>
                             <div className="results-icon-wrapper">
                                 <img
-                                    src="/servicos/ads/criativos.png"
+                                    src="/servicos/ads/criativos.webp"
                                     alt="Criativos fortes"
                                     className="results-icon-img"
                                     onError={(e) => {
@@ -497,7 +497,7 @@ const AdsPage = () => {
                         <div className={`results-card reveal ${resultsActiveIndex === 2 ? 'active' : ''}`} style={{ animationDelay: '0.2s' }}>
                             <div className="results-icon-wrapper">
                                 <img
-                                    src="/servicos/ads/landing-pages.png"
+                                    src="/servicos/ads/landing-pages.webp"
                                     alt="Landing Pages que convertem"
                                     className="results-icon-img"
                                     onError={(e) => {
@@ -513,7 +513,7 @@ const AdsPage = () => {
                         <div className={`results-card reveal ${resultsActiveIndex === 3 ? 'active' : ''}`} style={{ animationDelay: '0.3s' }}>
                             <div className="results-icon-wrapper">
                                 <img
-                                    src="/servicos/ads/otimizacao.png"
+                                    src="/servicos/ads/otimizacao.webp"
                                     alt="Otimização contínua"
                                     className="results-icon-img"
                                     onError={(e) => {

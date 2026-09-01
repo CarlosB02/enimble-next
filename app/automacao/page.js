@@ -124,40 +124,40 @@ const AutomacaoPage = () => {
         vendas: {
             title: 'Captura & Conversão de Leads',
             nodes: [
-                { step: '01', icon: '/servicos/automacao/lead.png', title: 'Lead Nova', detail: 'Formulário ou Anúncio' },
-                { step: '02', icon: '/servicos/automacao/qualificaçao.png', title: 'Qualificação IA', detail: 'Perfil analisado em segundos' },
-                { step: '03', icon: '/servicos/automacao/crm.png', title: 'CRM & Follow-up', detail: 'Emails, WhatsApp e CRM' },
-                { step: '04', icon: '/servicos/automacao/agendamento.png', title: 'Agendamento', detail: 'Reunião no Calendário' }
+                { step: '01', icon: '/servicos/automacao/lead.webp', title: 'Lead Nova', detail: 'Formulário ou Anúncio' },
+                { step: '02', icon: '/servicos/automacao/qualificaçao.webp', title: 'Qualificação IA', detail: 'Perfil analisado em segundos' },
+                { step: '03', icon: '/servicos/automacao/crm.webp', title: 'CRM & Follow-up', detail: 'Emails, WhatsApp e CRM' },
+                { step: '04', icon: '/servicos/automacao/agendamento.webp', title: 'Agendamento', detail: 'Reunião no Calendário' }
             ],
             metric: 'Tempo médio de resposta: 1.2 segundos (vs 4 horas manuais)'
         },
         marketing: {
             title: 'Publicação & Email Marketing',
             nodes: [
-                { step: '01', icon: '/servicos/automacao/novo%20artigo.png', title: 'Novo Artigo / Ideia', detail: 'Briefing ou tema' },
-                { step: '02', icon: '/servicos/automacao/ia%20seo.png', title: 'IA & SEO', detail: 'Conteúdo otimizado' },
-                { step: '03', icon: '/servicos/automacao/publicaçao.png', title: 'Publicação', detail: 'Blog e Redes Sociais' },
-                { step: '04', icon: '/servicos/automacao/email.png', title: 'Email Marketing', detail: 'Envio automático' }
+                { step: '01', icon: '/servicos/automacao/novo%20artigo.webp', title: 'Novo Artigo / Ideia', detail: 'Briefing ou tema' },
+                { step: '02', icon: '/servicos/automacao/ia%20seo.webp', title: 'IA & SEO', detail: 'Conteúdo otimizado' },
+                { step: '03', icon: '/servicos/automacao/publicaçao.webp', title: 'Publicação', detail: 'Blog e Redes Sociais' },
+                { step: '04', icon: '/servicos/automacao/email.webp', title: 'Email Marketing', detail: 'Envio automático' }
             ],
             metric: 'Publicação multicanal 100% autónoma sem intervenção diária'
         },
         operacoes: {
             title: 'Processos Internos & ERP',
             nodes: [
-                { step: '01', icon: '/servicos/automacao/entrada%20de%20dados.png', title: 'Entrada de Dados', detail: 'Faturas, PDFs ou Forms' },
-                { step: '02', icon: '/servicos/automacao/extraçao.png', title: 'Extração Inteligente', detail: 'Validação automática' },
-                { step: '03', icon: '/servicos/automacao/integraçao.png', title: 'Integração', detail: 'Sincronização entre Apps' },
-                { step: '04', icon: '/servicos/automacao/relatorios.png', title: 'Relatórios', detail: 'Dashboards atualizados' }
+                { step: '01', icon: '/servicos/automacao/entrada%20de%20dados.webp', title: 'Entrada de Dados', detail: 'Faturas, PDFs ou Forms' },
+                { step: '02', icon: '/servicos/automacao/extraçao.webp', title: 'Extração Inteligente', detail: 'Validação automática' },
+                { step: '03', icon: '/servicos/automacao/integraçao.webp', title: 'Integração', detail: 'Sincronização entre Apps' },
+                { step: '04', icon: '/servicos/automacao/relatorios.webp', title: 'Relatórios', detail: 'Dashboards atualizados' }
             ],
             metric: 'Zero erros de introdução manual e 100% de consistência'
         },
         experiencia: {
             title: 'Suporte & Notificações de Cliente',
             nodes: [
-                { step: '01', icon: '/servicos/automacao/contacto.png', title: 'Contacto do Cliente', detail: 'Chat, Email ou WhatsApp' },
-                { step: '02', icon: '/servicos/automacao/agente.png', title: 'Agente de IA', detail: 'Resposta imediata' },
-                { step: '03', icon: '/servicos/automacao/notificaçao.png', title: 'Notificação', detail: 'Atualização em tempo real' },
-                { step: '04', icon: '/servicos/automacao/satisfaçao.png', title: 'Satisfação', detail: 'Feedback do Cliente' }
+                { step: '01', icon: '/servicos/automacao/contacto.webp', title: 'Contacto do Cliente', detail: 'Chat, Email ou WhatsApp' },
+                { step: '02', icon: '/servicos/automacao/agente.webp', title: 'Agente de IA', detail: 'Resposta imediata' },
+                { step: '03', icon: '/servicos/automacao/notificaçao.webp', title: 'Notificação', detail: 'Atualização em tempo real' },
+                { step: '04', icon: '/servicos/automacao/satisfaçao.webp', title: 'Satisfação', detail: 'Feedback do Cliente' }
             ],
             metric: 'NPS +42% através de respostas e acompanhamento instantâneos'
         }
@@ -404,25 +404,25 @@ const AutomacaoPage = () => {
                             <ul className="auto-compare-list">
                                 <li className="auto-compare-item">
                                     <span className="icon">
-                                        <img src="/servicos/automacao/cross.png" alt="Cruz" style={{ height: '24px', width: 'auto' }} />
+                                        <img src="/servicos/automacao/cross.webp" alt="Cruz" style={{ height: '24px', width: 'auto' }} />
                                     </span>
                                     <span><strong>Atendimento Lento:</strong> Leads esperam demasiado por uma resposta.</span>
                                 </li>
                                 <li className="auto-compare-item">
                                     <span className="icon">
-                                        <img src="/servicos/automacao/cross.png" alt="Cruz" style={{ height: '24px', width: 'auto' }} />
+                                        <img src="/servicos/automacao/cross.webp" alt="Cruz" style={{ height: '24px', width: 'auto' }} />
                                     </span>
                                     <span><strong>Desperdício de Talento:</strong> Horas perdidas a copiar informação.</span>
                                 </li>
                                 <li className="auto-compare-item">
                                     <span className="icon">
-                                        <img src="/servicos/automacao/cross.png" alt="Cruz" style={{ height: '24px', width: 'auto' }} />
+                                        <img src="/servicos/automacao/cross.webp" alt="Cruz" style={{ height: '24px', width: 'auto' }} />
                                     </span>
                                     <span><strong>Falhas de Follow-up:</strong> Oportunidades acabam por escapar.</span>
                                 </li>
                                 <li className="auto-compare-item">
                                     <span className="icon">
-                                        <img src="/servicos/automacao/cross.png" alt="Cruz" style={{ height: '24px', width: 'auto' }} />
+                                        <img src="/servicos/automacao/cross.webp" alt="Cruz" style={{ height: '24px', width: 'auto' }} />
                                     </span>
                                     <span><strong>Custo Proibitivo de Escala:</strong> Mais trabalho exige mais pessoas.</span>
                                 </li>
@@ -433,25 +433,25 @@ const AutomacaoPage = () => {
                             <ul className="auto-compare-list">
                                 <li className="auto-compare-item">
                                     <span className="icon">
-                                        <img src="/servicos/automacao/check.png" alt="Visto" style={{ height: '24px', width: 'auto' }} />
+                                        <img src="/servicos/automacao/check.webp" alt="Visto" style={{ height: '24px', width: 'auto' }} />
                                     </span>
                                     <span><strong>Resposta em Segundos:</strong> Clientes recebem resposta em segundos.</span>
                                 </li>
                                 <li className="auto-compare-item">
                                     <span className="icon">
-                                        <img src="/servicos/automacao/check.png" alt="Visto" style={{ height: '24px', width: 'auto' }} />
+                                        <img src="/servicos/automacao/check.webp" alt="Visto" style={{ height: '24px', width: 'auto' }} />
                                     </span>
                                     <span><strong>Foco em Tarefas de Alto Valor:</strong> Menos tarefas repetitivas, mais resultados.</span>
                                 </li>
                                 <li className="auto-compare-item">
                                     <span className="icon">
-                                        <img src="/servicos/automacao/check.png" alt="Visto" style={{ height: '24px', width: 'auto' }} />
+                                        <img src="/servicos/automacao/check.webp" alt="Visto" style={{ height: '24px', width: 'auto' }} />
                                     </span>
                                     <span><strong>CRM Inteligente:</strong> Nenhum contacto fica esquecido.</span>
                                 </li>
                                 <li className="auto-compare-item">
                                     <span className="icon">
-                                        <img src="/servicos/automacao/check.png" alt="Visto" style={{ height: '24px', width: 'auto' }} />
+                                        <img src="/servicos/automacao/check.webp" alt="Visto" style={{ height: '24px', width: 'auto' }} />
                                     </span>
                                     <span><strong>Escala Ilimitada:</strong> O negócio cresce sem aumentar a equipa.</span>
                                 </li>

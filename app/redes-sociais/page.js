@@ -172,7 +172,7 @@ const RedesSociais = () => {
                     <div className="bento-grid" ref={bentoGridRef} onScroll={handleBentoScroll}>
                         <div className={`bento-card large reveal ${bentoActiveIndex === 0 ? 'active' : ''}`}>
                             <div className="bento-icon">
-                                <img src="/servicos/redes-sociais/e-nimble-short-video-reels.png" alt="Vídeos Curtos & Reels Viral - e-nimble" className="rs-icon-img" />
+                                <img src="/servicos/redes-sociais/e-nimble-short-video-reels.webp" alt="Vídeos Curtos & Reels Viral - e-nimble" className="rs-icon-img" />
                             </div>
                             <div>
                                 <h3>Vídeos Curtos & Reels</h3>
@@ -183,7 +183,7 @@ const RedesSociais = () => {
 
                         <div className={`bento-card reveal delay-2 ${bentoActiveIndex === 1 ? 'active' : ''}`}>
                             <div className="bento-icon">
-                                <img src="/servicos/redes-sociais/e-nimble-social-strategy-planning.png" alt="Planeamento Estratégico Social - e-nimble" className="rs-icon-img" />
+                                <img src="/servicos/redes-sociais/e-nimble-social-strategy-planning.webp" alt="Planeamento Estratégico Social - e-nimble" className="rs-icon-img" />
                             </div>
                             <div>
                                 <h3>Planeamento</h3>
@@ -194,7 +194,7 @@ const RedesSociais = () => {
 
                         <div className={`bento-card accent-bg reveal delay-3 ${bentoActiveIndex === 2 ? 'active' : ''}`}>
                             <div className="bento-icon">
-                                <img src="/servicos/redes-sociais/e-nimble-paid-social-traffic.png" alt="Gestão de Tráfego Pago Social - e-nimble" className="rs-icon-img" />
+                                <img src="/servicos/redes-sociais/e-nimble-paid-social-traffic.webp" alt="Gestão de Tráfego Pago Social - e-nimble" className="rs-icon-img" />
                             </div>
                             <div>
                                 <h3>Gestão de Tráfego</h3>
@@ -205,7 +205,7 @@ const RedesSociais = () => {
 
                         <div className={`bento-card large reveal delay-4 ${bentoActiveIndex === 3 ? 'active' : ''}`}>
                             <div className="bento-icon">
-                                <img src="/servicos/redes-sociais/e-nimble-social-community-management.png" alt="Gestão de Comunidade Social - e-nimble" className="rs-icon-img" />
+                                <img src="/servicos/redes-sociais/e-nimble-social-community-management.webp" alt="Gestão de Comunidade Social - e-nimble" className="rs-icon-img" />
                             </div>
                             <div>
                                 <h3>Community Manager</h3>
@@ -382,7 +382,7 @@ const RedesSociais = () => {
                         <div className={`rs-driver-card reveal delay-1 ${driversActiveIndex === 0 ? 'active' : ''}`}>
                             <div className="rs-driver-num">01</div>
                             <div className="rs-driver-emoji">
-                                <img src="/servicos/redes-sociais/marketing-agency-social-captivation.png" alt="Market Captivation Social - e-nimble" className="rs-icon-img" />
+                                <img src="/servicos/redes-sociais/marketing-agency-social-captivation.webp" alt="Market Captivation Social - e-nimble" className="rs-icon-img" />
                             </div>
                             <h3>Estratégia</h3>
                             <span className="rs-driver-label">ATRAIR</span>
@@ -394,7 +394,7 @@ const RedesSociais = () => {
                         <div className={`rs-driver-card reveal delay-2 ${driversActiveIndex === 1 ? 'active' : ''}`}>
                             <div className="rs-driver-num">02</div>
                             <div className="rs-driver-emoji">
-                                <img src="/servicos/redes-sociais/marketing-agency-social-scaling.png" alt="High-Velocity Social Scaling - e-nimble" className="rs-icon-img" />
+                                <img src="/servicos/redes-sociais/marketing-agency-social-scaling.webp" alt="High-Velocity Social Scaling - e-nimble" className="rs-icon-img" />
                             </div>
                             <h3>Conteúdo</h3>
                             <span className="rs-driver-label">ENVOLVER</span>
@@ -406,7 +406,7 @@ const RedesSociais = () => {
                         <div className={`rs-driver-card reveal delay-3 ${driversActiveIndex === 2 ? 'active' : ''}`}>
                             <div className="rs-driver-num">03</div>
                             <div className="rs-driver-emoji">
-                                <img src="/servicos/redes-sociais/marketing-agency-social-conversion.png" alt="Conversion-First Social Content - e-nimble" className="rs-icon-img" />
+                                <img src="/servicos/redes-sociais/marketing-agency-social-conversion.webp" alt="Conversion-First Social Content - e-nimble" className="rs-icon-img" />
                             </div>
                             <h3>Comunidade</h3>
                             <span className="rs-driver-label">CONVERTER</span>
@@ -418,7 +418,7 @@ const RedesSociais = () => {
                         <div className={`rs-driver-card reveal delay-4 ${driversActiveIndex === 3 ? 'active' : ''}`}>
                             <div className="rs-driver-num">04</div>
                             <div className="rs-driver-emoji">
-                                <img src="/servicos/redes-sociais/marketing-agency-social-intelligence.png" alt="Competitive Social Intelligence - e-nimble" className="rs-icon-img" />
+                                <img src="/servicos/redes-sociais/marketing-agency-social-intelligence.webp" alt="Competitive Social Intelligence - e-nimble" className="rs-icon-img" />
                             </div>
                             <h3>Análise</h3>
                             <span className="rs-driver-label">OTIMIZAR</span>
