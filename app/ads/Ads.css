@@ -119,6 +119,9 @@ body.ads-body .header.header-scrolled .main-nav a:hover {
    ========================================================================== */
 .ads-hero {
     height: 100vh;
+    height: 100svh;
+    height: 100dvh;
+    min-height: 100svh;
     display: flex;
     align-items: center;
     justify-content: center;

@@ -38,6 +38,8 @@ body.brand-body .main-nav a {
 /* HERO */
 .brand-hero {
     min-height: 90vh;
+    min-height: 90svh;
+    min-height: 90dvh;
     position: relative;
     display: flex;
     flex-direction: column;

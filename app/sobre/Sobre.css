@@ -41,6 +41,9 @@ body.about-body .header.header-scrolled .btn-nav:hover {
 /* CINEMATIC HERO - BRANDED */
 .poster-hero {
     height: 100vh;
+    height: 100svh;
+    height: 100dvh;
+    min-height: 100svh;
     display: flex;
     align-items: center;
     justify-content: center;

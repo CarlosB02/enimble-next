@@ -37,6 +37,8 @@ body.contact-body .header.header-scrolled .btn-nav:hover {
   background: var(--gradient-main) !important;
   color: white;
   min-height: 100vh;
+  min-height: 100svh;
+  min-height: 100dvh;
   padding-top: 150px;
 }
 
@@ -484,9 +486,9 @@ body.contact-body .header.header-scrolled .btn-nav:hover {
     height: 25%;
 }
 
+.cup-liquid-flow.normal,
 .cup-liquid-flow.pingado {
     height: 60%;
-    background: linear-gradient(180deg, #d8ac88 0%, #7d5032 100%);
 }
 
 .cup-liquid-flow.duplo {
@@ -736,12 +738,60 @@ body.contact-body .header.header-scrolled .btn-nav:hover {
 }
 
 .contacts-wrapper.light-theme-contacts .info-card a,
-.contacts-wrapper.light-theme-contacts .info-card p {
+.contacts-wrapper.light-theme-contacts .info-card p,
+.contacts-wrapper .info-card a,
+.contacts-wrapper .info-card p {
   font-size: 1.1rem;
   font-weight: 600;
   color: var(--text-color);
   text-decoration: none;
   margin: 0;
+}
+
+.contacts-wrapper .info-card a,
+.contacts-wrapper .info-card p {
+  color: #ffffff;
+}
+
+.info-card-content {
+  flex: 1;
+  min-width: 0;
+}
+
+.info-card-actions {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 0.75rem;
+  flex-wrap: wrap;
+  margin-top: 0.2rem;
+}
+
+.whatsapp-btn {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.4rem;
+  background: #25D366;
+  color: #ffffff !important;
+  padding: 0.4rem 0.85rem;
+  border-radius: 20px;
+  font-size: 0.82rem;
+  font-weight: 700;
+  text-decoration: none;
+  transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+  box-shadow: 0 4px 12px rgba(37, 211, 102, 0.3);
+  line-height: 1;
+}
+
+.whatsapp-btn:hover {
+  background: #20ba5a;
+  transform: translateY(-2px) scale(1.03);
+  box-shadow: 0 6px 16px rgba(37, 211, 102, 0.45);
+  color: #ffffff !important;
+}
+
+.whatsapp-btn svg {
+  flex-shrink: 0;
 }
 
 .contacts-wrapper.light-theme-contacts .creative-form-v2 {
@@ -985,14 +1035,38 @@ body.contact-body .header.header-scrolled .btn-nav:hover {
 }
 
 @media (max-width: 991px) {
-  .contacts-wrapper.light-theme-contacts {
-    grid-template-columns: 1fr;
-    gap: 3rem;
+  .contacts-wrapper.light-theme-contacts,
+  .contacts-wrapper {
+    display: flex;
+    flex-direction: column;
+    gap: 2.5rem;
   }
-  .contacts-wrapper.light-theme-contacts .contact-info-panel {
+  .contacts-wrapper.light-theme-contacts .contact-info-panel,
+  .contacts-wrapper .contact-info-panel {
+    display: contents;
+  }
+  .contacts-wrapper.light-theme-contacts .contact-info-header,
+  .contacts-wrapper .contact-info-header {
+    order: 1;
     text-align: center;
   }
-  .contacts-wrapper.light-theme-contacts .info-card {
+  .contacts-wrapper.light-theme-contacts .contact-info-header .info-desc,
+  .contacts-wrapper .contact-info-header .info-desc {
+    margin-bottom: 0.5rem;
+  }
+  .contacts-wrapper.light-theme-contacts .light-contacts-card,
+  .contacts-wrapper .right-contacts-card {
+    order: 2;
+    width: 100%;
+  }
+  .contacts-wrapper.light-theme-contacts .info-details,
+  .contacts-wrapper .info-details {
+    order: 3;
+    width: 100%;
+    margin-top: 0.5rem;
+  }
+  .contacts-wrapper.light-theme-contacts .info-card,
+  .contacts-wrapper .info-card {
     text-align: left;
   }
 }
@@ -1104,9 +1178,9 @@ body.contact-body .header.header-scrolled .btn-nav:hover {
   height: 25%;
 }
 
+.contacts-wrapper.light-theme-contacts .cup-liquid-flow.normal,
 .contacts-wrapper.light-theme-contacts .cup-liquid-flow.pingado {
   height: 60%;
-  background: linear-gradient(180deg, #d8ac88 0%, #7d5032 100%);
 }
 
 .contacts-wrapper.light-theme-contacts .cup-liquid-flow.duplo {

@@ -43,6 +43,8 @@ body.contact-body .header.header-scrolled .btn-nav:hover {
     position: relative;
     width: 100%;
     min-height: 100vh;
+    min-height: 100svh;
+    min-height: 100dvh;
     padding: 140px 0 80px;
     background-color: #05060f;
     overflow: hidden;
@@ -378,9 +380,9 @@ body.contact-body .header.header-scrolled .btn-nav:hover {
     height: 25%;
 }
 
+.cup-liquid-flow.normal,
 .cup-liquid-flow.pingado {
     height: 60%;
-    background: linear-gradient(180deg, #d8ac88 0%, #7d5032 100%);
 }
 
 .cup-liquid-flow.duplo {

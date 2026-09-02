@@ -11,7 +11,7 @@ const ContactSection = () => {
     const [message, setMessage] = useState('');
 
     // Interactive states
-    const [coffeeType, setCoffeeType] = useState('pingado'); // 'expresso' | 'pingado' | 'duplo'
+    const [coffeeType, setCoffeeType] = useState('normal'); // 'expresso' | 'normal' | 'duplo'
 
     // Submission states
     const [isSubmitting, setIsSubmitting] = useState(false);
@@ -37,7 +37,7 @@ const ContactSection = () => {
 
     const handleReset = () => {
         setIsSubmitted(false);
-        setCoffeeType('pingado');
+        setCoffeeType('normal');
     };
 
     return (
@@ -46,17 +46,19 @@ const ContactSection = () => {
                 <div className="contacts-wrapper light-theme-contacts">
                     {/* LEFT COLUMN: Branding & Info */}
                     <div className="contact-info-panel reveal">
-                        <h2 className="info-title" style={{ fontSize: 'clamp(1.75rem, 3.5vw, 2.5rem)' }}>
-                            Vamos <span className="gradient-text">Conversar?</span> <img src="/assets/coffee.webp" alt="Café" className="emoji-icon png-emoji" style={{ width: '0.9em', height: '0.9em' }} />
-                        </h2>
-                        <p className="info-desc">
-                            Agende uma reunião presencial ou online e descubra como podemos ajudar a fazer crescer o seu negócio.
-                        </p>
+                        <div className="contact-info-header">
+                            <h2 className="info-title" style={{ fontSize: 'clamp(1.75rem, 3.5vw, 2.5rem)' }}>
+                                Vamos <span className="gradient-text">Conversar?</span> <img src="/assets/coffee.webp" alt="Café" className="emoji-icon png-emoji" style={{ width: '0.9em', height: '0.9em' }} />
+                            </h2>
+                            <p className="info-desc">
+                                Agende uma reunião presencial ou online e descubra como podemos ajudar a fazer crescer o seu negócio.
+                            </p>
+                        </div>
 
                         <div className="info-details">
                             <div className="info-card">
                                 <span className="info-card-icon">📧</span>
-                                <div>
+                                <div className="info-card-content">
                                     <strong>Enviar email</strong>
                                     <a href="mailto:geral@enimble.pt">geral@enimble.pt</a>
                                 </div>
@@ -64,9 +66,24 @@ const ContactSection = () => {
 
                             <div className="info-card">
                                 <span className="info-card-icon">📱</span>
-                                <div>
+                                <div className="info-card-content">
                                     <strong>Ligar ou WhatsApp</strong>
-                                    <a href="tel:+351912163485">912 163 485</a>
+                                    <div className="info-card-actions">
+                                        <a href="tel:+351912163485" className="info-phone-link">912 163 485</a>
+                                        <a
+                                            href="https://wa.me/351912163485"
+                                            target="_blank"
+                                            rel="noopener noreferrer"
+                                            className="whatsapp-btn"
+                                            title="Enviar mensagem pelo WhatsApp"
+                                            aria-label="Enviar mensagem no WhatsApp"
+                                        >
+                                            <svg width="16" height="16" viewBox="0 0 24 24" fill="currentColor">
+                                                <path d="M12.04 2C6.5 2 2 6.5 2 12.04c0 1.77.46 3.49 1.34 5.01L2 22.08l5.18-1.36a10.027 10.027 0 0 0 4.86 1.25h.01c5.54 0 10.04-4.5 10.04-10.04 0-2.68-1.04-5.2-2.94-7.1A9.972 9.972 0 0 0 12.04 2zm5.432 12.382c-.301-.15-1.781-.879-2.056-.98-.276-.1-.476-.15-.677.15-.2.301-.776.98-.952 1.18-.175.2-.351.226-.652.075-.3-.15-1.267-.467-2.414-1.489-.893-.796-1.496-1.78-1.672-2.08-.175-.3-.019-.462.132-.612.135-.135.3-.351.451-.527.15-.175.2-.301.3-.501.1-.2.05-.376-.025-.526-.075-.15-.677-1.63-.927-2.23-.244-.585-.493-.506-.677-.515-.176-.008-.376-.01-.577-.01-.2 0-.526.075-.802.376-.275.301-1.053 1.029-1.053 2.509 0 1.48 1.078 2.91 1.229 3.11.15.2 2.122 3.241 5.141 4.545.718.31 1.278.496 1.715.635.722.23 1.379.197 1.9.12.58-.087 1.781-.728 2.032-1.432.251-.704.251-1.307.176-1.432-.076-.125-.276-.2-.577-.35z"/>
+                                            </svg>
+                                            <span>WhatsApp</span>
+                                        </a>
+                                    </div>
                                 </div>
                             </div>
                         </div>
@@ -91,10 +108,10 @@ const ContactSection = () => {
                                             </button>
                                             <button
                                                 type="button"
-                                                className={`coffee-row-btn ${coffeeType === 'pingado' ? 'active' : ''}`}
-                                                onClick={() => setCoffeeType('pingado')}
+                                                className={`coffee-row-btn ${coffeeType === 'normal' ? 'active' : ''}`}
+                                                onClick={() => setCoffeeType('normal')}
                                             >
-                                                Pingado 🥛
+                                                Normal ☕
                                             </button>
                                             <button
                                                 type="button"
@@ -201,7 +218,7 @@ const ContactSection = () => {
                                 <h3>Café a ferver!</h3>
                                 <p>
                                     A sua mensagem foi enviada com sucesso.<br />
-                                    Pediu um <strong>{coffeeType === 'expresso' ? 'Café Expresso Curto' : coffeeType === 'pingado' ? 'Café Pingado' : 'Café Duplo'}</strong>.<br />
+                                    Pediu um <strong>{coffeeType === 'expresso' ? 'Café Expresso Curto' : coffeeType === 'normal' ? 'Café Normal' : 'Café Duplo'}</strong>.<br />
                                     Entraremos em contacto muito em breve para agendarmos a nossa conversa.
                                 </p>
                                 <button onClick={handleReset} className="btn-reset">

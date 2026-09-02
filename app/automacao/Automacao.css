@@ -167,6 +167,8 @@ body.auto-body {
 .auto-hero {
   position: relative;
   height: 100vh;
+  height: 100svh;
+  height: 100dvh;
   min-height: 600px;
   background-color: #000000 !important;
   overflow: hidden;

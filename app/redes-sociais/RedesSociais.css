@@ -23,10 +23,13 @@
 .social-hero {
     position: relative;
     min-height: 100vh;
+    min-height: 100svh;
+    min-height: 100dvh;
     display: flex;
     align-items: center;
     overflow: hidden;
     padding-top: 80px;
+    padding-bottom: 40px;
 }
 
 /* Animated Background Mesh */
@@ -89,18 +92,30 @@
     align-items: center;
 }
 
+.hero-cta-actions {
+    display: flex;
+    align-items: center;
+    gap: 1rem;
+    flex-wrap: wrap;
+}
+
 .live-badge {
-    background: rgba(255, 0, 80, 0.2);
+    background: rgba(255, 0, 80, 0.15);
     color: #ff0050;
-    padding: 0.5rem 1rem;
-    border-radius: 20px;
+    padding: 0.65rem 1.2rem;
+    border-radius: 50px;
     font-weight: 700;
-    font-size: 0.8rem;
+    font-size: 0.82rem;
     display: inline-flex;
     align-items: center;
     gap: 8px;
-    margin-bottom: 2rem;
-    border: 1px solid rgba(255, 0, 80, 0.5);
+    margin-bottom: 0;
+    border: 1px solid rgba(255, 0, 80, 0.4);
+    letter-spacing: 1px;
+    text-transform: uppercase;
+    box-shadow: 0 0 15px rgba(255, 0, 80, 0.15);
+    backdrop-filter: blur(8px);
+    -webkit-backdrop-filter: blur(8px);
 }
 
 .live-badge::before {
@@ -110,6 +125,7 @@
     background: #ff0050;
     border-radius: 50%;
     animation: blink 1.5s infinite;
+    box-shadow: 0 0 8px #ff0050;
 }
 
 @keyframes blink {
@@ -143,9 +159,9 @@
 
 .hero-cta-group {
     display: flex;
-    gap: 1rem;
-    flex-wrap: wrap;
-    justify-content: flex-start;
+    flex-direction: column;
+    gap: 1.5rem;
+    align-items: flex-start;
 }
 
 .btn-social {
@@ -450,19 +466,51 @@
 
 /* RESPONSIVE */
 @media (max-width: 900px) {
+    .social-hero {
+        min-height: calc(100svh - 70px);
+        min-height: calc(100dvh - 70px);
+        padding-top: 105px;
+        padding-bottom: 30px;
+        align-items: center;
+    }
+
     .hero-split {
         grid-template-columns: 1fr;
         text-align: center;
+        gap: 2rem;
     }
 
     .hero-text-social {
         display: flex;
         flex-direction: column;
         align-items: center;
+        margin-top: -25px;
+    }
+
+    .social-title {
+        font-size: clamp(1.85rem, 6vw, 2.6rem);
+        margin-bottom: 1.2rem;
+    }
+
+    .social-subtitle {
+        margin-bottom: 1.8rem;
+        font-size: 0.95rem;
     }
 
     .hero-cta-group {
+        align-items: center;
         justify-content: center;
+        width: 100%;
+    }
+
+    .hero-cta-actions {
+        justify-content: center;
+        width: 100%;
+    }
+
+    .social-hero-tags {
+        justify-content: center;
+        flex-wrap: wrap;
     }
 
     .bento-grid {
@@ -598,6 +646,7 @@
     padding: 6rem 0;
     overflow: hidden;
     min-height: 100vh;
+    min-height: 100svh;
     display: flex;
     flex-direction: column;
     justify-content: center;

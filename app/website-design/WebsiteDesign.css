@@ -12,6 +12,9 @@
 .creative-hero {
     position: relative;
     height: 100vh;
+    height: 100svh;
+    height: 100dvh;
+    min-height: 100svh;
     width: 100%;
     background-color: transparent;
     color: white;
@@ -68,7 +71,7 @@
 /* Scroll Indicator */
 .scroll-indicator {
     position: absolute;
-    bottom: 2rem;
+    bottom: max(1.5rem, env(safe-area-inset-bottom, 1.5rem));
     left: 50%;
     transform: translateX(-50%);
     display: flex;
@@ -76,6 +79,7 @@
     align-items: center;
     gap: 0.5rem;
     opacity: 0.7;
+    z-index: 5;
 }
 
 .mouse-icon {
@@ -878,6 +882,8 @@
     position: sticky;
     top: 0;
     height: 100vh;
+    height: 100svh;
+    height: 100dvh;
     width: 100%;
     overflow: hidden;
     display: flex;
@@ -1110,6 +1116,27 @@
         max-width: 320px;
         height: 75px;
     }
+
+    .wd-screen-cta-container {
+        padding: 0.8rem 0.5rem;
+    }
+
+    .wd-zoom-title {
+        font-size: clamp(1rem, 3.8vw, 1.35rem);
+        margin-bottom: 0.35rem;
+    }
+
+    .wd-zoom-subtitle {
+        font-size: clamp(0.72rem, 2.6vw, 0.85rem);
+        line-height: 1.35;
+        margin-bottom: 0.8rem;
+        max-width: 85%;
+    }
+
+    .wd-zoom-btn {
+        padding: 0.65rem 1.8rem !important;
+        font-size: 0.82rem;
+    }
 }
 
 /* --- SECTION 6: STRATEGIC FAQ --- */
@@ -1293,6 +1320,41 @@
     margin-bottom: 4rem;
 }
 
+.wd-cases-header .section-label {
+    display: inline-block;
+    font-family: var(--font-main);
+    font-size: 0.85rem;
+    font-weight: 700;
+    text-transform: uppercase;
+    letter-spacing: 4px;
+    background: var(--gradient-main);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
+    margin-bottom: 0.75rem;
+    line-height: 1.1;
+    position: relative;
+    padding: 0 2.2rem;
+}
+
+.wd-cases-header .section-label::before,
+.wd-cases-header .section-label::after {
+    content: '';
+    position: absolute;
+    top: 50%;
+    width: 30px;
+    height: 1.5px;
+    background: var(--gradient-main);
+}
+
+.wd-cases-header .section-label::before {
+    left: -8px;
+}
+
+.wd-cases-header .section-label::after {
+    right: -8px;
+}
+
 .wd-cases-header h2 {
     font-family: var(--font-headings);
     font-size: clamp(1.8rem, 4vw, 2.8rem);
@@ -1357,8 +1419,20 @@
 .wd-case-info {
     display: flex;
     justify-content: space-between;
-    align-items: flex-start;
+    align-items: center;
+    gap: 0.75rem;
     padding: 0 0.5rem;
+}
+
+.info-left {
+    flex: 1 1 auto;
+    min-width: 0;
+}
+
+.info-right {
+    flex: 0 0 auto;
+    display: flex;
+    justify-content: flex-end;
 }
 
 .info-left h3 {
@@ -1415,15 +1489,22 @@
 }
 
 .industry-tag {
-    padding: 0.5rem 1.2rem;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    text-align: center;
+    padding: 0.45rem 1rem;
     background: #f5f5f5;
     border: 1px solid #eee;
     border-radius: 100px;
-    font-size: 0.8rem;
+    font-size: 0.78rem;
     font-weight: 700;
     color: #555;
     text-transform: uppercase;
-    letter-spacing: 1px;
+    letter-spacing: 0.5px;
+    line-height: 1.25;
+    white-space: normal;
+    box-sizing: border-box;
     transition: all 0.3s ease;
 }
 
@@ -1448,6 +1529,34 @@
    RESPONSIVE & MOBILE CAROUSELS
    ============================================ */
 @media (max-width: 900px) {
+    /* Creative Hero Mobile Optimizations */
+    .creative-hero {
+        height: 100svh !important;
+        height: 100dvh !important;
+        min-height: 100svh !important;
+        padding-top: 80px;
+        padding-bottom: 60px;
+    }
+
+    .hero-overlay {
+        margin-top: -30px;
+        padding: 0 1.25rem;
+    }
+
+    .hero-overlay h1.glitch-text {
+        font-size: clamp(2rem, 7vw, 3rem);
+        margin-bottom: 0.75rem;
+    }
+
+    .subtitle-reveal {
+        font-size: clamp(1.2rem, 4.5vw, 1.8rem);
+        margin-bottom: 2rem;
+    }
+
+    .scroll-indicator {
+        bottom: max(1rem, env(safe-area-inset-bottom, 1rem)) !important;
+    }
+
     /* Main Carousel Grid overrides for Mobile Swipe */
     .wd-services-grid,
     .wd-checklist-grid,
@@ -1516,10 +1625,50 @@
         opacity: 1 !important;
     }
 
+    .wd-case-card {
+        height: auto !important;
+        border-radius: 20px !important;
+    }
+
     .wd-case-card.active,
     .wd-case-card:hover {
         transform: translateY(-8px) !important;
-        box-shadow: 0 25px 50px rgba(0, 0, 0, 0.15) !important;
+        box-shadow: none !important;
+    }
+
+    .wd-case-card.active .wd-browser-mockup,
+    .wd-case-card:hover .wd-browser-mockup {
+        border-radius: 20px !important;
+        border-color: rgba(58, 0, 255, 0.25) !important;
+        box-shadow: 0 20px 45px rgba(58, 0, 255, 0.16), 0 8px 20px rgba(0, 0, 0, 0.1) !important;
+    }
+
+    .wd-case-card.active .wd-case-cta-inner,
+    .wd-case-card:hover .wd-case-cta-inner {
+        border-radius: 20px !important;
+        border-color: var(--color-primary-blue) !important;
+        background: rgba(58, 0, 255, 0.02) !important;
+        box-shadow: 0 20px 45px rgba(58, 0, 255, 0.16) !important;
+    }
+
+    .wd-case-card.active .industry-tag,
+    .wd-case-card:hover .industry-tag {
+        background: var(--color-primary-blue) !important;
+        color: white !important;
+        border-color: var(--color-primary-blue) !important;
+        box-shadow: 0 5px 15px rgba(58, 0, 255, 0.2) !important;
+    }
+
+    .industry-tag {
+        font-size: 0.72rem !important;
+        padding: 0.4rem 0.75rem !important;
+        letter-spacing: 0.3px !important;
+        border-radius: 12px !important;
+        line-height: 1.2 !important;
+        text-align: center !important;
+        display: inline-flex !important;
+        align-items: center !important;
+        justify-content: center !important;
     }
 
     /* Card items visual adjustment in mobile swipe mode */
@@ -1543,10 +1692,6 @@
     .wd-checklist-img {
         width: 32px !important;
         height: 32px !important;
-    }
-
-    .wd-case-card {
-        height: auto !important;
     }
 
     .wd-case-cta-inner {
@@ -1652,9 +1797,40 @@
         width: 50px;
         height: 50px;
     }
+
+    .wd-cases-header {
+        margin-bottom: 1.5rem !important;
+    }
+
+    .wd-cases-grid {
+        padding-top: 1.25rem !important;
+    }
 }
 
 @media (max-width: 600px) {
+    .wd-cases-header {
+        margin-bottom: 1rem !important;
+    }
+
+    .wd-cases-header .section-label {
+        font-size: 0.78rem;
+        letter-spacing: 3px;
+        padding: 0 1.6rem;
+    }
+
+    .wd-cases-header .section-label::before,
+    .wd-cases-header .section-label::after {
+        width: 20px;
+    }
+
+    .wd-cases-header .section-label::before {
+        left: -4px;
+    }
+
+    .wd-cases-header .section-label::after {
+        right: -4px;
+    }
+
     .wd-pain-col {
         padding: 1.5rem 0;
     }
@@ -1671,6 +1847,30 @@
 
     .wd-case-metric {
         text-align: left;
+    }
+
+    .wd-case-info {
+        gap: 0.5rem !important;
+        padding: 0 0.25rem !important;
+    }
+
+    .info-left h3 {
+        font-size: 1.2rem !important;
+    }
+
+    .info-left p {
+        font-size: 0.7rem !important;
+    }
+
+    .info-right {
+        max-width: 52% !important;
+    }
+
+    .industry-tag {
+        font-size: 0.68rem !important;
+        padding: 0.35rem 0.65rem !important;
+        border-radius: 10px !important;
+        line-height: 1.15 !important;
     }
 
     .wd-service-card-header {

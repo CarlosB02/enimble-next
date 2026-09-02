@@ -18,6 +18,7 @@ const WebsiteDesign = () => {
     const [zoomProgress, setZoomProgress] = useState(0);
     const [isModalOpen, setIsModalOpen] = useState(false);
     const [modalSubject, setModalSubject] = useState("");
+    const [isMobile, setIsMobile] = useState(false);
 
     // Mobile Carousel Active State Hooks
     const [servicesActiveIndex, setServicesActiveIndex] = useState(0);
@@ -120,6 +121,16 @@ const WebsiteDesign = () => {
         window.addEventListener('scroll', handleScroll, { passive: true });
         handleScroll();
         return () => window.removeEventListener('scroll', handleScroll);
+    }, []);
+
+    // Check Mobile Screen
+    useEffect(() => {
+        const handleResize = () => {
+            setIsMobile(window.innerWidth <= 768);
+        };
+        handleResize();
+        window.addEventListener('resize', handleResize);
+        return () => window.removeEventListener('resize', handleResize);
     }, []);
 
     // Hero Canvas Effect
@@ -618,7 +629,7 @@ const WebsiteDesign = () => {
                         // Reaches 100% zoom focus at 70% of the section scroll
                         const focusProgress = Math.min(1, zoomProgress / 0.7);
                         const scaleVal = 1 + Math.pow(focusProgress, 1.4) * 1.2;
-                        const counterScaleVal = 1 - focusProgress * 0.2;
+                        const counterScaleVal = isMobile ? (1 / scaleVal) : (1 - focusProgress * 0.2);
 
                         return (
                             <>

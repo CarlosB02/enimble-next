@@ -199,10 +199,7 @@ const HomePage = () => {
                             <div className="fc-features">
                                 <div className="fc-feature-item">
                                     <div className="fc-feature-icon">
-                                        <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.5" strokeLinecap="round" strokeLinejoin="round">
-                                            <path d="M22 11.08V12a10 10 10 1 1-5.93-9.14" />
-                                            <polyline points="22 4 12 14.01 9 11.01" />
-                                        </svg>
+                                        <img src="/assets/certificacao-dgert-formacao-sigo.webp" alt="Entidades certificadas DGERT & SIGO" width="24" height="24" />
                                     </div>
                                     <div>
                                         <strong>Entidades certificadas DGERT & SIGO</strong>
@@ -211,10 +208,7 @@ const HomePage = () => {
 
                                 <div className="fc-feature-item">
                                     <div className="fc-feature-icon">
-                                        <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.5" strokeLinecap="round" strokeLinejoin="round">
-                                            <line x1="12" y1="1" x2="12" y2="23" />
-                                            <path d="M17 5H9.5a3.5 3.5 0 0 0 0 7h5a3.5 3.5 0 0 1 0 7H6" />
-                                        </svg>
+                                        <img src="/assets/cheque-formacao-apoio-financeiro.webp" alt="Financiamento até 100%" width="24" height="24" />
                                     </div>
                                     <div>
                                         <strong>Financiamento até 100%</strong>
@@ -223,9 +217,7 @@ const HomePage = () => {
 
                                 <div className="fc-feature-item">
                                     <div className="fc-feature-icon">
-                                        <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.5" strokeLinecap="round" strokeLinejoin="round">
-                                            <polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2" />
-                                        </svg>
+                                        <img src="/assets/planeamento-plano-formacao-empresa.webp" alt="Programas à Medida do Negócio" width="24" height="24" />
                                     </div>
                                     <div>
                                         <strong>Programas à Medida do Negócio</strong>
@@ -300,7 +292,7 @@ const HomePage = () => {
                             </div>
                         </div>
                         {/* Carousel navigation dots for mobile view */}
-                        <div className="carousel-dots pp-carousel-dots">
+                        <div className="carousel-dots pp-carousel-dots" style={{ marginBottom: '1.5rem' }}>
                             {Array.from({ length: 4 }).map((_, idx) => (
                                 <button
                                     key={idx}
