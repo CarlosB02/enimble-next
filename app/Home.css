@@ -919,23 +919,58 @@
 }
 
 .pp-trust-logos {
+  overflow: hidden;
   display: flex;
-  justify-content: center;
-  align-items: center;
-  gap: 3rem;
-  flex-wrap: wrap;
+  flex-wrap: nowrap;
+  justify-content: flex-start;
+  gap: 0;
+  width: 100%;
+  position: relative;
+  padding: 1rem 0;
+}
+
+.pp-trust-logos::before,
+.pp-trust-logos::after {
+  content: "";
+  position: absolute;
+  top: 0;
+  width: 150px;
+  height: 100%;
+  z-index: 2;
+  pointer-events: none;
+}
+
+.pp-trust-logos::before {
+  left: 0;
+  background: linear-gradient(to right, #fafafe 0%, transparent 100%);
+}
+
+.pp-trust-logos::after {
+  right: 0;
+  background: linear-gradient(to left, #fafafe 0%, transparent 100%);
 }
 
 .pp-trust-logos-slide {
   display: flex;
-  justify-content: center;
+  flex-direction: row;
+  flex-wrap: nowrap;
   align-items: center;
-  gap: 3rem;
-  flex-wrap: wrap;
+  gap: 4rem;
+  animation: infiniteScroll 45s linear infinite;
+  padding-right: 4rem;
 }
 
 .pp-trust-logos-slide[aria-hidden="true"] {
-  display: none;
+  display: flex;
+}
+
+@keyframes infiniteScroll {
+  from {
+    transform: translateX(0);
+  }
+  to {
+    transform: translateX(-100%);
+  }
 }
 
 .trust-logo {
@@ -1331,22 +1366,13 @@
     }
 
     .trust-logo {
-      max-height: 28px !important;
+      max-height: 45px !important;
       width: auto !important;
       flex-shrink: 0 !important;
     }
 
     .pp-trust-logos span {
       font-size: 0.8rem;
-    }
-
-    @keyframes infiniteScroll {
-      from {
-        transform: translateX(0);
-      }
-      to {
-        transform: translateX(-100%);
-      }
     }
 
     /* Mobile Carousel Wrappers */

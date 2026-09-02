@@ -267,7 +267,7 @@ const HomePage = () => {
                     <div className="pp-grid-container">
                         <div className="pp-grid" ref={portfolioGridRef} onScroll={handlePortfolioScroll}>
                             <div className={`pp-card pp-card-large reveal delay-1 ${portfolioActiveIndex === 0 ? 'active' : ''}`}>
-                                <div className="pp-thumb" style={{ background: 'linear-gradient(135deg, #667eea 0%, #764ba2 100%)' }}>
+                                <div className="pp-thumb" style={{ backgroundImage: 'url("/assets/mockups/mockup panoramas.webp")', backgroundSize: 'cover', backgroundPosition: 'center' }}>
                                     <div className="pp-overlay">
                                         <span className="pp-cat">Website Design</span>
                                         <h3>Panoramas - Portal de Notícias</h3>
@@ -283,15 +283,15 @@ const HomePage = () => {
                                 </div>
                             </div>
                             <div className={`pp-card reveal delay-3 ${portfolioActiveIndex === 2 ? 'active' : ''}`}>
-                                <div className="pp-thumb" style={{ background: 'linear-gradient(135deg, #4facfe 0%, #00f2fe 100%)' }}>
+                                <div className="pp-thumb" style={{ backgroundImage: 'url("/assets/mockups/redes sociais.png")', backgroundSize: 'cover', backgroundPosition: 'center' }}>
                                     <div className="pp-overlay">
                                         <span className="pp-cat">Redes Sociais</span>
-                                        <h3>Projeto Gamma</h3>
+                                        <h3>ENimble</h3>
                                     </div>
                                 </div>
                             </div>
                             <div className={`pp-card pp-card-large reveal delay-4 ${portfolioActiveIndex === 3 ? 'active' : ''}`}>
-                                <div className="pp-thumb" style={{ background: 'linear-gradient(135deg, #fa709a 0%, #fee140 100%)' }}>
+                                <div className="pp-thumb" style={{ backgroundImage: 'url("/assets/mockups/mockup barefoot.webp")', backgroundSize: 'cover', backgroundPosition: 'center' }}>
                                     <div className="pp-overlay">
                                         <span className="pp-cat">Loja E-Commerce</span>
                                         <h3>Inpe - Calçado Barefoot</h3>
@@ -320,20 +320,30 @@ const HomePage = () => {
                         <span className="pp-trust-label">Marcas que confiam em nós</span>
                         <div className="pp-trust-logos">
                             <div className="pp-trust-logos-slide">
-                                <img src="/assets/logos/logo-a.webp" alt="Empresa A" className="trust-logo" />
-                                <img src="/assets/logos/logo-b.webp" alt="Empresa B" className="trust-logo" />
-                                <img src="/assets/logos/logo-c.webp" alt="Empresa C" className="trust-logo" />
-                                <img src="/assets/logos/logo-d.webp" alt="Empresa D" className="trust-logo" />
-                                <img src="/assets/logos/logo-e.webp" alt="Empresa E" className="trust-logo" />
-                                <img src="/assets/logos/logo-f.webp" alt="Empresa F" className="trust-logo" />
+                                <img src="/assets/logos/logo emohb.webp" alt="Emohb" className="trust-logo" />
+                                <img src="/assets/logos/logo inpe.webp" alt="Inpe" className="trust-logo" />
+                                <img src="/assets/logos/logo moonlight.webp" alt="Moonlight" className="trust-logo" />
+                                <img src="/assets/logos/logo startup.webp" alt="Startup" className="trust-logo" />
+                                <img src="/assets/logos/logo viriatus.webp" alt="Viriatus" className="trust-logo" />
+                                <img src="/assets/logos/logo-carmetrix.webp" alt="Carmetrix" className="trust-logo" />
+                                <img src="/assets/logos/logo-flad-black-PT-2026.webp" alt="FLAD" className="trust-logo" />
+                                <img src="/assets/logos/logo-polly.webp" alt="Polly" className="trust-logo" />
+                                <img src="/assets/logos/orion aviation.webp" alt="Orion Aviation" className="trust-logo" />
+                                <img src="/assets/logos/panoramas_logo.webp" alt="Panoramas" className="trust-logo" />
+                                <img src="/assets/logos/pedro black outline com texto.webp" alt="Pedro" className="trust-logo" />
                             </div>
                             <div className="pp-trust-logos-slide" aria-hidden="true">
-                                <img src="/assets/logos/logo-a.webp" alt="Empresa A" className="trust-logo" />
-                                <img src="/assets/logos/logo-b.webp" alt="Empresa B" className="trust-logo" />
-                                <img src="/assets/logos/logo-c.webp" alt="Empresa C" className="trust-logo" />
-                                <img src="/assets/logos/logo-d.webp" alt="Empresa D" className="trust-logo" />
-                                <img src="/assets/logos/logo-e.webp" alt="Empresa E" className="trust-logo" />
-                                <img src="/assets/logos/logo-f.webp" alt="Empresa F" className="trust-logo" />
+                                <img src="/assets/logos/logo emohb.webp" alt="Emohb" className="trust-logo" />
+                                <img src="/assets/logos/logo inpe.webp" alt="Inpe" className="trust-logo" />
+                                <img src="/assets/logos/logo moonlight.webp" alt="Moonlight" className="trust-logo" />
+                                <img src="/assets/logos/logo startup.webp" alt="Startup" className="trust-logo" />
+                                <img src="/assets/logos/logo viriatus.webp" alt="Viriatus" className="trust-logo" />
+                                <img src="/assets/logos/logo-carmetrix.webp" alt="Carmetrix" className="trust-logo" />
+                                <img src="/assets/logos/logo-flad-black-PT-2026.webp" alt="FLAD" className="trust-logo" />
+                                <img src="/assets/logos/logo-polly.webp" alt="Polly" className="trust-logo" />
+                                <img src="/assets/logos/orion aviation.webp" alt="Orion Aviation" className="trust-logo" />
+                                <img src="/assets/logos/panoramas_logo.webp" alt="Panoramas" className="trust-logo" />
+                                <img src="/assets/logos/pedro black outline com texto.webp" alt="Pedro" className="trust-logo" />
                             </div>
                         </div>
                     </div>
