@@ -234,7 +234,7 @@ const HomePage = () => {
 
                         <div className="service-image formacao-image-wrapper">
                             <div className="formacao-image-card">
-                                <img src="/assets/team-new.webp" alt="Formação Empresarial e-nimble" />
+                                <img src="/assets/team-new.webp" alt="Formação Empresarial ENimble" />
                                 <div className="fc-floating-badge badge-bottom">
                                     <img src="/assets/lightning.webp" alt="Flash" style={{ width: '24px', height: '24px' }} className="fc-badge-icon" />
                                     <div>

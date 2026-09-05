@@ -651,6 +651,7 @@ body.auto-body {
   border-radius: 9999px;
   border: 1px solid rgba(0, 0, 0, 0.08);
   box-shadow: 0 4px 15px rgba(0, 0, 0, 0.04);
+  flex-wrap: nowrap;
 }
 
 .auto-switch-btn {
@@ -663,6 +664,7 @@ body.auto-body {
   color: var(--auto-text-muted);
   cursor: pointer;
   transition: all 0.3s ease;
+  white-space: nowrap;
 }
 
 .auto-switch-btn.active-manual {
@@ -675,6 +677,14 @@ body.auto-body {
   background: var(--auto-gradient);
   color: #ffffff;
   box-shadow: 0 4px 15px rgba(58, 0, 255, 0.3);
+}
+
+.auto-compare-cta {
+  margin-top: 2.5rem;
+}
+
+.auto-compare-cta .auto-btn-primary {
+  white-space: nowrap;
 }
 
 .auto-compare-grid {
@@ -1202,13 +1212,8 @@ body.auto-body {
 }
 
 .auto-faq-content-wrapper {
-  max-height: 0;
   overflow: hidden;
-  transition: max-height 0.25s ease-in-out;
-}
-
-.auto-faq-item.is-open .auto-faq-content-wrapper {
-  max-height: 150px; /* Altura limite segura para conter o texto sem delays */
+  transition: height 0.35s cubic-bezier(0.16, 1, 0.3, 1);
 }
 
 .auto-faq-content {
@@ -1419,6 +1424,54 @@ body.auto-body {
     padding: 3rem 1.5rem;
   }
 
+  .auto-compare-toggle-container {
+    margin-top: 1.5rem;
+    margin-bottom: 0.5rem;
+    padding: 0 0.5rem;
+  }
+
+  .auto-compare-switch {
+    display: flex;
+    flex-direction: row;
+    flex-wrap: nowrap;
+    width: 100%;
+    max-width: 380px;
+    padding: 0.25rem;
+    box-sizing: border-box;
+  }
+
+  .auto-switch-btn {
+    flex: 1 1 50%;
+    min-width: 0;
+    padding: 0.6rem 0.35rem;
+    font-size: clamp(0.72rem, 3.1vw, 0.85rem);
+    white-space: nowrap;
+    text-align: center;
+    justify-content: center;
+    display: flex;
+    align-items: center;
+    gap: 0.25rem;
+  }
+
+  .auto-compare-grid {
+    padding: 2rem calc(50% - min(142.5px, 40vw)) 3.5rem !important;
+  }
+
+  .auto-compare-cta {
+    margin-top: -1.75rem !important;
+    position: relative;
+    z-index: 5;
+  }
+
+  .auto-compare-cta .auto-btn-primary {
+    white-space: nowrap !important;
+    padding: 0.85rem 1.4rem;
+    font-size: clamp(0.78rem, 3.4vw, 0.95rem);
+    width: auto;
+    max-width: calc(100vw - 2.5rem);
+    box-sizing: border-box;
+  }
+
   .auto-compare-card {
     padding: 2rem 1.25rem !important;
   }
@@ -1430,6 +1483,18 @@ body.auto-body {
 
   .auto-compare-list {
     gap: 1rem !important;
+  }
+
+  .auto-faq-summary {
+    padding: 1.25rem 1.2rem !important;
+    font-size: 0.98rem !important;
+    line-height: 1.4 !important;
+  }
+
+  .auto-faq-content {
+    padding: 0 1.2rem 1.25rem 1.2rem !important;
+    font-size: 0.92rem !important;
+    line-height: 1.6 !important;
   }
 }
 

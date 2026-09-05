@@ -16,7 +16,7 @@ const syne = Syne({
 });
 
 export const metadata = {
-  title: 'E-NIMBLE | Marketing Digital',
+  title: 'ENimble | Marketing Digital',
   description: 'Elevamos o seu negócio digital com estratégias que funcionam e design que apaixona.',
 };
 

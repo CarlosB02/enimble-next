@@ -131,8 +131,10 @@ const ContactSection = () => {
                                                 <span className="smoke-line"></span>
                                                 <span className="smoke-line"></span>
                                             </div>
-                                            <div className={`cup-liquid-flow ${coffeeType}`}>
-                                                <span className="liquid-foam"></span>
+                                            <div className="cup-inner-wrap">
+                                                <div className={`cup-liquid-flow ${coffeeType}`}>
+                                                    <span className="liquid-foam"></span>
+                                                </div>
                                             </div>
                                             <span className="cup-handle"></span>
                                             <span className="cup-plate"></span>

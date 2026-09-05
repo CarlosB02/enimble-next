@@ -89,7 +89,7 @@ const Contactos = () => {
                         <div className="contact-info-panel reveal">
                             <div className="contact-info-header">
                                 <h2 className="info-title">
-                                    Fale Connosco <img src="/assets/coffee.webp" alt="Café" className="emoji-icon png-emoji" />
+                                    Fale Connosco <img src="/assets/coffee.webp" alt="Café" className="emoji-icon png-emoji webp-emoji" style={{ width: '0.9em', height: '0.9em', verticalAlign: 'middle' }} />
                                 </h2>
                                 <p className="info-desc">
                                     Agende uma reunião presencial ou online e descubra como podemos ajudar a fazer crescer o seu negócio.
@@ -172,8 +172,10 @@ const Contactos = () => {
                                                     <span className="smoke-line"></span>
                                                     <span className="smoke-line"></span>
                                                 </div>
-                                                <div className={`cup-liquid-flow ${coffeeType}`}>
-                                                    <span className="liquid-foam"></span>
+                                                <div className="cup-inner-wrap">
+                                                    <div className={`cup-liquid-flow ${coffeeType}`}>
+                                                        <span className="liquid-foam"></span>
+                                                    </div>
                                                 </div>
                                                 <span className="cup-handle"></span>
                                                 <span className="cup-plate"></span>

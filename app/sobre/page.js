@@ -1,33 +1,60 @@
-﻿'use client';
+'use client';
 
-import React, { useEffect, useRef } from 'react';
+import React, { useEffect, useState, useRef } from 'react';
 import useScrollReveal from '@/hooks/useScrollReveal';
 import './Sobre.css';
 
 const Sobre = () => {
     useScrollReveal();
-    const sliderRef = useRef(null);
+    const [valuesActiveIndex, setValuesActiveIndex] = useState(0);
+    const valuesRef = useRef(null);
+
+    const values = [
+        { title: 'Obsessão', sub: 'Pelo detalhe' },
+        { title: 'Velocidade', sub: 'Sem pressa' },
+        { title: 'Verdade', sub: 'Transparência total' },
+        { title: 'Coragem', sub: 'Para inovar' },
+    ];
+
+    const getActiveIndexFromScroll = (container, selector) => {
+        try {
+            const items = container.querySelectorAll(selector);
+            if (!items || !items.length) return 0;
+            const firstItem = items[0];
+            if (!firstItem) return 0;
+            const itemWidth = firstItem.offsetWidth || 200;
+            const gap = 24; // ~1.5rem gap
+            const scrollLeft = container.scrollLeft || 0;
+            const index = Math.round(scrollLeft / (itemWidth + gap));
+            return Math.max(0, Math.min(index, items.length - 1));
+        } catch (err) {
+            return 0;
+        }
+    };
+
+    const scrollToCard = (ref, selector, index, setIndex) => {
+        const container = ref.current;
+        if (!container) return;
+        const items = container.querySelectorAll(selector);
+        if (items[index]) {
+            items[index].scrollIntoView({
+                behavior: 'smooth',
+                block: 'nearest',
+                inline: 'center'
+            });
+            setIndex(index);
+        }
+    };
+
+    const handleValuesScroll = (e) => {
+        setValuesActiveIndex(getActiveIndexFromScroll(e.currentTarget, '.value-orb'));
+    };
 
     useEffect(() => {
         document.body.classList.add('about-body');
 
-        const slider = sliderRef.current;
-        const handleWheel = (e) => {
-            if (window.innerWidth > 768 && slider) {
-                e.preventDefault();
-                slider.scrollLeft += e.deltaY;
-            }
-        };
-
-        if (slider) {
-            slider.addEventListener('wheel', handleWheel);
-        }
-
         return () => {
             document.body.classList.remove('about-body');
-            if (slider) {
-                slider.removeEventListener('wheel', handleWheel);
-            }
         };
     }, []);
 
@@ -52,41 +79,51 @@ const Sobre = () => {
                         Nascemos para descomplicar o digital e torná-lo numa extensão natural da sua marca.
                     </p>
                 </section>
+
                 {/* Core Values (DNA) */}
-                <section className="dna-values container reveal">
-                    <div className="value-orb">
-                        <div className="value-text">
-                            <span className="value-title">Obsessão</span>
-                            <span className="value-sub">Pelo detalhe</span>
-                        </div>
+                <section className="dna-section container reveal">
+                    <div 
+                        className="dna-values"
+                        ref={valuesRef}
+                        onScroll={handleValuesScroll}
+                    >
+                        {values.map((v, idx) => (
+                            <div 
+                                key={idx} 
+                                className={`value-orb ${valuesActiveIndex === idx ? 'active' : ''}`}
+                                onClick={() => scrollToCard(valuesRef, '.value-orb', idx, setValuesActiveIndex)}
+                            >
+                                <div className="value-text">
+                                    <span className="value-title">{v.title}</span>
+                                    <span className="value-sub">{v.sub}</span>
+                                </div>
+                            </div>
+                        ))}
                     </div>
-                    <div className="value-orb">
-                        <div className="value-text">
-                            <span className="value-title">Velocidade</span>
-                            <span className="value-sub">Sem pressa</span>
-                        </div>
-                    </div>
-                    <div className="value-orb">
-                        <div className="value-text">
-                            <span className="value-title">Verdade</span>
-                            <span className="value-sub">Transparência total</span>
-                        </div>
-                    </div>
-                    <div className="value-orb">
-                        <div className="value-text">
-                            <span className="value-title">Coragem</span>
-                            <span className="value-sub">Para inovar</span>
-                        </div>
+                    {/* Carousel navigation dots for mobile view */}
+                    <div className="carousel-dots">
+                        {values.map((_, idx) => (
+                            <button
+                                key={idx}
+                                className={`carousel-dot ${valuesActiveIndex === idx ? 'active' : ''}`}
+                                onClick={() => scrollToCard(valuesRef, '.value-orb', idx, setValuesActiveIndex)}
+                                onTouchEnd={(e) => {
+                                    e.preventDefault();
+                                    scrollToCard(valuesRef, '.value-orb', idx, setValuesActiveIndex);
+                                }}
+                                aria-label={`Ir para valor ${idx + 1}`}
+                            />
+                        ))}
                     </div>
                 </section>
 
                 {/* Founders Note */}
-                <section className="container reveal" style={{ paddingBottom: '6rem' }}>
+                <section className="founders-section container reveal">
                     <div className="founder-note">
-                        <h3 style={{ fontFamily: "'Syne'", fontSize: '2rem', marginBottom: '1.5rem' }}>Uma nota pessoal</h3>
-                        <p style={{ lineHeight: 1.8, fontSize: '1.1rem', color: 'var(--text-color)' }}>
-                            "Criámos a E-Nimble porque estávamos cansados de agências que vendiam fumo.
-                            Queríamos um lugar onde o design fosse respeitado, não apenas como "bonecos", mas como
+                        <h3 className="founder-note-title">Uma nota pessoal</h3>
+                        <p className="founder-note-body">
+                            "Criámos a ENimble porque estávamos cansados de agências que vendiam fumo.
+                            Queríamos um lugar onde o design fosse respeitado, não apenas como &quot;bonecos&quot;, mas como
                             ferramenta de negócio.
                             Obrigado por confiar na nossa visão."
                         </p>

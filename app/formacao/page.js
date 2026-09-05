@@ -64,15 +64,17 @@ const Formacao = () => {
     };
 
     return (
-        <main>
+        <main className="formacao-page">
             {/* HERO */}
             <section className="edu-hero reveal">
+                <img src="/servicos/formacao/edu-hero-bg-photo.webp" alt="Formação ENimble" className="edu-hero-img-bg" />
+                <div className="edu-hero-overlay"></div>
                 <div className="container edu-hero-container">
                     <h1 className="edu-title">Conhecimento<br />é <span className="highlight-word">Lucro.</span></h1>
                     <p className="edu-intro">"Não é sobre teoria. É sobre equipar a sua força de trabalho com as ferramentas
                         digitais que o mercado exige hoje."</p>
                     <div className="cert-badge">
-                        <img src="/servicos/formacao/e-nimble-training-certification-star.webp" alt="Certificação DGERT e-nimble" className="edu-cert-img" />
+                        <img src="/servicos/formacao/ENimble-training-certification-star.webp" alt="Certificação DGERT ENimble" className="edu-cert-img" />
                         <span style={{ fontWeight: 700, fontSize: '0.9rem' }}>DGERT<br />CERTIFIED</span>
                     </div>
                 </div>
@@ -197,10 +199,7 @@ const Formacao = () => {
                             <div className="edu-features">
                                 <div className="edu-feature-item">
                                     <div className="edu-feature-icon">
-                                        <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.5" strokeLinecap="round" strokeLinejoin="round">
-                                            <path d="M22 11.08V12a10 10 10 1 1-5.93-9.14" />
-                                            <polyline points="22 4 12 14.01 9 11.01" />
-                                        </svg>
+                                        <img src="/servicos/formacao/certificacao-dgert-formacao-sigo.webp" alt="Entidades certificadas DGERT & SIGO" className="edu-feature-img" width="24" height="24" />
                                     </div>
                                     <div>
                                         <strong>Entidades certificadas DGERT & SIGO</strong>
@@ -210,10 +209,7 @@ const Formacao = () => {
 
                                 <div className="edu-feature-item">
                                     <div className="edu-feature-icon">
-                                        <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.5" strokeLinecap="round" strokeLinejoin="round">
-                                            <line x1="12" y1="1" x2="12" y2="23" />
-                                            <path d="M17 5H9.5a3.5 3.5 0 0 0 0 7h5a3.5 3.5 0 0 1 0 7H6" />
-                                        </svg>
+                                        <img src="/servicos/formacao/cheque-formacao-apoio-financeiro.webp" alt="Financiamento a 100%" className="edu-feature-img" width="24" height="24" />
                                     </div>
                                     <div>
                                         <strong>Financiamento a 100%</strong>
@@ -223,9 +219,7 @@ const Formacao = () => {
 
                                 <div className="edu-feature-item">
                                     <div className="edu-feature-icon">
-                                        <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.5" strokeLinecap="round" strokeLinejoin="round">
-                                            <polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2" />
-                                        </svg>
+                                        <img src="/servicos/formacao/planeamento-plano-formacao-empresa.webp" alt="Programas à Medida do Negócio" className="edu-feature-img" width="24" height="24" />
                                     </div>
                                     <div>
                                         <strong>Programas à Medida do Negócio</strong>
@@ -236,7 +230,7 @@ const Formacao = () => {
                         </div>
 
                         <div className="edu-value-visual">
-                            <img src="/servicos/formacao/team-new.webp" alt="Equipa e-nimble em formação prática corporativa" className="edu-value-team-img" />
+                            <img src="/servicos/formacao/team-new.webp" alt="Equipa ENimble em formação prática corporativa" className="edu-value-team-img" />
                         </div>
                     </div>
                 </div>
@@ -257,7 +251,7 @@ const Formacao = () => {
                     <div className="edu-funding-highlights reveal delay-1" ref={fundingRef} onScroll={handleFundingScroll}>
                         <div className={`edu-fh-card ${fundingActiveIndex === 0 ? 'active' : ''}`}>
                             <div className="edu-fh-icon">
-                                <img src="/servicos/formacao/fundo-compensacao-trabalho-financiamento-formacao.webp" alt="Fundo de Compensação do Trabalho Financiamento Formação e-nimble" className="edu-funding-icon-img" />
+                                <img src="/servicos/formacao/fundo-compensacao-trabalho-financiamento-formacao.webp" alt="Fundo de Compensação do Trabalho Financiamento Formação ENimble" className="edu-funding-icon-img" />
                             </div>
                             <div>
                                 <h4>Fundo de Compensação</h4>
@@ -267,7 +261,7 @@ const Formacao = () => {
 
                         <div className={`edu-fh-card highlight-card ${fundingActiveIndex === 1 ? 'active' : ''}`}>
                             <div className="edu-fh-icon">
-                                <img src="/servicos/formacao/cheque-formacao-apoio-financeiro.webp" alt="Cheque-Formação Apoio Financeiro e-nimble" className="edu-funding-icon-img" />
+                                <img src="/servicos/formacao/cheque-formacao-apoio-financeiro.webp" alt="Cheque-Formação Apoio Financeiro ENimble" className="edu-funding-icon-img" />
                             </div>
                             <div>
                                 <h4>Cheque-Formação</h4>
@@ -277,7 +271,7 @@ const Formacao = () => {
 
                         <div className={`edu-fh-card ${fundingActiveIndex === 2 ? 'active' : ''}`}>
                             <div className="edu-fh-icon">
-                                <img src="/servicos/formacao/financiamento-formacao-100-percento.webp" alt="Financiamento de Formação até 100 por cento e-nimble" className="edu-funding-icon-img" />
+                                <img src="/servicos/formacao/financiamento-formacao-100-percento.webp" alt="Financiamento de Formação até 100 por cento ENimble" className="edu-funding-icon-img" />
                             </div>
                             <div>
                                 <h4>Até 100% Financiado</h4>
@@ -311,7 +305,7 @@ const Formacao = () => {
                             <div className={`edu-flow-step ${flowActiveIndex === 0 ? 'active' : ''}`}>
                                 <div className="edu-step-number">01</div>
                                 <div className="edu-step-icon">
-                                    <img src="/servicos/formacao/diagnostico-necessidades-formacao.webp" alt="Diagnóstico de Necessidades de Formação e-nimble" className="edu-flow-step-img" />
+                                    <img src="/servicos/formacao/diagnostico-necessidades-formacao.webp" alt="Diagnóstico de Necessidades de Formação ENimble" className="edu-flow-step-img" />
                                 </div>
                                 <div className="edu-step-content">
                                     <h4>Diagnóstico</h4>
@@ -329,7 +323,7 @@ const Formacao = () => {
                             <div className={`edu-flow-step ${flowActiveIndex === 1 ? 'active' : ''}`}>
                                 <div className="edu-step-number">02</div>
                                 <div className="edu-step-icon">
-                                    <img src="/servicos/formacao/planeamento-plano-formacao-empresa.webp" alt="Planeamento e Plano de Formação para Empresas e-nimble" className="edu-flow-step-img" />
+                                    <img src="/servicos/formacao/planeamento-plano-formacao-empresa.webp" alt="Planeamento e Plano de Formação para Empresas ENimble" className="edu-flow-step-img" />
                                 </div>
                                 <div className="edu-step-content">
                                     <h4>Planeamento</h4>
@@ -347,7 +341,7 @@ const Formacao = () => {
                             <div className={`edu-flow-step ${flowActiveIndex === 2 ? 'active' : ''}`}>
                                 <div className="edu-step-number">03</div>
                                 <div className="edu-step-icon">
-                                    <img src="/servicos/formacao/formacao-pratica-presencial-hibrida.webp" alt="Formação Prática Presencial ou Híbrida e-nimble" className="edu-flow-step-img" />
+                                    <img src="/servicos/formacao/formacao-pratica-presencial-hibrida.webp" alt="Formação Prática Presencial ou Híbrida ENimble" className="edu-flow-step-img" />
                                 </div>
                                 <div className="edu-step-content">
                                     <h4>Formação</h4>
@@ -365,7 +359,7 @@ const Formacao = () => {
                             <div className={`edu-flow-step highlight-step ${flowActiveIndex === 3 ? 'active' : ''}`}>
                                 <div className="edu-step-number">04</div>
                                 <div className="edu-step-icon">
-                                    <img src="/servicos/formacao/certificacao-dgert-formacao-sigo.webp" alt="Certificação oficial DGERT e Registo na plataforma SIGO e-nimble" className="edu-flow-step-img" />
+                                    <img src="/servicos/formacao/certificacao-dgert-formacao-sigo.webp" alt="Certificação oficial DGERT e Registo na plataforma SIGO ENimble" className="edu-flow-step-img" />
                                 </div>
                                 <div className="edu-step-content">
                                     <h4>Certificação</h4>

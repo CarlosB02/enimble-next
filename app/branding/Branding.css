@@ -34,6 +34,10 @@ body.brand-body .main-nav a {
     font-weight: 700;
 }
 
+body.brand-body .main-footer .logo-text {
+    color: white !important;
+}
+
 body.brand-body .header:not(.nav-open) .hamburger,
 body.brand-body .header:not(.nav-open) .hamburger::before,
 body.brand-body .header:not(.nav-open) .hamburger::after {

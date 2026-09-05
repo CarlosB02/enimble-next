@@ -243,6 +243,12 @@
 #menu-toggle:checked~.header,
 .header.nav-open {
   z-index: 10001 !important;
+  background: transparent !important;
+  background-color: transparent !important;
+  border: none !important;
+  box-shadow: none !important;
+  backdrop-filter: none !important;
+  -webkit-backdrop-filter: none !important;
 }
 
 #menu-toggle:checked~.header .hamburger,
@@ -486,7 +492,7 @@
     display: block;
     width: 100%;
     padding: 0.75rem 1.8rem;
-    background: var(--gradient-main);
+    background: var(--gradient-main) !important;
     color: #ffffff !important;
     border: none !important;
     border-radius: 50px;
@@ -498,6 +504,8 @@
   }
 
   .mobile-nav-drawer .btn-nav-gradient:hover {
+    background: var(--gradient-main) !important;
+    color: #ffffff !important;
     transform: translateY(-2px);
     box-shadow: 0 6px 22px rgba(58, 0, 255, 0.4);
   }
@@ -617,7 +625,11 @@ body.portfolio-body .header.nav-open .hamburger::after,
 body.brand-body #menu-toggle:checked~.header .hamburger::before,
 body.brand-body #menu-toggle:checked~.header .hamburger::after,
 body.brand-body .header.nav-open .hamburger::before,
-body.brand-body .header.nav-open .hamburger::after {
+body.brand-body .header.nav-open .hamburger::after,
+body.ads-body #menu-toggle:checked~.header .hamburger::before,
+body.ads-body #menu-toggle:checked~.header .hamburger::after,
+body.ads-body .header.nav-open .hamburger::before,
+body.ads-body .header.nav-open .hamburger::after {
   background: #ffffff !important;
 }
 
@@ -628,7 +640,9 @@ body.shop-body .header.nav-open .logo-text,
 body.portfolio-body #menu-toggle:checked~.header .logo-text,
 body.portfolio-body .header.nav-open .logo-text,
 body.brand-body #menu-toggle:checked~.header .logo-text,
-body.brand-body .header.nav-open .logo-text {
+body.brand-body .header.nav-open .logo-text,
+body.ads-body #menu-toggle:checked~.header .logo-text,
+body.ads-body .header.nav-open .logo-text {
   color: #ffffff !important;
 }
 
@@ -641,7 +655,10 @@ body.portfolio-body .header:not(.nav-open) .hamburger::before,
 body.portfolio-body .header:not(.nav-open) .hamburger::after,
 body.brand-body .header:not(.nav-open) .hamburger,
 body.brand-body .header:not(.nav-open) .hamburger::before,
-body.brand-body .header:not(.nav-open) .hamburger::after {
+body.brand-body .header:not(.nav-open) .hamburger::after,
+body.ads-body .header:not(.header-scrolled):not(.nav-open) .hamburger,
+body.ads-body .header:not(.header-scrolled):not(.nav-open) .hamburger::before,
+body.ads-body .header:not(.header-scrolled):not(.nav-open) .hamburger::after {
   background: #1a1a1a !important;
   box-shadow: none !important;
 }
@@ -649,6 +666,7 @@ body.brand-body .header:not(.nav-open) .hamburger::after {
 body.shop-body .nav-open .hamburger,
 body.portfolio-body .nav-open .hamburger,
 body.brand-body .nav-open .hamburger,
+body.ads-body .nav-open .hamburger,
 #menu-toggle:checked~.header .hamburger {
   background: transparent !important;
 }

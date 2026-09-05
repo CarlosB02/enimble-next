@@ -11,32 +11,6 @@ body.about-body .header {
     background-color: transparent;
 }
 
-body.about-body .header.header-scrolled {
-    background-color: white;
-}
-
-body.about-body .header.header-scrolled .logo-text,
-body.about-body .header.header-scrolled .main-nav a {
-    color: #1a1a1a !important;
-}
-
-body.about-body .header.header-scrolled .mobile-nav-toggle .hamburger,
-body.about-body .header.header-scrolled .mobile-nav-toggle .hamburger::before,
-body.about-body .header.header-scrolled .mobile-nav-toggle .hamburger::after {
-    background-color: #1a1a1a !important;
-}
-
-body.about-body .header.header-scrolled .btn-nav {
-    border-color: #1a1a1a;
-    color: #1a1a1a !important;
-}
-
-body.about-body .header.header-scrolled .btn-nav:hover {
-    background-color: var(--color-primary-blue);
-    color: white !important;
-    border-color: var(--color-primary-blue);
-}
-
 
 /* CINEMATIC HERO - BRANDED */
 .poster-hero {
@@ -50,7 +24,6 @@ body.about-body .header.header-scrolled .btn-nav:hover {
     position: relative;
     background: var(--gradient-main);
     color: white;
-    /* Force white text on gradient */
 }
 
 .poster-hero h1 {
@@ -59,7 +32,6 @@ body.about-body .header.header-scrolled .btn-nav:hover {
     text-align: center;
     line-height: 0.9;
     z-index: 2;
-    /* No mix-blend-mode for cleaner look on gradient */
 }
 
 .poster-hero h1 span {
@@ -73,7 +45,6 @@ body.about-body .header.header-scrolled .btn-nav:hover {
 .poster-hero h1 span.outline-text {
     color: transparent;
     -webkit-text-stroke: 2px white;
-    /* Restore opacity animation */
 }
 
 @keyframes textRise {
@@ -98,10 +69,11 @@ body.about-body .header.header-scrolled .btn-nav:hover {
 
 /* MANIFESTO SCROLL */
 .manifesto-section {
-    padding: 10rem 0;
+    padding: 5.5rem 2rem;
     max-width: 900px;
     margin: 0 auto;
     position: relative;
+    box-sizing: border-box;
 }
 
 .manifesto-text {
@@ -109,7 +81,6 @@ body.about-body .header.header-scrolled .btn-nav:hover {
     font-size: 2.5rem;
     line-height: 1.4;
     color: #444;
-    /* Darker for light bg */
 }
 
 .highlight {
@@ -121,78 +92,17 @@ body.about-body .header.header-scrolled .btn-nav:hover {
     font-weight: 700;
 }
 
-/* HORIZONTAL TEAM/HISTORY (Simulated) */
-.timeline-wrapper {
-    overflow-x: auto;
-    white-space: nowrap;
-    padding: 4rem 0;
-    background: #f8f9fa;
-    /* Very light grey */
-    /* Hide scrollbar */
-    -ms-overflow-style: none;
-    /* IE and Edge */
-    scrollbar-width: none;
-    /* Firefox */
-}
-
-.timeline-wrapper::-webkit-scrollbar {
-    display: none;
-}
-
-.timeline-item {
-    display: inline-block;
-    width: 400px;
-    margin-right: 2rem;
-    vertical-align: top;
-    white-space: normal;
-    background: white;
-    border: 1px solid rgba(0, 0, 0, 0.05);
-    border-radius: 20px;
-    padding: 2.5rem;
-    transition: 0.3s;
-    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.05);
-}
-
-.timeline-item:first-child {
-    margin-left: 10vw;
-}
-
-.timeline-item:last-child {
-    margin-right: 10vw;
-}
-
-.timeline-item:hover {
-    transform: translateY(-10px);
-    box-shadow: 0 20px 40px rgba(0, 0, 0, 0.1);
-    border-color: var(--color-primary-blue);
-}
-
-.time-year {
-    font-family: 'Syne', sans-serif;
-    font-size: 4rem;
-    color: transparent;
-    -webkit-text-stroke: 1px var(--color-primary-blue);
-    margin-bottom: 1rem;
-    opacity: 0.3;
-}
-
-.timeline-item:hover .time-year {
-    opacity: 1;
-}
-
-.time-title {
-    font-size: 1.5rem;
-    color: var(--text-color);
-    margin-bottom: 0.5rem;
-    font-weight: 700;
-}
-
 /* DNA HOLOGRAM (Values) */
+.dna-section {
+    padding: 5rem 0;
+    position: relative;
+    background: white;
+}
+
 .dna-values {
     display: flex;
     flex-wrap: wrap;
     justify-content: center;
-    padding: 8rem 0;
     gap: 4rem;
     background: white;
 }
@@ -208,6 +118,9 @@ body.about-body .header.header-scrolled .btn-nav:hover {
     position: relative;
     transition: all 0.5s;
     background: #fdfdfd;
+    cursor: pointer;
+    user-select: none;
+    -webkit-tap-highlight-color: transparent;
 }
 
 .value-orb::before {
@@ -223,13 +136,15 @@ body.about-body .header.header-scrolled .btn-nav:hover {
     transition: 0.3s;
 }
 
-.value-orb:hover {
+.value-orb:hover,
+.value-orb.active {
     transform: scale(1.1);
     background: white;
     box-shadow: 0 10px 40px rgba(58, 0, 255, 0.1);
 }
 
-.value-orb:hover::before {
+.value-orb:hover::before,
+.value-orb.active::before {
     opacity: 1;
 }
 
@@ -255,7 +170,8 @@ body.about-body .header.header-scrolled .btn-nav:hover {
     transition: 0.3s;
 }
 
-.value-orb:hover .value-sub {
+.value-orb:hover .value-sub,
+.value-orb.active .value-sub {
     opacity: 1;
     transform: translateY(5px);
 }
@@ -264,23 +180,45 @@ body.about-body .header.header-scrolled .btn-nav:hover {
     0% {
         transform: rotate(0deg);
     }
-
     100% {
         transform: rotate(360deg);
     }
 }
 
-/* FOUNDERS NOTE overlay */
+/* CAROUSEL DOTS - Hidden on desktop */
+.carousel-dots {
+    display: none;
+}
+
+/* FOUNDERS NOTE */
+.founders-section {
+    padding-bottom: 4rem;
+}
+
 .founder-note {
     background: white;
     color: black;
     padding: 4rem;
-    margin: 4rem auto;
+    margin: 3rem auto;
     max-width: 800px;
     position: relative;
     transform: rotate(-1deg);
     border: 1px solid rgba(0, 0, 0, 0.05);
     box-shadow: 0 20px 60px rgba(0, 0, 0, 0.05);
+    box-sizing: border-box;
+}
+
+.founder-note-title {
+    font-family: 'Syne', sans-serif;
+    font-size: 2rem;
+    margin-bottom: 1.5rem;
+    color: var(--text-color);
+}
+
+.founder-note-body {
+    line-height: 1.8;
+    font-size: 1.1rem;
+    color: var(--text-color);
 }
 
 .founder-note::before {
@@ -288,11 +226,12 @@ body.about-body .header.header-scrolled .btn-nav:hover {
     position: absolute;
     top: -2rem;
     left: 2rem;
-    font-family: 'Syne';
+    font-family: 'Syne', sans-serif;
     font-size: 10rem;
     color: var(--color-primary-blue);
     opacity: 0.1;
     line-height: 1;
+    pointer-events: none;
 }
 
 .founder-sig {
@@ -302,4 +241,135 @@ body.about-body .header.header-scrolled .btn-nav:hover {
     text-align: right;
     font-style: italic;
     color: var(--color-primary-red);
+}
+
+/* ============================================
+   RESPONSIVE STYLES & MOBILE CAROUSEL
+   ============================================ */
+@media (max-width: 768px) {
+    /* MANIFESTO RESPONSIVENESS & MARGINS */
+    .manifesto-section {
+        padding: 3.5rem 1.5rem !important;
+        max-width: 100% !important;
+    }
+
+    .manifesto-text {
+        font-size: 1.35rem !important;
+        line-height: 1.55 !important;
+    }
+
+    /* DNA SECTION MOBILE CAROUSEL */
+    .dna-section {
+        padding: 2rem 0 !important;
+    }
+
+    .dna-values {
+        display: flex !important;
+        flex-direction: row !important;
+        flex-wrap: nowrap !important;
+        justify-content: flex-start !important;
+        overflow-x: auto !important;
+        scroll-snap-type: x mandatory !important;
+        scrollbar-width: none !important;
+        -ms-overflow-style: none !important;
+        gap: 1.25rem !important;
+        padding: 2.25rem calc(50% - 100px) 5.5rem !important;
+        margin-left: -2rem !important;
+        margin-right: -2rem !important;
+        box-sizing: border-box !important;
+    }
+
+    .dna-values::-webkit-scrollbar {
+        display: none !important;
+    }
+
+    .value-orb {
+        flex: 0 0 200px !important;
+        width: 200px !important;
+        height: 200px !important;
+        scroll-snap-align: center !important;
+        margin-bottom: 0 !important;
+        transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1) !important;
+    }
+
+    .value-orb.active,
+    .value-orb:hover {
+        transform: scale(1.08) !important;
+        background: white !important;
+        box-shadow: 0 10px 40px rgba(58, 0, 255, 0.15) !important;
+    }
+
+    .value-orb.active::before,
+    .value-orb:hover::before {
+        opacity: 1 !important;
+    }
+
+    .value-orb.active .value-sub,
+    .value-orb:hover .value-sub {
+        opacity: 1 !important;
+        transform: translateY(5px) !important;
+    }
+
+    /* CAROUSEL DOTS ON MOBILE */
+    .carousel-dots {
+        display: flex !important;
+        justify-content: center !important;
+        align-items: center !important;
+        gap: 8px !important;
+        margin-top: -4.8rem !important;
+        margin-bottom: 1rem !important;
+        position: relative !important;
+        z-index: 5 !important;
+        pointer-events: auto !important;
+    }
+
+    .carousel-dot {
+        width: 8px;
+        height: 8px;
+        border-radius: 50%;
+        background: rgba(0, 0, 0, 0.15);
+        border: none;
+        padding: 0;
+        cursor: pointer;
+        transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+    }
+
+    .carousel-dot.active {
+        background: var(--color-primary-blue, #3A00FF);
+        width: 22px;
+        border-radius: 10px;
+    }
+
+    /* FOUNDER NOTE RESPONSIVENESS */
+    .founders-section {
+        padding-bottom: 3rem !important;
+    }
+
+    .founder-note {
+        padding: 2.25rem 1.5rem !important;
+        margin: 0 auto !important;
+        transform: none !important;
+        max-width: 100% !important;
+    }
+
+    .founder-note-title {
+        font-size: 1.5rem !important;
+        margin-bottom: 1rem !important;
+    }
+
+    .founder-note-body {
+        font-size: 1rem !important;
+        line-height: 1.65 !important;
+    }
+
+    .founder-note::before {
+        top: -1rem !important;
+        left: 0.75rem !important;
+        font-size: 6rem !important;
+    }
+
+    .founder-sig {
+        font-size: 1.6rem !important;
+        margin-top: 1.5rem !important;
+    }
 }

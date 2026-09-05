@@ -63,27 +63,27 @@ const Ecommerce = () => {
             <section className="shop-hero">
                 <div className="carousel-3d">
                     <div className="float-item">
-                        <img src="/servicos/ecommerce/e-nimble-ecommerce-product-shoe.webp" alt="Produto Calçado E-commerce - e-nimble" />
+                        <img src="/servicos/ecommerce/ENimble-ecommerce-product-shoe.webp" alt="Produto Calçado E-commerce - ENimble" />
                         <div className="float-price">120€</div>
                     </div>
                     <div className="float-item">
-                        <img src="/servicos/ecommerce/e-nimble-ecommerce-tech-item.webp" alt="Produto Auriculares E-commerce - e-nimble" />
+                        <img src="/servicos/ecommerce/ENimble-ecommerce-tech-item.webp" alt="Produto Auriculares E-commerce - ENimble" />
                         <div className="float-price">299€</div>
                     </div>
                     <div className="float-item">
-                        <img src="/servicos/ecommerce/e-nimble-ecommerce-luxury-watch.webp" alt="Produto Relógio E-commerce - e-nimble" />
+                        <img src="/servicos/ecommerce/ENimble-ecommerce-luxury-watch.webp" alt="Produto Relógio E-commerce - ENimble" />
                         <div className="float-price">450€</div>
                     </div>
                     <div className="float-item">
-                        <img src="/servicos/ecommerce/e-nimble-ecommerce-product-bag.webp" alt="Produto Mala E-commerce - e-nimble" />
+                        <img src="/servicos/ecommerce/ENimble-ecommerce-product-bag.webp" alt="Produto Mala E-commerce - ENimble" />
                         <div className="float-price">850€</div>
                     </div>
                     <div className="float-item">
-                        <img src="/servicos/ecommerce/e-nimble-ecommerce-accessories-glasses.webp" alt="Produto Óculos E-commerce - e-nimble" />
+                        <img src="/servicos/ecommerce/ENimble-ecommerce-accessories-glasses.webp" alt="Produto Óculos E-commerce - ENimble" />
                         <div className="float-price">180€</div>
                     </div>
                     <div className="float-item">
-                        <img src="/servicos/ecommerce/e-nimble-ecommerce-beauty-cosmetic.webp" alt="Produto Cosmética E-commerce - e-nimble" />
+                        <img src="/servicos/ecommerce/ENimble-ecommerce-beauty-cosmetic.webp" alt="Produto Cosmética E-commerce - ENimble" />
                         <div className="float-price">45€</div>
                     </div>
                 </div>
@@ -98,26 +98,26 @@ const Ecommerce = () => {
             <div className="platforms-slider-container reveal">
                 <div className="platforms-track">
                     {/* First set of logos */}
-                    <div className="platform-slide"><img src="/servicos/ecommerce/platforms-shopify.webp" alt="Shopify - e-nimble expert" /></div>
-                    <div className="platform-slide"><img src="/servicos/ecommerce/platforms-woocommerce.webp" alt="WooCommerce - e-nimble expert" /></div>
-                    <div className="platform-slide"><img src="/servicos/ecommerce/platforms-stripe.webp" alt="Stripe - e-nimble expert" /></div>
-                    <div className="platform-slide"><img src="/servicos/ecommerce/platforms-klarna.webp" alt="Klarna - e-nimble expert" /></div>
-                    <div className="platform-slide"><img src="/servicos/ecommerce/platforms-mbway.webp" alt="MBWay - e-nimble expert" /></div>
-                    <div className="platform-slide"><img src="/servicos/ecommerce/platforms-revolut.webp" alt="Revolut - e-nimble expert" /></div>
-                    <div className="platform-slide"><img src="/servicos/ecommerce/platforms-paypal.webp" alt="PayPal - e-nimble expert" /></div>
-                    <div className="platform-slide"><img src="/servicos/ecommerce/platforms-applepay.webp" alt="Apple Pay - e-nimble expert" /></div>
-                    <div className="platform-slide"><img src="/servicos/ecommerce/platforms-googlepay.webp" alt="Google Pay - e-nimble expert" /></div>
+                    <div className="platform-slide"><img src="/servicos/ecommerce/platforms-shopify.webp" alt="Shopify - ENimble expert" /></div>
+                    <div className="platform-slide"><img src="/servicos/ecommerce/platforms-woocommerce.webp" alt="WooCommerce - ENimble expert" /></div>
+                    <div className="platform-slide"><img src="/servicos/ecommerce/platforms-stripe.webp" alt="Stripe - ENimble expert" /></div>
+                    <div className="platform-slide"><img src="/servicos/ecommerce/platforms-klarna.webp" alt="Klarna - ENimble expert" /></div>
+                    <div className="platform-slide"><img src="/servicos/ecommerce/platforms-mbway.webp" alt="MBWay - ENimble expert" /></div>
+                    <div className="platform-slide"><img src="/servicos/ecommerce/platforms-revolut.webp" alt="Revolut - ENimble expert" /></div>
+                    <div className="platform-slide"><img src="/servicos/ecommerce/platforms-paypal.webp" alt="PayPal - ENimble expert" /></div>
+                    <div className="platform-slide"><img src="/servicos/ecommerce/platforms-applepay.webp" alt="Apple Pay - ENimble expert" /></div>
+                    <div className="platform-slide"><img src="/servicos/ecommerce/platforms-googlepay.webp" alt="Google Pay - ENimble expert" /></div>
 
                     {/* Second set (duplicated for infinite loop) */}
-                    <div className="platform-slide"><img src="/servicos/ecommerce/platforms-shopify.webp" alt="Shopify - e-nimble expert" /></div>
-                    <div className="platform-slide"><img src="/servicos/ecommerce/platforms-woocommerce.webp" alt="WooCommerce - e-nimble expert" /></div>
-                    <div className="platform-slide"><img src="/servicos/ecommerce/platforms-stripe.webp" alt="Stripe - e-nimble expert" /></div>
-                    <div className="platform-slide"><img src="/servicos/ecommerce/platforms-klarna.webp" alt="Klarna - e-nimble expert" /></div>
-                    <div className="platform-slide"><img src="/servicos/ecommerce/platforms-mbway.webp" alt="MBWay - e-nimble expert" /></div>
-                    <div className="platform-slide"><img src="/servicos/ecommerce/platforms-revolut.webp" alt="Revolut - e-nimble expert" /></div>
-                    <div className="platform-slide"><img src="/servicos/ecommerce/platforms-paypal.webp" alt="PayPal - e-nimble expert" /></div>
-                    <div className="platform-slide"><img src="/servicos/ecommerce/platforms-applepay.webp" alt="Apple Pay - e-nimble expert" /></div>
-                    <div className="platform-slide"><img src="/servicos/ecommerce/platforms-googlepay.webp" alt="Google Pay - e-nimble expert" /></div>
+                    <div className="platform-slide"><img src="/servicos/ecommerce/platforms-shopify.webp" alt="Shopify - ENimble expert" /></div>
+                    <div className="platform-slide"><img src="/servicos/ecommerce/platforms-woocommerce.webp" alt="WooCommerce - ENimble expert" /></div>
+                    <div className="platform-slide"><img src="/servicos/ecommerce/platforms-stripe.webp" alt="Stripe - ENimble expert" /></div>
+                    <div className="platform-slide"><img src="/servicos/ecommerce/platforms-klarna.webp" alt="Klarna - ENimble expert" /></div>
+                    <div className="platform-slide"><img src="/servicos/ecommerce/platforms-mbway.webp" alt="MBWay - ENimble expert" /></div>
+                    <div className="platform-slide"><img src="/servicos/ecommerce/platforms-revolut.webp" alt="Revolut - ENimble expert" /></div>
+                    <div className="platform-slide"><img src="/servicos/ecommerce/platforms-paypal.webp" alt="PayPal - ENimble expert" /></div>
+                    <div className="platform-slide"><img src="/servicos/ecommerce/platforms-applepay.webp" alt="Apple Pay - ENimble expert" /></div>
+                    <div className="platform-slide"><img src="/servicos/ecommerce/platforms-googlepay.webp" alt="Google Pay - ENimble expert" /></div>
                 </div>
             </div>
 
@@ -219,7 +219,7 @@ const Ecommerce = () => {
                     <div className="ec-adv-grid" ref={advGridRef} onScroll={handleAdvScroll}>
                         <div className={`ec-adv-card reveal delay-1 ${advActiveIndex === 0 ? 'active' : ''}`}>
                             <div className="ec-adv-icon">
-                                <img src="/servicos/ecommerce/e-nimble-service-global-reach.webp" alt="Alcance global para e-commerce - e-nimble" />
+                                <img src="/servicos/ecommerce/ENimble-service-global-reach.webp" alt="Alcance global para e-commerce - ENimble" />
                             </div>
                             <h3>Alcance Global</h3>
                             <p>Venda para todo o país ou o mundo inteiro, sem custos adicionais.</p>
@@ -231,7 +231,7 @@ const Ecommerce = () => {
 
                         <div className={`ec-adv-card reveal delay-2 ${advActiveIndex === 1 ? 'active' : ''}`}>
                             <div className="ec-adv-icon">
-                                <img src="/servicos/ecommerce/e-nimble-service-24-7-automation.webp" alt="Vendas 24/7 e automação - e-nimble" />
+                                <img src="/servicos/ecommerce/ENimble-service-24-7-automation.webp" alt="Vendas 24/7 e automação - ENimble" />
                             </div>
                             <h3>Vendas 24/7</h3>
                             <p>A sua loja nunca fecha. Gere vendas à noite, fins de semana e feriados.</p>
@@ -243,7 +243,7 @@ const Ecommerce = () => {
 
                         <div className={`ec-adv-card reveal delay-3 ${advActiveIndex === 2 ? 'active' : ''}`}>
                             <div className="ec-adv-icon">
-                                <img src="/servicos/ecommerce/e-nimble-service-frictionless-experience.webp" alt="Experiência de compra otimizada - e-nimble" />
+                                <img src="/servicos/ecommerce/ENimble-service-frictionless-experience.webp" alt="Experiência de compra otimizada - ENimble" />
                             </div>
                             <h3>Experiência Fluida</h3>
                             <p>Checkout rápido para evitar carrinhos abandonados.</p>
@@ -255,7 +255,7 @@ const Ecommerce = () => {
 
                         <div className={`ec-adv-card reveal delay-4 ${advActiveIndex === 3 ? 'active' : ''}`}>
                             <div className="ec-adv-icon">
-                                <img src="/servicos/ecommerce/e-nimble-service-data-driven-results.webp" alt="Dados e insights de e-commerce - e-nimble" />
+                                <img src="/servicos/ecommerce/ENimble-service-data-driven-results.webp" alt="Dados e insights de e-commerce - ENimble" />
                             </div>
                             <h3>Dados e Insights</h3>
                             <p>Saiba exatamente o que os seus clientes querem e compram.</p>
@@ -299,67 +299,67 @@ const Ecommerce = () => {
                     <div className="ec-showcase-grid" ref={showcaseGridRef} onScroll={handleShowcaseScroll}>
                         <div className={`ec-showcase-item reveal delay-1 ${showcaseActiveIndex === 0 ? 'active' : ''}`}>
                             <div className="ec-showcase-icon">
-                                <img src="/servicos/ecommerce/agency-expertise-fashion-ecommerce.webp" alt="E-commerce de moda e vestuário - e-nimble" />
+                                <img src="/servicos/ecommerce/agency-expertise-fashion-ecommerce.webp" alt="E-commerce de moda e vestuário - ENimble" />
                             </div>
                             <span>Moda & Vestuário</span>
                         </div>
                         <div className={`ec-showcase-item reveal delay-1 ${showcaseActiveIndex === 1 ? 'active' : ''}`}>
                             <div className="ec-showcase-icon">
-                                <img src="/servicos/ecommerce/agency-expertise-food-gourmet.webp" alt="E-commerce alimentar e gourmet - e-nimble" />
+                                <img src="/servicos/ecommerce/agency-expertise-food-gourmet.webp" alt="E-commerce alimentar e gourmet - ENimble" />
                             </div>
                             <span>Alimentar & Bebidas</span>
                         </div>
                         <div className={`ec-showcase-item reveal delay-2 ${showcaseActiveIndex === 2 ? 'active' : ''}`}>
                             <div className="ec-showcase-icon">
-                                <img src="/servicos/ecommerce/agency-expertise-health-wellness.webp" alt="E-commerce de saúde e cosmética - e-nimble" />
+                                <img src="/servicos/ecommerce/agency-expertise-health-wellness.webp" alt="E-commerce de saúde e cosmética - ENimble" />
                             </div>
                             <span>Saúde & Cosmética</span>
                         </div>
                         <div className={`ec-showcase-item reveal delay-2 ${showcaseActiveIndex === 3 ? 'active' : ''}`}>
                             <div className="ec-showcase-icon">
-                                <img src="/servicos/ecommerce/agency-expertise-home-decor.webp" alt="E-commerce de casa e decoração - e-nimble" />
+                                <img src="/servicos/ecommerce/agency-expertise-home-decor.webp" alt="E-commerce de casa e decoração - ENimble" />
                             </div>
                             <span>Casa & Decoração</span>
                         </div>
                         <div className={`ec-showcase-item reveal delay-3 ${showcaseActiveIndex === 4 ? 'active' : ''}`}>
                             <div className="ec-showcase-icon">
-                                <img src="/servicos/ecommerce/agency-expertise-tech-gaming.webp" alt="E-commerce de tecnologia e gaming - e-nimble" />
+                                <img src="/servicos/ecommerce/agency-expertise-tech-gaming.webp" alt="E-commerce de tecnologia e gaming - ENimble" />
                             </div>
                             <span>Tecnologia & Gaming</span>
                         </div>
                         <div className={`ec-showcase-item reveal delay-3 ${showcaseActiveIndex === 5 ? 'active' : ''}`}>
                             <div className="ec-showcase-icon">
-                                <img src="/servicos/ecommerce/agency-expertise-jewelry-luxury.webp" alt="E-commerce de joalharia e luxo - e-nimble" />
+                                <img src="/servicos/ecommerce/agency-expertise-jewelry-luxury.webp" alt="E-commerce de joalharia e luxo - ENimble" />
                             </div>
                             <span>Joalharia & Acessórios</span>
                         </div>
                         <div className={`ec-showcase-item reveal delay-4 ${showcaseActiveIndex === 6 ? 'active' : ''}`}>
                             <div className="ec-showcase-icon">
-                                <img src="/servicos/ecommerce/agency-expertise-digital-education.webp" alt="E-commerce de educação e cursos - e-nimble" />
+                                <img src="/servicos/ecommerce/agency-expertise-digital-education.webp" alt="E-commerce de educação e cursos - ENimble" />
                             </div>
                             <span>Educação & Cursos</span>
                         </div>
                         <div className={`ec-showcase-item reveal delay-4 ${showcaseActiveIndex === 7 ? 'active' : ''}`}>
                             <div className="ec-showcase-icon">
-                                <img src="/servicos/ecommerce/agency-expertise-personal-care.webp" alt="E-commerce de cuidado pessoal - e-nimble" />
+                                <img src="/servicos/ecommerce/agency-expertise-personal-care.webp" alt="E-commerce de cuidado pessoal - ENimble" />
                             </div>
                             <span>Cuidado Pessoal</span>
                         </div>
                         <div className={`ec-showcase-item reveal delay-1 ${showcaseActiveIndex === 8 ? 'active' : ''}`}>
                             <div className="ec-showcase-icon">
-                                <img src="/servicos/ecommerce/loja-online-pet-shop.webp" alt="E-commerce de loja de animais - e-nimble" />
+                                <img src="/servicos/ecommerce/loja-online-pet-shop.webp" alt="E-commerce de loja de animais - ENimble" />
                             </div>
                             <span>Loja de Animais</span>
                         </div>
                         <div className={`ec-showcase-item reveal delay-2 ${showcaseActiveIndex === 9 ? 'active' : ''}`}>
                             <div className="ec-showcase-icon">
-                                <img src="/servicos/ecommerce/loja-online-desporto-fitness.webp" alt="E-commerce de desporto e fitness - e-nimble" />
+                                <img src="/servicos/ecommerce/loja-online-desporto-fitness.webp" alt="E-commerce de desporto e fitness - ENimble" />
                             </div>
                             <span>Desporto & Fitness</span>
                         </div>
                         <div className={`ec-showcase-item reveal delay-3 ${showcaseActiveIndex === 10 ? 'active' : ''}`}>
                             <div className="ec-showcase-icon">
-                                <img src="/servicos/ecommerce/loja-online-automovel.webp" alt="E-commerce automóvel - e-nimble" />
+                                <img src="/servicos/ecommerce/loja-online-automovel.webp" alt="E-commerce automóvel - ENimble" />
                             </div>
                             <span>Automóvel</span>
                         </div>
@@ -399,7 +399,7 @@ const Ecommerce = () => {
                     <div className="ec-journey-flow" ref={journeyFlowRef} onScroll={handleJourneyScroll}>
                         <div className={`ec-journey-step reveal delay-1 ${journeyActiveIndex === 0 ? 'active' : ''}`}>
                             <div className="ec-js-icon">
-                                <img src="/servicos/ecommerce/customer-journey-discovery-optimization.webp" alt="Fase de descoberta e pesquisa - e-nimble" />
+                                <img src="/servicos/ecommerce/customer-journey-discovery-optimization.webp" alt="Fase de descoberta e pesquisa - ENimble" />
                             </div>
                             <div className="ec-js-content">
                                 <h4>Descoberta</h4>
@@ -411,7 +411,7 @@ const Ecommerce = () => {
 
                         <div className={`ec-journey-step reveal delay-2 ${journeyActiveIndex === 1 ? 'active' : ''}`}>
                             <div className="ec-js-icon">
-                                <img src="/servicos/ecommerce/customer-journey-cart-conversion.webp" alt="Fase de carrinho e conversão - e-nimble" />
+                                <img src="/servicos/ecommerce/customer-journey-cart-conversion.webp" alt="Fase de carrinho e conversão - ENimble" />
                             </div>
                             <div className="ec-js-content">
                                 <h4>Carrinho</h4>
@@ -423,7 +423,7 @@ const Ecommerce = () => {
 
                         <div className={`ec-journey-step reveal delay-3 ${journeyActiveIndex === 2 ? 'active' : ''}`}>
                             <div className="ec-js-icon">
-                                <img src="/servicos/ecommerce/customer-journey-secure-payment-gateway.webp" alt="Fase de checkout e pagamentos seguros - e-nimble" />
+                                <img src="/servicos/ecommerce/customer-journey-secure-payment-gateway.webp" alt="Fase de checkout e pagamentos seguros - ENimble" />
                             </div>
                             <div className="ec-js-content">
                                 <h4>Checkout</h4>
@@ -435,7 +435,7 @@ const Ecommerce = () => {
 
                         <div className={`ec-journey-step reveal delay-4 ${journeyActiveIndex === 3 ? 'active' : ''}`}>
                             <div className="ec-js-icon">
-                                <img src="/servicos/ecommerce/customer-journey-logistics-integration.webp" alt="Fase de entrega e logística - e-nimble" />
+                                <img src="/servicos/ecommerce/customer-journey-logistics-integration.webp" alt="Fase de entrega e logística - ENimble" />
                             </div>
                             <div className="ec-js-content">
                                 <h4>Entrega</h4>

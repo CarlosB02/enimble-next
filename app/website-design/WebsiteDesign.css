@@ -1560,17 +1560,34 @@
     /* Main Carousel Grid overrides for Mobile Swipe */
     .wd-services-grid,
     .wd-checklist-grid,
-    .wd-process-grid,
+    .wd-process-grid {
+        display: flex !important;
+        flex-direction: row !important;
+        flex-wrap: nowrap !important;
+        overflow-x: auto !important;
+        scroll-snap-type: x mandatory !important;
+        scroll-behavior: smooth !important;
+        -webkit-overflow-scrolling: touch !important;
+        scrollbar-width: none !important; /* Firefox */
+        -ms-overflow-style: none !important; /* IE */
+        gap: 1.25rem !important;
+        padding: 2.25rem calc(50% - min(142.5px, 40vw)) 5.5rem !important;
+        margin-left: -2rem !important;
+        margin-right: -2rem !important;
+    }
+
     .wd-cases-grid {
         display: flex !important;
         flex-direction: row !important;
         flex-wrap: nowrap !important;
         overflow-x: auto !important;
         scroll-snap-type: x mandatory !important;
+        scroll-behavior: smooth !important;
+        -webkit-overflow-scrolling: touch !important;
         scrollbar-width: none !important; /* Firefox */
         -ms-overflow-style: none !important; /* IE */
         gap: 1.25rem !important;
-        padding: 1.75rem calc(50% - min(142.5px, 40vw)) 2.25rem !important;
+        padding: 1.5rem calc(50% - min(142.5px, 40vw)) 1.75rem !important;
         margin-left: -2rem !important;
         margin-right: -2rem !important;
     }
@@ -1636,6 +1653,18 @@
         box-shadow: none !important;
     }
 
+    .wd-case-card .wd-browser-mockup {
+        margin-bottom: 0.5rem !important;
+    }
+
+    .wd-case-cta-inner {
+        margin-bottom: 0 !important;
+    }
+
+    .wd-case-info-spacer {
+        display: none !important;
+    }
+
     .wd-case-card.active .wd-browser-mockup,
     .wd-case-card:hover .wd-browser-mockup {
         border-radius: 20px !important;
@@ -1648,7 +1677,7 @@
         border-radius: 20px !important;
         border-color: var(--color-primary-blue) !important;
         background: rgba(58, 0, 255, 0.02) !important;
-        box-shadow: 0 20px 45px rgba(58, 0, 255, 0.16) !important;
+        box-shadow: 0 8px 24px rgba(58, 0, 255, 0.14) !important;
     }
 
     .wd-case-card.active .industry-tag,
@@ -1694,10 +1723,57 @@
         height: 32px !important;
     }
 
+    .wd-case-cta {
+        display: flex !important;
+        flex-direction: column !important;
+    }
+
     .wd-case-cta-inner {
-        aspect-ratio: 16/10;
-        width: 100%;
-        box-sizing: border-box;
+        aspect-ratio: auto !important;
+        width: 100% !important;
+        flex: 1 1 auto !important;
+        min-height: 0 !important;
+        padding: 1.5rem 1.25rem !important;
+        margin-bottom: 0 !important;
+        box-sizing: border-box !important;
+        display: flex !important;
+        flex-direction: column !important;
+        justify-content: center !important;
+        align-items: center !important;
+    }
+
+    .wd-case-cta .cta-content {
+        display: flex !important;
+        flex-direction: column !important;
+        justify-content: center !important;
+        align-items: center !important;
+        text-align: center !important;
+        gap: 0.65rem !important;
+    }
+
+    .wd-case-cta .cta-icon {
+        font-size: 2rem !important;
+        line-height: 1 !important;
+        margin: 0 !important;
+    }
+
+    .wd-case-cta h3 {
+        font-size: 1.25rem !important;
+        line-height: 1.2 !important;
+        margin: 0 !important;
+    }
+
+    .wd-case-cta p {
+        font-size: 0.85rem !important;
+        line-height: 1.35 !important;
+        max-width: 220px !important;
+        margin: 0 !important;
+    }
+
+    .wd-case-cta .wd-cta-link {
+        font-size: 0.85rem !important;
+        gap: 0.5rem !important;
+        margin: 0 !important;
     }
 
     /* Carousel navigation dots style overrides */
@@ -1706,11 +1782,16 @@
         justify-content: center;
         align-items: center;
         gap: 0.5rem;
-        margin-top: -1.25rem !important;
+        margin-top: -3.75rem !important;
         margin-bottom: 0.5rem;
         position: relative;
         z-index: 5;
         pointer-events: auto;
+    }
+
+    .wd-cases-container .carousel-dots {
+        margin-top: -0.25rem !important;
+        margin-bottom: 0.5rem !important;
     }
 
     .carousel-dot {

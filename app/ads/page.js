@@ -195,7 +195,7 @@ const AdsPage = () => {
     const activeDetails = scaleDetails[scaleLevel];
 
     useEffect(() => {
-        document.title = 'Anúncios Pagos | E-NIMBLE';
+        document.title = 'Anúncios Pagos | ENimble';
         document.body.classList.add('ads-body');
         return () => document.body.classList.remove('ads-body');
     }, []);

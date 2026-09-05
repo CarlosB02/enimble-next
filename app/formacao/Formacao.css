@@ -12,43 +12,68 @@ body.edu-body {
     color: var(--edu-text);
 }
 
+.formacao-page {
+    width: 100%;
+    overflow-x: hidden;
+    position: relative;
+}
+
+body.edu-body .header:not(.nav-open) .hamburger,
+body.edu-body .header:not(.nav-open) .hamburger::before,
+body.edu-body .header:not(.nav-open) .hamburger::after {
+    background: #ffffff !important;
+}
+
 body.edu-body .header.header-scrolled {
-    background-color: rgba(255, 255, 255, 0.95) !important;
-    box-shadow: 0 4px 20px rgba(0, 0, 0, 0.05);
+    background-color: var(--color-primary-blue) !important;
+    box-shadow: 0 4px 20px rgba(0, 0, 0, 0.1);
 }
 
-body.edu-body .header.header-scrolled .logo-text,
-body.edu-body .header.header-scrolled .main-nav a,
-body.edu-body .header .dropdown-menu a {
-    color: var(--edu-text) !important;
-}
-
-body.edu-body .header:not(.header-scrolled) .logo-text,
-body.edu-body .header:not(.header-scrolled) .main-nav > ul > li > a {
+body.edu-body .header .logo-text,
+body.edu-body .header .main-nav > ul > li > a {
     color: #ffffff !important;
-}
-
-body.edu-body .main-nav a:hover {
-    color: var(--edu-accent) !important;
 }
 
 
 /* HERO */
 .edu-hero {
     position: relative;
-    padding: 240px 0 140px;
-    background-image: linear-gradient(135deg, rgba(0, 0, 0, 0.85) 0%, rgba(58, 0, 255, 0.4) 100%), url('/servicos/formacao/edu-hero-bg-photo.webp');
-    background-size: cover;
-    background-position: center;
-    background-repeat: no-repeat;
-    background-attachment: scroll;
+    padding: 180px 0 100px;
+    background-color: #000;
     color: white;
     border-bottom: none;
+    overflow: hidden;
+    width: 100%;
+    box-sizing: border-box;
+}
+
+.edu-hero-img-bg {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    z-index: 1;
+}
+
+.edu-hero-overlay {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: linear-gradient(135deg, rgba(0, 0, 0, 0.85) 0%, rgba(58, 0, 255, 0.4) 100%);
+    z-index: 2;
 }
 
 .edu-hero-container {
     position: relative;
     z-index: 5;
+    max-width: 1200px;
+    margin: 0 auto;
+    width: 100%;
+    box-sizing: border-box;
 }
 
 .hero-label {
@@ -69,14 +94,17 @@ body.edu-body .main-nav a:hover {
 
 .edu-title {
     font-family: 'Syne', sans-serif;
-    font-size: clamp(3rem, 6.5vw, 5.8rem);
-    line-height: 0.95;
+    font-size: clamp(2.4rem, 6.5vw, 5.8rem);
+    line-height: 1;
     font-weight: 700;
     letter-spacing: -2px;
     margin-bottom: 2rem;
     margin-top: 1rem;
     color: white;
     text-shadow: 0 4px 15px rgba(0, 0, 0, 0.4);
+    word-break: break-word;
+    overflow-wrap: break-word;
+    hyphens: auto;
 }
 
 .highlight-word {
@@ -97,6 +125,8 @@ body.edu-body .main-nav a:hover {
     border-left: 4px solid var(--edu-accent);
     padding-left: 1.5rem;
     text-shadow: 0 2px 10px rgba(0, 0, 0, 0.3);
+    word-break: break-word;
+    overflow-wrap: break-word;
 }
 
 
@@ -105,7 +135,7 @@ body.edu-body .main-nav a:hover {
     display: grid;
     grid-template-columns: 1fr 1.5fr;
     gap: 4rem;
-    padding: 6rem 2rem;
+    padding: 5rem 2rem;
     border-bottom: 1px solid rgba(0, 0, 0, 0.1);
 }
 
@@ -283,7 +313,7 @@ details[open] .arrow-icon {
 /* --- STRATEGIC VALUE --- */
 .edu-value-section {
     background: #fafafe;
-    padding: 7rem 0;
+    padding: 5rem 0;
 }
 
 .edu-value-section .container {
@@ -328,11 +358,11 @@ details[open] .arrow-icon {
 }
 
 .edu-feature-icon {
-    width: 42px;
-    height: 42px;
-    min-width: 42px;
+    width: 44px;
+    height: 44px;
+    min-width: 44px;
     border-radius: 12px;
-    background: rgba(58, 0, 255, 0.08);
+    background: rgba(58, 0, 255, 0.06);
     color: var(--edu-accent);
     display: flex;
     align-items: center;
@@ -340,10 +370,21 @@ details[open] .arrow-icon {
     transition: all 0.3s ease;
 }
 
+.edu-feature-img {
+    width: 24px;
+    height: 24px;
+    object-fit: contain;
+    transition: transform 0.3s ease;
+}
+
 .edu-feature-item:hover .edu-feature-icon {
     background: var(--gradient-edu);
-    color: white;
     transform: translateY(-2px);
+    box-shadow: 0 4px 15px rgba(58, 0, 255, 0.2);
+}
+
+.edu-feature-item:hover .edu-feature-img {
+    transform: scale(1.1);
 }
 
 .edu-feature-item strong {
@@ -386,7 +427,7 @@ details[open] .arrow-icon {
 /* --- HOW IT WORKS (COMO FUNCIONA) --- */
 .edu-how-section {
     background: linear-gradient(180deg, #ffffff 0%, #f7f9fc 100%);
-    padding: 7rem 0;
+    padding: 5rem 0;
     position: relative;
 }
 
@@ -399,7 +440,7 @@ details[open] .arrow-icon {
 
 .edu-how-header {
     text-align: center;
-    margin-bottom: 4.5rem;
+    margin-bottom: 3rem;
 }
 
 .edu-how-header h2 {
@@ -543,7 +584,7 @@ details[open] .arrow-icon {
 /* --- CREDIBILITY --- */
 .edu-cred-section {
     background: #fafafe;
-    padding: 7rem 0;
+    padding: 5rem 0;
 }
 
 .edu-cred-section .container {
@@ -554,7 +595,7 @@ details[open] .arrow-icon {
 
 .edu-cred-header {
     text-align: center;
-    margin-bottom: 4rem;
+    margin-bottom: 3rem;
 }
 
 .edu-cred-header h2 {
@@ -645,11 +686,10 @@ details[open] .arrow-icon {
 
 
 /* --- FINANCIAMENTO SECTION --- */
-/* --- FINANCIAMENTO SECTION --- */
 .edu-funding-section {
     background: #f7f9fc;
     color: #1a1a1a;
-    padding: 7rem 0;
+    padding: 5rem 0;
     position: relative;
     overflow: hidden;
 }
@@ -689,7 +729,7 @@ details[open] .arrow-icon {
 .edu-funding-header {
     text-align: center;
     max-width: 750px;
-    margin: 0 auto 4rem;
+    margin: 0 auto 3rem;
 }
 
 .edu-funding-header .edu-chip {
@@ -719,7 +759,7 @@ details[open] .arrow-icon {
     display: grid;
     grid-template-columns: repeat(3, 1fr);
     gap: 1.5rem;
-    margin-bottom: 4rem;
+    margin-bottom: 3rem;
 }
 
 .edu-fh-card {
@@ -907,7 +947,7 @@ details[open] .arrow-icon {
 
 /* --- CLOSING CTA --- */
 .edu-closing-section {
-    padding: 4rem 0 8rem;
+    padding: 5rem 0 6rem;
     background: var(--edu-secondary);
     overflow: hidden;
     position: relative;
@@ -967,8 +1007,35 @@ details[open] .arrow-icon {
    ============================================ */
 @media (max-width: 900px) {
     .edu-hero {
-        padding: 200px 0 100px;
+        padding: 140px 1.5rem 60px;
         text-align: center;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        justify-content: center;
+    }
+
+    .edu-hero-container {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        text-align: center;
+        max-width: 650px;
+        width: 100%;
+        margin: 0 auto;
+        padding: 0;
+    }
+
+    .edu-title {
+        font-size: clamp(2.1rem, 7vw, 3.4rem);
+        line-height: 1.05;
+        letter-spacing: -1px;
+        text-align: center;
+        margin-left: auto;
+        margin-right: auto;
+        max-width: 100%;
+        word-break: break-word;
+        overflow-wrap: break-word;
     }
 
     .edu-intro {
@@ -978,19 +1045,25 @@ details[open] .arrow-icon {
         padding-bottom: 1.5rem;
         margin-left: auto;
         margin-right: auto;
+        text-align: center;
+        max-width: 540px;
+        width: 100%;
+        font-size: clamp(1.05rem, 3.5vw, 1.35rem);
     }
 
     .cert-badge {
         position: relative;
         top: auto;
         right: auto;
-        margin: 2.5rem auto 0;
+        margin: 2.2rem auto 0;
         transform: rotate(5deg);
+        animation: floatBadgeMobile 5s ease-in-out infinite;
     }
 
     .curriculum-section {
         grid-template-columns: 1fr;
-        padding: 4rem 2rem;
+        padding: 3.5rem 1.5rem;
+        overflow: hidden;
     }
 
     .sticky-col {
@@ -1015,9 +1088,40 @@ details[open] .arrow-icon {
         padding-left: 0;
     }
 
+    .edu-value-section {
+        padding: 3.5rem 0;
+        overflow: hidden;
+    }
+
     .edu-value-content {
         grid-template-columns: 1fr;
         gap: 2rem;
+    }
+
+    .edu-value-visual {
+        max-width: 540px;
+        width: 100%;
+        margin: 1.5rem auto 0;
+        border-radius: 16px;
+    }
+
+    .edu-value-team-img {
+        min-height: unset;
+        height: auto;
+        max-height: 260px;
+        aspect-ratio: 16 / 9;
+        object-fit: cover;
+        object-position: center;
+        width: 100%;
+    }
+
+    .edu-how-section {
+        padding: 3.5rem 0;
+        overflow: hidden;
+    }
+
+    .edu-how-header {
+        margin-bottom: 2rem;
     }
 
     .edu-how-grid {
@@ -1032,12 +1136,38 @@ details[open] .arrow-icon {
         margin-bottom: 0.5rem;
     }
 
+    .edu-cred-section {
+        padding: 3.5rem 0;
+        overflow: hidden;
+    }
+
+    .edu-cred-header {
+        margin-bottom: 2rem;
+    }
+
     .edu-cred-grid {
         grid-template-columns: 1fr;
+        margin-bottom: 2rem;
     }
 
     .edu-cred-trust {
         grid-template-columns: repeat(2, 1fr);
+    }
+
+    .edu-funding-section {
+        padding: 3.5rem 0;
+    }
+
+    .edu-funding-header {
+        margin: 0 auto 2rem;
+    }
+
+    .edu-funding-highlights {
+        margin-bottom: 2rem;
+    }
+
+    .edu-closing-section {
+        padding: 3.5rem 0 4.5rem;
     }
 
     .big-quote {
@@ -1045,13 +1175,114 @@ details[open] .arrow-icon {
     }
 }
 
+@keyframes floatBadgeMobile {
+    0%,
+    100% {
+        transform: rotate(5deg) translateY(0);
+    }
+
+    50% {
+        transform: rotate(5deg) translateY(-10px);
+    }
+}
+
 @media (max-width: 600px) {
+    .edu-hero {
+        padding: 120px 1.25rem 50px;
+    }
+
+    .edu-title {
+        font-size: clamp(1.8rem, 8.2vw, 2.4rem);
+        letter-spacing: -0.5px;
+        line-height: 1.1;
+    }
+
+    .edu-intro {
+        font-size: 1rem;
+        line-height: 1.5;
+        padding-bottom: 1.25rem;
+    }
+
+    .cert-badge {
+        width: 130px;
+        height: 130px;
+        margin-top: 1.8rem;
+    }
+
+    .cert-badge span {
+        font-size: 0.8rem !important;
+    }
+
     .edu-how-grid {
         grid-template-columns: 1fr;
     }
 
     .edu-cred-trust {
         grid-template-columns: 1fr;
+    }
+
+    .curriculum-section {
+        padding: 2.75rem 1.25rem;
+    }
+
+    .edu-value-section {
+        padding: 2.75rem 0;
+    }
+
+    .edu-value-visual {
+        max-width: 100%;
+        margin: 1rem auto 0;
+        border-radius: 14px;
+        box-shadow: 0 8px 20px rgba(0, 0, 0, 0.04);
+    }
+
+    .edu-value-team-img {
+        min-height: unset;
+        height: auto;
+        max-height: 190px;
+        aspect-ratio: 16 / 9;
+        object-fit: cover;
+        object-position: center 20%;
+    }
+
+    .edu-how-section {
+        padding: 2.75rem 0;
+    }
+
+    .edu-how-header {
+        margin-bottom: 1.75rem;
+    }
+
+    .edu-cred-section {
+        padding: 2.75rem 0;
+    }
+
+    .edu-cred-header {
+        margin-bottom: 1.75rem;
+    }
+
+    .edu-funding-section {
+        padding: 2.75rem 0;
+    }
+
+    .edu-funding-header {
+        margin: 0 auto 1.75rem;
+    }
+
+    .edu-closing-section {
+        padding: 3rem 0 4rem;
+    }
+
+    .edu-value-section .container,
+    .edu-how-section .container,
+    .edu-cred-section .container,
+    .edu-funding-section .container {
+        padding: 0 1.25rem;
+    }
+
+    .sticky-col .btn-primary {
+        width: 100%;
+        text-align: center;
     }
 }
 

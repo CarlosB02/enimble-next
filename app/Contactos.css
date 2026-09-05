@@ -148,11 +148,16 @@ body.contact-body .header.header-scrolled .btn-nav:hover {
   background-clip: text;
 }
 
-.contact-info h3 .emoji-icon {
+.contact-info h3 .emoji-icon,
+.emoji-icon,
+.png-emoji {
   background: none;
   -webkit-text-fill-color: initial;
   display: inline-block;
   vertical-align: middle;
+  width: 1.2em;
+  height: 1.2em;
+  object-fit: contain;
 }
 
 .contact-info p {
@@ -461,15 +466,21 @@ body.contact-body .header.header-scrolled .btn-nav:hover {
     animation-delay: 0.8s;
 }
 
+.cup-inner-wrap {
+    position: absolute;
+    inset: 0;
+    border-radius: 0 0 27px 27px;
+    overflow: hidden;
+    -webkit-mask-image: -webkit-radial-gradient(white, black);
+}
+
 .cup-liquid-flow {
     position: absolute;
-    bottom: 3px;
-    left: 3px;
-    width: calc(100% - 6px);
+    bottom: 0;
+    left: 0;
+    width: 100%;
     background: linear-gradient(180deg, #5c3a21 0%, #301f14 100%);
-    border-radius: 0 0 26px 26px;
     transition: height 0.6s cubic-bezier(0.4, 0, 0.2, 1);
-    overflow: hidden;
 }
 
 .liquid-foam {
@@ -483,12 +494,12 @@ body.contact-body .header.header-scrolled .btn-nav:hover {
 }
 
 .cup-liquid-flow.expresso {
-    height: 25%;
+    height: 32%;
 }
 
 .cup-liquid-flow.normal,
 .cup-liquid-flow.pingado {
-    height: 60%;
+    height: 62%;
 }
 
 .cup-liquid-flow.duplo {
@@ -673,16 +684,14 @@ body.contact-body .header.header-scrolled .btn-nav:hover {
   color: var(--text-color);
 }
 
-.contacts-wrapper.light-theme-contacts .info-title .emoji-icon {
-  display: inline-block;
-}
-
+.contacts-wrapper.light-theme-contacts .info-title .emoji-icon,
 .webp-emoji {
   width: 1.2em;
   height: 1.2em;
   vertical-align: middle;
   margin-left: 0.3rem;
   display: inline-block;
+  object-fit: contain;
 }
 
 .contacts-wrapper.light-theme-contacts .info-desc {
@@ -1153,15 +1162,21 @@ body.contact-body .header.header-scrolled .btn-nav:hover {
   animation-delay: 0.8s;
 }
 
+.contacts-wrapper.light-theme-contacts .cup-inner-wrap {
+  position: absolute;
+  inset: 0;
+  border-radius: 0 0 27px 27px;
+  overflow: hidden;
+  -webkit-mask-image: -webkit-radial-gradient(white, black);
+}
+
 .contacts-wrapper.light-theme-contacts .cup-liquid-flow {
   position: absolute;
-  bottom: 3px;
-  left: 3px;
-  width: calc(100% - 6px);
+  bottom: 0;
+  left: 0;
+  width: 100%;
   background: linear-gradient(180deg, #5c3a21 0%, #301f14 100%);
-  border-radius: 0 0 26px 26px;
   transition: height 0.6s cubic-bezier(0.4, 0, 0.2, 1);
-  overflow: hidden;
 }
 
 .contacts-wrapper.light-theme-contacts .liquid-foam {
@@ -1175,12 +1190,12 @@ body.contact-body .header.header-scrolled .btn-nav:hover {
 }
 
 .contacts-wrapper.light-theme-contacts .cup-liquid-flow.expresso {
-  height: 25%;
+  height: 32%;
 }
 
 .contacts-wrapper.light-theme-contacts .cup-liquid-flow.normal,
 .contacts-wrapper.light-theme-contacts .cup-liquid-flow.pingado {
-  height: 60%;
+  height: 62%;
 }
 
 .contacts-wrapper.light-theme-contacts .cup-liquid-flow.duplo {

@@ -16,11 +16,21 @@ const FaqItem = ({ question, answer, defaultOpen = false }) => {
     const [height, setHeight] = useState(defaultOpen ? undefined : 0);
 
     useEffect(() => {
-        if (isOpen) {
+        if (isOpen && contentRef.current) {
             setHeight(contentRef.current.scrollHeight);
-        } else {
+        } else if (!isOpen) {
             setHeight(0);
         }
+    }, [isOpen]);
+
+    useEffect(() => {
+        const updateHeight = () => {
+            if (isOpen && contentRef.current) {
+                setHeight(contentRef.current.scrollHeight);
+            }
+        };
+        window.addEventListener('resize', updateHeight);
+        return () => window.removeEventListener('resize', updateHeight);
     }, [isOpen]);
 
     return (
@@ -31,7 +41,11 @@ const FaqItem = ({ question, answer, defaultOpen = false }) => {
             </div>
             <div
                 className="auto-faq-content-wrapper"
-                style={{ height: height !== undefined ? `${height}px` : 'auto', overflow: 'hidden', transition: 'height 0.3s ease' }}
+                style={{
+                    height: height !== undefined ? `${height}px` : (isOpen ? 'auto' : '0px'),
+                    overflow: 'hidden',
+                    transition: 'height 0.35s cubic-bezier(0.16, 1, 0.3, 1)'
+                }}
             >
                 <div ref={contentRef} className="auto-faq-content">
                     {answer}
@@ -172,20 +186,39 @@ const AutomacaoPage = () => {
         setCompareMode(mode);
         if (compareGridRef.current) {
             const container = compareGridRef.current;
-            const scrollLeft = mode === 'manual' ? 0 : container.scrollWidth;
-            container.scrollTo({ left: scrollLeft, behavior: 'smooth' });
+            const targetCard = container.querySelector(mode === 'manual' ? '.manual-card' : '.auto-card');
+            if (targetCard) {
+                targetCard.scrollIntoView({ behavior: 'smooth', block: 'nearest', inline: 'center' });
+            } else {
+                const scrollLeft = mode === 'manual' ? 0 : container.scrollWidth;
+                container.scrollTo({ left: scrollLeft, behavior: 'smooth' });
+            }
         }
     };
 
     const handleCompareScroll = (e) => {
         const container = e.currentTarget;
         const scrollLeft = container.scrollLeft;
-        const cardWidth = container.clientWidth;
-        const newMode = scrollLeft > cardWidth / 2 ? 'auto' : 'manual';
+        const maxScroll = container.scrollWidth - container.clientWidth;
+        if (maxScroll <= 0) return;
+        const newMode = scrollLeft > maxScroll / 2 ? 'auto' : 'manual';
         if (newMode !== compareMode) {
             setCompareMode(newMode);
         }
     };
+
+    useEffect(() => {
+        if (compareGridRef.current && window.innerWidth <= 768) {
+            const container = compareGridRef.current;
+            const autoCard = container.querySelector('.auto-card');
+            if (autoCard) {
+                const timer = setTimeout(() => {
+                    autoCard.scrollIntoView({ behavior: 'instant', block: 'nearest', inline: 'center' });
+                }, 100);
+                return () => clearTimeout(timer);
+            }
+        }
+    }, []);
 
     // 3. Interactive Hours & ROI Saved Calculator
     const [teamSize, setTeamSize] = useState(12);
@@ -454,7 +487,7 @@ const AutomacaoPage = () => {
                         ref={compareGridRef}
                         onScroll={handleCompareScroll}
                     >
-                        <div className={`auto-compare-card manual-card ${compareMode === 'manual' ? 'highlight-side' : ''}`}>
+                        <div className={`auto-compare-card manual-card ${compareMode === 'manual' ? 'active highlight-side' : ''}`}>
                             <ul className="auto-compare-list">
                                 <li className="auto-compare-item">
                                     <span className="icon">
@@ -483,7 +516,7 @@ const AutomacaoPage = () => {
                             </ul>
                         </div>
 
-                        <div className={`auto-compare-card auto-card ${compareMode === 'auto' ? 'highlight-side' : ''}`}>
+                        <div className={`auto-compare-card auto-card ${compareMode === 'auto' ? 'active highlight-side' : ''}`}>
                             <ul className="auto-compare-list">
                                 <li className="auto-compare-item">
                                     <span className="icon">
@@ -512,9 +545,9 @@ const AutomacaoPage = () => {
                             </ul>
                         </div>
                     </div>
-                    <div className="text-center reveal mt-5">
+                    <div className="text-center reveal auto-compare-cta">
                         <Link href="/contactos" className="auto-btn-primary">
-                            Mudar para a Operação Inteligente
+                            Mudar para Operação Inteligente
                         </Link>
                     </div>
                 </div>

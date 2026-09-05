@@ -112,7 +112,7 @@ const Header = () => {
         return pathname.includes(path);
     };
 
-    const lightPages = ['/redes-sociais', '/portfolio', '/ecommerce', '/formacao', '/branding'];
+    const lightPages = ['/redes-sociais', '/portfolio', '/ecommerce', '/branding', '/ads'];
     const isLightHeroPage = lightPages.includes(pathname);
 
     return (
@@ -130,7 +130,7 @@ const Header = () => {
                 <div className="container header-container">
                     <div className="logo-container">
                         <Link href="/" className="logo-link">
-                            <span className="logo-text">E-NIMBLE</span>
+                            <span className="logo-text">ENimble</span>
                         </Link>
                     </div>
 
@@ -207,12 +207,12 @@ const Header = () => {
                         <div className="footer-divider"></div>
                         <p className="mobile-nav-tagline">Elevamos a sua presença digital.</p>
                         <div className="mobile-nav-contacts">
-                            <a href="mailto:geral@e-nimble.pt" className="nav-contact-item">geral@e-nimble.pt</a>
+                            <a href="mailto:geral@enimble.pt" className="nav-contact-item">geral@enimble.pt</a>
                             <a href="tel:+351912345678" className="nav-contact-item">+351 912 345 678</a>
                         </div>
                         <div className="mobile-nav-socials">
                             <a href="https://instagram.com/e.nimble" target="_blank" rel="noopener noreferrer" className="social-link">Instagram</a>
-                            <a href="https://linkedin.com/company/e-nimble" target="_blank" rel="noopener noreferrer" className="social-link">LinkedIn</a>
+                            <a href="https://linkedin.com/company/ENimble" target="_blank" rel="noopener noreferrer" className="social-link">LinkedIn</a>
                         </div>
                     </div>
                 </div>

@@ -1,5 +1,5 @@
 /* ==========================================================================
-   THEME AND VARIABLES (e-nimble Ads: Light Premium Visual System)
+   THEME AND VARIABLES (ENimble Ads: Light Premium Visual System)
    ========================================================================== */
 :root {
     --ads-bg: #ffffff;
@@ -25,40 +25,7 @@ body.ads-body {
     overflow-x: hidden;
 }
 
-/* Custom Header override for light Ads theme */
-body.ads-body .header {
-    background-color: rgba(255, 255, 255, 0.8) !important;
-    backdrop-filter: blur(12px);
-    border-bottom: 1px solid rgba(0, 0, 0, 0.05);
-}
 
-body.ads-body .header .logo-text,
-body.ads-body .header .main-nav a {
-    color: #1a1a1a !important;
-}
-
-body.ads-body .header .main-nav a:hover {
-    color: var(--ads-primary) !important;
-}
-
-body.ads-body .header.header-scrolled {
-    background-color: var(--color-primary-blue) !important;
-    border-bottom: none;
-    box-shadow: 0 4px 20px rgba(0, 0, 0, 0.1);
-}
-
-body.ads-body .header.header-scrolled .logo-text,
-body.ads-body .header.header-scrolled .main-nav a {
-    color: white !important;
-}
-
-body.ads-body .header.header-scrolled .main-nav .dropdown-menu a {
-    color: #1a1a1a !important;
-}
-
-body.ads-body .header.header-scrolled .main-nav a:hover {
-    color: rgba(255, 255, 255, 0.8) !important;
-}
 
 /* ==========================================================================
    DYNAMIC BACKGROUND (Holographic Light Grid & Soft Glowing Aura)
@@ -2864,9 +2831,13 @@ body.ads-body .header.header-scrolled .main-nav a:hover {
 }
 
 /* ============================================
-   MOBILE CAROUSELS
+   MOBILE CAROUSELS & RESPONSIVE HIDING
    ============================================ */
 @media (max-width: 900px) {
+    .ads-attention-section {
+        display: none !important;
+    }
+
     .section-header-center {
         margin-bottom: 1.5rem !important;
     }

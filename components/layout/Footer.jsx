@@ -7,7 +7,7 @@ const Footer = () => {
             <div className="container">
                 <div className="footer-top">
                     <div className="footer-brand">
-                        <span className="logo-text">E-NIMBLE</span>
+                        <span className="logo-text">ENimble</span>
                         <p>Elevamos o seu negócio digital com estratégias que funcionam e design que apaixona.</p>
                     </div>
 
@@ -57,7 +57,7 @@ const Footer = () => {
                 </div>
 
                 <div className="footer-bottom">
-                    <p>&copy; 2026 E-Nimble. Todos os direitos reservados.</p>
+                    <p>&copy; 2026 ENimble. Todos os direitos reservados.</p>
                     <div className="legal-links">
                         <a href="#">Privacidade</a>
                         <a href="#">Termos</a>

@@ -363,7 +363,7 @@ const Branding = () => {
                 return (
                     <div className="custom-visual tagline-slogan-visual">
                         <div className="slogan-banner">
-                            <div className="slogan-stripe blue-stripe">E-NIMBLE</div>
+                            <div className="slogan-stripe blue-stripe">ENimble</div>
                             <div className="slogan-stripe red-stripe">GO DIGITAL</div>
                         </div>
                     </div>
