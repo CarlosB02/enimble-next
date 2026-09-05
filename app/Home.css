@@ -1497,6 +1497,29 @@
       width: 20px;
       border-radius: 10px;
     }
+
+    /* Mobile Brands Section CTA Buttons Side-by-Side */
+    .pp-cta {
+      flex-direction: row !important;
+      flex-wrap: nowrap !important;
+      gap: 0.5rem !important;
+      width: 100%;
+      justify-content: center;
+      align-items: center;
+    }
+
+    .pp-btn-explore,
+    .pp-btn-contact {
+      padding: 0.75rem 0.6rem !important;
+      font-size: clamp(0.72rem, 3.2vw, 0.85rem) !important;
+      white-space: nowrap;
+      text-align: center;
+      flex: 1;
+      max-width: 50%;
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+    }
   }
 
 @media (min-width: 769px) {

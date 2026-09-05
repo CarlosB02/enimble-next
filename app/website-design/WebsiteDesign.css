@@ -1570,7 +1570,7 @@
         scrollbar-width: none !important; /* Firefox */
         -ms-overflow-style: none !important; /* IE */
         gap: 1.25rem !important;
-        padding: 2.25rem calc(50% - min(142.5px, 40vw)) 5.5rem !important;
+        padding: 1.75rem calc(50% - min(142.5px, 40vw)) 2.25rem !important;
         margin-left: -2rem !important;
         margin-right: -2rem !important;
     }
@@ -1706,7 +1706,7 @@
         justify-content: center;
         align-items: center;
         gap: 0.5rem;
-        margin-top: -3.75rem !important;
+        margin-top: -1.25rem !important;
         margin-bottom: 0.5rem;
         position: relative;
         z-index: 5;
@@ -1798,6 +1798,10 @@
         height: 50px;
     }
 
+    .wd-cases-section {
+        padding: 3.5rem 0 2rem 0 !important;
+    }
+
     .wd-cases-header {
         margin-bottom: 1.5rem !important;
     }
@@ -1808,6 +1812,10 @@
 }
 
 @media (max-width: 600px) {
+    .wd-cases-section {
+        padding: 3rem 0 1.5rem 0 !important;
+    }
+
     .wd-cases-header {
         margin-bottom: 1rem !important;
     }

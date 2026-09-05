@@ -8,6 +8,10 @@
     --tiktok-gradient: linear-gradient(to right, #00f2ea, #ff0050);
 }
 
+main {
+    overflow-x: hidden;
+}
+
 /* Typography Helpers */
 .gradient-word {
     background: var(--social-gradient);
@@ -368,7 +372,7 @@
 
 /* GRID SERVICES - COMPACTED */
 .social-services-section {
-    padding: 2rem 0;
+    padding: 4rem 0;
     height: auto;
     min-height: auto;
     display: flex;
@@ -513,80 +517,11 @@
         flex-wrap: wrap;
     }
 
-    .bento-grid {
-        display: flex !important;
-        flex-direction: row !important;
-        flex-wrap: nowrap !important;
-        overflow-x: auto !important;
-        scroll-snap-type: x mandatory !important;
-        scrollbar-width: none !important;
-        -ms-overflow-style: none !important;
-        gap: 1.25rem !important;
-        padding: 2.25rem calc(50% - min(142.5px, 40vw)) 5.5rem !important;
-        margin-left: -2rem !important;
-        margin-right: -2rem !important;
-    }
-
-    .bento-grid::-webkit-scrollbar {
-        display: none !important;
-    }
-
-    .bento-card {
-        flex: 0 0 285px !important;
-        max-width: 80vw !important;
-        scroll-snap-align: center !important;
-        height: auto !important;
-        min-height: 280px !important;
-        margin-bottom: 0 !important;
-        padding: 1.2rem !important;
-        white-space: normal !important;
-        word-wrap: break-word !important;
-        overflow-wrap: break-word !important;
-        transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1) !important;
-    }
-
-    .bento-card.active,
-    .bento-card:hover {
-        transform: translateY(-8px) scale(1.02) !important;
-        box-shadow: 0 25px 50px rgba(58, 0, 255, 0.15) !important;
-        border-color: rgba(58, 0, 255, 0.3) !important;
-    }
-
     .bento-card.large,
     .bento-card.tall {
         grid-column: auto;
         grid-row: auto;
         height: auto !important;
-    }
-
-    /* Carousel dots */
-    .carousel-dots {
-        display: flex !important;
-        justify-content: center;
-        align-items: center;
-        gap: 0.5rem;
-        margin-top: -3.75rem !important;
-        margin-bottom: 0.5rem;
-        position: relative;
-        z-index: 5;
-        pointer-events: auto;
-    }
-
-    .carousel-dot {
-        width: 8px;
-        height: 8px;
-        border-radius: 50%;
-        background: rgba(0, 0, 0, 0.15);
-        border: none;
-        padding: 0;
-        cursor: pointer;
-        transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
-    }
-
-    .carousel-dot.active {
-        background: var(--color-primary-blue, #3a00ff);
-        width: 20px;
-        border-radius: 10px;
     }
 
     .hero-visual-social {
@@ -643,7 +578,7 @@
 /* --- O PODER DE APARECER (Visual Section) --- */
 .rs-appear-section {
     background: #fdfcfc;
-    padding: 6rem 0;
+    padding: 4rem 0;
     overflow: hidden;
     min-height: 100vh;
     min-height: 100svh;
@@ -1093,7 +1028,7 @@
 .rs-drivers-section {
     background: #ffffff;
     color: #1a1a1a;
-    padding: 7rem 0;
+    padding: 4rem 0;
 }
 
 .rs-drivers-section .container {
@@ -1225,7 +1160,7 @@
 .rs-proof-section {
     background: #0a0a0a;
     color: white;
-    padding: 7rem 0;
+    padding: 4rem 0;
 }
 
 .rs-proof-section .container {
@@ -1251,7 +1186,7 @@
 .rs-path-section {
     background: #ffffff;
     color: #1a1a1a;
-    padding: 7rem 0;
+    padding: 4rem 0;
 }
 
 .rs-path-section .container {
@@ -1344,7 +1279,7 @@
 .rs-faq-section {
     background: #0a0a0a;
     color: white;
-    padding: 7rem 0;
+    padding: 4rem 0;
 }
 
 .rs-faq-section .container {
@@ -1446,7 +1381,7 @@
 /* --- FINAL CTA --- */
 .rs-final-cta {
     background: #050505;
-    padding: 7rem 0;
+    padding: 4rem 0;
     text-align: center;
     position: relative;
     overflow: hidden;
@@ -1496,18 +1431,15 @@
         display: flex !important;
         flex-direction: row !important;
         flex-wrap: nowrap !important;
+        justify-content: flex-start !important;
         overflow-x: auto !important;
-        overflow-y: hidden !important;
         scroll-snap-type: x mandatory !important;
         scrollbar-width: none !important;
         -ms-overflow-style: none !important;
-        gap: 1.5rem !important;
-        padding: 2rem calc(50% - min(142.5px, 40vw)) !important;
+        gap: 1.25rem !important;
+        padding: 2.25rem calc(50% - min(142.5px, 40vw)) 5.5rem !important;
         margin-left: -2rem !important;
         margin-right: -2rem !important;
-        width: calc(100% + 4rem) !important;
-        max-width: calc(100% + 4rem) !important;
-        box-sizing: border-box !important;
     }
 
     .rs-appear-text {
@@ -1524,14 +1456,16 @@
     .rs-drivers-grid>.rs-driver-card,
     .rs-appear-text>.advantage-item {
         flex: 0 0 285px !important;
-        width: 285px !important;
         max-width: 80vw !important;
-        min-width: 0 !important;
         scroll-snap-align: center !important;
         margin-bottom: 0 !important;
-        box-sizing: border-box !important;
+        padding: 1.2rem !important;
+        white-space: normal !important;
+        word-wrap: break-word !important;
+        overflow-wrap: break-word !important;
         transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1) !important;
     }
+
 
     .bento-card.active,
     .bento-card:hover {
@@ -1600,6 +1534,47 @@
 
     .rs-path-step {
         flex: 0 0 45%;
+    }
+
+    /* Carousel dots */
+    /* Fix: override globals.css that hides dots above 768px */
+    .carousel-dots {
+        display: flex !important;
+        justify-content: center;
+        align-items: center;
+        gap: 0.5rem;
+        margin-top: -3.75rem !important;
+        margin-bottom: 0.5rem;
+        position: relative;
+        z-index: 5;
+        pointer-events: auto;
+    }
+
+    .carousel-dot {
+        width: 8px;
+        height: 8px;
+        border-radius: 50%;
+        background: rgba(0, 0, 0, 0.15);
+        border: none;
+        padding: 0;
+        cursor: pointer;
+        transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+    }
+
+    .carousel-dot.active {
+        background: var(--color-primary-blue, #3a00ff);
+        width: 20px;
+        border-radius: 10px;
+    }
+
+    /* Fix: reveal animation blocks cards in horizontal carousel — reset immediately */
+    .bento-grid .reveal,
+    .rs-drivers-grid .reveal,
+    .rs-appear-text .advantage-item {
+        opacity: 1 !important;
+        transform: none !important;
+        animation: none !important;
+        transition: box-shadow 0.4s ease, border-color 0.4s ease, transform 0.4s ease !important;
     }
 
 }

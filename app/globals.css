@@ -907,7 +907,7 @@ h4,
     scroll-behavior: smooth;
     -webkit-overflow-scrolling: touch;
     gap: 1.25rem;
-    padding: 2.25rem calc(50% - min(142.5px, 40vw)) 5.5rem;
+    padding: 1.75rem calc(50% - min(142.5px, 40vw)) 2.25rem;
     scrollbar-width: none;
     margin: 0;
   }
@@ -936,7 +936,7 @@ h4,
     justify-content: center;
     align-items: center;
     gap: 0.5rem;
-    margin-top: -3.75rem;
+    margin-top: -1.25rem;
     position: relative;
     z-index: 5;
     pointer-events: auto;

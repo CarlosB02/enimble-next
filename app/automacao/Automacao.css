@@ -316,7 +316,7 @@ body.auto-body {
 
 /* Live Workflow Simulator Section */
 .auto-simulator-section {
-  padding: 6rem 0;
+  padding: 4rem 0;
   background-color: #ffffff;
   border-bottom: 1px solid rgba(0, 0, 0, 0.05);
 }
@@ -633,7 +633,7 @@ body.auto-body {
    ========================================================================== */
 
 .auto-compare-section {
-  padding: 6rem 0;
+  padding: 4rem 0;
   background: #f8fafc;
 }
 
@@ -760,7 +760,7 @@ body.auto-body {
    ========================================================================== */
 
 .auto-matrix-section {
-  padding: 6rem 0;
+  padding: 4rem 0;
   background: #ffffff;
 }
 
@@ -884,7 +884,7 @@ body.auto-body {
    ========================================================================== */
 
 .auto-calculator-section {
-  padding: 6rem 0;
+  padding: 4rem 0;
   background: linear-gradient(180deg, #f8fafc 0%, #ffffff 100%);
 }
 
@@ -997,7 +997,7 @@ body.auto-body {
    ========================================================================== */
 
 .auto-manifesto-section {
-  padding: 6rem 0;
+  padding: 4rem 0;
   background: #ffffff;
 }
 
@@ -1061,7 +1061,7 @@ body.auto-body {
    ========================================================================== */
 
 .auto-roadmap-section {
-  padding: 6rem 0;
+  padding: 4rem 0;
   background: #f8fafc;
 }
 
@@ -1117,7 +1117,7 @@ body.auto-body {
    ========================================================================== */
 
 .auto-faq-section {
-  padding: 6rem 0;
+  padding: 4rem 0;
   background: #ffffff;
 }
 
@@ -1166,6 +1166,7 @@ body.auto-body {
   display: flex;
   align-items: center;
   justify-content: space-between;
+  gap: 1rem;
   user-select: none;
   outline: none;
   transition: padding-bottom 0.3s ease;
@@ -1183,6 +1184,9 @@ body.auto-body {
 .auto-faq-icon {
   width: 28px;
   height: 28px;
+  min-width: 28px;
+  min-height: 28px;
+  flex-shrink: 0;
   border-radius: 50%;
   background: #f1f5f9;
   display: flex;
@@ -1219,7 +1223,7 @@ body.auto-body {
    ========================================================================== */
 
 .auto-cta-section {
-  padding: 7rem 0;
+  padding: 4rem 0;
   background: radial-gradient(circle at 50% 100%, rgba(58, 0, 255, 0.06) 0%, rgba(255, 255, 255, 0) 70%);
   text-align: center;
 }
@@ -1303,11 +1307,40 @@ body.auto-body {
     scroll-snap-type: x mandatory;
     scroll-behavior: smooth;
     -webkit-overflow-scrolling: touch;
-    padding: 2rem calc(50% - min(142.5px, 40vw)) !important;
+    padding: 2.25rem calc(50% - min(142.5px, 40vw)) 5.5rem !important;
     margin-left: -2rem !important;
     margin-right: -2rem !important;
     gap: 1.25rem;
     scrollbar-width: none;
+  }
+
+  .carousel-dots {
+    display: flex !important;
+    justify-content: center;
+    align-items: center;
+    gap: 0.5rem;
+    margin-top: -3.75rem !important;
+    margin-bottom: 0.5rem;
+    position: relative;
+    z-index: 5;
+    pointer-events: auto;
+  }
+
+  .carousel-dot {
+    width: 8px;
+    height: 8px;
+    border-radius: 50%;
+    background: rgba(0, 0, 0, 0.15);
+    border: none;
+    padding: 0;
+    cursor: pointer;
+    transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+  }
+
+  .carousel-dot.active {
+    background: var(--auto-accent-purple, #3a00ff);
+    width: 20px;
+    border-radius: 10px;
   }
 
   .auto-roadmap-grid::-webkit-scrollbar,

@@ -121,7 +121,7 @@ body.contact-body .header.header-scrolled .btn-nav:hover {
 
 /* Contact Section */
 .contact-section {
-  padding: 6rem 0;
+  padding: 4rem 0;
   position: relative;
   background: linear-gradient(to bottom, #fff 0%, #f8f9ff 100%);
 }
@@ -130,7 +130,7 @@ body.contact-body .header.header-scrolled .btn-nav:hover {
   display: flex;
   gap: 4rem;
   align-items: flex-start;
-  margin-top: 3rem;
+  margin-top: 0;
 }
 
 /* Contact Info Side */
@@ -656,7 +656,7 @@ body.contact-body .header.header-scrolled .btn-nav:hover {
   grid-template-columns: 1fr 1fr;
   gap: 4rem;
   align-items: center;
-  margin-top: 3rem;
+  margin-top: 0;
   color: var(--text-color);
 }
 

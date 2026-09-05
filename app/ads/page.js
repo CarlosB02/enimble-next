@@ -668,7 +668,7 @@ const AdsPage = () => {
                             {withAds ? 'Desativar Ads (Perder Clientes)' : 'Reverter o Cenário e Dominar'}
                         </button>
                         <div style={{ marginTop: '2rem', maxWidth: '650px', margin: '2rem auto 0 auto' }}>
-                            <p style={{ fontStyle: 'italic', fontSize: '1.1rem', color: '#fff', lineHeight: '1.4' }}>
+                            <p style={{ fontStyle: 'italic', fontSize: '1.1rem', color: 'var(--text-color)', lineHeight: '1.4' }}>
                                 "Os seus concorrentes já estão a investir. E os seus clientes estão a vê-los primeiro."
                             </p>
                         </div>

@@ -34,6 +34,18 @@ body.brand-body .main-nav a {
     font-weight: 700;
 }
 
+body.brand-body .header:not(.nav-open) .hamburger,
+body.brand-body .header:not(.nav-open) .hamburger::before,
+body.brand-body .header:not(.nav-open) .hamburger::after {
+    background: #000000 !important;
+    box-shadow: none !important;
+}
+
+body.brand-body .header.nav-open .hamburger::before,
+body.brand-body .header.nav-open .hamburger::after {
+    background: #ffffff !important;
+}
+
 
 /* HERO */
 .brand-hero {
@@ -205,7 +217,7 @@ body.brand-body .main-nav a {
 
 /* TYPOGRAPHY */
 .type-section {
-    padding: 6rem 0;
+    padding: 4.5rem 0;
     border-bottom: 2px solid black;
     background: black;
     color: white;
@@ -216,7 +228,7 @@ body.brand-body .main-nav a {
     white-space: nowrap;
     display: flex;
     gap: 4rem;
-    animation: scrollType 20s linear infinite;
+    animation: scrollType 11s linear infinite;
 }
 
 .type-item {
@@ -925,7 +937,7 @@ body.brand-body .main-nav a {
 /* --- EMOTIONAL BRANDING --- */
 .br-emotion-section {
     background: #ffffff;
-    padding: 7rem 0;
+    padding: 4rem 0;
 }
 
 .br-emotion-section .container {
@@ -1127,10 +1139,10 @@ body.brand-body .main-nav a {
 }
 
 .cta-big {
-    font-size: 4rem;
+    font-size: clamp(2rem, 5vw, 4rem);
     font-family: 'Syne', sans-serif;
     margin-bottom: 2rem;
-    line-height: 1;
+    line-height: 1.1;
 }
 
 .btn-brand {
@@ -1179,8 +1191,16 @@ body.brand-body .main-nav a {
         min-height: 400px;
     }
 
+    .type-section {
+        padding: 2.5rem 0;
+    }
+
+    .type-scroll-container {
+        gap: 2.5rem;
+    }
+
     .type-item {
-        font-size: 4rem;
+        font-size: 3.2rem;
     }
 
     .service-name {
@@ -1208,15 +1228,45 @@ body.brand-body .main-nav a {
     .br-strategy-grid {
         grid-template-columns: repeat(2, 1fr);
     }
+
+    .brand-cta {
+        padding: 5rem 1.5rem;
+    }
+
+    .cta-big {
+        font-size: 2.2rem;
+        margin-bottom: 1.5rem;
+    }
 }
 
 @media (max-width: 600px) {
+    .type-section {
+        padding: 1.8rem 0;
+    }
+
+    .type-scroll-container {
+        gap: 1.8rem;
+    }
+
+    .type-item {
+        font-size: 2.4rem;
+    }
+
     .br-enviro-grid {
         grid-template-columns: repeat(2, 1fr);
     }
 
     .br-strategy-grid {
         grid-template-columns: 1fr;
+    }
+
+    .brand-cta {
+        padding: 4rem 1rem;
+    }
+
+    .cta-big {
+        font-size: 1.75rem;
+        margin-bottom: 1.25rem;
     }
 }
 
@@ -1272,11 +1322,17 @@ body.brand-body .main-nav a {
         transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1) !important;
     }
 
+    .br-enviro-item {
+        background: transparent !important;
+        border: none !important;
+        box-shadow: none !important;
+    }
+
     .br-enviro-item.active,
     .br-enviro-item:hover {
-        transform: translateY(-8px) !important;
-        box-shadow: 0 20px 45px rgba(58, 0, 255, 0.12) !important;
-        border-color: rgba(58, 0, 255, 0.25) !important;
+        transform: translateY(-4px) !important;
+        box-shadow: none !important;
+        border-color: transparent !important;
     }
 
     .br-enviro-item.active .br-env-mockup,
@@ -1337,12 +1393,16 @@ body.brand-body .main-nav a {
         overflow-wrap: break-word !important;
     }
 
+    .br-emotion-section {
+        padding: 2.5rem 0 !important;
+    }
+
     .carousel-dots {
         display: flex !important;
         justify-content: center;
         align-items: center;
         gap: 8px;
-        margin-top: -3.75rem !important;
+        margin-top: -4.8rem !important;
         margin-bottom: 0.5rem;
         position: relative;
         z-index: 5;

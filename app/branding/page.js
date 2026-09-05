@@ -512,7 +512,7 @@ const Branding = () => {
                         </div>
                     </div>
                     {/* Carousel navigation dots for mobile view */}
-                    <div className="carousel-dots" style={{ marginTop: '2rem' }}>
+                    <div className="carousel-dots">
                         {Array.from({ length: 5 }).map((_, idx) => (
                             <button
                                 key={idx}
@@ -576,6 +576,12 @@ const Branding = () => {
             {/* Typography Marquee */}
             <section className="type-section">
                 <div className="type-scroll-container">
+                    <span className="type-item font-serif">Elegant</span>
+                    <span className="type-item font-sans">BOLD</span>
+                    <span className="type-item font-mono">technical.</span>
+                    <span className="type-item font-serif">Timeless</span>
+                    <span className="type-item font-sans">LOUD</span>
+                    <span className="type-item font-mono">future_ready</span>
                     <span className="type-item font-serif">Elegant</span>
                     <span className="type-item font-sans">BOLD</span>
                     <span className="type-item font-mono">technical.</span>
@@ -661,7 +667,7 @@ const Branding = () => {
                             </div>
                         </div>
                         {/* Carousel navigation dots for mobile view */}
-                        <div className="carousel-dots" style={{ marginTop: '2rem' }}>
+                        <div className="carousel-dots">
                             {Array.from({ length: 4 }).map((_, idx) => (
                                 <button
                                     key={idx}
@@ -709,7 +715,7 @@ const Branding = () => {
                         </div>
                     </div>
                     {/* Carousel navigation dots for mobile view */}
-                    <div className="carousel-dots" style={{ marginTop: '2rem' }}>
+                    <div className="carousel-dots">
                         {Array.from({ length: 4 }).map((_, idx) => (
                             <button
                                 key={idx}

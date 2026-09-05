@@ -191,6 +191,45 @@ const AutomacaoPage = () => {
     const [teamSize, setTeamSize] = useState(12);
     const [hoursPerWeek, setHoursPerWeek] = useState(8);
 
+    // 4. Mobile Roadmap & Metrics Active State Hooks & Carousel Navigation
+    const [roadmapActiveIndex, setRoadmapActiveIndex] = useState(0);
+    const [metricsActiveIndex, setMetricsActiveIndex] = useState(0);
+    const roadmapGridRef = useRef(null);
+    const metricsGridRef = useRef(null);
+
+    const getActiveIndexFromScroll = (container, selector) => {
+        try {
+            const items = container.querySelectorAll(selector);
+            if (!items || !items.length) return 0;
+            const firstItem = items[0];
+            if (!firstItem) return 0;
+            const itemWidth = firstItem.offsetWidth || 285;
+            const gap = 20; // 1.25rem gap
+            const scrollLeft = container.scrollLeft || 0;
+            const index = Math.round(scrollLeft / (itemWidth + gap));
+            return Math.max(0, Math.min(index, items.length - 1));
+        } catch (err) {
+            return 0;
+        }
+    };
+
+    const scrollToCard = (ref, selector, index, setIndex) => {
+        const container = ref.current;
+        if (!container) return;
+        const items = container.querySelectorAll(selector);
+        if (items[index]) {
+            items[index].scrollIntoView({
+                behavior: 'smooth',
+                block: 'nearest',
+                inline: 'center'
+            });
+            setIndex(index);
+        }
+    };
+
+    const handleRoadmapScroll = (e) => setRoadmapActiveIndex(getActiveIndexFromScroll(e.currentTarget, '.auto-roadmap-card'));
+    const handleMetricsScroll = (e) => setMetricsActiveIndex(getActiveIndexFromScroll(e.currentTarget, '.auto-metric-card'));
+
     const hoursSavedPerMonth = Math.round(teamSize * hoursPerWeek * 4.33);
     const estimatedCapacityBoost = (hoursPerWeek * 2.5).toFixed(0);
 
@@ -344,22 +383,37 @@ const AutomacaoPage = () => {
             ========================================== */}
             <section className="auto-impact-section">
                 <div className="container">
-                    <div className="auto-metrics-grid">
-                        <div className="auto-metric-card reveal delay-1">
+                    <div className="auto-metrics-grid" ref={metricsGridRef} onScroll={handleMetricsScroll}>
+                        <div className={`auto-metric-card reveal delay-1 ${metricsActiveIndex === 0 ? 'active' : ''}`}>
                             <div className="auto-metric-val">+85%</div>
                             <div className="auto-metric-label">Redução de Tarefas Repetitivas</div>
                             <div className="auto-metric-sub">A equipa foca-se no que cria valor</div>
                         </div>
-                        <div className="auto-metric-card reveal delay-2">
+                        <div className={`auto-metric-card reveal delay-2 ${metricsActiveIndex === 1 ? 'active' : ''}`}>
                             <div className="auto-metric-val">0.0s</div>
                             <div className="auto-metric-label">Tempo de Resposta a Novas Leads</div>
                             <div className="auto-metric-sub">Qualificação e contacto imediato.</div>
                         </div>
-                        <div className="auto-metric-card reveal delay-3">
+                        <div className={`auto-metric-card reveal delay-3 ${metricsActiveIndex === 2 ? 'active' : ''}`}>
                             <div className="auto-metric-val">100%</div>
                             <div className="auto-metric-label">Consistência nos Processos</div>
                             <div className="auto-metric-sub">Menos erros. Mais controlo.</div>
                         </div>
+                    </div>
+                    {/* Carousel navigation dots for mobile view */}
+                    <div className="carousel-dots">
+                        {Array.from({ length: 3 }).map((_, idx) => (
+                            <button
+                                key={idx}
+                                className={`carousel-dot ${metricsActiveIndex === idx ? 'active' : ''}`}
+                                onClick={() => scrollToCard(metricsGridRef, '.auto-metric-card', idx, setMetricsActiveIndex)}
+                                onTouchEnd={(e) => {
+                                    e.preventDefault();
+                                    scrollToCard(metricsGridRef, '.auto-metric-card', idx, setMetricsActiveIndex);
+                                }}
+                                aria-label={`Ir para a métrica ${idx + 1}`}
+                            />
+                        ))}
                     </div>
                 </div>
             </section>
@@ -499,27 +553,42 @@ const AutomacaoPage = () => {
                         </p>
                     </div>
 
-                    <div className="auto-roadmap-grid">
-                        <div className="auto-roadmap-card reveal delay-1">
+                    <div className="auto-roadmap-grid" ref={roadmapGridRef} onScroll={handleRoadmapScroll}>
+                        <div className={`auto-roadmap-card reveal delay-1 ${roadmapActiveIndex === 0 ? 'active' : ''}`}>
                             <div className="auto-step-num">01</div>
                             <h4>Mapeamento de Processos</h4>
                             <p>Analisamos os processos e identificamos oportunidades de automação.</p>
                         </div>
-                        <div className="auto-roadmap-card reveal delay-2">
+                        <div className={`auto-roadmap-card reveal delay-2 ${roadmapActiveIndex === 1 ? 'active' : ''}`}>
                             <div className="auto-step-num">02</div>
                             <h4>Solução Personalizada</h4>
                             <p>Desenhamos fluxos e IA adaptados ao seu negócio.</p>
                         </div>
-                        <div className="auto-roadmap-card reveal delay-3">
+                        <div className={`auto-roadmap-card reveal delay-3 ${roadmapActiveIndex === 2 ? 'active' : ''}`}>
                             <div className="auto-step-num">03</div>
                             <h4>Implementação</h4>
                             <p>Ligamos as ferramentas e colocamos tudo a funcionar.</p>
                         </div>
-                        <div className="auto-roadmap-card reveal delay-4">
+                        <div className={`auto-roadmap-card reveal delay-4 ${roadmapActiveIndex === 3 ? 'active' : ''}`}>
                             <div className="auto-step-num">04</div>
                             <h4>Otimização Contínua</h4>
                             <p>Monitorizamos, melhoramos e escalamos os resultados.</p>
                         </div>
+                    </div>
+                    {/* Carousel navigation dots for mobile view */}
+                    <div className="carousel-dots">
+                        {Array.from({ length: 4 }).map((_, idx) => (
+                            <button
+                                key={idx}
+                                className={`carousel-dot ${roadmapActiveIndex === idx ? 'active' : ''}`}
+                                onClick={() => scrollToCard(roadmapGridRef, '.auto-roadmap-card', idx, setRoadmapActiveIndex)}
+                                onTouchEnd={(e) => {
+                                    e.preventDefault();
+                                    scrollToCard(roadmapGridRef, '.auto-roadmap-card', idx, setRoadmapActiveIndex);
+                                }}
+                                aria-label={`Ir para a etapa ${idx + 1}`}
+                            />
+                        ))}
                     </div>
                     <div className="text-center reveal mt-5">
                         <Link href="/contactos" className="auto-btn-primary">

@@ -89,7 +89,7 @@ const Ecommerce = () => {
                 </div>
 
                 <div className="hero-overlay-center">
-                    <h1 className="hero-title-shop">Tenha a sua montra <span className="ec-highlight">online</span></h1>
+                    <h1 className="hero-title-shop">Tenha a sua montra <br className="hero-title-br-mobile" /><span className="ec-highlight">online</span></h1>
                     <p className="hero-subtitle-shop">Lojas online que vendem enquanto dorme. Rápidas, seguras e impossíveis de ignorar.</p>
                 </div>
             </section>
@@ -470,7 +470,7 @@ const Ecommerce = () => {
             <section className="ec-cta-section reveal">
                 <div className="container">
                     <div className="ec-cta-content">
-                        <h2>A sua loja está <span className="gradient-word">pronta. </span><br /><span className="ec-highlight">E os seus clientes estão à espera.</span></h2>
+                        <h2>A sua loja está <span className="gradient-word">pronta. </span><br /><span className="ec-highlight"> E os seus clientes estão à espera.</span></h2>
                         <Link href="/contactos" className="smart-btn" style={{ padding: '1rem 2.5rem', fontSize: '1.1rem', marginTop: '1.5rem' }}>
                             <span style={{ color: '#ffffff' }}>Começar a Vender</span>
                         </Link>

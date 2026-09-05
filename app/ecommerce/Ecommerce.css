@@ -174,9 +174,14 @@ body.shop-body .nav-open .hamburger {
 }
 
 .hero-subtitle-shop {
-    font-size: 1.2rem;
+    font-size: 1rem;
+    line-height: 1.7;
     color: var(--shop-text-muted);
     margin-bottom: 2rem;
+}
+
+.hero-title-br-mobile {
+    display: none;
 }
 
 
@@ -1245,5 +1250,19 @@ body.shop-body .nav-open .hamburger {
     
     .ec-cta-content h2 br {
         display: none;
+    }
+}
+
+@media (max-width: 768px) {
+    .hero-overlay-center {
+        padding: 2rem 1.25rem;
+    }
+
+    .hero-title-shop {
+        font-size: clamp(1.8rem, 6vw, 2.2rem);
+    }
+
+    .hero-title-br-mobile {
+        display: block;
     }
 }

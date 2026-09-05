@@ -2867,6 +2867,14 @@ body.ads-body .header.header-scrolled .main-nav a:hover {
    MOBILE CAROUSELS
    ============================================ */
 @media (max-width: 900px) {
+    .section-header-center {
+        margin-bottom: 1.5rem !important;
+    }
+
+    .section-header-center h2 {
+        margin-bottom: 0.5rem !important;
+    }
+
     .omni-grid,
     .creatives-grid,
     .results-grid {
@@ -2879,7 +2887,7 @@ body.ads-body .header.header-scrolled .main-nav a:hover {
         scrollbar-width: none !important;
         -ms-overflow-style: none !important;
         gap: 1.25rem !important;
-        padding: 2.25rem calc(50% - min(142.5px, 40vw)) 5.5rem !important;
+        padding: 0.75rem calc(50% - min(142.5px, 40vw)) 5.5rem !important;
         margin-left: -2rem !important;
         margin-right: -2rem !important;
     }
@@ -2978,12 +2986,14 @@ body.ads-body .header.header-scrolled .main-nav a:hover {
     }
 
     .cta-btn-premium {
-        padding: 0.8rem 1.5rem !important;
-        font-size: 0.9rem !important;
-        display: block;
-        width: 100%;
-        max-width: 280px;
-        margin: 0 auto;
+        padding: 0.8rem 1rem !important;
+        font-size: 0.85rem !important;
+        letter-spacing: 1px !important;
+        white-space: nowrap !important;
+        display: inline-block !important;
+        width: auto !important;
+        max-width: calc(100% - 1rem) !important;
+        margin: 0 auto !important;
         text-align: center;
     }
 }
