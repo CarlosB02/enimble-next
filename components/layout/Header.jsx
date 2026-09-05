@@ -38,18 +38,24 @@ const Header = () => {
         setIsDropdownOpen(false);
     }, [pathname]);
 
-    // Lock both document.documentElement and document.body scroll + prevent touchmove overscroll on mobile when menu is open
+    // Lock scroll when mobile menu is open, preserving scroll position on iOS/mobile
     useEffect(() => {
+        const scrollY = window.scrollY;
+
         if (isMobileMenuOpen) {
+            // Save current scroll position and lock the page in place
+            document.body.dataset.scrollY = scrollY;
             document.documentElement.style.overflow = 'hidden';
             document.body.style.overflow = 'hidden';
+            document.body.style.position = 'fixed';
+            document.body.style.top = `-${scrollY}px`;
+            document.body.style.width = '100%';
             document.documentElement.style.overscrollBehavior = 'none';
             document.body.style.overscrollBehavior = 'none';
             document.documentElement.classList.add('mobile-menu-open-lock');
             document.body.classList.add('mobile-menu-open-lock');
 
             const preventTouchMove = (e) => {
-                // Prevent touch scroll chaining to background document on iOS/Webkit
                 e.preventDefault();
             };
 
@@ -57,28 +63,47 @@ const Header = () => {
 
             return () => {
                 document.removeEventListener('touchmove', preventTouchMove);
+                const savedScrollY = parseInt(document.body.dataset.scrollY || '0', 10);
                 document.documentElement.style.overflow = '';
                 document.body.style.overflow = '';
+                document.body.style.position = '';
+                document.body.style.top = '';
+                document.body.style.width = '';
                 document.documentElement.style.overscrollBehavior = '';
                 document.body.style.overscrollBehavior = '';
                 document.documentElement.classList.remove('mobile-menu-open-lock');
                 document.body.classList.remove('mobile-menu-open-lock');
+                window.scrollTo(0, savedScrollY);
             };
         } else {
+            const savedScrollY = parseInt(document.body.dataset.scrollY || '0', 10);
             document.documentElement.style.overflow = '';
             document.body.style.overflow = '';
+            document.body.style.position = '';
+            document.body.style.top = '';
+            document.body.style.width = '';
             document.documentElement.style.overscrollBehavior = '';
             document.body.style.overscrollBehavior = '';
             document.documentElement.classList.remove('mobile-menu-open-lock');
             document.body.classList.remove('mobile-menu-open-lock');
+            if (savedScrollY) {
+                window.scrollTo(0, savedScrollY);
+            }
         }
         return () => {
+            const savedScrollY = parseInt(document.body.dataset.scrollY || '0', 10);
             document.documentElement.style.overflow = '';
             document.body.style.overflow = '';
+            document.body.style.position = '';
+            document.body.style.top = '';
+            document.body.style.width = '';
             document.documentElement.style.overscrollBehavior = '';
             document.body.style.overscrollBehavior = '';
             document.documentElement.classList.remove('mobile-menu-open-lock');
             document.body.classList.remove('mobile-menu-open-lock');
+            if (savedScrollY) {
+                window.scrollTo(0, savedScrollY);
+            }
         };
     }, [isMobileMenuOpen]);
 
