@@ -1337,6 +1337,10 @@ main {
         padding: 2rem 0;
     }
 
+    .rs-drivers-header {
+        margin-bottom: 1.25rem !important;
+    }
+
     .rs-drivers-grid,
     .rs-appear-text {
         display: flex !important;
@@ -1348,7 +1352,7 @@ main {
         scrollbar-width: none !important;
         -ms-overflow-style: none !important;
         gap: 1.25rem !important;
-        padding: 2.25rem calc(50% - min(142.5px, 40vw)) 5.5rem !important;
+        padding: 1rem calc(50% - min(142.5px, 40vw)) 5.5rem !important;
         margin-left: -2rem !important;
         margin-right: -2rem !important;
     }

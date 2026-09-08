@@ -40,12 +40,15 @@ const Header = () => {
 
     // Persist scroll position across menu open/close without touching dataset
     const savedScrollRef = useRef(0);
+    // Track which page the menu was opened on — so we don't restore scroll on navigation
+    const savedPathnameRef = useRef('');
 
     // Lock scroll when mobile menu is open, preserving scroll position on iOS/mobile
     useEffect(() => {
         if (isMobileMenuOpen) {
-            // Capture position when OPENING
+            // Capture position AND page when OPENING
             savedScrollRef.current = window.scrollY;
+            savedPathnameRef.current = window.location.pathname;
 
             document.body.style.position = 'fixed';
             document.body.style.top = `-${savedScrollRef.current}px`;
@@ -54,19 +57,24 @@ const Header = () => {
             document.body.style.overflow = 'hidden';
 
             return () => {
-                // Restore styles synchronously
+                // Restore body styles synchronously
                 document.body.style.position = '';
                 document.body.style.top = '';
                 document.body.style.left = '';
                 document.body.style.right = '';
                 document.body.style.overflow = '';
-                // Wait one frame so the browser finishes relayout before scrolling
+                // Wait one frame for browser relayout, then conditionally restore scroll.
+                // If the user navigated to a different page, skip — Next.js resets scroll to top.
+                // Next.js calls history.pushState synchronously, so pathname is already updated here.
                 requestAnimationFrame(() => {
-                    window.scrollTo(0, savedScrollRef.current);
+                    if (window.location.pathname === savedPathnameRef.current) {
+                        window.scrollTo(0, savedScrollRef.current);
+                    }
                 });
             };
         }
     }, [isMobileMenuOpen]);
+
 
     const lastToggleRef = useRef(0);
 
