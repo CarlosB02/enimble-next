@@ -74,8 +74,8 @@ const Formacao = () => {
                     <p className="edu-intro">"Não é sobre teoria. É sobre equipar a sua força de trabalho com as ferramentas
                         digitais que o mercado exige hoje."</p>
                     <div className="cert-badge">
-                        <img src="/servicos/formacao/ENimble-training-certification-star.webp" alt="Certificação DGERT ENimble" className="edu-cert-img" />
-                        <span style={{ fontWeight: 700, fontSize: '0.9rem' }}>DGERT<br />CERTIFIED</span>
+                        <img src="/servicos/formacao/e-nimble-training-certification-star.webp" alt="Certificação DGERT ENimble" className="edu-cert-img" />
+                        <span style={{ fontWeight: 700, fontSize: '0.9rem' }}>CERTIFICADO<br />DGERT</span>
                     </div>
                 </div>
             </section>

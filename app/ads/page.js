@@ -379,7 +379,7 @@ const AdsPage = () => {
                         <div className={`creative-card ${creativesActiveIndex === 0 ? 'active' : ''}`}>
                             <div className="creative-img-container square">
                                 <img
-                                    src="/servicos/ads/criativos/meta.webp"
+                                    src="/servicos/ads/criativos/meta.png"
                                     alt="Meta Feed Creative"
                                     className="creative-image"
                                     onError={(e) => {
@@ -397,7 +397,7 @@ const AdsPage = () => {
                         <div className={`creative-card ${creativesActiveIndex === 1 ? 'active' : ''}`}>
                             <div className="creative-img-container portrait">
                                 <img
-                                    src="/servicos/ads/criativos/story.webp"
+                                    src="/servicos/ads/criativos/story.png"
                                     alt="Stories & Reels Creative"
                                     className="creative-image"
                                     onError={(e) => {
@@ -415,7 +415,7 @@ const AdsPage = () => {
                         <div className={`creative-card ${creativesActiveIndex === 2 ? 'active' : ''}`}>
                             <div className="creative-img-container landscape">
                                 <img
-                                    src="/servicos/ads/criativos/display.webp"
+                                    src="/servicos/ads/criativos/display.png"
                                     alt="Google Display Creative"
                                     className="creative-image"
                                     onError={(e) => {

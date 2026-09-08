@@ -336,18 +336,12 @@ class App {
   }
   createMedias(items, bend = 1, textColor, borderRadius, font) {
     const defaultItems = [
-      { image: `/servicos/redes-sociais/criativos/meta.webp`, text: 'Post 1' },
-      { image: `/servicos/redes-sociais/criativos/twitter.webp`, text: 'Post 2' },
-      { image: `/servicos/redes-sociais/criativos/3.jpg`, text: 'Post 3' },
-      { image: `/servicos/redes-sociais/criativos/4.jpg`, text: 'Post 4' },
-      { image: `/servicos/redes-sociais/criativos/5.jpg`, text: 'Post 5' },
-      { image: `/servicos/redes-sociais/criativos/6.jpg`, text: 'Post 6' },
-      { image: `/servicos/redes-sociais/criativos/7.jpg`, text: 'Post 7' },
-      { image: `/servicos/redes-sociais/criativos/8.jpg`, text: 'Post 8' },
-      { image: `/servicos/redes-sociais/criativos/9.jpg`, text: 'Post 9' },
-      { image: `/servicos/redes-sociais/criativos/10.jpg`, text: 'Post 10' },
-      { image: `/servicos/redes-sociais/criativos/11.jpg`, text: 'Post 11' },
-      { image: `/servicos/redes-sociais/criativos/12.jpg`, text: 'Post 12' }
+      { image: `/servicos/redes-sociais/criativos/meta.png`, text: 'Feed Post' },
+      { image: `/servicos/redes-sociais/criativos/story.png`, text: 'Story & Reels' },
+      { image: `/servicos/redes-sociais/criativos/display.png`, text: 'Display Banner' },
+      { image: `/servicos/redes-sociais/criativos/meta.png`, text: 'Campaign Post' },
+      { image: `/servicos/redes-sociais/criativos/story.png`, text: 'Vertical Content' },
+      { image: `/servicos/redes-sociais/criativos/display.png`, text: 'Social Ad' }
     ];
     const galleryItems = items && items.length ? items : defaultItems;
     this.mediasImages = galleryItems.concat(galleryItems);

@@ -10,13 +10,17 @@ export default function LottieIcon({ src, width = 80, height = 80 }) {
     useEffect(() => {
         if (!containerRef.current || animRef.current) return;
 
-        animRef.current = lottie.loadAnimation({
-            container: containerRef.current,
-            renderer: 'svg',
-            loop: true,
-            autoplay: true,
-            path: src,
-        });
+        try {
+            animRef.current = lottie.loadAnimation({
+                container: containerRef.current,
+                renderer: 'svg',
+                loop: true,
+                autoplay: true,
+                path: src,
+            });
+        } catch (err) {
+            console.error('Lottie load error:', err);
+        }
 
         return () => {
             if (animRef.current) {

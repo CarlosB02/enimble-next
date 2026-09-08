@@ -312,7 +312,7 @@ const WebsiteDesign = () => {
                                     desc: "Construa autoridade, inspire confiança e destaque-se no seu setor.",
                                     tag: "Autoridade de Marca",
                                     preview: "https://panoramas.pt",
-                                    icon: "/servicos/website-design/ENimble-corporate-website-authority.webp",
+                                    icon: "/servicos/website-design/e-nimble-corporate-website-authority.webp",
                                     linkText: "Quero Autoridade Online"
                                 },
                                 {
@@ -320,7 +320,7 @@ const WebsiteDesign = () => {
                                     desc: "Lojas online concebidas para vender mais, com uma experiência de compra sem fricção.",
                                     tag: "Máquinas de Vendas",
                                     preview: "https://inpe.pt",
-                                    icon: "/servicos/website-design/ENimble-ecommerce-conversion-store.webp",
+                                    icon: "/servicos/website-design/e-nimble-ecommerce-conversion-store.webp",
                                     linkText: "Quero Vender Online"
                                 },
                                 {
@@ -328,7 +328,7 @@ const WebsiteDesign = () => {
                                     desc: "Páginas focadas num único objetivo: transformar visitantes em clientes.",
                                     tag: "Geração de Leads",
                                     preview: "https://polly.photo",
-                                    icon: "/servicos/website-design/ENimble-lead-generation-landing-page.webp",
+                                    icon: "/servicos/website-design/e-nimble-lead-generation-landing-page.webp",
                                     linkText: "Quero Gerar Leads"
                                 }
                             ].map((service, idx) => (
@@ -428,7 +428,7 @@ const WebsiteDesign = () => {
 
                             <div className={`wd-checklist-item ${painActiveIndex === 2 ? 'active' : ''}`}>
                                 <div className="wd-checklist-icon">
-                                    <img src="/servicos/website-design/ENimble-premium-design-trust.webp" alt="Design premium e profissional - ENimble" className="wd-checklist-img" />
+                                    <img src="/servicos/website-design/e-nimble-premium-design-trust.webp" alt="Design premium e profissional - ENimble" className="wd-checklist-img" />
                                 </div>
                                 <div className="wd-checklist-text">
                                     <h3>Parece pouco profissional</h3>

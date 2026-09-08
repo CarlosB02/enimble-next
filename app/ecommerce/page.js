@@ -63,27 +63,27 @@ const Ecommerce = () => {
             <section className="shop-hero">
                 <div className="carousel-3d">
                     <div className="float-item">
-                        <img src="/servicos/ecommerce/ENimble-ecommerce-product-shoe.webp" alt="Produto Calçado E-commerce - ENimble" />
+                        <img src="/servicos/ecommerce/e-nimble-ecommerce-product-shoe.webp" alt="Produto Calçado E-commerce - ENimble" />
                         <div className="float-price">120€</div>
                     </div>
                     <div className="float-item">
-                        <img src="/servicos/ecommerce/ENimble-ecommerce-tech-item.webp" alt="Produto Auriculares E-commerce - ENimble" />
+                        <img src="/servicos/ecommerce/e-nimble-ecommerce-tech-item.webp" alt="Produto Auriculares E-commerce - ENimble" />
                         <div className="float-price">299€</div>
                     </div>
                     <div className="float-item">
-                        <img src="/servicos/ecommerce/ENimble-ecommerce-luxury-watch.webp" alt="Produto Relógio E-commerce - ENimble" />
+                        <img src="/servicos/ecommerce/e-nimble-ecommerce-luxury-watch.webp" alt="Produto Relógio E-commerce - ENimble" />
                         <div className="float-price">450€</div>
                     </div>
                     <div className="float-item">
-                        <img src="/servicos/ecommerce/ENimble-ecommerce-product-bag.webp" alt="Produto Mala E-commerce - ENimble" />
+                        <img src="/servicos/ecommerce/e-nimble-ecommerce-product-bag.webp" alt="Produto Mala E-commerce - ENimble" />
                         <div className="float-price">850€</div>
                     </div>
                     <div className="float-item">
-                        <img src="/servicos/ecommerce/ENimble-ecommerce-accessories-glasses.webp" alt="Produto Óculos E-commerce - ENimble" />
+                        <img src="/servicos/ecommerce/e-nimble-ecommerce-accessories-glasses.webp" alt="Produto Óculos E-commerce - ENimble" />
                         <div className="float-price">180€</div>
                     </div>
                     <div className="float-item">
-                        <img src="/servicos/ecommerce/ENimble-ecommerce-beauty-cosmetic.webp" alt="Produto Cosmética E-commerce - ENimble" />
+                        <img src="/servicos/ecommerce/e-nimble-ecommerce-beauty-cosmetic.webp" alt="Produto Cosmética E-commerce - ENimble" />
                         <div className="float-price">45€</div>
                     </div>
                 </div>
@@ -219,7 +219,7 @@ const Ecommerce = () => {
                     <div className="ec-adv-grid" ref={advGridRef} onScroll={handleAdvScroll}>
                         <div className={`ec-adv-card reveal delay-1 ${advActiveIndex === 0 ? 'active' : ''}`}>
                             <div className="ec-adv-icon">
-                                <img src="/servicos/ecommerce/ENimble-service-global-reach.webp" alt="Alcance global para e-commerce - ENimble" />
+                                <img src="/servicos/ecommerce/e-nimble-service-global-reach.webp" alt="Alcance global para e-commerce - ENimble" />
                             </div>
                             <h3>Alcance Global</h3>
                             <p>Venda para todo o país ou o mundo inteiro, sem custos adicionais.</p>
@@ -231,7 +231,7 @@ const Ecommerce = () => {
 
                         <div className={`ec-adv-card reveal delay-2 ${advActiveIndex === 1 ? 'active' : ''}`}>
                             <div className="ec-adv-icon">
-                                <img src="/servicos/ecommerce/ENimble-service-24-7-automation.webp" alt="Vendas 24/7 e automação - ENimble" />
+                                <img src="/servicos/ecommerce/e-nimble-service-24-7-automation.webp" alt="Vendas 24/7 e automação - ENimble" />
                             </div>
                             <h3>Vendas 24/7</h3>
                             <p>A sua loja nunca fecha. Gere vendas à noite, fins de semana e feriados.</p>
@@ -243,7 +243,7 @@ const Ecommerce = () => {
 
                         <div className={`ec-adv-card reveal delay-3 ${advActiveIndex === 2 ? 'active' : ''}`}>
                             <div className="ec-adv-icon">
-                                <img src="/servicos/ecommerce/ENimble-service-frictionless-experience.webp" alt="Experiência de compra otimizada - ENimble" />
+                                <img src="/servicos/ecommerce/e-nimble-service-premium-branding.webp" alt="Experiência de compra otimizada - ENimble" />
                             </div>
                             <h3>Experiência Fluida</h3>
                             <p>Checkout rápido para evitar carrinhos abandonados.</p>
@@ -255,7 +255,7 @@ const Ecommerce = () => {
 
                         <div className={`ec-adv-card reveal delay-4 ${advActiveIndex === 3 ? 'active' : ''}`}>
                             <div className="ec-adv-icon">
-                                <img src="/servicos/ecommerce/ENimble-service-data-driven-results.webp" alt="Dados e insights de e-commerce - ENimble" />
+                                <img src="/servicos/ecommerce/e-nimble-service-data-driven-results.webp" alt="Dados e insights de e-commerce - ENimble" />
                             </div>
                             <h3>Dados e Insights</h3>
                             <p>Saiba exatamente o que os seus clientes querem e compram.</p>

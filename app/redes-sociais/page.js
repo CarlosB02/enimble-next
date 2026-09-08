@@ -46,11 +46,11 @@ const RedesSociais = () => {
     useScrollReveal();
 
     // Mobile Carousel Active State Hooks
-    const [bentoActiveIndex, setBentoActiveIndex] = React.useState(0);
+    const [servicesActiveIndex, setServicesActiveIndex] = React.useState(0);
     const [driversActiveIndex, setDriversActiveIndex] = React.useState(0);
     const [appearActiveIndex, setAppearActiveIndex] = React.useState(0);
 
-    const bentoGridRef = React.useRef(null);
+    const servicesGridRef = React.useRef(null);
     const driversGridRef = React.useRef(null);
     const appearGridRef = React.useRef(null);
 
@@ -84,7 +84,7 @@ const RedesSociais = () => {
         }
     };
 
-    const handleBentoScroll = (e) => setBentoActiveIndex(getActiveIndexFromScroll(e.currentTarget, '.bento-card'));
+    const handleServicesScroll = (e) => setServicesActiveIndex(getActiveIndexFromScroll(e.currentTarget, '.rs-service-card'));
     const handleDriversScroll = (e) => setDriversActiveIndex(getActiveIndexFromScroll(e.currentTarget, '.rs-driver-card'));
     const handleAppearScroll = (e) => setAppearActiveIndex(getActiveIndexFromScroll(e.currentTarget, '.advantage-item'));
 
@@ -163,72 +163,91 @@ const RedesSociais = () => {
                 </div>
             </div>
 
-            {/* Bento Grid — "O que incluímos" */}
-            <section className="social-services-section">
+            {/* ===== SERVICES (ASYMMETRIC GRID) ===== */}
+            <section className="rs-services-section">
                 <div className="container">
-                    <div className="text-center mb-5 reveal">
-                        <h2 className="rs-section-title">O que <span className="gradient-word">incluímos</span>?</h2>
-                        <p className="rs-section-subtitle">Tudo o que precisa para dominar o digital.</p>
+                    <div className="rs-services-grid" ref={servicesGridRef} onScroll={handleServicesScroll}>
+                        {/* Card 1: Top Left (~2/3) */}
+                        <div className={`rs-service-card rs-card-large reveal ${servicesActiveIndex === 0 ? 'active' : ''}`}>
+                            <div className="rs-service-icon">
+                                <img src="/servicos/redes-sociais/e-nimble-social-content-creation.webp" alt="Vídeos Curtos & Reels" />
+                            </div>
+                            <div className="rs-service-body">
+                                <h3 className="rs-service-title">Vídeos Curtos & Reels</h3>
+                                <p className="rs-service-desc">
+                                    Roteiros viciantes, captação de alta qualidade e edição dinâmica que param o scroll e captam a atenção nos primeiros 3 segundos.
+                                </p>
+                            </div>
+                            <Link href="/portfolio" className="rs-service-cta">
+                                <span>Ver Portfolio</span>
+                                <span className="rs-cta-arrow" aria-hidden="true">→</span>
+                            </Link>
+                        </div>
+
+                        {/* Card 2: Top Right (~1/3) */}
+                        <div className={`rs-service-card rs-card-small reveal delay-1 ${servicesActiveIndex === 1 ? 'active' : ''}`}>
+                            <div className="rs-service-icon">
+                                <img src="/servicos/redes-sociais/e-nimble-social-strategy-planning.webp" alt="Planeamento" />
+                            </div>
+                            <div className="rs-service-body">
+                                <h3 className="rs-service-title">Planeamento</h3>
+                                <p className="rs-service-desc">
+                                    Calendários editoriais estratégicos para garantir consistência.
+                                </p>
+                            </div>
+                            <Link href="/contactos" className="rs-service-cta">
+                                <span>Definir Estratégia</span>
+                                <span className="rs-cta-arrow" aria-hidden="true">→</span>
+                            </Link>
+                        </div>
+
+                        {/* Card 3: Bottom Left (~1/3) - Highlighted Gradient */}
+                        <div className={`rs-service-card rs-card-small rs-card-highlight reveal delay-2 ${servicesActiveIndex === 2 ? 'active' : ''}`}>
+                            <div className="rs-service-icon">
+                                <img src="/servicos/redes-sociais/e-nimble-paid-social-traffic.webp" alt="Gestão de Tráfego" />
+                            </div>
+                            <div className="rs-service-body">
+                                <h3 className="rs-service-title">Gestão de Tráfego</h3>
+                                <p className="rs-service-desc">
+                                    Alcance milhares de novos clientes com ROI máximo.
+                                </p>
+                            </div>
+                            <Link href="/contactos" className="rs-service-cta">
+                                <span>Maximizar Vendas</span>
+                                <span className="rs-cta-arrow" aria-hidden="true">→</span>
+                            </Link>
+                        </div>
+
+                        {/* Card 4: Bottom Right (~2/3) */}
+                        <div className={`rs-service-card rs-card-large reveal delay-3 ${servicesActiveIndex === 3 ? 'active' : ''}`}>
+                            <div className="rs-service-icon">
+                                <img src="/servicos/redes-sociais/e-nimble-social-community-management.webp" alt="Community Manager" />
+                            </div>
+                            <div className="rs-service-body">
+                                <h3 className="rs-service-title">Community Manager</h3>
+                                <p className="rs-service-desc">
+                                    Não deixamos ninguém sem resposta. Interagimos com seguidores, respondemos a DMs e gerimos crises de reputação em tempo real.
+                                </p>
+                            </div>
+                            <Link href="/contactos" className="rs-service-cta">
+                                <span>Gerir Comunidade</span>
+                                <span className="rs-cta-arrow" aria-hidden="true">→</span>
+                            </Link>
+                        </div>
                     </div>
 
-                    <div className="bento-grid" ref={bentoGridRef} onScroll={handleBentoScroll}>
-                        <div className={`bento-card large reveal ${bentoActiveIndex === 0 ? 'active' : ''}`}>
-                            <div className="bento-icon">
-                                <img src="/servicos/redes-sociais/ENimble-short-video-reels.webp" alt="Vídeos Curtos & Reels Viral - ENimble" className="rs-icon-img" />
-                            </div>
-                            <div>
-                                <h3>Vídeos Curtos & Reels</h3>
-                                <p>Roteiros viciantes, captação de alta qualidade e edição dinâmica que param o scroll e captam a atenção nos primeiros 3 segundos.</p>
-                                <div className="bento-cta">Ver Portfolio <span className="arrow">→</span></div>
-                            </div>
-                        </div>
-
-                        <div className={`bento-card reveal delay-2 ${bentoActiveIndex === 1 ? 'active' : ''}`}>
-                            <div className="bento-icon">
-                                <img src="/servicos/redes-sociais/ENimble-social-strategy-planning.webp" alt="Planeamento Estratégico Social - ENimble" className="rs-icon-img" />
-                            </div>
-                            <div>
-                                <h3>Planeamento</h3>
-                                <p>Calendários editoriais estratégicos para garantir consistência.</p>
-                                <div className="bento-cta">Definir Estratégia <span className="arrow">→</span></div>
-                            </div>
-                        </div>
-
-                        <div className={`bento-card accent-bg reveal delay-3 ${bentoActiveIndex === 2 ? 'active' : ''}`}>
-                            <div className="bento-icon">
-                                <img src="/servicos/redes-sociais/ENimble-paid-social-traffic.webp" alt="Gestão de Tráfego Pago Social - ENimble" className="rs-icon-img" />
-                            </div>
-                            <div>
-                                <h3>Gestão de Tráfego</h3>
-                                <p>Alcance milhares de novos clientes com ROI máximo.</p>
-                                <div className="bento-cta">Maximizar Vendas <span className="arrow">→</span></div>
-                            </div>
-                        </div>
-
-                        <div className={`bento-card large reveal delay-4 ${bentoActiveIndex === 3 ? 'active' : ''}`}>
-                            <div className="bento-icon">
-                                <img src="/servicos/redes-sociais/ENimble-social-community-management.webp" alt="Gestão de Comunidade Social - ENimble" className="rs-icon-img" />
-                            </div>
-                            <div>
-                                <h3>Community Manager</h3>
-                                <p>Não deixamos ninguém sem resposta. Interagimos com seguidores, respondemos a DMs e
-                                    gerimos crises de reputação em tempo real.</p>
-                                <div className="bento-cta">Gerir Comunidade <span className="arrow">→</span></div>
-                            </div>
-                        </div>
-                    </div>
                     {/* Carousel navigation dots for mobile view */}
-                    <div className="carousel-dots">
+                    <div className="carousel-dots" style={{ marginTop: '1.5rem' }}>
                         {Array.from({ length: 4 }).map((_, idx) => (
                             <button
                                 key={idx}
-                                className={`carousel-dot ${bentoActiveIndex === idx ? 'active' : ''}`}
-                                onClick={() => scrollToCard(bentoGridRef, '.bento-card', idx, setBentoActiveIndex)}
+                                className={`carousel-dot ${servicesActiveIndex === idx ? 'active' : ''}`}
+                                onClick={() => scrollToCard(servicesGridRef, '.rs-service-card', idx, setServicesActiveIndex)}
                                 onTouchEnd={(e) => {
                                     e.preventDefault();
-                                    scrollToCard(bentoGridRef, '.bento-card', idx, setBentoActiveIndex);
+                                    scrollToCard(servicesGridRef, '.rs-service-card', idx, setServicesActiveIndex);
                                 }}
-                                aria-label={`Ir para o ponto ${idx + 1}`}
+                                aria-label={`Ir para o serviço ${idx + 1}`}
                             />
                         ))}
                     </div>

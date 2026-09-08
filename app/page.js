@@ -145,7 +145,7 @@ const HomePage = () => {
                             <p className="card-desc">Venda 24/7 com uma loja online automatizada e segura.</p>
                             <Link href="/ecommerce" className="card-link">Expandir o Mercado <span className="arrow">→</span></Link>
                         </div>
-                        <div className={`service-item card-ads ${activeIndex === 3 ? 'active' : ''}`}>
+                        <div className={`service-item card-traffic ${activeIndex === 3 ? 'active' : ''}`}>
                             <div className="card-icon">
                                 <LottieIcon src="https://lottie.host/f0cc2f57-20d5-4009-96d0-f64fc3bf86a1/hrOaqeeD1o.json" />
                             </div>

@@ -30,7 +30,7 @@ body.edu-body .header.header-scrolled {
 }
 
 body.edu-body .header .logo-text,
-body.edu-body .header .main-nav > ul > li > a {
+body.edu-body .header .main-nav>ul>li>a {
     color: #ffffff !important;
 }
 
@@ -252,12 +252,11 @@ details[open] .arrow-icon {
     font-weight: 600;
 }
 
-/* CERT BADGE */
 .cert-badge {
     width: 150px;
     height: 150px;
-    background: var(--edu-accent);
-    color: white;
+    background: linear-gradient(rgba(255, 255, 255, 0.88), rgba(255, 255, 255, 0.88)), linear-gradient(254deg, #3A00FF 0%, #BF0040 100%);
+    color: #000000;
     border-radius: 50%;
     display: flex;
     flex-direction: column;
@@ -268,8 +267,12 @@ details[open] .arrow-icon {
     top: 50px;
     right: 0;
     transform: rotate(15deg);
-    box-shadow: 0 10px 30px rgba(58, 0, 255, 0.4);
+    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.15);
     animation: floatBadge 5s ease-in-out infinite;
+}
+
+.cert-badge span {
+    color: #000000;
 }
 
 @keyframes floatBadge {
@@ -701,7 +704,7 @@ details[open] .arrow-icon {
     left: -20%;
     width: 600px;
     height: 600px;
-    background: radial-gradient(circle, rgba(58, 0, 255, 0.06) 0%, rgba(255,255,255,0) 70%);
+    background: radial-gradient(circle, rgba(58, 0, 255, 0.06) 0%, rgba(255, 255, 255, 0) 70%);
     border-radius: 50%;
     pointer-events: none;
 }
@@ -713,7 +716,7 @@ details[open] .arrow-icon {
     right: -20%;
     width: 600px;
     height: 600px;
-    background: radial-gradient(circle, rgba(191, 0, 64, 0.04) 0%, rgba(255,255,255,0) 70%);
+    background: radial-gradient(circle, rgba(191, 0, 64, 0.04) 0%, rgba(255, 255, 255, 0) 70%);
     border-radius: 50%;
     pointer-events: none;
 }
@@ -1128,9 +1131,11 @@ details[open] .arrow-icon {
         grid-template-columns: repeat(2, 1fr);
         gap: 1.5rem;
     }
+
     .edu-how-grid::before {
         display: none;
     }
+
     .edu-how-card h3 {
         min-height: auto;
         margin-bottom: 0.5rem;
@@ -1176,6 +1181,7 @@ details[open] .arrow-icon {
 }
 
 @keyframes floatBadgeMobile {
+
     0%,
     100% {
         transform: rotate(5deg) translateY(0);
@@ -1291,6 +1297,7 @@ details[open] .arrow-icon {
     height: 40px;
     object-fit: contain;
     margin-bottom: 5px;
+    filter: brightness(0);
 }
 
 .edu-growth-img {
@@ -1318,6 +1325,7 @@ details[open] .arrow-icon {
    MOBILE CAROUSELS & FIXES
    ============================================ */
 @media (max-width: 900px) {
+
     .edu-funding-highlights,
     .edu-flow-steps {
         display: flex !important;
@@ -1339,8 +1347,8 @@ details[open] .arrow-icon {
         display: none !important;
     }
 
-    .edu-funding-highlights > .edu-fh-card,
-    .edu-flow-steps > .edu-flow-step {
+    .edu-funding-highlights>.edu-fh-card,
+    .edu-flow-steps>.edu-flow-step {
         flex: 0 0 285px !important;
         max-width: 80vw !important;
         scroll-snap-align: center !important;
