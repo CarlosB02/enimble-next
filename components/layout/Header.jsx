@@ -38,73 +38,34 @@ const Header = () => {
         setIsDropdownOpen(false);
     }, [pathname]);
 
+    // Persist scroll position across menu open/close without touching dataset
+    const savedScrollRef = useRef(0);
+
     // Lock scroll when mobile menu is open, preserving scroll position on iOS/mobile
     useEffect(() => {
-        const scrollY = window.scrollY;
-
         if (isMobileMenuOpen) {
-            // Save current scroll position and lock the page in place
-            document.body.dataset.scrollY = scrollY;
-            document.documentElement.style.overflow = 'hidden';
-            document.body.style.overflow = 'hidden';
+            // Capture position when OPENING
+            savedScrollRef.current = window.scrollY;
+
             document.body.style.position = 'fixed';
-            document.body.style.top = `-${scrollY}px`;
-            document.body.style.width = '100%';
-            document.documentElement.style.overscrollBehavior = 'none';
-            document.body.style.overscrollBehavior = 'none';
-            document.documentElement.classList.add('mobile-menu-open-lock');
-            document.body.classList.add('mobile-menu-open-lock');
-
-            const preventTouchMove = (e) => {
-                e.preventDefault();
-            };
-
-            document.addEventListener('touchmove', preventTouchMove, { passive: false });
+            document.body.style.top = `-${savedScrollRef.current}px`;
+            document.body.style.left = '0';
+            document.body.style.right = '0';
+            document.body.style.overflow = 'hidden';
 
             return () => {
-                document.removeEventListener('touchmove', preventTouchMove);
-                const savedScrollY = parseInt(document.body.dataset.scrollY || '0', 10);
-                document.documentElement.style.overflow = '';
-                document.body.style.overflow = '';
+                // Restore styles synchronously
                 document.body.style.position = '';
                 document.body.style.top = '';
-                document.body.style.width = '';
-                document.documentElement.style.overscrollBehavior = '';
-                document.body.style.overscrollBehavior = '';
-                document.documentElement.classList.remove('mobile-menu-open-lock');
-                document.body.classList.remove('mobile-menu-open-lock');
-                window.scrollTo(0, savedScrollY);
+                document.body.style.left = '';
+                document.body.style.right = '';
+                document.body.style.overflow = '';
+                // Wait one frame so the browser finishes relayout before scrolling
+                requestAnimationFrame(() => {
+                    window.scrollTo(0, savedScrollRef.current);
+                });
             };
-        } else {
-            const savedScrollY = parseInt(document.body.dataset.scrollY || '0', 10);
-            document.documentElement.style.overflow = '';
-            document.body.style.overflow = '';
-            document.body.style.position = '';
-            document.body.style.top = '';
-            document.body.style.width = '';
-            document.documentElement.style.overscrollBehavior = '';
-            document.body.style.overscrollBehavior = '';
-            document.documentElement.classList.remove('mobile-menu-open-lock');
-            document.body.classList.remove('mobile-menu-open-lock');
-            if (savedScrollY) {
-                window.scrollTo(0, savedScrollY);
-            }
         }
-        return () => {
-            const savedScrollY = parseInt(document.body.dataset.scrollY || '0', 10);
-            document.documentElement.style.overflow = '';
-            document.body.style.overflow = '';
-            document.body.style.position = '';
-            document.body.style.top = '';
-            document.body.style.width = '';
-            document.documentElement.style.overscrollBehavior = '';
-            document.body.style.overscrollBehavior = '';
-            document.documentElement.classList.remove('mobile-menu-open-lock');
-            document.body.classList.remove('mobile-menu-open-lock');
-            if (savedScrollY) {
-                window.scrollTo(0, savedScrollY);
-            }
-        };
     }, [isMobileMenuOpen]);
 
     const lastToggleRef = useRef(0);

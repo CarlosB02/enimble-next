@@ -306,18 +306,9 @@
     overscroll-behavior: none !important;
   }
 
-  /* Bulletproof CSS body scroll lock when mobile menu is open */
-  html.mobile-menu-open-lock,
-  body.mobile-menu-open-lock,
-  html:has(#menu-toggle:checked),
-  body:has(#menu-toggle:checked),
-  html:has(.drawer-open),
-  body:has(.drawer-open) {
-    overflow: hidden !important;
-    overscroll-behavior: none !important;
-    height: 100% !important;
-    touch-action: none !important;
-  }
+  /* Scroll lock is handled entirely by JS (position:fixed + requestAnimationFrame).
+     Do NOT add overflow/height/touch-action to html/body here — it conflicts. */
+
 
   #menu-toggle:checked~.mobile-nav-drawer,
   .mobile-nav-drawer.drawer-open {
