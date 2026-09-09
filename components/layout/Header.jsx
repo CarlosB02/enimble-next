@@ -124,7 +124,7 @@ const Header = () => {
                 <div className="container header-container">
                     <div className="logo-container">
                         <Link href="/" className="logo-link">
-                            <span className="logo-text">ENimble</span>
+                            <span className="logo-text">ENIMBLE</span>
                         </Link>
                     </div>
 
