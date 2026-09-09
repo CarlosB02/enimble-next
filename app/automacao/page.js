@@ -678,7 +678,7 @@ const AutomacaoPage = () => {
                         <p className="auto-cta-p">
                             Descubra como a automação pode libertar tempo, reduzir custos e acelerar o crescimento do seu negócio.
                         </p>
-                        <Link href="/contactos" className="auto-btn-primary" style={{ padding: '1.25rem 3rem', fontSize: '1.1rem' }}>
+                        <Link href="/contactos" className="auto-btn-primary">
                             Agendar Diagnóstico Gratuito
                         </Link>
                     </div>

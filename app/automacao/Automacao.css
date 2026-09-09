@@ -97,6 +97,7 @@ body.auto-body {
   cursor: pointer;
   transition: all 0.3s cubic-bezier(0.16, 1, 0.3, 1);
   box-shadow: 0 10px 25px -5px rgba(58, 0, 255, 0.3);
+  white-space: nowrap;
 }
 
 .auto-btn-primary:hover {

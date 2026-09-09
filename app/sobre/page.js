@@ -1,6 +1,7 @@
 'use client';
 
 import React, { useEffect, useState, useRef } from 'react';
+import Image from 'next/image';
 import useScrollReveal from '@/hooks/useScrollReveal';
 import './Sobre.css';
 
@@ -23,7 +24,7 @@ const Sobre = () => {
             const firstItem = items[0];
             if (!firstItem) return 0;
             const itemWidth = firstItem.offsetWidth || 200;
-            const gap = 24; // ~1.5rem gap
+            const gap = 20; // 1.25rem gap on mobile
             const scrollLeft = container.scrollLeft || 0;
             const index = Math.round(scrollLeft / (itemWidth + gap));
             return Math.max(0, Math.min(index, items.length - 1));
@@ -33,16 +34,20 @@ const Sobre = () => {
     };
 
     const scrollToCard = (ref, selector, index, setIndex) => {
+        setIndex(index);
         const container = ref.current;
         if (!container) return;
-        const items = container.querySelectorAll(selector);
-        if (items[index]) {
-            items[index].scrollIntoView({
-                behavior: 'smooth',
-                block: 'nearest',
-                inline: 'center'
-            });
-            setIndex(index);
+        if (container.scrollWidth > container.clientWidth) {
+            const items = container.querySelectorAll(selector);
+            if (items[index]) {
+                const itemWidth = items[index].offsetWidth || 200;
+                const gap = 20;
+                const targetScrollLeft = index * (itemWidth + gap);
+                container.scrollTo({
+                    left: targetScrollLeft,
+                    behavior: 'smooth'
+                });
+            }
         }
     };
 
@@ -127,7 +132,18 @@ const Sobre = () => {
                             ferramenta de negócio.
                             Obrigado por confiar na nossa visão."
                         </p>
-                        <div className="founder-sig">- Carlos Bernardo</div>
+                        <div className="founder-footer">
+                            <div className="founder-avatar-wrapper">
+                                <Image
+                                    src="/assets/carlos bernardo enimble.webp"
+                                    alt="Carlos Bernardo"
+                                    width={100}
+                                    height={100}
+                                    className="founder-avatar"
+                                />
+                            </div>
+                            <div className="founder-sig">- Carlos Bernardo</div>
+                        </div>
                     </div>
                 </section>
             </main>

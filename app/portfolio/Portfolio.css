@@ -54,16 +54,20 @@ body.portfolio-body .header:not(.header-scrolled) .main-nav a {
 
 /* HERO */
 .portfolio-hero {
-    padding: 120px 0 60px;
+    min-height: 52vh;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 140px 0 80px;
     text-align: center;
 }
 
 .portfolio-hero h1 {
-    font-size: clamp(2.5rem, 5vw, 4.5rem);
-    line-height: 0.9;
+    font-size: clamp(2rem, 3.8vw, 3.2rem);
+    line-height: 1.15;
     text-transform: uppercase;
     font-family: 'Syne', sans-serif;
-    margin-bottom: 2rem;
+    margin-bottom: 1.5rem;
     opacity: 0;
     /* JS reveal */
     transform: translateY(50px);
@@ -74,7 +78,7 @@ body.portfolio-body .header:not(.header-scrolled) .main-nav a {
 }
 
 .portfolio-hero p {
-    font-size: 1.2rem;
+    font-size: 1.15rem;
     color: #555;
     max-width: 600px;
     margin: 0 auto;
@@ -378,9 +382,17 @@ body.portfolio-body .header:not(.header-scrolled) .main-nav a {
     transform: translateY(-2px);
 }
 
-.link-arrow {
-    font-size: 1rem;
-    font-weight: bold;
+.link-arrow-img {
+    width: 12px !important;
+    height: 12px !important;
+    object-fit: contain;
+    display: inline-block;
+    vertical-align: middle;
+    transition: transform 0.3s ease;
+}
+
+.visit-site-link:hover .link-arrow-img {
+    transform: translate(2px, -2px);
 }
 
 /* Card Info Below */
@@ -413,11 +425,12 @@ body.portfolio-body .header:not(.header-scrolled) .main-nav a {
 /* Base Mobile Adjustments */
 @media (max-width: 576px) {
     .portfolio-hero {
-        padding: 100px 1rem 40px;
+        min-height: 45vh;
+        padding: 120px 1rem 50px;
     }
 
     .portfolio-hero h1 {
-        font-size: clamp(2rem, 8vw, 2.5rem);
+        font-size: clamp(1.75rem, 6vw, 2.2rem);
     }
 
     .portfolio-hero p {

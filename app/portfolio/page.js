@@ -34,7 +34,7 @@ const PORTFOLIO_ITEMS = [
     },
     {
         id: 'carmetrix-branding',
-        image: '/assets/portfolio/carmetrix-branding.png',
+        image: '/assets/portfolio/logo-carmetrix.webp',
         link: '#',
         title: 'Carmetrix',
         description: 'Identidade Visual & Branding',
@@ -50,7 +50,7 @@ const PORTFOLIO_ITEMS = [
     },
     {
         id: 'viriatus-brunch-logo',
-        image: '/assets/portfolio/viriatus-brunch-logo.png',
+        image: '/assets/portfolio/logo viriatus.webp',
         link: '#',
         title: 'Viriatus Brunch',
         description: 'Design de Logótipo & Branding',
@@ -82,7 +82,7 @@ const PORTFOLIO_ITEMS = [
     },
     {
         id: 'polly-photo-logo',
-        image: '/assets/portfolio/polly.photo-logo.png',
+        image: '/assets/portfolio/logo-polly.webp',
         link: '#',
         title: 'Polly Photo',
         description: 'Identidade Corporativa & Logo',
@@ -95,6 +95,78 @@ const PORTFOLIO_ITEMS = [
         title: 'Orion Aviation',
         description: 'Website Corporativo de Aviação',
         category: 'website',
+    },
+    {
+        id: 'panoramas-logo',
+        image: '/assets/portfolio/panoramas_logo.webp',
+        link: '#',
+        title: 'Panoramas',
+        description: 'Identidade Visual & Branding',
+        category: 'branding',
+    },
+    {
+        id: 'panoramas-website',
+        image: '/assets/portfolio/panoramas-website.png',
+        link: '#',
+        title: 'Panoramas',
+        description: 'Website Corporativo',
+        category: 'website',
+    },
+    {
+        id: 'pedro-media-logo',
+        image: '/assets/portfolio/pedro black outline com texto.webp',
+        link: '#',
+        title: 'Pedro Media',
+        description: 'Design de Logótipo & Branding',
+        category: 'branding',
+    },
+    {
+        id: 'pedrom-media-website',
+        image: '/assets/portfolio/pedrom-media-website.png',
+        link: '#',
+        title: 'Pedro M. Media',
+        description: 'Website Corporativo',
+        category: 'website',
+    },
+    {
+        id: 'inpe-logo',
+        image: '/assets/portfolio/logo inpe.webp',
+        link: '#',
+        title: 'INPE',
+        description: 'Identidade Corporativa & Logo',
+        category: 'branding',
+    },
+    {
+        id: 'inpe-website',
+        image: '/assets/portfolio/inpe-website.png',
+        link: '#',
+        title: 'INPE',
+        description: 'Website Corporativo',
+        category: 'website',
+    },
+    {
+        id: 'moonlight-ink-website',
+        image: '/assets/portfolio/moonlight-ink-website.png',
+        link: '#',
+        title: 'Moonlight Ink',
+        description: 'Website Corporativo',
+        category: 'website',
+    },
+    {
+        id: 'flad-cartazes',
+        image: '/assets/portfolio/flad-cartazes.png',
+        link: '#',
+        title: 'FLAD',
+        description: 'Design de Cartazes & Branding',
+        category: 'branding',
+    },
+    {
+        id: 'startup-world-cup-branding',
+        image: '/assets/portfolio/startup-world-cup.png',
+        link: '#',
+        title: 'Startup World Cup',
+        description: 'Identidade Visual & Branding',
+        category: 'branding',
     }
 ];
 
@@ -251,7 +323,7 @@ const Portfolio = () => {
                                                             {item.link !== '#' && (
                                                                 <a href={item.link} target="_blank" rel="noopener noreferrer" className="visit-site-link">
                                                                     Visitar Website
-                                                                    <span className="link-arrow">↗</span>
+                                                                    <img src="/assets/portfolio/visitar website.webp" alt="" className="link-arrow-img" />
                                                                 </a>
                                                             )}
                                                         </div>
