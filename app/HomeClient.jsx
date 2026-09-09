@@ -151,7 +151,7 @@ const HomeClient = () => {
                             </div>
                             <h3>Anúncios Pagos</h3>
                             <p className="card-desc">Alcance o público certo no momento certo com campanhas de alto retorno.</p>
-                            <Link href="/ads" className="card-link">Acelerar Vendas <span className="arrow">→</span></Link>
+                            <Link href="/anuncios-pagos" className="card-link">Acelerar Vendas <span className="arrow">→</span></Link>
                         </div>
                         <div className={`service-item card-automation ${activeIndex === 4 ? 'active' : ''}`}>
                             <div className="card-icon">

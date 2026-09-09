@@ -27,7 +27,7 @@ const Footer = () => {
                             <li><Link href="/website-design">Web Design</Link></li>
                             <li><Link href="/redes-sociais">Marketing Social</Link></li>
                             <li><Link href="/ecommerce">E-commerce</Link></li>
-                            <li><Link href="/ads">Tráfego Pago</Link></li>
+                            <li><Link href="/anuncios-pagos">Tráfego Pago</Link></li>
                             <li><Link href="/automacao">AI & Automação</Link></li>
                             <li><Link href="/branding">Branding</Link></li>
                             <li><Link href="/formacao">Formação</Link></li>

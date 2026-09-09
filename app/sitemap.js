@@ -2,7 +2,7 @@ export default function sitemap() {
   const baseUrl = 'https://enimble.pt';
   const routes = [
     '',
-    '/ads',
+    '/anuncios-pagos',
     '/automacao',
     '/branding',
     '/contactos',

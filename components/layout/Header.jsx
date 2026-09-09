@@ -106,7 +106,7 @@ const Header = () => {
         return pathname.includes(path);
     };
 
-    const lightPages = ['/redes-sociais', '/portfolio', '/ecommerce', '/branding', '/ads'];
+    const lightPages = ['/redes-sociais', '/portfolio', '/ecommerce', '/branding', '/anuncios-pagos'];
     const isLightHeroPage = lightPages.includes(pathname);
 
     return (
@@ -151,7 +151,7 @@ const Header = () => {
                                     <li><Link href="/website-design">Website Design</Link></li>
                                     <li><Link href="/redes-sociais">Redes Sociais</Link></li>
                                     <li><Link href="/ecommerce">Lojas E-commerce</Link></li>
-                                    <li><Link href="/ads">Anúncios Pagos</Link></li>
+                                    <li><Link href="/anuncios-pagos">Anúncios Pagos</Link></li>
                                     <li><Link href="/automacao">AI & Automação</Link></li>
                                     <li><Link href="/formacao">Formação Empresarial</Link></li>
                                     <li><Link href="/branding">Branding & Brindes</Link></li>
@@ -182,7 +182,7 @@ const Header = () => {
                                 <li><Link href="/website-design" onClick={() => setIsMobileMenuOpen(false)}><span className="bullet">✦</span> Website Design</Link></li>
                                 <li><Link href="/redes-sociais" onClick={() => setIsMobileMenuOpen(false)}><span className="bullet">✦</span> Redes Sociais</Link></li>
                                 <li><Link href="/ecommerce" onClick={() => setIsMobileMenuOpen(false)}><span className="bullet">✦</span> Lojas E-commerce</Link></li>
-                                <li><Link href="/ads" onClick={() => setIsMobileMenuOpen(false)}><span className="bullet">✦</span> Anúncios Pagos</Link></li>
+                                <li><Link href="/anuncios-pagos" onClick={() => setIsMobileMenuOpen(false)}><span className="bullet">✦</span> Anúncios Pagos</Link></li>
                                 <li><Link href="/automacao" onClick={() => setIsMobileMenuOpen(false)}><span className="bullet">✦</span> AI & Automação</Link></li>
                                 <li><Link href="/formacao" onClick={() => setIsMobileMenuOpen(false)}><span className="bullet">✦</span> Formação Empresarial</Link></li>
                                 <li><Link href="/branding" onClick={() => setIsMobileMenuOpen(false)}><span className="bullet">✦</span> Branding & Brindes</Link></li>
