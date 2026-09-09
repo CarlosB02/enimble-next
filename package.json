@@ -16,6 +16,7 @@
     "postprocessing": "^6.39.2",
     "react": "19.2.4",
     "react-dom": "19.2.4",
+    "resend": "^6.26.0",
     "three": "^0.185.1"
   }
 }

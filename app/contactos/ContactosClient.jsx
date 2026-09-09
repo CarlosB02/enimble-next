@@ -53,21 +53,35 @@ const ContactosClient = () => {
     }, []);
 
     // Form submission handler
-    const handleSubmit = (e) => {
+    const handleSubmit = async (e) => {
         e.preventDefault();
         setIsSubmitting(true);
 
-        // Simulate API call
-        setTimeout(() => {
-            setIsSubmitting(false);
-            setIsSubmitted(true);
+        try {
+            const res = await fetch('/api/contact', {
+                method: 'POST',
+                headers: { 'Content-Type': 'application/json' },
+                body: JSON.stringify({ name, email, phone, message, coffeeType }),
+            });
 
-            // Clean inputs
-            setName('');
-            setEmail('');
-            setPhone('');
-            setMessage('');
-        }, 1800);
+            const data = await res.json();
+
+            if (res.ok && data.success) {
+                setIsSubmitted(true);
+                // Clean inputs
+                setName('');
+                setEmail('');
+                setPhone('');
+                setMessage('');
+            } else {
+                alert(data.error || 'Erro ao enviar mensagem. Por favor tente novamente.');
+            }
+        } catch (err) {
+            console.error('Erro de submissão:', err);
+            alert('Ocorreu um erro ao enviar a mensagem. Por favor tente novamente.');
+        } finally {
+            setIsSubmitting(false);
+        }
     };
 
     const handleReset = () => {
