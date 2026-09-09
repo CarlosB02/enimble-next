@@ -123,6 +123,7 @@ body.contact-body .header.header-scrolled .btn-nav:hover {
     text-transform: uppercase;
     letter-spacing: 2px;
     background: var(--gradient-main);
+    background-clip: text;
     -webkit-background-clip: text;
     -webkit-text-fill-color: transparent;
     margin-bottom: 0.8rem;
@@ -207,6 +208,49 @@ body.contact-body .header.header-scrolled .btn-nav:hover {
     color: #ffffff;
     text-decoration: none;
     margin: 0;
+}
+
+.info-card-content {
+    flex: 1;
+    min-width: 0;
+}
+
+.info-card-actions {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 0.75rem;
+    flex-wrap: wrap;
+    margin-top: 0.2rem;
+}
+
+.whatsapp-btn {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.4rem;
+    background: #25D366;
+    color: #ffffff !important;
+    padding: 0.4rem 0.85rem;
+    border-radius: 20px;
+    font-size: 0.82rem;
+    font-weight: 700;
+    text-decoration: none;
+    transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+    box-shadow: 0 4px 12px rgba(37, 211, 102, 0.3);
+    line-height: 1;
+    white-space: nowrap;
+    word-break: normal;
+}
+
+.whatsapp-btn:hover {
+    background: #20ba5a;
+    transform: translateY(-2px) scale(1.03);
+    box-shadow: 0 6px 16px rgba(37, 211, 102, 0.45);
+    color: #ffffff !important;
+}
+
+.whatsapp-btn svg {
+    flex-shrink: 0;
 }
 
 /* Right Side: Form with Integrated Coffee Machine */
@@ -359,6 +403,7 @@ body.contact-body .header.header-scrolled .btn-nav:hover {
     inset: 0;
     border-radius: 0 0 27px 27px;
     overflow: hidden;
+    mask-image: radial-gradient(white, black);
     -webkit-mask-image: -webkit-radial-gradient(white, black);
 }
 

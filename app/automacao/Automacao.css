@@ -951,11 +951,13 @@ body.auto-body {
   border-radius: 50px;
   background: #e2e8f0;
   outline: none;
+  appearance: none;
   -webkit-appearance: none;
   cursor: pointer;
 }
 
 .auto-range-input::-webkit-slider-thumb {
+  appearance: none;
   -webkit-appearance: none;
   width: 24px;
   height: 24px;
@@ -993,6 +995,7 @@ body.auto-body {
   line-height: 1;
   margin-bottom: 0.5rem;
   background: var(--auto-gradient);
+  background-clip: text;
   -webkit-background-clip: text;
   -webkit-text-fill-color: transparent;
 }

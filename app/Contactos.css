@@ -790,6 +790,8 @@ body.contact-body .header.header-scrolled .btn-nav:hover {
   transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
   box-shadow: 0 4px 12px rgba(37, 211, 102, 0.3);
   line-height: 1;
+  white-space: nowrap;
+  word-break: normal;
 }
 
 .whatsapp-btn:hover {
