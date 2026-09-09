@@ -1,0 +1,484 @@
+'use client';
+
+import React, { useEffect } from 'react';
+import Link from 'next/link';
+import useScrollReveal from '@/hooks/useScrollReveal';
+import './Ecommerce.css';
+import AnimatedDashboard from '@/components/ui/AnimatedDashboard';
+
+const EcommerceClient = () => {
+    useScrollReveal();
+
+    // Mobile Carousel Active State Hooks
+    const [advActiveIndex, setAdvActiveIndex] = React.useState(0);
+    const [showcaseActiveIndex, setShowcaseActiveIndex] = React.useState(0);
+    const [journeyActiveIndex, setJourneyActiveIndex] = React.useState(0);
+
+    const advGridRef = React.useRef(null);
+    const showcaseGridRef = React.useRef(null);
+    const journeyFlowRef = React.useRef(null);
+
+    const getActiveIndexFromScroll = (container, selector) => {
+        try {
+            const items = container.querySelectorAll(selector);
+            if (!items || !items.length) return 0;
+            const firstItem = items[0];
+            if (!firstItem) return 0;
+            const itemWidth = firstItem.offsetWidth || 285;
+            const gap = 20; // 1.25rem gap
+            const scrollLeft = container.scrollLeft || 0;
+            const index = Math.round(scrollLeft / (itemWidth + gap));
+            return Math.max(0, Math.min(index, items.length - 1));
+        } catch (err) {
+            return 0;
+        }
+    };
+
+    const scrollToCard = (ref, selector, index, setIndex) => {
+        const container = ref.current;
+        if (!container) return;
+        const items = container.querySelectorAll(selector);
+        if (items[index]) {
+            items[index].scrollIntoView({
+                behavior: 'smooth',
+                block: 'nearest',
+                inline: 'center'
+            });
+            setIndex(index);
+        }
+    };
+
+    const handleAdvScroll = (e) => setAdvActiveIndex(getActiveIndexFromScroll(e.currentTarget, '.ec-adv-card'));
+    const handleShowcaseScroll = (e) => setShowcaseActiveIndex(getActiveIndexFromScroll(e.currentTarget, '.ec-showcase-item'));
+    const handleJourneyScroll = (e) => setJourneyActiveIndex(getActiveIndexFromScroll(e.currentTarget, '.ec-journey-step'));
+
+    useEffect(() => {
+        document.body.classList.add('shop-body');
+        return () => document.body.classList.remove('shop-body');
+    }, []);
+
+    return (
+        <main>
+            {/* 3D Hero */}
+            <section className="shop-hero">
+                <div className="carousel-3d">
+                    <div className="float-item">
+                        <img src="/servicos/ecommerce/e-nimble-ecommerce-product-shoe.webp" alt="Produto Calçado E-commerce - ENimble" />
+                        <div className="float-price">120€</div>
+                    </div>
+                    <div className="float-item">
+                        <img src="/servicos/ecommerce/e-nimble-ecommerce-tech-item.webp" alt="Produto Auriculares E-commerce - ENimble" />
+                        <div className="float-price">299€</div>
+                    </div>
+                    <div className="float-item">
+                        <img src="/servicos/ecommerce/e-nimble-ecommerce-luxury-watch.webp" alt="Produto Relógio E-commerce - ENimble" />
+                        <div className="float-price">450€</div>
+                    </div>
+                    <div className="float-item">
+                        <img src="/servicos/ecommerce/e-nimble-ecommerce-product-bag.webp" alt="Produto Mala E-commerce - ENimble" />
+                        <div className="float-price">850€</div>
+                    </div>
+                    <div className="float-item">
+                        <img src="/servicos/ecommerce/e-nimble-ecommerce-accessories-glasses.webp" alt="Produto Óculos E-commerce - ENimble" />
+                        <div className="float-price">180€</div>
+                    </div>
+                    <div className="float-item">
+                        <img src="/servicos/ecommerce/e-nimble-ecommerce-beauty-cosmetic.webp" alt="Produto Cosmética E-commerce - ENimble" />
+                        <div className="float-price">45€</div>
+                    </div>
+                </div>
+
+                <div className="hero-overlay-center">
+                    <h1 className="hero-title-shop">Tenha a sua montra <br className="hero-title-br-mobile" /><span className="ec-highlight">online</span></h1>
+                    <p className="hero-subtitle-shop">Lojas online que vendem enquanto dorme. Rápidas, seguras e impossíveis de ignorar.</p>
+                </div>
+            </section>
+
+            {/* Platforms Trust - Infinite Slider */}
+            <div className="platforms-slider-container reveal">
+                <div className="platforms-track">
+                    {/* First set of logos */}
+                    <div className="platform-slide"><img src="/servicos/ecommerce/platforms-shopify.webp" alt="Shopify - ENimble expert" /></div>
+                    <div className="platform-slide"><img src="/servicos/ecommerce/platforms-woocommerce.webp" alt="WooCommerce - ENimble expert" /></div>
+                    <div className="platform-slide"><img src="/servicos/ecommerce/platforms-stripe.webp" alt="Stripe - ENimble expert" /></div>
+                    <div className="platform-slide"><img src="/servicos/ecommerce/platforms-klarna.webp" alt="Klarna - ENimble expert" /></div>
+                    <div className="platform-slide"><img src="/servicos/ecommerce/platforms-mbway.webp" alt="MBWay - ENimble expert" /></div>
+                    <div className="platform-slide"><img src="/servicos/ecommerce/platforms-revolut.webp" alt="Revolut - ENimble expert" /></div>
+                    <div className="platform-slide"><img src="/servicos/ecommerce/platforms-paypal.webp" alt="PayPal - ENimble expert" /></div>
+                    <div className="platform-slide"><img src="/servicos/ecommerce/platforms-applepay.webp" alt="Apple Pay - ENimble expert" /></div>
+                    <div className="platform-slide"><img src="/servicos/ecommerce/platforms-googlepay.webp" alt="Google Pay - ENimble expert" /></div>
+
+                    {/* Second set (duplicated for infinite loop) */}
+                    <div className="platform-slide"><img src="/servicos/ecommerce/platforms-shopify.webp" alt="Shopify - ENimble expert" /></div>
+                    <div className="platform-slide"><img src="/servicos/ecommerce/platforms-woocommerce.webp" alt="WooCommerce - ENimble expert" /></div>
+                    <div className="platform-slide"><img src="/servicos/ecommerce/platforms-stripe.webp" alt="Stripe - ENimble expert" /></div>
+                    <div className="platform-slide"><img src="/servicos/ecommerce/platforms-klarna.webp" alt="Klarna - ENimble expert" /></div>
+                    <div className="platform-slide"><img src="/servicos/ecommerce/platforms-mbway.webp" alt="MBWay - ENimble expert" /></div>
+                    <div className="platform-slide"><img src="/servicos/ecommerce/platforms-revolut.webp" alt="Revolut - ENimble expert" /></div>
+                    <div className="platform-slide"><img src="/servicos/ecommerce/platforms-paypal.webp" alt="PayPal - ENimble expert" /></div>
+                    <div className="platform-slide"><img src="/servicos/ecommerce/platforms-applepay.webp" alt="Apple Pay - ENimble expert" /></div>
+                    <div className="platform-slide"><img src="/servicos/ecommerce/platforms-googlepay.webp" alt="Google Pay - ENimble expert" /></div>
+                </div>
+            </div>
+
+            {/* ===== BUSINESS IMPACT / SCALABLE CHANNEL ===== */}
+            <section className="ec-impact-section">
+                <div className="container">
+                    <div className="ec-impact-content reveal">
+                        <div className="ec-impact-text">
+                            <h2>Enquanto dorme,<br /><span className="ec-highlight">a sua loja vende.</span></h2>
+                            <p>Transforme o seu negócio num canal de vendas que funciona 24/7, chega a mais clientes e cresce sem limitações.</p>
+                            <div style={{ marginTop: '2rem' }}>
+                                <Link href="/contactos" className="smart-btn" style={{ padding: '1rem 2rem', fontSize: '1.1rem' }}>
+                                    <span>Criar a Minha Loja</span>
+                                </Link>
+                            </div>
+                        </div>
+                        <div className="ec-impact-visual" style={{ padding: 0, background: 'transparent', border: 'none', boxShadow: 'none' }}>
+                            <AnimatedDashboard />
+                        </div>
+                    </div>
+                </div>
+            </section>
+
+            {/* ===== PORTFOLIO / CASE STUDY ===== */}
+            <section className="ec-portfolio-section" id="ec-portfolio">
+                <div className="container">
+                    <div className="ec-portfolio-header reveal">
+                        <h2>Exemplo de uma <span className="gradient-word">Loja Online de Sucesso</span></h2>
+                    </div>
+
+                    <div className="ec-portfolio-card reveal">
+                        <div className="ec-portfolio-visual">
+                            <div className="ec-mockup-browser">
+                                <div className="ec-mockup-header">
+                                    <span className="dot red"></span>
+                                    <span className="dot yellow"></span>
+                                    <span className="dot green"></span>
+                                    <span className="ec-mockup-url">inpe.pt</span>
+                                </div>
+                                <div className="ec-mockup-body">
+                                    <iframe
+                                        src="https://inpe.pt"
+                                        title="Portfólio Loja Online"
+                                        style={{ width: '100%', height: '400px', border: 'none', borderRadius: '12px' }}
+                                    />
+                                </div>
+                            </div>
+                        </div>
+
+                        <div className="ec-portfolio-info">
+                            <h3 className="ec-portfolio-title">Esqueça os Templates</h3>
+                            <p className="ec-portfolio-desc">
+                                Seguimos o branding da marca e criamos uma loja única. Rápidas, intuitivas e preparadas para vender.
+                            </p>
+
+                            <div className="ec-portfolio-metrics">
+                                <div className="ec-metric">
+                                    <span className="ec-metric-num">100%</span>
+                                    <span className="ec-metric-label">Customizado</span>
+                                </div>
+                                <div className="ec-metric">
+                                    <span className="ec-metric-num">24/7</span>
+                                    <span className="ec-metric-label">Sempre a vender</span>
+                                </div>
+                            </div>
+
+                            <ul className="ec-portfolio-features">
+                                <li>
+                                    <span className="ec-feat-icon">✓</span>
+                                    <span>Experiência mobile em primeiro lugar</span>
+                                </li>
+                                <li>
+                                    <span className="ec-feat-icon">✓</span>
+                                    <span>Integração de pagamentos simplificada</span>
+                                </li>
+                                <li>
+                                    <span className="ec-feat-icon">✓</span>
+                                    <span>Maior visibilidade nas pesquisas do Google</span>
+                                </li>
+                            </ul>
+
+                            <div style={{ marginTop: '2.2rem' }}>
+                                <Link href="/contactos" className="smart-btn" style={{ padding: '0.9rem 2.2rem', fontSize: '1rem' }}>
+                                    <span style={{ color: '#ffffff' }}>Criar Loja Personalizada</span>
+                                </Link>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </section>
+
+            {/* ===== KEY ADVANTAGES OF SELLING ONLINE ===== */}
+            <section className="ec-advantages-section">
+                <div className="container">
+                    <div className="ec-adv-header reveal">
+                        <h2>Porque Vale a Pena <span className="gradient-word">Vender Online</span></h2>
+                    </div>
+
+                    <div className="ec-adv-grid" ref={advGridRef} onScroll={handleAdvScroll}>
+                        <div className={`ec-adv-card reveal delay-1 ${advActiveIndex === 0 ? 'active' : ''}`}>
+                            <div className="ec-adv-icon">
+                                <img src="/servicos/ecommerce/e-nimble-service-global-reach.webp" alt="Alcance global para e-commerce - ENimble" />
+                            </div>
+                            <h3>Alcance Global</h3>
+                            <p>Venda para todo o país ou o mundo inteiro, sem custos adicionais.</p>
+                            <div className="ec-adv-stat">
+                                <strong>+300%</strong>
+                                <span>Alcance potencial</span>
+                            </div>
+                        </div>
+
+                        <div className={`ec-adv-card reveal delay-2 ${advActiveIndex === 1 ? 'active' : ''}`}>
+                            <div className="ec-adv-icon">
+                                <img src="/servicos/ecommerce/e-nimble-service-24-7-automation.webp" alt="Vendas 24/7 e automação - ENimble" />
+                            </div>
+                            <h3>Vendas 24/7</h3>
+                            <p>A sua loja nunca fecha. Gere vendas à noite, fins de semana e feriados.</p>
+                            <div className="ec-adv-stat">
+                                <strong>40%</strong>
+                                <span>Compras fora de horas</span>
+                            </div>
+                        </div>
+
+                        <div className={`ec-adv-card reveal delay-3 ${advActiveIndex === 2 ? 'active' : ''}`}>
+                            <div className="ec-adv-icon">
+                                <img src="/servicos/ecommerce/e-nimble-service-premium-branding.webp" alt="Experiência de compra otimizada - ENimble" />
+                            </div>
+                            <h3>Experiência Fluida</h3>
+                            <p>Checkout rápido para evitar carrinhos abandonados.</p>
+                            <div className="ec-adv-stat">
+                                <strong>+85%</strong>
+                                <span>Mais Credibilidade</span>
+                            </div>
+                        </div>
+
+                        <div className={`ec-adv-card reveal delay-4 ${advActiveIndex === 3 ? 'active' : ''}`}>
+                            <div className="ec-adv-icon">
+                                <img src="/servicos/ecommerce/e-nimble-service-data-driven-results.webp" alt="Dados e insights de e-commerce - ENimble" />
+                            </div>
+                            <h3>Dados e Insights</h3>
+                            <p>Saiba exatamente o que os seus clientes querem e compram.</p>
+                            <div className="ec-adv-stat">
+                                <strong>Tempo-Real</strong>
+                                <span>Decisões com dados</span>
+                            </div>
+                        </div>
+                    </div>
+                    {/* Carousel navigation dots for mobile view */}
+                    <div className="carousel-dots">
+                        {Array.from({ length: 4 }).map((_, idx) => (
+                            <button
+                                key={idx}
+                                className={`carousel-dot ${advActiveIndex === idx ? 'active' : ''}`}
+                                onClick={() => scrollToCard(advGridRef, '.ec-adv-card', idx, setAdvActiveIndex)}
+                                onTouchEnd={(e) => {
+                                    e.preventDefault();
+                                    scrollToCard(advGridRef, '.ec-adv-card', idx, setAdvActiveIndex);
+                                }}
+                                aria-label={`Ir para a vantagem ${idx + 1}`}
+                            />
+                        ))}
+                    </div>
+                    <div style={{ textAlign: 'center', marginTop: '3.5rem' }} className="reveal">
+                        <Link href="/contactos" className="smart-btn" style={{ padding: '0.9rem 2.2rem', fontSize: '1rem' }}>
+                            <span style={{ color: '#ffffff' }}>Criar a Minha Loja</span>
+                        </Link>
+                    </div>
+                </div>
+            </section>
+
+            {/* ===== INDUSTRY SHOWCASE ===== */}
+            <section className="ec-showcase-section">
+                <div className="container">
+                    <div className="ec-showcase-header reveal">
+                        <span className="ec-label">SOLUÇÕES PARA TODOS OS SETORES</span>
+                        <h2>Lojas Que <span className="gradient-word">Vendem</span></h2>
+                    </div>
+
+                    <div className="ec-showcase-grid" ref={showcaseGridRef} onScroll={handleShowcaseScroll}>
+                        <div className={`ec-showcase-item reveal delay-1 ${showcaseActiveIndex === 0 ? 'active' : ''}`}>
+                            <div className="ec-showcase-icon">
+                                <img src="/servicos/ecommerce/agency-expertise-fashion-ecommerce.webp" alt="E-commerce de moda e vestuário - ENimble" />
+                            </div>
+                            <span>Moda & Vestuário</span>
+                        </div>
+                        <div className={`ec-showcase-item reveal delay-1 ${showcaseActiveIndex === 1 ? 'active' : ''}`}>
+                            <div className="ec-showcase-icon">
+                                <img src="/servicos/ecommerce/agency-expertise-food-gourmet.webp" alt="E-commerce alimentar e gourmet - ENimble" />
+                            </div>
+                            <span>Alimentar & Bebidas</span>
+                        </div>
+                        <div className={`ec-showcase-item reveal delay-2 ${showcaseActiveIndex === 2 ? 'active' : ''}`}>
+                            <div className="ec-showcase-icon">
+                                <img src="/servicos/ecommerce/agency-expertise-health-wellness.webp" alt="E-commerce de saúde e cosmética - ENimble" />
+                            </div>
+                            <span>Saúde & Cosmética</span>
+                        </div>
+                        <div className={`ec-showcase-item reveal delay-2 ${showcaseActiveIndex === 3 ? 'active' : ''}`}>
+                            <div className="ec-showcase-icon">
+                                <img src="/servicos/ecommerce/agency-expertise-home-decor.webp" alt="E-commerce de casa e decoração - ENimble" />
+                            </div>
+                            <span>Casa & Decoração</span>
+                        </div>
+                        <div className={`ec-showcase-item reveal delay-3 ${showcaseActiveIndex === 4 ? 'active' : ''}`}>
+                            <div className="ec-showcase-icon">
+                                <img src="/servicos/ecommerce/agency-expertise-tech-gaming.webp" alt="E-commerce de tecnologia e gaming - ENimble" />
+                            </div>
+                            <span>Tecnologia & Gaming</span>
+                        </div>
+                        <div className={`ec-showcase-item reveal delay-3 ${showcaseActiveIndex === 5 ? 'active' : ''}`}>
+                            <div className="ec-showcase-icon">
+                                <img src="/servicos/ecommerce/agency-expertise-jewelry-luxury.webp" alt="E-commerce de joalharia e luxo - ENimble" />
+                            </div>
+                            <span>Joalharia & Acessórios</span>
+                        </div>
+                        <div className={`ec-showcase-item reveal delay-4 ${showcaseActiveIndex === 6 ? 'active' : ''}`}>
+                            <div className="ec-showcase-icon">
+                                <img src="/servicos/ecommerce/agency-expertise-digital-education.webp" alt="E-commerce de educação e cursos - ENimble" />
+                            </div>
+                            <span>Educação & Cursos</span>
+                        </div>
+                        <div className={`ec-showcase-item reveal delay-4 ${showcaseActiveIndex === 7 ? 'active' : ''}`}>
+                            <div className="ec-showcase-icon">
+                                <img src="/servicos/ecommerce/agency-expertise-personal-care.webp" alt="E-commerce de cuidado pessoal - ENimble" />
+                            </div>
+                            <span>Cuidado Pessoal</span>
+                        </div>
+                        <div className={`ec-showcase-item reveal delay-1 ${showcaseActiveIndex === 8 ? 'active' : ''}`}>
+                            <div className="ec-showcase-icon">
+                                <img src="/servicos/ecommerce/loja-online-pet-shop.webp" alt="E-commerce de loja de animais - ENimble" />
+                            </div>
+                            <span>Loja de Animais</span>
+                        </div>
+                        <div className={`ec-showcase-item reveal delay-2 ${showcaseActiveIndex === 9 ? 'active' : ''}`}>
+                            <div className="ec-showcase-icon">
+                                <img src="/servicos/ecommerce/loja-online-desporto-fitness.webp" alt="E-commerce de desporto e fitness - ENimble" />
+                            </div>
+                            <span>Desporto & Fitness</span>
+                        </div>
+                        <div className={`ec-showcase-item reveal delay-3 ${showcaseActiveIndex === 10 ? 'active' : ''}`}>
+                            <div className="ec-showcase-icon">
+                                <img src="/servicos/ecommerce/loja-online-automovel.webp" alt="E-commerce automóvel - ENimble" />
+                            </div>
+                            <span>Automóvel</span>
+                        </div>
+                        <div className={`ec-showcase-item reveal delay-4 ${showcaseActiveIndex === 11 ? 'active' : ''}`} style={{ background: 'var(--shop-warm)', border: '2px dashed rgba(58, 0, 255, 0.2)', justifyContent: 'center', padding: '1.5rem 1rem' }}>
+                            <span style={{ fontSize: '1.1rem', fontWeight: '700', color: 'var(--shop-text)', marginBottom: '0.4rem' }}>E muito mais...</span>
+                            <p style={{ fontSize: '0.8rem', color: 'var(--shop-text-muted)', marginBottom: '1.2rem', lineHeight: '1.3' }}>Soluções à sua medida.</p>
+                            <Link href="/contactos" className="smart-btn" style={{ padding: '0.4rem 0.8rem', fontSize: '0.8rem', width: 'auto' }}>
+                                <span style={{ color: '#ffffff' }}>Pedir Proposta</span>
+                            </Link>
+                        </div>
+                    </div>
+                    {/* Carousel navigation dots for mobile view */}
+                    <div className="carousel-dots" style={{ marginTop: '2rem' }}>
+                        {Array.from({ length: 12 }).map((_, idx) => (
+                            <button
+                                key={idx}
+                                className={`carousel-dot ${showcaseActiveIndex === idx ? 'active' : ''}`}
+                                onClick={() => scrollToCard(showcaseGridRef, '.ec-showcase-item', idx, setShowcaseActiveIndex)}
+                                onTouchEnd={(e) => {
+                                    e.preventDefault();
+                                    scrollToCard(showcaseGridRef, '.ec-showcase-item', idx, setShowcaseActiveIndex);
+                                }}
+                                aria-label={`Ir para a solução ${idx + 1}`}
+                            />
+                        ))}
+                    </div>
+                </div>
+            </section>
+
+            {/* ===== SHOPPING JOURNEY ===== */}
+            <section className="ec-journey-section">
+                <div className="container">
+                    <div className="ec-journey-header reveal">
+                        <h2>Da Descoberta à Entrega em 4 Cliques</h2>
+                    </div>
+
+                    <div className="ec-journey-flow" ref={journeyFlowRef} onScroll={handleJourneyScroll}>
+                        <div className={`ec-journey-step reveal delay-1 ${journeyActiveIndex === 0 ? 'active' : ''}`}>
+                            <div className="ec-js-icon">
+                                <img src="/servicos/ecommerce/customer-journey-discovery-optimization.webp" alt="Fase de descoberta e pesquisa - ENimble" />
+                            </div>
+                            <div className="ec-js-content">
+                                <h4>Descoberta</h4>
+                                <p>Encontre rapidamente o produto certo.</p>
+                            </div>
+                        </div>
+
+                        <div className="ec-journey-connector"><span>→</span></div>
+
+                        <div className={`ec-journey-step reveal delay-2 ${journeyActiveIndex === 1 ? 'active' : ''}`}>
+                            <div className="ec-js-icon">
+                                <img src="/servicos/ecommerce/customer-journey-cart-conversion.webp" alt="Fase de carrinho e conversão - ENimble" />
+                            </div>
+                            <div className="ec-js-content">
+                                <h4>Carrinho</h4>
+                                <p>Adicionar ao carrinho deve ser simples e imediato.</p>
+                            </div>
+                        </div>
+
+                        <div className="ec-journey-connector"><span>→</span></div>
+
+                        <div className={`ec-journey-step reveal delay-3 ${journeyActiveIndex === 2 ? 'active' : ''}`}>
+                            <div className="ec-js-icon">
+                                <img src="/servicos/ecommerce/customer-journey-secure-payment-gateway.webp" alt="Fase de checkout e pagamentos seguros - ENimble" />
+                            </div>
+                            <div className="ec-js-content">
+                                <h4>Checkout</h4>
+                                <p>Pagamento rápido, seguro e sem distrações.</p>
+                            </div>
+                        </div>
+
+                        <div className="ec-journey-connector"><span>→</span></div>
+
+                        <div className={`ec-journey-step reveal delay-4 ${journeyActiveIndex === 3 ? 'active' : ''}`}>
+                            <div className="ec-js-icon">
+                                <img src="/servicos/ecommerce/customer-journey-logistics-integration.webp" alt="Fase de entrega e logística - ENimble" />
+                            </div>
+                            <div className="ec-js-content">
+                                <h4>Entrega</h4>
+                                <p>Acompanhe cada encomenda até à entrega com tracking automático.</p>
+                            </div>
+                        </div>
+                    </div>
+                    {/* Carousel navigation dots for mobile view */}
+                    <div className="carousel-dots" style={{ marginTop: '2rem' }}>
+                        {Array.from({ length: 4 }).map((_, idx) => (
+                            <button
+                                key={idx}
+                                className={`carousel-dot ${journeyActiveIndex === idx ? 'active' : ''}`}
+                                onClick={() => scrollToCard(journeyFlowRef, '.ec-journey-step', idx, setJourneyActiveIndex)}
+                                onTouchEnd={(e) => {
+                                    e.preventDefault();
+                                    scrollToCard(journeyFlowRef, '.ec-journey-step', idx, setJourneyActiveIndex);
+                                }}
+                                aria-label={`Ir para o passo ${idx + 1}`}
+                            />
+                        ))}
+                    </div>
+                    <div style={{ textAlign: 'center', marginTop: '3.5rem' }} className="reveal">
+                        <Link href="/contactos" className="smart-btn" style={{ padding: '1rem 2.5rem', fontSize: '1.1rem' }}>
+                            <span style={{ color: '#ffffff' }}>Quero uma Loja Assim</span>
+                        </Link>
+                    </div>
+                </div>
+            </section>
+
+            {/* ===== FINAL CTA ===== */}
+            <section className="ec-cta-section reveal">
+                <div className="container">
+                    <div className="ec-cta-content">
+                        <h2>A sua loja está <span className="gradient-word">pronta. </span><br /><span className="ec-highlight"> E os seus clientes estão à espera.</span></h2>
+                        <Link href="/contactos" className="smart-btn" style={{ padding: '1rem 2.5rem', fontSize: '1.1rem', marginTop: '1.5rem' }}>
+                            <span style={{ color: '#ffffff' }}>Começar a Vender</span>
+                        </Link>
+                    </div>
+                </div>
+            </section>
+        </main>
+    );
+};
+
+export default EcommerceClient;
