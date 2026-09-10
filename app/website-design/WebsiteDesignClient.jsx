@@ -546,7 +546,7 @@ const WebsiteDesignClient = () => {
                                 { name: "Inpe", type: "E-Commerce", industry: "Calçado", url: "https://inpe.pt" },
                                 { name: "Panoramas", type: "Institucional", industry: "Informação e Comunicação", url: "https://panoramas.pt", zoomed: true },
                                 { name: "Orion Technik", type: "Institucional", industry: "Aviação & Defesa", url: "https://orionaviation.eu" },
-                                { name: "Viriatus Brunch", type: "Institucional", industry: "Restauração", url: "https://viriatusbrunch.pt" },
+                                { name: "PedroM Media", type: "Institucional", industry: "Fotografia Profissional", url: "https://pedro-sorde.vercel.app" },
                                 { name: "Polly", type: "Landing Page", industry: "Tecnologia", url: "https://polly.photo" },
                                 { isCTA: true },
                             ].map((item, idx) => (

@@ -1796,9 +1796,6 @@ main {
     opacity: 0.85;
 }
 
-.rs-service-card.rs-card-highlight .rs-service-icon img {
-    filter: brightness(0) invert(1);
-}
 
 /* Hide carousel dots on desktop */
 @media (min-width: 901px) {

@@ -672,3 +672,312 @@ body.portfolio-body .header:not(.header-scrolled) .main-nav a {
 .cta-buttons .btn {
     min-width: 160px;
 }
+
+/* ==========================================================================
+   PORTFOLIO WEBSITE IFRAME MODAL POP-UP STYLES
+   ========================================================================== */
+
+/* Button override for visit-site-link when rendered as button */
+button.visit-site-link {
+    border: none;
+    cursor: pointer;
+    font-family: inherit;
+    outline: none;
+}
+
+.portfolio-modal-overlay {
+    position: fixed;
+    inset: 0;
+    z-index: 10000;
+    background: rgba(0, 0, 0, 0.82);
+    backdrop-filter: blur(12px);
+    -webkit-backdrop-filter: blur(12px);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 2rem 1.5rem;
+    animation: modalFadeIn 0.3s cubic-bezier(0.16, 1, 0.3, 1) forwards;
+}
+
+@keyframes modalFadeIn {
+    from {
+        opacity: 0;
+    }
+    to {
+        opacity: 1;
+    }
+}
+
+.portfolio-modal-container {
+    width: 100%;
+    max-width: 1350px;
+    height: 88vh;
+    max-height: 920px;
+    background: #121214;
+    border-radius: 16px;
+    border: 1px solid rgba(255, 255, 255, 0.12);
+    box-shadow: 0 30px 70px rgba(0, 0, 0, 0.7), 0 0 0 1px rgba(255, 255, 255, 0.05);
+    display: flex;
+    flex-direction: column;
+    overflow: hidden;
+    animation: modalScaleUp 0.35s cubic-bezier(0.16, 1, 0.3, 1) forwards;
+}
+
+@keyframes modalScaleUp {
+    from {
+        opacity: 0;
+        transform: scale(0.95) translateY(15px);
+    }
+    to {
+        opacity: 1;
+        transform: scale(1) translateY(0);
+    }
+}
+
+/* Modal Header Bar */
+.portfolio-modal-header {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 1rem;
+    padding: 0.8rem 1.2rem;
+    background: #1c1c20;
+    border-bottom: 1px solid rgba(255, 255, 255, 0.08);
+    user-select: none;
+}
+
+.modal-header-left {
+    display: flex;
+    align-items: center;
+    gap: 1rem;
+    min-width: 180px;
+}
+
+.modal-header-dots {
+    display: flex;
+    gap: 7px;
+    align-items: center;
+}
+
+.modal-header-dots .dot {
+    width: 11px;
+    height: 11px;
+    border-radius: 50%;
+    display: inline-block;
+    cursor: pointer;
+    transition: transform 0.2s ease, opacity 0.2s ease;
+}
+
+.modal-header-dots .dot:hover {
+    transform: scale(1.15);
+}
+
+.modal-header-dots .dot.red {
+    background-color: #ef4444;
+}
+
+.modal-header-dots .dot.yellow {
+    background-color: #f59e0b;
+}
+
+.modal-header-dots .dot.green {
+    background-color: #10b981;
+}
+
+.modal-project-title {
+    color: #f4f4f5;
+    font-weight: 700;
+    font-size: 0.95rem;
+    font-family: var(--font-headings);
+    white-space: nowrap;
+}
+
+/* Address Bar */
+.modal-header-address {
+    flex: 1;
+    max-width: 480px;
+    background: #121214;
+    border-radius: 8px;
+    padding: 0.4rem 1rem;
+    font-size: 0.82rem;
+    color: #a1a1aa;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 0.6rem;
+    border: 1px solid rgba(255, 255, 255, 0.08);
+    overflow: hidden;
+}
+
+.modal-header-address .lock-icon {
+    font-size: 0.75rem;
+    opacity: 0.7;
+}
+
+.modal-header-address .address-text {
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+}
+
+/* Modal Actions */
+.modal-header-actions {
+    display: flex;
+    align-items: center;
+    gap: 0.8rem;
+    min-width: 180px;
+    justify-content: flex-end;
+}
+
+.modal-external-link {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.45rem;
+    color: #a5b4fc;
+    text-decoration: none !important;
+    font-size: 0.8rem;
+    font-weight: 600;
+    padding: 0.4rem 0.9rem;
+    background: rgba(99, 102, 241, 0.12);
+    border-radius: 8px;
+    border: 1px solid rgba(99, 102, 241, 0.25);
+    transition: all 0.25s ease;
+}
+
+.modal-external-link:hover {
+    background: var(--color-primary-blue);
+    color: #ffffff !important;
+    border-color: var(--color-primary-blue);
+    transform: translateY(-1px);
+}
+
+.modal-close-btn {
+    background: rgba(255, 255, 255, 0.06);
+    border: 1px solid rgba(255, 255, 255, 0.1);
+    color: #d4d4d8;
+    font-size: 1.1rem;
+    width: 32px;
+    height: 32px;
+    border-radius: 8px;
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    transition: all 0.2s ease;
+    line-height: 1;
+}
+
+.modal-close-btn:hover {
+    background: #ef4444;
+    color: #ffffff;
+    border-color: #ef4444;
+    transform: scale(1.05);
+}
+
+/* Modal Body & Iframe */
+.portfolio-modal-body {
+    position: relative;
+    flex: 1;
+    width: 100%;
+    background: #ffffff;
+    overflow: hidden;
+}
+
+.modal-iframe-loader {
+    position: absolute;
+    inset: 0;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    gap: 1.2rem;
+    background: #0d0d10;
+    color: #f4f4f5;
+    z-index: 5;
+    font-family: var(--font-main);
+}
+
+.modal-iframe-loader .spinner {
+    width: 44px;
+    height: 44px;
+    border: 3px solid rgba(255, 255, 255, 0.1);
+    border-top-color: var(--color-primary-blue);
+    border-radius: 50%;
+    animation: modalSpinner 0.8s linear infinite;
+}
+
+@keyframes modalSpinner {
+    to {
+        transform: rotate(360deg);
+    }
+}
+
+.modal-iframe-loader p {
+    font-size: 0.95rem;
+    color: #a1a1aa;
+    margin: 0;
+}
+
+.modal-iframe-loader p span {
+    color: #ffffff;
+    font-weight: 700;
+}
+
+.portfolio-modal-iframe {
+    width: 100%;
+    height: 100%;
+    border: none;
+    background: #ffffff;
+    transition: opacity 0.4s ease;
+}
+
+.portfolio-modal-iframe.loading {
+    opacity: 0;
+}
+
+.portfolio-modal-iframe.loaded {
+    opacity: 1;
+}
+
+/* Responsive Modal Styling */
+@media (max-width: 768px) {
+    .portfolio-modal-overlay {
+        padding: 0.75rem;
+    }
+
+    .portfolio-modal-container {
+        height: 94vh;
+        border-radius: 12px;
+    }
+
+    .portfolio-modal-header {
+        padding: 0.6rem 0.8rem;
+    }
+
+    .modal-project-title {
+        display: none;
+    }
+
+    .modal-header-left {
+        min-width: auto;
+    }
+
+    .modal-header-address {
+        max-width: 220px;
+        font-size: 0.75rem;
+        padding: 0.3rem 0.6rem;
+    }
+
+    .modal-header-actions {
+        min-width: auto;
+    }
+
+    .modal-external-link .ext-text {
+        display: none;
+    }
+
+    .modal-external-link {
+        padding: 0.4rem;
+        border-radius: 6px;
+    }
+}

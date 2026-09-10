@@ -19,7 +19,7 @@ const syne = Syne({
 export const metadata = {
   metadataBase: new URL('https://enimble.pt'),
   title: {
-    default: 'ENimble | Marketing Digital & Web Design de Alta Performance',
+    default: 'ENimble | Agência de Marketing Digital em Portugal',
     template: '%s | ENimble',
   },
   description: 'Elevamos o seu negócio digital com estratégias de tráfego pago, web design, branding, automação e gestão de redes sociais orientados a resultados.',
@@ -43,7 +43,7 @@ export const metadata = {
     canonical: '/',
   },
   openGraph: {
-    title: 'ENimble | Marketing Digital & Web Design de Alta Performance',
+    title: 'ENimble | Agência de Marketing Digital em Portugal',
     description: 'Elevamos o seu negócio digital com estratégias de tráfego pago, web design, branding e automação.',
     url: 'https://enimble.pt',
     siteName: 'ENimble',
@@ -52,8 +52,8 @@ export const metadata = {
   },
   twitter: {
     card: 'summary_large_image',
-    title: 'ENimble | Marketing Digital & Web Design',
-    description: 'Elevamos o seu negócio digital com estratégias que funcionam e design que apaixona.',
+    title: 'ENimble | Agência de Marketing Digital em Portugal',
+    description: 'Elevamos o seu negócio digital com estratégias de crescimento comprovadas.',
   },
   robots: {
     index: true,

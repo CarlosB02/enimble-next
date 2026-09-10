@@ -65,7 +65,7 @@
   align-items: center;
   justify-content: space-between;
   width: 100%;
-  z-index: 1;
+  z-index: 2;
 }
 
 .hero-text {
@@ -130,16 +130,36 @@
   box-shadow: 0 4px 15px rgba(0, 0, 0, 0.2);
 }
 
+/* Cloud Divider */
+.cloud-divider {
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  width: 100%;
+  height: 450px;
+  background: url('/assets/clouds.svg') no-repeat bottom center;
+  background-size: cover;
+  z-index: 0;
+  margin-bottom: -2px;
+  pointer-events: none;
+}
+
+/* Mobile Rocket (Hidden on Desktop & Tablet) */
+.hero-rocket-mobile {
+  display: none;
+}
+
 /* Hero Mobile Specific Styles */
 @media (max-width: 768px) {
   .hero {
-    padding-top: 120px;
+    padding-top: 85px;
     padding-bottom: 80px;
   }
 
   .hero-content {
     flex-direction: column;
     text-align: center;
+    margin-top: -45px;
   }
 
   .hero-text {
@@ -156,6 +176,7 @@
     margin-left: auto;
     margin-right: auto;
     font-size: 1.05rem;
+    margin-bottom: 1.5rem;
   }
 
   .hero-buttons {
@@ -174,23 +195,52 @@
   }
 
   .cloud-divider {
-    height: 120px;
+    bottom: clamp(45px, 12vw, 70px);
+    height: clamp(75px, 22vw, 140px);
     background-size: 100% 100%;
+  }
+
+  .cloud-divider::after {
+    content: '';
+    position: absolute;
+    top: 98%;
+    left: 0;
+    width: 100%;
+    height: 90px;
+    background: #ffffff;
+    pointer-events: none;
+  }
+
+  .hero-rocket-mobile {
+    display: block;
+    opacity: 1 !important;
+    position: absolute;
+    bottom: clamp(26px, 8vw, 48px);
+    left: 50%;
+    transform: translateX(-50%);
+    width: clamp(105px, 27vw, 140px);
+    z-index: 1;
+    pointer-events: none;
+    animation: rocketFloatMobile 4s ease-in-out infinite;
+  }
+
+  .hero-rocket-mobile img {
+    width: 100%;
+    height: auto;
+    display: block;
   }
 }
 
-/* Cloud Divider */
-.cloud-divider {
-  position: absolute;
-  bottom: 0;
-  left: 0;
-  width: 100%;
-  height: 450px;
-  background: url('/assets/clouds.svg') no-repeat bottom center;
-  background-size: cover;
-  z-index: 0;
-  margin-bottom: -2px;
-  pointer-events: none;
+@keyframes rocketFloatMobile {
+
+  0%,
+  100% {
+    transform: translateX(-50%) translateY(0);
+  }
+
+  50% {
+    transform: translateX(-50%) translateY(-6px);
+  }
 }
 
 /* Services / Content */
@@ -511,7 +561,7 @@
   left: 0;
   width: 100%;
   height: 100%;
-  background-image: 
+  background-image:
     linear-gradient(rgba(58, 0, 255, 0.04) 1px, transparent 1px),
     linear-gradient(90deg, rgba(58, 0, 255, 0.04) 1px, transparent 1px);
   background-size: 40px 40px;
@@ -971,6 +1021,7 @@
   from {
     transform: translateX(0);
   }
+
   to {
     transform: translateX(-100%);
   }
@@ -1306,221 +1357,223 @@
 }
 
 @media (max-width: 768px) {
-    .pp-trust-logos {
-      overflow: hidden;
-      display: flex !important;
-      flex-wrap: nowrap !important;
-      justify-content: flex-start !important;
-      gap: 0 !important;
-      width: 100vw;
-      margin-left: calc(-50vw + 50%); /* stretch full width on mobile screens */
-      position: relative;
-      padding: 0.8rem 0;
-    }
-
-    /* Elegant Y X edge gradients to fade logos in and out */
-    .pp-trust-logos::before,
-    .pp-trust-logos::after {
-      content: "";
-      position: absolute;
-      top: 0;
-      width: 50px;
-      height: 100%;
-      z-index: 2;
-      pointer-events: none;
-    }
-
-    .pp-trust-logos::before {
-      left: 0;
-      background: linear-gradient(to right, #fafafe 0%, transparent 100%);
-    }
-
-    .pp-trust-logos::after {
-      right: 0;
-      background: linear-gradient(to left, #fafafe 0%, transparent 100%);
-    }
-
-    .pp-trust-logos-slide {
-      display: inline-flex !important;
-      flex-direction: row !important;
-      flex-wrap: nowrap !important;
-      align-items: center;
-      gap: 3rem;
-      animation: infiniteScroll 25s linear infinite;
-      padding-right: 3rem;
-    }
-
-    .pp-trust-logos-slide[aria-hidden="true"] {
-      display: inline-flex !important;
-    }
-
-    .trust-logo {
-      max-height: 45px !important;
-      width: auto !important;
-      flex-shrink: 0 !important;
-    }
-
-    .pp-trust-logos span {
-      font-size: 0.8rem;
-    }
-
-    /* Mobile Carousel Wrappers */
-    .services-grid-container,
-    .pp-grid-container,
-    .process-flow-container {
-      margin-left: -2rem;
-      margin-right: -2rem;
-      width: calc(100% + 4rem);
-      overflow: visible;
-      padding: 0;
-    }
-
-    /* Carousel Grids to Flex */
-    .services-grid,
-    .pp-grid,
-    .process-flow-grid {
-      display: flex;
-      flex-wrap: nowrap;
-      overflow-x: auto;
-      scroll-snap-type: x mandatory;
-      scroll-behavior: smooth;
-      -webkit-overflow-scrolling: touch;
-      gap: 1.25rem;
-      padding: 2.25rem calc(50% - min(142.5px, 40vw)) 5.5rem;
-      scrollbar-width: none;
-      margin: 0;
-    }
-
-    .services-grid::-webkit-scrollbar,
-    .pp-grid::-webkit-scrollbar,
-    .process-flow-grid::-webkit-scrollbar {
-      display: none;
-    }
-
-    /* Carousel Items */
-    .service-item,
-    .pp-card,
-    .process-flow-card {
-      flex: 0 0 285px;
-      max-width: 80vw;
-      scroll-snap-align: center;
-      margin: 0;
-      height: auto;
-      transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
-    }
-
-    .service-item.active,
-    .service-item:hover {
-      transform: translateY(-10px) scale(1.02) !important;
-      box-shadow: 0 30px 60px rgba(58, 0, 255, 0.15) !important;
-    }
-
-    .service-item.active::after,
-    .service-item:hover::after {
-      opacity: 1 !important;
-    }
-
-    .service-item.active .card-icon,
-    .service-item:hover .card-icon {
-      transform: scale(1.15) rotate(3deg) !important;
-    }
-
-    .pp-card.active,
-    .pp-card:hover {
-      transform: translateY(-8px) !important;
-      box-shadow: 0 20px 45px rgba(0, 0, 0, 0.15) !important;
-    }
-
-    .process-flow-card.active,
-    .process-flow-card:hover {
-      transform: translateY(-8px) !important;
-      box-shadow: 0 20px 45px rgba(58, 0, 255, 0.12) !important;
-      border-color: rgba(58, 0, 255, 0.2) !important;
-    }
-
-    .process-flow-card.active::before,
-    .process-flow-card:hover::before {
-      width: 100% !important;
-    }
-
-    .process-flow-card.active .process-step-badge,
-    .process-flow-card:hover .process-step-badge {
-      background: var(--gradient-main) !important;
-      color: white !important;
-      border-color: transparent !important;
-      transform: scale(1.1) !important;
-    }
-
-    .process-flow-card.active .process-icon-img,
-    .process-flow-card:hover .process-icon-img {
-      transform: scale(1.08) rotate(2deg) !important;
-    }
-
-    .pp-card-large .pp-thumb,
-    .pp-thumb {
-      height: 200px;
-    }
-
-    .pp-overlay {
-      opacity: 1 !important; /* show project names directly on mobile touch screens */
-      background: rgba(0, 0, 0, 0.65) !important;
-    }
-
-    .process-connector-line {
-      display: none !important;
-    }
-
-    .carousel-dots {
-      display: flex;
-      justify-content: center;
-      align-items: center;
-      gap: 0.5rem;
-      margin-top: -3.75rem;
-      position: relative;
-      z-index: 5;
-      pointer-events: auto;
-    }
-
-    .carousel-dot {
-      width: 8px;
-      height: 8px;
-      border-radius: 50%;
-      background: rgba(0, 0, 0, 0.15);
-      border: none;
-      padding: 0;
-      cursor: pointer;
-      transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
-    }
-
-    .carousel-dot.active {
-      background: var(--color-primary-blue, #3a00ff);
-      width: 20px;
-      border-radius: 10px;
-    }
-
-    /* Mobile Brands Section CTA Buttons Side-by-Side */
-    .pp-cta {
-      flex-direction: row !important;
-      flex-wrap: nowrap !important;
-      gap: 0.5rem !important;
-      width: 100%;
-      justify-content: center;
-      align-items: center;
-    }
-
-    .pp-btn-explore,
-    .pp-btn-contact {
-      padding: 0.75rem 0.6rem !important;
-      font-size: clamp(0.72rem, 3.2vw, 0.85rem) !important;
-      white-space: nowrap;
-      text-align: center;
-      flex: 1;
-      max-width: 50%;
-      display: inline-flex;
-      align-items: center;
-      justify-content: center;
-    }
+  .pp-trust-logos {
+    overflow: hidden;
+    display: flex !important;
+    flex-wrap: nowrap !important;
+    justify-content: flex-start !important;
+    gap: 0 !important;
+    width: 100vw;
+    margin-left: calc(-50vw + 50%);
+    /* stretch full width on mobile screens */
+    position: relative;
+    padding: 0.8rem 0;
   }
+
+  /* Elegant Y X edge gradients to fade logos in and out */
+  .pp-trust-logos::before,
+  .pp-trust-logos::after {
+    content: "";
+    position: absolute;
+    top: 0;
+    width: 50px;
+    height: 100%;
+    z-index: 2;
+    pointer-events: none;
+  }
+
+  .pp-trust-logos::before {
+    left: 0;
+    background: linear-gradient(to right, #fafafe 0%, transparent 100%);
+  }
+
+  .pp-trust-logos::after {
+    right: 0;
+    background: linear-gradient(to left, #fafafe 0%, transparent 100%);
+  }
+
+  .pp-trust-logos-slide {
+    display: inline-flex !important;
+    flex-direction: row !important;
+    flex-wrap: nowrap !important;
+    align-items: center;
+    gap: 3rem;
+    animation: infiniteScroll 25s linear infinite;
+    padding-right: 3rem;
+  }
+
+  .pp-trust-logos-slide[aria-hidden="true"] {
+    display: inline-flex !important;
+  }
+
+  .trust-logo {
+    max-height: 45px !important;
+    width: auto !important;
+    flex-shrink: 0 !important;
+  }
+
+  .pp-trust-logos span {
+    font-size: 0.8rem;
+  }
+
+  /* Mobile Carousel Wrappers */
+  .services-grid-container,
+  .pp-grid-container,
+  .process-flow-container {
+    margin-left: -2rem;
+    margin-right: -2rem;
+    width: calc(100% + 4rem);
+    overflow: visible;
+    padding: 0;
+  }
+
+  /* Carousel Grids to Flex */
+  .services-grid,
+  .pp-grid,
+  .process-flow-grid {
+    display: flex;
+    flex-wrap: nowrap;
+    overflow-x: auto;
+    scroll-snap-type: x mandatory;
+    scroll-behavior: smooth;
+    -webkit-overflow-scrolling: touch;
+    gap: 1.25rem;
+    padding: 2.25rem calc(50% - min(142.5px, 40vw)) 5.5rem;
+    scrollbar-width: none;
+    margin: 0;
+  }
+
+  .services-grid::-webkit-scrollbar,
+  .pp-grid::-webkit-scrollbar,
+  .process-flow-grid::-webkit-scrollbar {
+    display: none;
+  }
+
+  /* Carousel Items */
+  .service-item,
+  .pp-card,
+  .process-flow-card {
+    flex: 0 0 285px;
+    max-width: 80vw;
+    scroll-snap-align: center;
+    margin: 0;
+    height: auto;
+    transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+  }
+
+  .service-item.active,
+  .service-item:hover {
+    transform: translateY(-10px) scale(1.02) !important;
+    box-shadow: 0 30px 60px rgba(58, 0, 255, 0.15) !important;
+  }
+
+  .service-item.active::after,
+  .service-item:hover::after {
+    opacity: 1 !important;
+  }
+
+  .service-item.active .card-icon,
+  .service-item:hover .card-icon {
+    transform: scale(1.15) rotate(3deg) !important;
+  }
+
+  .pp-card.active,
+  .pp-card:hover {
+    transform: translateY(-8px) !important;
+    box-shadow: 0 20px 45px rgba(0, 0, 0, 0.15) !important;
+  }
+
+  .process-flow-card.active,
+  .process-flow-card:hover {
+    transform: translateY(-8px) !important;
+    box-shadow: 0 20px 45px rgba(58, 0, 255, 0.12) !important;
+    border-color: rgba(58, 0, 255, 0.2) !important;
+  }
+
+  .process-flow-card.active::before,
+  .process-flow-card:hover::before {
+    width: 100% !important;
+  }
+
+  .process-flow-card.active .process-step-badge,
+  .process-flow-card:hover .process-step-badge {
+    background: var(--gradient-main) !important;
+    color: white !important;
+    border-color: transparent !important;
+    transform: scale(1.1) !important;
+  }
+
+  .process-flow-card.active .process-icon-img,
+  .process-flow-card:hover .process-icon-img {
+    transform: scale(1.08) rotate(2deg) !important;
+  }
+
+  .pp-card-large .pp-thumb,
+  .pp-thumb {
+    height: 200px;
+  }
+
+  .pp-overlay {
+    opacity: 1 !important;
+    /* show project names directly on mobile touch screens */
+    background: rgba(0, 0, 0, 0.65) !important;
+  }
+
+  .process-connector-line {
+    display: none !important;
+  }
+
+  .carousel-dots {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 0.5rem;
+    margin-top: -3.75rem;
+    position: relative;
+    z-index: 5;
+    pointer-events: auto;
+  }
+
+  .carousel-dot {
+    width: 8px;
+    height: 8px;
+    border-radius: 50%;
+    background: rgba(0, 0, 0, 0.15);
+    border: none;
+    padding: 0;
+    cursor: pointer;
+    transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+  }
+
+  .carousel-dot.active {
+    background: var(--color-primary-blue, #3a00ff);
+    width: 20px;
+    border-radius: 10px;
+  }
+
+  /* Mobile Brands Section CTA Buttons Side-by-Side */
+  .pp-cta {
+    flex-direction: row !important;
+    flex-wrap: nowrap !important;
+    gap: 0.5rem !important;
+    width: 100%;
+    justify-content: center;
+    align-items: center;
+  }
+
+  .pp-btn-explore,
+  .pp-btn-contact {
+    padding: 0.75rem 0.6rem !important;
+    font-size: clamp(0.72rem, 3.2vw, 0.85rem) !important;
+    white-space: nowrap;
+    text-align: center;
+    flex: 1;
+    max-width: 50%;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+  }
+}
 
 @media (min-width: 769px) {
   .carousel-dots {

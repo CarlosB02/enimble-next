@@ -110,6 +110,9 @@ const HomeClient = () => {
                         <img src="/assets/rocket-hero.webp" alt="Rocket Launch" />
                     </div>
                 </div>
+                <div className="hero-rocket-mobile">
+                    <img src="/assets/rocket.webp" alt="Foguetão" />
+                </div>
                 <div className="cloud-divider"></div>
             </section>
 
@@ -267,10 +270,10 @@ const HomeClient = () => {
                                 </div>
                             </div>
                             <div className={`pp-card reveal delay-2 ${portfolioActiveIndex === 1 ? 'active' : ''}`}>
-                                <div className="pp-thumb" style={{ background: 'linear-gradient(135deg, #f093fb 0%, #f5576c 100%)' }}>
+                                <div className="pp-thumb" style={{ backgroundImage: 'url("/assets/mockups/outsiders.webp")', backgroundSize: 'cover', backgroundPosition: 'center' }}>
                                     <div className="pp-overlay">
                                         <span className="pp-cat">Edição de Vídeo</span>
-                                        <h3>Start-up World Cup</h3>
+                                        <h3>FLAD</h3>
                                     </div>
                                 </div>
                             </div>

@@ -10,7 +10,7 @@ import ScrollFloat from '@/components/ui/ScrollFloat';
 const PORTFOLIO_ITEMS = [
     {
         id: 'moving-people-website',
-        image: '/assets/portfolio/moving-people-website.png',
+        image: '/assets/portfolio/moving people website.webp',
         link: 'https://movingpeople.com',
         title: 'Moving People',
         description: 'Website Corporativo',
@@ -18,7 +18,7 @@ const PORTFOLIO_ITEMS = [
     },
     {
         id: 'moving-people-ads',
-        image: '/assets/portfolio/moving-people-ads.png',
+        image: '/assets/portfolio/moving-people-ads.webp',
         link: '#',
         title: 'Moving People',
         description: 'Anúncios Pagos / Campaign Design',
@@ -26,7 +26,7 @@ const PORTFOLIO_ITEMS = [
     },
     {
         id: 'carmetrix-website',
-        image: '/assets/portfolio/carmetrix-website.png',
+        image: '/assets/portfolio/carmetrix-website.webp',
         link: 'https://carmetrix.pt',
         title: 'Carmetrix',
         description: 'Website & Plataforma Digital',
@@ -42,7 +42,7 @@ const PORTFOLIO_ITEMS = [
     },
     {
         id: 'file-on-website',
-        image: '/assets/portfolio/file-on-website.png',
+        image: '/assets/portfolio/fileon website.webp',
         link: 'https://fileon.pt',
         title: 'File On',
         description: 'Website Corporativo de Serviços',
@@ -58,7 +58,7 @@ const PORTFOLIO_ITEMS = [
     },
     {
         id: 'viriatus-brunch-website',
-        image: '/assets/portfolio/viriatus-brunch-website.png',
+        image: '/assets/portfolio/viriatus brunch-website.webp',
         link: 'https://viriatusbrunch.pt',
         title: 'Viriatus Brunch',
         description: 'Website de Restauração & Menu Digital',
@@ -66,15 +66,15 @@ const PORTFOLIO_ITEMS = [
     },
     {
         id: 'loja-dos-pets-website',
-        image: '/assets/portfolio/loja-dos-pets-website.png',
-        link: '#',
+        image: '/assets/portfolio/loja dos pets-website.webp',
+        link: 'https://lojadospets.pt',
         title: 'Loja dos Pets',
         description: 'E-commerce / Loja de Animais',
         category: 'website',
     },
     {
         id: 'polly-photo-website',
-        image: '/assets/portfolio/polly-photo-website.png',
+        image: '/assets/portfolio/polly-website.webp',
         link: 'https://polly.photo/pt',
         title: 'Polly Photo',
         description: 'Website de Portfolio Fotográfico',
@@ -90,10 +90,10 @@ const PORTFOLIO_ITEMS = [
     },
     {
         id: 'orion-aviation-website',
-        image: '/assets/portfolio/orion-aviation-website.png',
+        image: '/assets/portfolio/orion-aviation-website.webp',
         link: 'https://orionaviation.eu',
         title: 'Orion Aviation',
-        description: 'Website Corporativo de Aviação',
+        description: 'Website Institucional de Aviação',
         category: 'website',
     },
     {
@@ -106,10 +106,10 @@ const PORTFOLIO_ITEMS = [
     },
     {
         id: 'panoramas-website',
-        image: '/assets/portfolio/panoramas-website.png',
-        link: '#',
+        image: '/assets/portfolio/panoramas-website.webp',
+        link: 'https://panoramas.pt',
         title: 'Panoramas',
-        description: 'Website Corporativo',
+        description: 'Website Institucional',
         category: 'website',
     },
     {
@@ -122,10 +122,10 @@ const PORTFOLIO_ITEMS = [
     },
     {
         id: 'pedrom-media-website',
-        image: '/assets/portfolio/pedrom-media-website.png',
-        link: '#',
-        title: 'Pedro M. Media',
-        description: 'Website Corporativo',
+        image: '/assets/portfolio/pedrom media website.webp',
+        link: 'https://pedro-sorde.vercel.app',
+        title: 'PedroM Media',
+        description: 'Website Institucional',
         category: 'website',
     },
     {
@@ -138,23 +138,23 @@ const PORTFOLIO_ITEMS = [
     },
     {
         id: 'inpe-website',
-        image: '/assets/portfolio/inpe-website.png',
-        link: '#',
+        image: '/assets/portfolio/inpe-website.webp',
+        link: 'https://inpe.pt',
         title: 'INPE',
-        description: 'Website Corporativo',
+        description: 'Website Institucional',
         category: 'website',
     },
     {
         id: 'moonlight-ink-website',
-        image: '/assets/portfolio/moonlight-ink-website.png',
-        link: '#',
+        image: '/assets/portfolio/moonlight website.webp',
+        link: 'https://moonlight-jet.vercel.app',
         title: 'Moonlight Ink',
-        description: 'Website Corporativo',
+        description: 'Website Institucional',
         category: 'website',
     },
     {
         id: 'flad-cartazes',
-        image: '/assets/portfolio/flad-cartazes.png',
+        image: '/assets/portfolio/outsiders.webp',
         link: '#',
         title: 'FLAD',
         description: 'Design de Cartazes & Branding',
@@ -175,8 +175,28 @@ const PortfolioClient = () => {
     const cursorDotRef = useRef(null);
     const cursorOutlineRef = useRef(null);
     const [selectedFilter, setSelectedFilter] = useState('all');
+    const [activeModalItem, setActiveModalItem] = useState(null);
+    const [iframeLoading, setIframeLoading] = useState(true);
+
+    const openModal = (item) => {
+        setActiveModalItem(item);
+        setIframeLoading(true);
+        document.body.style.overflow = 'hidden';
+    };
+
+    const closeModal = () => {
+        setActiveModalItem(null);
+        document.body.style.overflow = '';
+    };
 
     useEffect(() => {
+        const handleKeyDown = (e) => {
+            if (e.key === 'Escape') {
+                closeModal();
+            }
+        };
+        window.addEventListener('keydown', handleKeyDown);
+
         document.body.classList.add('portfolio-body');
 
         // Reveal Hero Logic
@@ -240,7 +260,9 @@ const PortfolioClient = () => {
         });
 
         return () => {
+            window.removeEventListener('keydown', handleKeyDown);
             document.body.classList.remove('portfolio-body');
+            document.body.style.overflow = '';
             window.removeEventListener('mousemove', handleMouseMove);
             links.forEach(el => {
                 el.removeEventListener('mouseenter', handleLinkEnter);
@@ -320,12 +342,14 @@ const PortfolioClient = () => {
                                                             <span className="item-category">Website</span>
                                                             <h3>{item.title}</h3>
                                                             <p>{item.description}</p>
-                                                            {item.link !== '#' && (
-                                                                <a href={item.link} target="_blank" rel="noopener noreferrer" className="visit-site-link">
-                                                                    Visitar Website
-                                                                    <img src="/assets/portfolio/visitar website.webp" alt="" className="link-arrow-img" />
-                                                                </a>
-                                                            )}
+                                                            <button
+                                                                type="button"
+                                                                onClick={() => openModal(item)}
+                                                                className="visit-site-link"
+                                                            >
+                                                                Ver Website
+                                                                <img src="/assets/portfolio/visitar website.webp" alt="" className="link-arrow-img" />
+                                                            </button>
                                                         </div>
                                                     </div>
                                                 </div>
@@ -410,8 +434,72 @@ const PortfolioClient = () => {
 
                 <ContactSection />
             </main>
+
+            {/* Iframe Website Preview Modal */}
+            {activeModalItem && (
+                <div className="portfolio-modal-overlay" onClick={closeModal}>
+                    <div className="portfolio-modal-container" onClick={(e) => e.stopPropagation()}>
+                        <div className="portfolio-modal-header">
+                            <div className="modal-header-left">
+                                <div className="modal-header-dots">
+                                    <span className="dot red" onClick={closeModal} title="Fechar"></span>
+                                    <span className="dot yellow"></span>
+                                    <span className="dot green"></span>
+                                </div>
+                                <span className="modal-project-title">{activeModalItem.title}</span>
+                            </div>
+                            <div className="modal-header-address">
+                                <span className="lock-icon">🔒</span>
+                                <span className="address-text">
+                                    {activeModalItem.link && activeModalItem.link !== '#'
+                                        ? activeModalItem.link
+                                        : `https://${activeModalItem.title.toLowerCase().replace(/\s+/g, '')}.pt`}
+                                </span>
+                            </div>
+                            <div className="modal-header-actions">
+                                {activeModalItem.link && activeModalItem.link !== '#' && (
+                                    <a
+                                        href={activeModalItem.link}
+                                        target="_blank"
+                                        rel="noopener noreferrer"
+                                        className="modal-external-link"
+                                        title="Abrir em novo separador"
+                                    >
+                                        <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.5" strokeLinecap="round" strokeLinejoin="round">
+                                            <path d="M18 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6"></path>
+                                            <polyline points="15 3 21 3 21 9"></polyline>
+                                            <line x1="10" y1="14" x2="21" y2="3"></line>
+                                        </svg>
+                                        <span className="ext-text">Abrir no Navegador</span>
+                                    </a>
+                                )}
+                                <button type="button" className="modal-close-btn" onClick={closeModal} aria-label="Fechar preview">
+                                    ✕
+                                </button>
+                            </div>
+                        </div>
+                        <div className="portfolio-modal-body">
+                            {iframeLoading && (
+                                <div className="modal-iframe-loader">
+                                    <div className="spinner"></div>
+                                    <p>A carregar website <span>{activeModalItem.title}</span>...</p>
+                                </div>
+                            )}
+                            <iframe
+                                src={activeModalItem.link && activeModalItem.link !== '#'
+                                    ? activeModalItem.link
+                                    : `https://${activeModalItem.title.toLowerCase().replace(/\s+/g, '')}.pt`}
+                                title={`Preview - ${activeModalItem.title}`}
+                                className={`portfolio-modal-iframe ${iframeLoading ? 'loading' : 'loaded'}`}
+                                onLoad={() => setIframeLoading(false)}
+                            />
+                        </div>
+                    </div>
+                </div>
+            )}
         </>
     );
 };
 
 export default PortfolioClient;
+

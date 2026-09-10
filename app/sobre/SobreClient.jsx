@@ -87,14 +87,14 @@ const SobreClient = () => {
 
                 {/* Core Values (DNA) */}
                 <section className="dna-section container reveal">
-                    <div 
+                    <div
                         className="dna-values"
                         ref={valuesRef}
                         onScroll={handleValuesScroll}
                     >
                         {values.map((v, idx) => (
-                            <div 
-                                key={idx} 
+                            <div
+                                key={idx}
                                 className={`value-orb ${valuesActiveIndex === idx ? 'active' : ''}`}
                                 onClick={() => scrollToCard(valuesRef, '.value-orb', idx, setValuesActiveIndex)}
                             >
@@ -127,10 +127,7 @@ const SobreClient = () => {
                     <div className="founder-note">
                         <h3 className="founder-note-title">Uma nota pessoal</h3>
                         <p className="founder-note-body">
-                            "Criámos a ENimble porque estávamos cansados de agências que vendiam fumo.
-                            Queríamos um lugar onde o design fosse respeitado, não apenas como &quot;bonecos&quot;, mas como
-                            ferramenta de negócio.
-                            Obrigado por confiar na nossa visão."
+                            "A ENimble nasceu de uma ideia simples: fazer as coisas bem feitas. Dá para encontrar por aí muitos projetos com potencial que acabam por não funcionar ou avançar porque não existe o devido acompanhamento no digital. Por isso, decidi avançar com uma agência onde cada projeto é acompanhado de perto e onde o trabalho fala por si."
                         </p>
                         <div className="founder-footer">
                             <div className="founder-avatar-wrapper">

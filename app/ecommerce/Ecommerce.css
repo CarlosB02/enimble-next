@@ -399,6 +399,8 @@ body.shop-body .nav-open .hamburger {
     padding: 2rem;
     border: 1px solid rgba(0, 0, 0, 0.04);
     box-shadow: 0 10px 40px rgba(0, 0, 0, 0.03);
+    min-width: 0;
+    width: 100%;
 }
 
 .ec-growth-chart {
