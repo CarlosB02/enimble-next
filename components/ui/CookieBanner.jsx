@@ -7,7 +7,6 @@ import './CookieBanner.css';
 export default function CookieBanner() {
   const [isOpen, setIsOpen] = useState(false);
   const [isCustomizing, setIsCustomizing] = useState(false);
-  const [showReopenBadge, setShowReopenBadge] = useState(false);
 
   // Granular settings
   const [analyticsConsent, setAnalyticsConsent] = useState(true);
@@ -24,7 +23,6 @@ export default function CookieBanner() {
         }, 1200);
         return () => clearTimeout(timer);
       } else {
-        setShowReopenBadge(true);
         if (stored === 'accepted') {
           updateGtagConsent(true, true);
         } else if (stored === 'declined') {
@@ -76,7 +74,6 @@ export default function CookieBanner() {
     setMarketingConsent(true);
     updateGtagConsent(true, true);
     setIsOpen(false);
-    setShowReopenBadge(true);
   };
 
   const handleDeclineAll = () => {
@@ -87,7 +84,6 @@ export default function CookieBanner() {
     setMarketingConsent(false);
     updateGtagConsent(false, false);
     setIsOpen(false);
-    setShowReopenBadge(true);
   };
 
   const handleSaveCustom = () => {
@@ -100,27 +96,10 @@ export default function CookieBanner() {
     } catch (e) {}
     updateGtagConsent(analyticsConsent, marketingConsent);
     setIsOpen(false);
-    setShowReopenBadge(true);
   };
 
   return (
     <>
-      {/* FLOATING REOPEN BADGE (discreet cookie trigger) */}
-      {showReopenBadge && !isOpen && (
-        <button
-          className="cookie-reopen-btn"
-          onClick={() => {
-            setIsCustomizing(false);
-            setIsOpen(true);
-          }}
-          title="Definições de Cookies"
-          aria-label="Configurar preferências de cookies"
-        >
-          <span className="cookie-icon-spin">🍪</span>
-          <span className="cookie-reopen-text">Cookies</span>
-        </button>
-      )}
-
       {/* MAIN COOKIE BANNER MODAL / POPUP */}
       {isOpen && (
         <div className="cookie-overlay" role="dialog" aria-modal="true" aria-labelledby="cookie-title">

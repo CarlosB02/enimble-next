@@ -50,7 +50,7 @@ export async function POST(request) {
     `;
 
     const data = await resend.emails.send({
-      from: 'ENimble <onboarding@resend.dev>',
+      from: 'ENimble <geral@enimble.pt>',
       to: [recipientEmail],
       replyTo: email,
       subject: emailSubject,
