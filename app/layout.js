@@ -2,6 +2,7 @@ import { Sora, Syne } from 'next/font/google';
 import Script from 'next/script';
 import Header from '@/components/layout/Header';
 import Footer from '@/components/layout/Footer';
+import CookieBanner from '@/components/ui/CookieBanner';
 import './globals.css';
 
 const sora = Sora({
@@ -72,24 +73,44 @@ export default function RootLayout({ children }) {
   return (
     <html lang="pt" className={`${sora.variable} ${syne.variable}`}>
       <head>
+        {/* Google Consent Mode v2 - RGPD / CNPD Compliance */}
+        <Script id="google-consent-init" strategy="beforeInteractive">
+          {`
+            window.dataLayer = window.dataLayer || [];
+            function gtag(){dataLayer.push(arguments);}
+
+            var isGranted = false;
+            try {
+              var storedConsent = localStorage.getItem('enimble_cookie_consent');
+              if (storedConsent === 'accepted') {
+                isGranted = true;
+              } else if (storedConsent && storedConsent !== 'declined') {
+                var parsed = JSON.parse(storedConsent);
+                if (parsed && parsed.analytics) isGranted = true;
+              }
+            } catch(e) {}
+
+            gtag('consent', 'default', {
+              'analytics_storage': isGranted ? 'granted' : 'denied',
+              'ad_storage': isGranted ? 'granted' : 'denied',
+              'ad_user_data': isGranted ? 'granted' : 'denied',
+              'ad_personalization': isGranted ? 'granted' : 'denied'
+            });
+
+            gtag('js', new Date());
+            gtag('config', 'G-RFPP2HGL4F');
+          `}
+        </Script>
         <Script
           src="https://www.googletagmanager.com/gtag/js?id=G-RFPP2HGL4F"
           strategy="afterInteractive"
         />
-        <Script id="google-analytics" strategy="afterInteractive">
-          {`
-            window.dataLayer = window.dataLayer || [];
-            function gtag(){dataLayer.push(arguments);}
-            gtag('js', new Date());
-
-            gtag('config', 'G-RFPP2HGL4F');
-          `}
-        </Script>
       </head>
       <body>
         <Header />
         {children}
         <Footer />
+        <CookieBanner />
       </body>
     </html>
   );

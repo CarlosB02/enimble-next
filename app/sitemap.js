@@ -12,6 +12,8 @@ export default function sitemap() {
     '/redes-sociais',
     '/sobre',
     '/website-design',
+    '/politica-de-privacidade',
+    '/termos-e-condicoes',
   ];
 
   return routes.map((route) => ({

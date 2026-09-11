@@ -1,3 +1,5 @@
+'use client';
+
 import Link from 'next/link';
 import './Footer.css';
 
@@ -59,8 +61,18 @@ const Footer = () => {
                 <div className="footer-bottom">
                     <p>&copy; 2026 ENIMBLE. Todos os direitos reservados.</p>
                     <div className="legal-links">
-                        <a href="#">Privacidade</a>
-                        <a href="#">Termos</a>
+                        <Link href="/politica-de-privacidade">Privacidade</Link>
+                        <Link href="/termos-e-condicoes">Termos</Link>
+                        <button
+                            type="button"
+                            onClick={() => {
+                                if (typeof window !== 'undefined') {
+                                    window.dispatchEvent(new Event('open-cookie-banner'));
+                                }
+                            }}
+                        >
+                            Cookies
+                        </button>
                     </div>
                 </div>
             </div>

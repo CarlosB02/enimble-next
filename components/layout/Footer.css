@@ -94,13 +94,21 @@
   gap: 2rem;
 }
 
-.legal-links a {
+.legal-links a,
+.legal-links button {
   color: #666;
   text-decoration: none;
+  background: none;
+  border: none;
+  font-family: inherit;
+  font-size: inherit;
+  cursor: pointer;
+  padding: 0;
   transition: var(--transition);
 }
 
-.legal-links a:hover {
+.legal-links a:hover,
+.legal-links button:hover {
   color: white;
 }
 
