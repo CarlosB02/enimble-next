@@ -734,6 +734,19 @@ body.contact-body .header.header-scrolled .btn-nav:hover {
   display: flex;
   align-items: center;
   justify-content: center;
+  flex-shrink: 0;
+}
+
+.contacts-wrapper.light-theme-contacts .info-card-img {
+  width: 32px;
+  height: 32px;
+  object-fit: contain;
+  display: block;
+  transition: transform 0.3s ease;
+}
+
+.contacts-wrapper.light-theme-contacts .info-card:hover .info-card-img {
+  transform: scale(1.1);
 }
 
 .contacts-wrapper.light-theme-contacts .info-card strong {

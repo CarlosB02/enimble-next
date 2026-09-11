@@ -71,7 +71,9 @@ const ContactSection = () => {
 
                         <div className="info-details">
                             <div className="info-card">
-                                <span className="info-card-icon">📧</span>
+                                <span className="info-card-icon">
+                                    <img src="/assets/email2.webp" alt="Email" className="info-card-img" />
+                                </span>
                                 <div className="info-card-content">
                                     <strong>Enviar email</strong>
                                     <a href="mailto:geral@enimble.pt">geral@enimble.pt</a>
@@ -79,7 +81,9 @@ const ContactSection = () => {
                             </div>
 
                             <div className="info-card">
-                                <span className="info-card-icon">📱</span>
+                                <span className="info-card-icon">
+                                    <img src="/assets/phone.webp" alt="Telefone" className="info-card-img" />
+                                </span>
                                 <div className="info-card-content">
                                     <strong>Ligar ou WhatsApp</strong>
                                     <div className="info-card-actions">
