@@ -107,7 +107,9 @@ export default function CookieBanner() {
             {/* CARD HEADER */}
             <div className="cookie-header">
               <div className="cookie-badge-wrapper">
-                <div className="cookie-icon-glow">🍪</div>
+                <div className="cookie-icon-glow">
+                  <img src="/assets/cookies.webp" alt="Cookies" className="cookie-img-icon" />
+                </div>
                 <div>
                   <h3 id="cookie-title" className="cookie-title">
                     Preferências de Privacidade
