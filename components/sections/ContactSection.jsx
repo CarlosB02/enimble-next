@@ -2,6 +2,7 @@
 
 import React, { useState } from 'react';
 import '@/app/Contactos.css';
+import { trackLeadCreated } from '@/lib/openai-pixel';
 
 const ContactSection = () => {
     // Form inputs state
@@ -23,15 +24,31 @@ const ContactSection = () => {
         setIsSubmitting(true);
 
         try {
+            // Gerar UUID único para deduplicação entre Pixel e CAPI
+            const eventId = typeof crypto !== 'undefined' && crypto.randomUUID 
+                ? crypto.randomUUID() 
+                : `${Date.now()}-${Math.random().toString(36).substring(2, 11)}`;
+
             const res = await fetch('/api/contact', {
                 method: 'POST',
                 headers: { 'Content-Type': 'application/json' },
-                body: JSON.stringify({ name, email, phone, message, coffeeType }),
+                body: JSON.stringify({ 
+                    name, 
+                    email, 
+                    phone, 
+                    message, 
+                    coffeeType,
+                    eventId,
+                    sourceUrl: typeof window !== 'undefined' ? window.location.href : undefined,
+                }),
             });
 
             const data = await res.json();
 
             if (res.ok && data.success) {
+                // Dispara o tracking lead_created apenas após o backend confirmar o sucesso
+                trackLeadCreated(data.eventId || eventId);
+
                 setIsSubmitted(true);
                 // Clean inputs
                 setName('');
@@ -191,8 +208,14 @@ const ContactSection = () => {
                                         type="tel"
                                         id="main_phone_v2"
                                         required
+                                        inputMode="numeric"
+                                        pattern="[0-9+]*"
                                         value={phone}
-                                        onChange={(e) => setPhone(e.target.value)}
+                                        onChange={(e) => {
+                                            const raw = e.target.value.replace(/[^0-9+]/g, '');
+                                            const clean = raw.startsWith('+') ? '+' + raw.slice(1).replace(/\+/g, '') : raw.replace(/\+/g, '');
+                                            setPhone(clean);
+                                        }}
                                         placeholder=" "
                                         autoComplete="tel"
                                     />

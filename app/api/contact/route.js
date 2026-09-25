@@ -1,5 +1,6 @@
 import { NextResponse } from 'next/server';
 import { Resend } from 'resend';
+import { sendOpenAIConversionEvent } from '@/lib/openai-capi';
 
 const resend = new Resend(process.env.RESEND_API_KEY || 're_dummy');
 
@@ -15,6 +16,31 @@ export async function POST(request) {
       );
     }
 
+    // Validação / Geração do event_id para deduplicação segura entre Pixel e CAPI
+    const validEventIdRegex = /^[a-zA-Z0-9_-]{8,128}$/;
+    let finalEventId = typeof body.eventId === 'string' && validEventIdRegex.test(body.eventId)
+      ? body.eventId
+      : null;
+
+    if (!finalEventId) {
+      finalEventId = typeof crypto !== 'undefined' && crypto.randomUUID 
+        ? crypto.randomUUID() 
+        : `${Date.now()}-${Math.random().toString(36).substring(2, 11)}`;
+    }
+
+    // Sanitização do sourceUrl
+    let sourceUrl = undefined;
+    if (typeof body.sourceUrl === 'string' && body.sourceUrl.startsWith('http')) {
+      try {
+        const parsed = new URL(body.sourceUrl);
+        sourceUrl = `${parsed.origin}${parsed.pathname}`;
+      } catch (e) {
+        sourceUrl = 'https://enimble.pt';
+      }
+    } else {
+      sourceUrl = request.headers.get('referer') || 'https://enimble.pt';
+    }
+
     const recipientEmail = process.env.CONTACT_EMAIL || 'geral@enimble.pt';
     const apiKey = process.env.RESEND_API_KEY;
 
@@ -23,6 +49,7 @@ export async function POST(request) {
       return NextResponse.json({
         success: true,
         simulated: true,
+        eventId: finalEventId,
         message: 'Formulário submetido. Adicione RESEND_API_KEY no ficheiro .env.local para ativação total de envio de emails reais.',
       });
     }
@@ -49,6 +76,7 @@ export async function POST(request) {
       </div>
     `;
 
+    // Processa primeiro o envio do email através do Resend
     const data = await resend.emails.send({
       from: 'ENimble <geral@enimble.pt>',
       to: [recipientEmail],
@@ -57,7 +85,17 @@ export async function POST(request) {
       html: htmlContent,
     });
 
-    return NextResponse.json({ success: true, data });
+    // Apenas após envio bem-sucedido via Resend, envia evento lead_created para OpenAI CAPI
+    try {
+      await sendOpenAIConversionEvent({
+        eventId: finalEventId,
+        sourceUrl,
+      });
+    } catch (capiError) {
+      console.error('[OpenAI CAPI] Falha no tracking em background:', capiError?.message);
+    }
+
+    return NextResponse.json({ success: true, eventId: finalEventId, data });
   } catch (error) {
     console.error('Erro ao enviar email via Resend:', error);
     return NextResponse.json(

@@ -70,6 +70,10 @@ export const metadata = {
 };
 
 export default function RootLayout({ children }) {
+  // OpenAI Pixel ID lido da variável de ambiente (com o seu Pixel ID como fallback)
+  const openAiPixelId = process.env.OPENAI_PIXEL_ID || process.env.NEXT_PUBLIC_OPENAI_PIXEL_ID || '14Bb5BmRQ4p28n4NHAewTs';
+  const isDev = process.env.NODE_ENV !== 'production';
+
   return (
     <html lang="pt" className={`${sora.variable} ${syne.variable}`}>
       <head>
@@ -105,6 +109,34 @@ export default function RootLayout({ children }) {
           src="https://www.googletagmanager.com/gtag/js?id=G-RFPP2HGL4F"
           strategy="afterInteractive"
         />
+
+        {/* OpenAI Ads Pixel - Inicialização global */}
+        <Script id="openai-pixel-init" strategy="afterInteractive">
+          {`
+            (function (w, d, s, u) {
+              if (w.oaiq) return;
+              var q = function () { q.q.push(arguments); };
+              q.q = [];
+              w.oaiq = q;
+              var js = d.createElement(s);
+              js.async = true;
+              js.src = u;
+              var f = d.getElementsByTagName(s)[0];
+              f.parentNode.insertBefore(js, f);
+            })(window, document, "script", "https://bzrcdn.openai.com/sdk/oaiq.min.js");
+
+            // RGPD: sincronização de consentimento
+            try {
+              var storedConsent = localStorage.getItem('enimble_cookie_consent');
+              if (storedConsent === 'declined') {
+                oaiq("consent", false);
+              }
+            } catch(e) {}
+
+            // Inicialização com o Pixel ID e modo de depuração
+            oaiq("init", { pixelId: "${openAiPixelId}", debug: ${isDev} });
+          `}
+        </Script>
       </head>
       <body>
         <Header />

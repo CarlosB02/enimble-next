@@ -64,6 +64,13 @@ export default function CookieBanner() {
         window.gtag('event', 'cookie_consent_granted');
       }
     }
+
+    // OpenAI Ads Pixel consent update
+    if (typeof window !== 'undefined' && typeof window.oaiq === 'function') {
+      try {
+        window.oaiq('consent', !!marketing);
+      } catch (e) {}
+    }
   };
 
   const handleAcceptAll = () => {
