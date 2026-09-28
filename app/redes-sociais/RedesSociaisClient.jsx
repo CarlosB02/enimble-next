@@ -42,6 +42,16 @@ const Counter = ({ end, duration = 2000, suffix = "" }) => {
 };
 
 
+const proofItems = [
+    { image: '/servicos/redes-sociais/criativos/enimble social media 1.webp', text: '' },
+    { image: '/servicos/redes-sociais/criativos/enimble social media 2.webp', text: '' },
+    { image: '/servicos/redes-sociais/criativos/enimble social media 3.webp', text: '' },
+    { image: '/servicos/redes-sociais/criativos/enimble social media 4.webp', text: '' },
+    { image: '/servicos/redes-sociais/criativos/enimble social media 5.webp', text: '' },
+    { image: '/servicos/redes-sociais/criativos/enimble social media 6.webp', text: '' },
+    { image: '/servicos/redes-sociais/criativos/enimble social media 7.png', text: '' },
+];
+
 const RedesSociaisClient = () => {
     useScrollReveal();
 
@@ -263,6 +273,7 @@ const RedesSociaisClient = () => {
 
                     <div style={{ height: '600px', position: 'relative' }} className="reveal delay-1">
                         <CircularGallery
+                            items={proofItems}
                             bend={3}
                             textColor="#ffffff"
                             borderRadius={0.05}

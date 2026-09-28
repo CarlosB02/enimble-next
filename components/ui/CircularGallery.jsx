@@ -336,12 +336,12 @@ class App {
   }
   createMedias(items, bend = 1, textColor, borderRadius, font) {
     const defaultItems = [
-      { image: `/servicos/redes-sociais/criativos/meta.png`, text: 'Feed Post' },
-      { image: `/servicos/redes-sociais/criativos/story.png`, text: 'Story & Reels' },
-      { image: `/servicos/redes-sociais/criativos/display.png`, text: 'Display Banner' },
-      { image: `/servicos/redes-sociais/criativos/meta.png`, text: 'Campaign Post' },
-      { image: `/servicos/redes-sociais/criativos/story.png`, text: 'Vertical Content' },
-      { image: `/servicos/redes-sociais/criativos/display.png`, text: 'Social Ad' }
+      { image: `/servicos/redes-sociais/criativos/enimble social media 1.webp`, text: '' },
+      { image: `/servicos/redes-sociais/criativos/enimble social media 2.webp`, text: '' },
+      { image: `/servicos/redes-sociais/criativos/enimble social media 3.webp`, text: '' },
+      { image: `/servicos/redes-sociais/criativos/enimble social media 4.webp`, text: '' },
+      { image: `/servicos/redes-sociais/criativos/enimble social media 5.webp`, text: '' },
+      { image: `/servicos/redes-sociais/criativos/enimble social media 6.webp`, text: '' }
     ];
     const galleryItems = items && items.length ? items : defaultItems;
     this.mediasImages = galleryItems.concat(galleryItems);
