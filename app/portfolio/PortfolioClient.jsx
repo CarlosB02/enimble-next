@@ -17,14 +17,6 @@ const PORTFOLIO_ITEMS = [
         category: 'website',
     },
     {
-        id: 'moving-people-ads',
-        image: '/assets/portfolio/moving-people-ads.webp',
-        link: '#',
-        title: 'Moving People',
-        description: 'Anúncios Pagos / Campaign Design',
-        category: 'branding',
-    },
-    {
         id: 'carmetrix-website',
         image: '/assets/portfolio/carmetrix-website.webp',
         link: 'https://carmetrix.pt',
@@ -174,7 +166,6 @@ const PortfolioClient = () => {
     useScrollReveal();
     const cursorDotRef = useRef(null);
     const cursorOutlineRef = useRef(null);
-    const [selectedFilter, setSelectedFilter] = useState('all');
     const [activeModalItem, setActiveModalItem] = useState(null);
     const [iframeLoading, setIframeLoading] = useState(true);
 
@@ -271,10 +262,6 @@ const PortfolioClient = () => {
         };
     }, []);
 
-    const filteredItems = selectedFilter === 'all'
-        ? PORTFOLIO_ITEMS
-        : PORTFOLIO_ITEMS.filter(item => item.category === selectedFilter);
-
     return (
         <>
             {/* Custom Cursor Elements */}
@@ -292,31 +279,9 @@ const PortfolioClient = () => {
                 {/* Portfolio Showcase Grid */}
                 <section className="portfolio-showcase-section">
                     <div className="container">
-                        {/* Filters */}
-                        <div className="portfolio-filters">
-                            <button
-                                className={`filter-btn ${selectedFilter === 'all' ? 'active' : ''}`}
-                                onClick={() => setSelectedFilter('all')}
-                            >
-                                Tudo
-                            </button>
-                            <button
-                                className={`filter-btn ${selectedFilter === 'website' ? 'active' : ''}`}
-                                onClick={() => setSelectedFilter('website')}
-                            >
-                                Websites
-                            </button>
-                            <button
-                                className={`filter-btn ${selectedFilter === 'branding' ? 'active' : ''}`}
-                                onClick={() => setSelectedFilter('branding')}
-                            >
-                                Logos & Branding
-                            </button>
-                        </div>
-
                         {/* Grid */}
                         <div className="portfolio-grid">
-                            {filteredItems.map((item) => (
+                            {PORTFOLIO_ITEMS.map((item) => (
                                 <div
                                     key={item.id}
                                     className="portfolio-card-wrapper"
